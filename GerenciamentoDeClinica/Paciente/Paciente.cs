@@ -9,6 +9,7 @@ namespace GerenciamentoDeClinica.Paciente
 {
     class Paciente : Pessoa
     {
+        private String tipoConsulta { get; set; }
         private String planoDeSaude { get; set; }
         private int numeroCarteira { get; set; } 
     }

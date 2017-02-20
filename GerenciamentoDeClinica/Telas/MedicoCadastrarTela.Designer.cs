@@ -36,6 +36,10 @@
             this.textBoxEspecialidade = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxLogradouro = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxRG = new System.Windows.Forms.TextBox();
+            this.textBoxCPF = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 113);
+            this.label3.Location = new System.Drawing.Point(22, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 4;
@@ -81,7 +85,7 @@
             // 
             // textBoxEspecialidade
             // 
-            this.textBoxEspecialidade.Location = new System.Drawing.Point(104, 110);
+            this.textBoxEspecialidade.Location = new System.Drawing.Point(104, 143);
             this.textBoxEspecialidade.Name = "textBoxEspecialidade";
             this.textBoxEspecialidade.Size = new System.Drawing.Size(143, 20);
             this.textBoxEspecialidade.TabIndex = 5;
@@ -89,7 +93,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 144);
+            this.label4.Location = new System.Drawing.Point(25, 177);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 6;
@@ -97,16 +101,53 @@
             // 
             // textBoxLogradouro
             // 
-            this.textBoxLogradouro.Location = new System.Drawing.Point(104, 144);
+            this.textBoxLogradouro.Location = new System.Drawing.Point(104, 177);
             this.textBoxLogradouro.Name = "textBoxLogradouro";
             this.textBoxLogradouro.Size = new System.Drawing.Size(230, 20);
             this.textBoxLogradouro.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "RG:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(209, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "CPF:";
+            // 
+            // textBoxRG
+            // 
+            this.textBoxRG.Location = new System.Drawing.Point(78, 108);
+            this.textBoxRG.Name = "textBoxRG";
+            this.textBoxRG.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRG.TabIndex = 10;
+            // 
+            // textBoxCPF
+            // 
+            this.textBoxCPF.Location = new System.Drawing.Point(245, 108);
+            this.textBoxCPF.Name = "textBoxCPF";
+            this.textBoxCPF.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCPF.TabIndex = 11;
             // 
             // TelaCadastroMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(699, 460);
+            this.Controls.Add(this.textBoxCPF);
+            this.Controls.Add(this.textBoxRG);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxLogradouro);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxEspecialidade);
@@ -132,5 +173,9 @@
         private System.Windows.Forms.TextBox textBoxEspecialidade;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxLogradouro;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxRG;
+        private System.Windows.Forms.TextBox textBoxCPF;
     }
 }
