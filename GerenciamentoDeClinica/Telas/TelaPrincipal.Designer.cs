@@ -58,8 +58,9 @@
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // médicosToolStripMenuItem
             // 
@@ -72,7 +73,7 @@
             // cadastrarMedicos
             // 
             this.cadastrarMedicos.Name = "cadastrarMedicos";
-            this.cadastrarMedicos.Size = new System.Drawing.Size(152, 22);
+            this.cadastrarMedicos.Size = new System.Drawing.Size(124, 22);
             this.cadastrarMedicos.Text = "Cadastrar";
             this.cadastrarMedicos.Click += new System.EventHandler(this.cadastrarMedicos_Click);
             // 

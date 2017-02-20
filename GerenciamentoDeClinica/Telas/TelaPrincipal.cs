@@ -38,5 +38,10 @@ namespace GerenciamentoDeClinica.Telas
             TelaCadastrarMedico = null;
             //throw new NotImplementedException();
         }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
