@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoDeClinica.Medico
 {
+    using Especialidade;
+
     class Medico : Pessoa
     {
         private int crm { get; set; }
-        private String especialidade { get; set; }
+        private Especialidade especialidade { get; set; } //vai usar o código da especialidade
     }
 }

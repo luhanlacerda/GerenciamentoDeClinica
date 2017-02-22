@@ -74,9 +74,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classesBasicas\Endereco.cs" />
     <Compile Include="classesBasicas\Pessoa.cs" />
     <Compile Include="Consulta\Consulta.cs" />
+    <Compile Include="Convenio\Convenio.cs" />
+    <Compile Include="Especialidade\Especialidade.cs" />
     <Compile Include="Medico\Medico.cs" />
+    <Compile Include="Paciente\InterfacePaciente.cs" />
     <Compile Include="Paciente\Paciente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

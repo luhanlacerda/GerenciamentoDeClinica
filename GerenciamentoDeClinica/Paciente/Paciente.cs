@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoDeClinica.Paciente
 {
+    using Convenio;
+
     class Paciente : Pessoa
     {
-        private String tipoConsulta { get; set; }
-        private String planoDeSaude { get; set; }
-        private int numeroCarteira { get; set; } 
+        private Convenio convenio { get; set; }
     }
 }

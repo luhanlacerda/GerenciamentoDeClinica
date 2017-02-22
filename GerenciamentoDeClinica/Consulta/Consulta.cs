@@ -14,9 +14,8 @@ namespace GerenciamentoDeClinica.Consulta
         private int numeroConsulta { get; set; }
         private DateTime data { get; set; }
         private DateTime horario { get; set; }
-        private int valor { get; set; }
         private Paciente paciente { get; set; }
         private Medico medico { get; set; }
-        private String observacoes { get; set; }
+        private String historico { get; set; }
     }
 }
