@@ -11,6 +11,26 @@ namespace GerenciamentoDeClinica.Paciente
 
     class Paciente : Pessoa
     {
-        private Convenio convenio { get; set; }
+        private Convenio convenio;
+
+        public Convenio getConvenio()
+        {
+            return this.convenio;
+        }
+
+        public void setConvenio(Convenio convenio)
+        {
+            this.convenio = convenio;
+        }
+
+        public String toString()
+        {
+            String retorno;
+            retorno = "Nome: " + this.getNome() + "\n";
+            retorno += "CPF: " + this.getCpf() + "\n";
+            retorno += "Convênio: " + this.getConvenio().getNome() + "\n";
+            retorno += "Contato: " + this.getContato();
+            return retorno;
+        }
     }
 }

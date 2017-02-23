@@ -81,6 +81,7 @@
     <Compile Include="Especialidade\Especialidade.cs" />
     <Compile Include="Medico\Medico.cs" />
     <Compile Include="Paciente\InterfacePaciente.cs" />
+    <Compile Include="Paciente\NegocioPaciente.cs" />
     <Compile Include="Paciente\Paciente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
