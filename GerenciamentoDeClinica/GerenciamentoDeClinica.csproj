@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classesBasicas\ConexaoSql.cs" />
     <Compile Include="classesBasicas\Endereco.cs" />
     <Compile Include="classesBasicas\Pessoa.cs" />
     <Compile Include="Consulta\Consulta.cs" />
@@ -97,6 +98,12 @@
     <Compile Include="Telas\TelaPrincipal.Designer.cs">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\TelaTesteConexaoSql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\TelaTesteConexaoSql.Designer.cs">
+      <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -111,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\TelaTesteConexaoSql.resx">
+      <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GerenciamentoDeClinica_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
