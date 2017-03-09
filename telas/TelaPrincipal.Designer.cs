@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testarConexãoBDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.médicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarMedicos = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@
             this.especialidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.testarConexãoBDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,13 @@
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
+            // 
+            // testarConexãoBDToolStripMenuItem
+            // 
+            this.testarConexãoBDToolStripMenuItem.Name = "testarConexãoBDToolStripMenuItem";
+            this.testarConexãoBDToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.testarConexãoBDToolStripMenuItem.Text = "Testar Conexão BD";
+            this.testarConexãoBDToolStripMenuItem.Click += new System.EventHandler(this.testarConexãoBDToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -186,13 +193,6 @@
             this.consultarToolStripMenuItem4.Name = "consultarToolStripMenuItem4";
             this.consultarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem4.Text = "Consultar";
-            // 
-            // testarConexãoBDToolStripMenuItem
-            // 
-            this.testarConexãoBDToolStripMenuItem.Name = "testarConexãoBDToolStripMenuItem";
-            this.testarConexãoBDToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.testarConexãoBDToolStripMenuItem.Text = "Testar Conexão BD";
-            this.testarConexãoBDToolStripMenuItem.Click += new System.EventHandler(this.testarConexãoBDToolStripMenuItem_Click);
             // 
             // TelaPrincipal
             // 
