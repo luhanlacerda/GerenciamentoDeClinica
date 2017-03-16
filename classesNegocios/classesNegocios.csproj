@@ -40,17 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NegocioPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassesBasicas\classesBasicas.csproj">
       <Project>{38566FC5-C847-4C3F-91EB-19BD84FCDEA0}</Project>
       <Name>classesBasicas</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\classesInterface\classesInterfaces.csproj">
-      <Project>{40bca79c-6df8-4a9a-9fc3-fef721844274}</Project>
-      <Name>classesInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace telas
+namespace GerenciamentoDeClinica
 {
-    public partial class TelaCadastroMedico : Form
+    public partial class Form1 : Form
     {
-        public TelaCadastroMedico()
+        public Form1()
         {
             InitializeComponent();
         }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Biblioteca.medico;
+using Biblioteca.paciente;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace classesBasicas
+namespace Biblioteca.consulta
 {
 
     public class Consulta

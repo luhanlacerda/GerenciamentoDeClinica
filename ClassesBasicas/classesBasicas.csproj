@@ -40,21 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConexaoSql.cs" />
-    <Compile Include="Consulta.cs" />
-    <Compile Include="Convenio.cs" />
-    <Compile Include="Endereco.cs" />
-    <Compile Include="Especialidade.cs" />
-    <Compile Include="Medico.cs" />
-    <Compile Include="Paciente.cs" />
-    <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\classesFachadas\classesFachadas.csproj">
-      <Project>{bd1a9a44-55ac-4626-b369-6675b20a59bc}</Project>
-      <Name>classesFachadas</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace classesBasicas
+namespace Biblioteca.convenio
 {
     public class Convenio
     {

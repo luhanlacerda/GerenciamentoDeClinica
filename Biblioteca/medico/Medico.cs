@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Biblioteca.especialidade;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace classesBasicas
+namespace Biblioteca.medico
 {
 
-    public class Medico : Pessoa
+    public class Medico : classesBasicas.Pessoa
     {
         private int crm;
         private Especialidade especialidade; //vai usar o código da especialidade

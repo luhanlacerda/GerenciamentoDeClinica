@@ -1,11 +1,10 @@
-﻿using classesBasicas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace classesInterfaces
+namespace Biblioteca.paciente
 {
     public interface IPaciente
     {

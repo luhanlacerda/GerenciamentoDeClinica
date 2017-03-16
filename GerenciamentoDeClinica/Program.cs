@@ -16,7 +16,7 @@ namespace GerenciamentoDeClinica
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new telas.TelaPrincipal());
+            Application.Run(new GerenciamentoDeClinica.TelaPrincipal());
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Biblioteca.classesBasicas;
+using Biblioteca.convenio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace classesBasicas
+namespace Biblioteca.paciente
 {
 
     public class Paciente : Pessoa

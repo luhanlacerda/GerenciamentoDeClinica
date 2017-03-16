@@ -1,4 +1,4 @@
-﻿namespace telas
+﻿namespace GerenciamentoDeClinica
 {
     partial class TelaPrincipal
     {
