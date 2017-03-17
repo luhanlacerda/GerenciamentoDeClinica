@@ -90,7 +90,7 @@ namespace Biblioteca.paciente
             }
 
             //cadastrando
-            //colocar o codigo de jogar para a camada de dados
+            new PacienteBD().Cadastrar(p);
 
         }
 
