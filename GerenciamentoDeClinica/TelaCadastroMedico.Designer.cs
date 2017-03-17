@@ -56,7 +56,7 @@
             this.textBoxNome.Location = new System.Drawing.Point(78, 37);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(313, 20);
-            this.textBoxNome.TabIndex = 1;
+            this.textBoxNome.TabIndex = 0;
             // 
             // label2
             // 
@@ -72,7 +72,7 @@
             this.textBoxCRM.Location = new System.Drawing.Point(78, 72);
             this.textBoxCRM.Name = "textBoxCRM";
             this.textBoxCRM.Size = new System.Drawing.Size(100, 20);
-            this.textBoxCRM.TabIndex = 3;
+            this.textBoxCRM.TabIndex = 1;
             // 
             // label3
             // 
@@ -88,7 +88,7 @@
             this.textBoxEspecialidade.Location = new System.Drawing.Point(104, 143);
             this.textBoxEspecialidade.Name = "textBoxEspecialidade";
             this.textBoxEspecialidade.Size = new System.Drawing.Size(143, 20);
-            this.textBoxEspecialidade.TabIndex = 5;
+            this.textBoxEspecialidade.TabIndex = 4;
             // 
             // label4
             // 
@@ -104,7 +104,7 @@
             this.textBoxLogradouro.Location = new System.Drawing.Point(104, 177);
             this.textBoxLogradouro.Name = "textBoxLogradouro";
             this.textBoxLogradouro.Size = new System.Drawing.Size(230, 20);
-            this.textBoxLogradouro.TabIndex = 7;
+            this.textBoxLogradouro.TabIndex = 5;
             // 
             // label5
             // 
@@ -129,14 +129,14 @@
             this.textBoxRG.Location = new System.Drawing.Point(78, 108);
             this.textBoxRG.Name = "textBoxRG";
             this.textBoxRG.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRG.TabIndex = 10;
+            this.textBoxRG.TabIndex = 2;
             // 
             // textBoxCPF
             // 
             this.textBoxCPF.Location = new System.Drawing.Point(245, 108);
             this.textBoxCPF.Name = "textBoxCPF";
             this.textBoxCPF.Size = new System.Drawing.Size(100, 20);
-            this.textBoxCPF.TabIndex = 11;
+            this.textBoxCPF.TabIndex = 3;
             // 
             // TelaCadastroMedico
             // 
@@ -158,6 +158,7 @@
             this.Controls.Add(this.label1);
             this.Name = "TelaCadastroMedico";
             this.Text = "Médico - Cadastro";
+            this.Load += new System.EventHandler(this.TelaCadastroMedico_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

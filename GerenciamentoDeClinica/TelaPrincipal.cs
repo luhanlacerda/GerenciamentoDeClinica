@@ -66,6 +66,28 @@ namespace GerenciamentoDeClinica
             TelaCadastrarMedico = null;
             //throw new NotImplementedException();
         }
+
+        TelaCadastroPaciente TelaCadastrarPaciente;
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TelaCadastrarPaciente == null)
+            {
+                TelaCadastrarPaciente = new TelaCadastroPaciente();
+                TelaCadastrarPaciente.MdiParent = this;
+                TelaCadastrarPaciente.FormClosed += TelaCadastrarPacienteSql_FormClosed;
+                TelaCadastrarPaciente.Show();
+            }
+            else
+            {
+                TelaCadastrarPaciente.Activate();
+            }
+        }
+
+        private void TelaCadastrarPacienteSql_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TelaCadastrarPaciente = null;
+            //throw new NotImplementedException();
+        }
     }
 }
 

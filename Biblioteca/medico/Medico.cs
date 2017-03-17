@@ -38,7 +38,7 @@ namespace Biblioteca.medico
                 especialidade = value;
             }
         }
-        public String toString()
+        public String MedicoToString()
         {
             String retorno;
             retorno = "Nome: " + this.Nome + "\n";

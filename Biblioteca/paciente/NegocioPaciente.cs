@@ -8,18 +8,18 @@ namespace Biblioteca.paciente
 {
     public class NegocioPaciente : IPaciente
     {
-        public void cadastrar(Paciente p)
+        public void Cadastrar(Paciente p)
         {
             if(p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
             {
                 throw new Exception("Número de CPF inválido!");
             }
-            /*
-            if(verificaExistencia(Paciente p) != false)
+            
+            if(VerificaExistencia(p) != false)
             {
                 throw new Exception("Paciente já cadastrado no sistema!");
             }
-            */
+            
             if (p.Nome.Trim().Equals("") == true || p.Nome == null)
             {
                 throw new Exception("Informar nome do paciente");
@@ -49,7 +49,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception("Informar data de nascimento");
             }
-            /*
+            
             if (p.Endereco.Logradouro.Trim().Equals("") || p.Endereco.Logradouro == null)
             {
                 throw new Exception("Informar nome da rua");
@@ -75,7 +75,7 @@ namespace Biblioteca.paciente
                 throw new Exception("Informar nome da cidade");
             }
             
-            if (p.Endereco.Uf.Trim().Equals("") || p.Endereco.getUf() == null)
+            if (p.Endereco.Uf.Trim().Equals("") || p.Endereco.Uf == null)
             {
                 throw new Exception("Informar nome da UF(Estado)");
             }
@@ -88,13 +88,13 @@ namespace Biblioteca.paciente
             {
                 throw new Exception("Informar nome do país");
             }
-            */
+
             //cadastrando
             //colocar o codigo de jogar para a camada de dados
 
         }
 
-        public void atualizar(Paciente p)
+        public void Atualizar(Paciente p)
         {
             if (p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
             {
@@ -181,19 +181,19 @@ namespace Biblioteca.paciente
 
         }
 
-        public List<Paciente> listar(Paciente filtro)
+        public List<Paciente> Listar(Paciente filtro)
         {
             throw new NotImplementedException();
         }
 
-        public void remover(Paciente p)
+        public void Remover(Paciente p)
         {
             if (p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
             {
                 throw new Exception("Número de CPF inválido!");
             }
 
-            if (verificaExistencia(p) == false)
+            if (VerificaExistencia(p) == false)
             {
                 throw new Exception("Paciente não cadastrado no sistema!");
             }
@@ -202,12 +202,12 @@ namespace Biblioteca.paciente
             //colocar o codigo de jogar para a camada de dados
         }
 
-        public Paciente selecionarPaciente(Paciente p)
+        public Paciente SelecionarPaciente(Paciente p)
         {
             throw new NotImplementedException();
         }
 
-        public bool verificaExistencia(Paciente p)
+        public bool VerificaExistencia(Paciente p)
         {
             throw new NotImplementedException();
         }

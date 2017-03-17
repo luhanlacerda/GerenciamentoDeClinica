@@ -16,5 +16,10 @@ namespace GerenciamentoDeClinicas
         {
             InitializeComponent();
         }
+
+        private void TelaCadastroMedico_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

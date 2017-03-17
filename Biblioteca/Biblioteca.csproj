@@ -50,6 +50,7 @@
     <Compile Include="paciente\IPaciente.cs" />
     <Compile Include="paciente\NegocioPaciente.cs" />
     <Compile Include="paciente\Paciente.cs" />
+    <Compile Include="paciente\PacienteBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,8 +22,9 @@ namespace GerenciamentoDeClinica
         {
             try
             {
-                ConexaoSql con = new ConexaoSql();
-                con.abrirConexao();
+                ConexaoSql conn = new ConexaoSql();
+                conn.abrirConexao();
+                conn.fecharConexao();
                 MessageBox.Show("Conexão efetuada com sucesso!");
             }
             catch (Exception ex)

@@ -15,18 +15,11 @@ namespace Biblioteca.paciente
 
         public Convenio Convenio
         {
-            get
-            {
-                return convenio;
-            }
-
-            set
-            {
-                convenio = value;
-            }
+            get { return convenio; }
+            set { convenio = value; }
         }
 
-        public String toString()
+        public String PacienteToString()
         {
             String retorno;
             retorno = "Nome: " + this.Nome + "\n";
