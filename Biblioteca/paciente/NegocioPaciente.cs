@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.conexaoBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.paciente
 {
-    public class NegocioPaciente : IPaciente
+    public class NegocioPaciente : ConexaoSql, IPaciente
     {
         public void Cadastrar(Paciente p)
         {
@@ -90,8 +91,8 @@ namespace Biblioteca.paciente
             }
 
             //cadastrando
-            new PacienteBD().Cadastrar(p);
-
+            //new PacienteBD().Cadastrar(p);
+            Cadastrar(p);
         }
 
         public void Atualizar(Paciente p)

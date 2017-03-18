@@ -59,7 +59,7 @@
             // 
             // textBoxRG
             // 
-            this.textBoxRG.Location = new System.Drawing.Point(76, 76);
+            this.textBoxRG.Location = new System.Drawing.Point(83, 76);
             this.textBoxRG.Name = "textBoxRG";
             this.textBoxRG.Size = new System.Drawing.Size(100, 20);
             this.textBoxRG.TabIndex = 1;
@@ -67,7 +67,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(202, 79);
+            this.label6.Location = new System.Drawing.Point(202, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 21;
@@ -76,7 +76,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 79);
+            this.label5.Location = new System.Drawing.Point(33, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 20;
@@ -92,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 42);
+            this.label1.Location = new System.Drawing.Point(33, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 11;
@@ -117,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 115);
+            this.label3.Location = new System.Drawing.Point(33, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 24;
@@ -125,7 +125,7 @@
             // 
             // textBoxLogradouro
             // 
-            this.textBoxLogradouro.Location = new System.Drawing.Point(104, 112);
+            this.textBoxLogradouro.Location = new System.Drawing.Point(104, 113);
             this.textBoxLogradouro.Name = "textBoxLogradouro";
             this.textBoxLogradouro.Size = new System.Drawing.Size(249, 20);
             this.textBoxLogradouro.TabIndex = 4;
@@ -133,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(367, 115);
+            this.label4.Location = new System.Drawing.Point(367, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 13);
             this.label4.TabIndex = 26;
@@ -141,7 +141,7 @@
             // 
             // textBoxNumero
             // 
-            this.textBoxNumero.Location = new System.Drawing.Point(395, 112);
+            this.textBoxNumero.Location = new System.Drawing.Point(395, 113);
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(78, 20);
             this.textBoxNumero.TabIndex = 5;
@@ -149,7 +149,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 147);
+            this.label7.Location = new System.Drawing.Point(33, 153);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 28;
@@ -157,7 +157,7 @@
             // 
             // textBoxComplemento
             // 
-            this.textBoxComplemento.Location = new System.Drawing.Point(113, 144);
+            this.textBoxComplemento.Location = new System.Drawing.Point(113, 150);
             this.textBoxComplemento.Name = "textBoxComplemento";
             this.textBoxComplemento.Size = new System.Drawing.Size(100, 20);
             this.textBoxComplemento.TabIndex = 6;
@@ -165,7 +165,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(229, 147);
+            this.label8.Location = new System.Drawing.Point(229, 153);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 30;
@@ -173,7 +173,7 @@
             // 
             // textBoxBairro
             // 
-            this.textBoxBairro.Location = new System.Drawing.Point(272, 143);
+            this.textBoxBairro.Location = new System.Drawing.Point(272, 149);
             this.textBoxBairro.Name = "textBoxBairro";
             this.textBoxBairro.Size = new System.Drawing.Size(100, 20);
             this.textBoxBairro.TabIndex = 7;
@@ -181,7 +181,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(392, 146);
+            this.label9.Location = new System.Drawing.Point(392, 152);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 32;
@@ -190,7 +190,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(33, 178);
+            this.label10.Location = new System.Drawing.Point(33, 190);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 13);
             this.label10.TabIndex = 34;
@@ -198,14 +198,14 @@
             // 
             // textBoxCidade
             // 
-            this.textBoxCidade.Location = new System.Drawing.Point(83, 175);
+            this.textBoxCidade.Location = new System.Drawing.Point(83, 187);
             this.textBoxCidade.Name = "textBoxCidade";
             this.textBoxCidade.Size = new System.Drawing.Size(93, 20);
             this.textBoxCidade.TabIndex = 9;
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(238, 75);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(238, 78);
             this.maskedTextBoxCPF.Mask = "000.000.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(100, 20);
@@ -213,7 +213,7 @@
             // 
             // maskedTextBoxCEP
             // 
-            this.maskedTextBoxCEP.Location = new System.Drawing.Point(429, 143);
+            this.maskedTextBoxCEP.Location = new System.Drawing.Point(429, 149);
             this.maskedTextBoxCEP.Mask = "00.000-000";
             this.maskedTextBoxCEP.Name = "maskedTextBoxCEP";
             this.maskedTextBoxCEP.Size = new System.Drawing.Size(100, 20);
@@ -222,7 +222,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(191, 178);
+            this.label11.Location = new System.Drawing.Point(191, 190);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 38;
@@ -260,7 +260,7 @@
             "SP\t ",
             "SE\t ",
             "TO"});
-            this.comboBoxUF.Location = new System.Drawing.Point(221, 174);
+            this.comboBoxUF.Location = new System.Drawing.Point(221, 186);
             this.comboBoxUF.Name = "comboBoxUF";
             this.comboBoxUF.Size = new System.Drawing.Size(61, 21);
             this.comboBoxUF.TabIndex = 10;
@@ -268,7 +268,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(303, 178);
+            this.label12.Location = new System.Drawing.Point(303, 190);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 40;
@@ -535,7 +535,7 @@
             "West Bank",
             "Zâmbia",
             "Zimbabué"});
-            this.comboBoxPais.Location = new System.Drawing.Point(341, 174);
+            this.comboBoxPais.Location = new System.Drawing.Point(341, 186);
             this.comboBoxPais.Name = "comboBoxPais";
             this.comboBoxPais.Size = new System.Drawing.Size(132, 21);
             this.comboBoxPais.TabIndex = 11;
@@ -543,7 +543,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(35, 214);
+            this.label13.Location = new System.Drawing.Point(35, 226);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 13);
             this.label13.TabIndex = 42;
@@ -552,14 +552,14 @@
             // comboBoxConvenio
             // 
             this.comboBoxConvenio.FormattingEnabled = true;
-            this.comboBoxConvenio.Location = new System.Drawing.Point(96, 211);
+            this.comboBoxConvenio.Location = new System.Drawing.Point(96, 223);
             this.comboBoxConvenio.Name = "comboBoxConvenio";
             this.comboBoxConvenio.Size = new System.Drawing.Size(121, 21);
             this.comboBoxConvenio.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(397, 286);
+            this.button1.Location = new System.Drawing.Point(454, 287);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -571,7 +571,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 363);
+            this.ClientSize = new System.Drawing.Size(581, 363);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxConvenio);
             this.Controls.Add(this.label13);
