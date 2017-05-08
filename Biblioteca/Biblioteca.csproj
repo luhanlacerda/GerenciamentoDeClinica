@@ -46,6 +46,8 @@
     <Compile Include="consulta\Consulta.cs" />
     <Compile Include="convenio\Convenio.cs" />
     <Compile Include="especialidade\Especialidade.cs" />
+    <Compile Include="especialidade\IEspecialidade.cs" />
+    <Compile Include="especialidade\NegocioEspecialidade.cs" />
     <Compile Include="medico\Medico.cs" />
     <Compile Include="paciente\IPaciente.cs" />
     <Compile Include="paciente\NegocioPaciente.cs" />

@@ -8,33 +8,19 @@ namespace Biblioteca.especialidade
 {
     public class Especialidade
     {
-        private int codigo;
+        private int id_especialidade;
         private String descricao;
 
-        public int Codigo
+        public int Id_especialidade
         {
-            get
-            {
-                return codigo;
-            }
-
-            set
-            {
-                codigo = value;
-            }
+            get { return id_especialidade; }
+            set { id_especialidade = value; }
         }
 
         public string Descricao
         {
-            get
-            {
-                return descricao;
-            }
-
-            set
-            {
-                descricao = value;
-            }
+            get { return descricao; }
+            set { descricao = value; }
         }
     }
 }
