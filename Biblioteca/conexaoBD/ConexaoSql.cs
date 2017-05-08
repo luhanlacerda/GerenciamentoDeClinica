@@ -25,7 +25,7 @@ namespace Biblioteca.conexaoBD
 
             //string de conexão obtida para o sql sever
             string connectionStringSqlServer = @"Data Source=" + local + ";Initial Catalog=" + banco_de_dados + ";UId=" + usuario + ";Password=" + senha + ";";
-            //teste
+            //testando luhan
             public void abrirConexao()
             {
                 //iniciando uma conexão com o sql server, utilizando os parâmetros da string de conexão
