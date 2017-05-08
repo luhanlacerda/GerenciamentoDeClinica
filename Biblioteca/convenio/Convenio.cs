@@ -8,47 +8,22 @@ namespace Biblioteca.convenio
 {
     public class Convenio
     {
-        private int codigo;
-        private String nome;
-        private int nrCarteiraSaude;
+        private int id_convenio;
+        private String descricao;
 
-        public int Codigo
+        public int Id_convenio
         {
-            get
-            {
-                return codigo;
-            }
-
-            set
-            {
-                codigo = value;
-            }
+            get { return id_convenio; }
+            set { id_convenio = value; }
         }
 
-        public string Nome
+        public string Descricao
         {
-            get
-            {
-                return nome;
-            }
-
-            set
-            {
-                nome = value;
-            }
+            get { return descricao; }
+            set { descricao = value; }
         }
 
-        public int NrCarteiraSaude
-        {
-            get
-            {
-                return nrCarteiraSaude;
-            }
 
-            set
-            {
-                nrCarteiraSaude = value;
-            }
-        }
     }
 }
+

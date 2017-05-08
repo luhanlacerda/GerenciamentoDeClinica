@@ -36,7 +36,7 @@ namespace Biblioteca.paciente
                 throw new Exception("Favor informar o RG do paciente");
             }
 
-            if (p.Convenio.Codigo <= 0)
+            if (p.Convenio.Id_convenio <= 0)
             {
                 throw new Exception("Favor informar o convênio");
             }
@@ -122,7 +122,7 @@ namespace Biblioteca.paciente
                 throw new Exception("Favor informar o RG do paciente");
             }
 
-            if (p.Convenio.Codigo <= 0)
+            if (p.Convenio.Id_convenio <= 0)
             {
                 throw new Exception("Favor informar o convênio");
             }
