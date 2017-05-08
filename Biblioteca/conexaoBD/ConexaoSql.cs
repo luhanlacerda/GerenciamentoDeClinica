@@ -16,7 +16,7 @@ namespace Biblioteca.conexaoBD
             //máquina no qual estará o banco de dados
             private const string local = "localhost";
             //nome do banco de dados no qual desejamos nos comunicar
-            private const string banco_de_dados = "ProjetoClinica";
+            private const string banco_de_dados = "GerenciamentoClinica";
             //usuário que tenha os privilégios para utilizar o banco de dados
             private const string usuario = "sa";
             //senha do usuario

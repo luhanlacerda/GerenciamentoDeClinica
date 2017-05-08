@@ -14,6 +14,8 @@ namespace Biblioteca.classesBasicas
         private Endereco endereco;
         private String contato;
         private DateTime dtNascimento;
+        private String email;
+        private String estadoCivil;
 
         public string Nome
         {
@@ -90,6 +92,32 @@ namespace Biblioteca.classesBasicas
             set
             {
                 dtNascimento = value;
+            }
+        }
+
+        public String Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public String EstadoCivil
+        {
+            get
+            {
+                return estadoCivil;
+            }
+
+            set
+            {
+                estadoCivil = value;
             }
         }
     }
