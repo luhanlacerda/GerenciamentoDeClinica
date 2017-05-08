@@ -1,0 +1,125 @@
+[33mcommit 4dbfc9dc749dba37afdb05c109cec8efa1d923b6[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Fri Mar 17 22:17:36 2017 -0300
+
+    ajuste no design da gui cadastrarPaciente
+
+[33mcommit e7b0b65781ce54e32a719db2c6722a5c40fd0113[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Fri Mar 17 10:50:56 2017 -0300
+
+    Att na camada de dadospaciente
+
+[33mcommit 2c0147cb450c82885ff1cefe0d9f52fc9e342f8f[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 16 22:26:08 2017 -0300
+
+    Criacao do Cadastrar Paciente
+
+[33mcommit e779632d9b07cfaa1924d6356b021bccc06510ee[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 16 20:09:16 2017 -0300
+
+    Renomeando a tela de cadastro de medicos
+
+[33mcommit ae460b0c53b0247a7c463200519acf0f36654d98[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 16 19:35:00 2017 -0300
+
+    Att projeto 2
+
+[33mcommit 8b430b34246a98f281283b5c93f64ca38c4f2d53[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 16 19:34:08 2017 -0300
+
+    Att do projeto
+
+[33mcommit 2babfa83ba8818b6c82168adf0f5d8a4b46e7d25[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 16 19:29:24 2017 -0300
+
+    Adequadação do projeto.
+
+[33mcommit d0d6ae7fe26e36a3917cc6f0c9fa31b236c3179d[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 9 17:40:10 2017 -0300
+
+    Desabilitando o signing certificate do projeto
+
+[33mcommit 0dc21a6ace4720b15101aa70a49adcb035b2a270[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Mar 9 17:19:54 2017 -0300
+
+    Projeto remodelado com as livraria de classes
+
+[33mcommit 0b4a2981eb95d33be60eff6eef9b509d54161ea3[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Wed Mar 8 20:23:47 2017 -0300
+
+    Criação da classe de conexão de banco de dados e a tela para testar a mesma.
+
+[33mcommit cdf5b988873026e796ededd5cda1bb8da398349c[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 23 14:55:56 2017 -0300
+
+    Codificando a camada de negocio. Atualizar e remover
+
+[33mcommit 2e9eda7ce776c07d91834cf2778a93eabc964df0[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 23 12:37:06 2017 -0300
+
+    Ajustes nos geters e seters, finalização do metodo cadastrar na camada de negocio do Paciente.
+
+[33mcommit c15336d4d6702dc404c75f78019711f0d6f8588b[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Wed Feb 22 18:25:46 2017 -0300
+
+    Criação das classes e interface da classe Paciente.
+
+[33mcommit 37ca71cb853171dae1b03105f806cce3671f22a2[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Mon Feb 20 19:01:59 2017 -0300
+
+    Ajustes no menu da tela principal
+
+[33mcommit 22c50cc0f3c251c9e7b2810550e7e96f94fe7f3d[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Mon Feb 20 18:05:53 2017 -0300
+
+    Nomeando a tela principal
+
+[33mcommit c38805dc28793662c2189954c24f5fe78d55c95b[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Mon Feb 20 17:52:38 2017 -0300
+
+    Implementacao do modo sair
+
+[33mcommit ccc4e1e0225cbcf1b420703385184b2b233db81d[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Mon Feb 20 16:06:01 2017 -0300
+
+    Criação de tela principal e teste de MDI
+
+[33mcommit e2e5117acf38447c40a1271417605a4b59b72257[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 16 18:48:02 2017 -0300
+
+    Add esboço da tela
+
+[33mcommit eca579278564b91fefb79a800374a9cf3a5ba033[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 16 18:20:03 2017 -0300
+
+    Inicio
+
+[33mcommit 1204793360eb1b399be98b435d5018ac18c71a71[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 16 18:15:05 2017 -0300
+
+    Add project files.
+
+[33mcommit 2e47acf9e01889757693cfb7bcb152329478e010[m
+Author: Luhan Lacerda <luhanlacerda@gmail.com>
+Date:   Thu Feb 16 18:15:00 2017 -0300
+
+    Add .gitignore and .gitattributes.
