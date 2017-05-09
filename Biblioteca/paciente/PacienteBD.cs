@@ -59,7 +59,7 @@ namespace Biblioteca.paciente
                 cmd.Parameters["@pais"].Value = P.Endereco.Pais;
 
                 cmd.Parameters.Add("@codconvenio", SqlDbType.Int);
-                cmd.Parameters["@codconvenio"].Value = P.Convenio.Codigo;
+                cmd.Parameters["@codconvenio"].Value = P.Convenio.Id_convenio;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();

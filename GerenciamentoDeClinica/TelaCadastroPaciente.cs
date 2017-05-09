@@ -41,7 +41,7 @@ namespace GerenciamentoDeClinica
                     Uf = comboBoxUF.SelectedItem.ToString(),
                     Pais = comboBoxPais.SelectedItem.ToString(),
                 };
-                paciente.Convenio.Codigo = 1;
+                paciente.Convenio.Id_convenio = 1;
 
                 PacienteBD conn = new PacienteBD();
                 conn.Cadastrar(paciente);

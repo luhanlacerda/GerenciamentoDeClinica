@@ -201,7 +201,7 @@ namespace Biblioteca.convenio
                 //Fechar conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Convenio esta ativo.");
             }

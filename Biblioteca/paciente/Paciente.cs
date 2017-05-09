@@ -24,7 +24,7 @@ namespace Biblioteca.paciente
             String retorno;
             retorno = "Nome: " + this.Nome + "\n";
             retorno += "CPF: " + this.Cpf + "\n";
-            retorno += "Convênio: " + this.Convenio.Nome + "\n";
+            retorno += "Convênio: " + this.Convenio.Descricao + "\n";
             retorno += "Contato: " + this.Contato;
             return retorno;
         }

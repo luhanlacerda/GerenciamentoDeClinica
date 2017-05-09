@@ -45,7 +45,11 @@
     <Compile Include="conexaoBD\ConexaoSql.cs" />
     <Compile Include="consulta\Consulta.cs" />
     <Compile Include="convenio\Convenio.cs" />
+	<Compile Include="convenio\ConvenioBD.cs" />
+	<Compile Include="convenio\IConvenio.cs" />
+	<Compile Include="convenio\NegocioConvenio.cs" />
     <Compile Include="especialidade\Especialidade.cs" />
+	<Compile Include="especialidade\EspecialidadeBD.cs" />
     <Compile Include="especialidade\IEspecialidade.cs" />
     <Compile Include="especialidade\NegocioEspecialidade.cs" />
     <Compile Include="medico\Medico.cs" />
