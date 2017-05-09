@@ -1,4 +1,5 @@
 ﻿using Biblioteca.conexaoBD;
+using Biblioteca.convenio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -139,7 +140,7 @@ namespace Biblioteca.convenio
                     cmd.Parameters["@ID_Convenio"].Value = filtro.Id_convenio;
                 }
                 //Se foi passado uma descricao válido, o mesmo entrará como critério de filtro
-                if (filtro.Descricao!= null && filtro.Descricao.Trim().Equals("") == false)
+                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
                 {
                     cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
                     cmd.Parameters["Descricao"].Value = filtro.Descricao;
@@ -206,6 +207,11 @@ namespace Biblioteca.convenio
             }
 
             return retorono;
+        }
+
+        public bool VerificaExistencia(Convenio convenio)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
