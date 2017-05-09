@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TelaCadastroConvenio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaCadastroConvenio.Designer.cs">
+      <DependentUpon>TelaCadastroConvenio.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaCadastroMedico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="TelaTesteConexaoSql.Designer.cs">
       <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TelaCadastroConvenio.resx">
+      <DependentUpon>TelaCadastroConvenio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TelaCadastroMedico.resx">
       <DependentUpon>TelaCadastroMedico.cs</DependentUpon>
     </EmbeddedResource>

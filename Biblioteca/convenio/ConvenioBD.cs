@@ -22,7 +22,7 @@ namespace Biblioteca.convenio
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "inset into Convenio (ID_Convenio, Descricao)" +
+                string sql = "insert into Convenio (ID_Convenio, Descricao)" +
                     "values (@ID_Convenio,@Descricao)";
 
                 //instrução a ser executada
@@ -55,9 +55,8 @@ namespace Biblioteca.convenio
             {
                 //Abrindo Conexão
                 this.abrirConexao();
-
-                string sql = "UPDATE Convenio SET ID_Convenio= @ID_Convenio, WHERE Descricao = @Descricao";
-
+                
+                string sql = "UPDATE Convenio SET ID_Convenio = @ID_Convenio, Descricao = @Descricao WHERE ID_Convenio = @ID_Convenio";
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
