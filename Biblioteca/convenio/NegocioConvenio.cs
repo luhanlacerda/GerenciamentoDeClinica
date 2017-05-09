@@ -56,7 +56,13 @@ namespace Biblioteca.convenio
 
         public bool VerificaExistencia(Convenio c)
         {
-            throw new NotImplementedException();   
+
+            if (VerificaExistencia(c) == false)
+            {
+                throw new Exception("Convenio não cadastrado no sistema.");
+            }
+
+            return true;
         }
 
     }

@@ -113,7 +113,7 @@ namespace Biblioteca.convenio
 
         public List<Convenio> Listar(Convenio filtro)
         {
-            #region
+            
             List<Convenio> retorno = new List<Convenio>();
             try
             {
@@ -142,7 +142,7 @@ namespace Biblioteca.convenio
                 if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
                 {
                     cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                    cmd.Parameters["Descricao"].Value = filtro.Descricao;
+                    cmd.Parameters["@Descricao"].Value = filtro.Descricao;
                 }
                 //Executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
@@ -167,13 +167,13 @@ namespace Biblioteca.convenio
                 throw new Exception("Erro ao conectar e selecionar." + e.Message);
             }
             return retorno;
-            #endregion
+            
         }
 
         public bool verificaExistencia(Convenio c)
         {
             #region
-            bool retorono = false;
+            bool retorno = false;
             try
             {
                 //Conectar ao banco
@@ -189,7 +189,7 @@ namespace Biblioteca.convenio
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 while (DbReader.Read())
                 {
-                    retorono = true;
+                    retorno = true;
                     break;
                 }
 
@@ -205,7 +205,7 @@ namespace Biblioteca.convenio
                 throw new Exception("Convenio esta ativo.");
             }
 
-            return retorono;
+            return retorno;
         }
 
         public bool VerificaExistencia(Convenio convenio)
