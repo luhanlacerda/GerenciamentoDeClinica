@@ -9,7 +9,6 @@ namespace Biblioteca.especialidade
 {
     class NegocioEspecialidade : ConexaoSql, IEspecialidade
     {
-
         private const string ERRO_ID = "Código da especialidade inválido";
         private const string ERRO_DESCRICAO = "Descrição da especialidade inválida";
 
