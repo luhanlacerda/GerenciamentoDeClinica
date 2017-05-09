@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,11 +46,11 @@
     <Compile Include="conexaoBD\ConexaoSql.cs" />
     <Compile Include="consulta\Consulta.cs" />
     <Compile Include="convenio\Convenio.cs" />
-	<Compile Include="convenio\ConvenioBD.cs" />
-	<Compile Include="convenio\IConvenio.cs" />
-	<Compile Include="convenio\NegocioConvenio.cs" />
+    <Compile Include="convenio\ConvenioBD.cs" />
+    <Compile Include="convenio\IConvenio.cs" />
+    <Compile Include="convenio\NegocioConvenio.cs" />
     <Compile Include="especialidade\Especialidade.cs" />
-	<Compile Include="especialidade\EspecialidadeBD.cs" />
+    <Compile Include="especialidade\EspecialidadeBD.cs" />
     <Compile Include="especialidade\IEspecialidade.cs" />
     <Compile Include="especialidade\NegocioEspecialidade.cs" />
     <Compile Include="medico\Medico.cs" />
@@ -58,6 +59,10 @@
     <Compile Include="paciente\Paciente.cs" />
     <Compile Include="paciente\PacienteBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="secretaria\ISecretaria.cs" />
+    <Compile Include="secretaria\NegocioSecretaria.cs" />
+    <Compile Include="secretaria\Secretaria.cs" />
+    <Compile Include="secretaria\SecretariaBD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
