@@ -23,7 +23,6 @@ namespace Biblioteca.convenio
             set { descricao = value; }
         }
 
-
     }
 }
 
