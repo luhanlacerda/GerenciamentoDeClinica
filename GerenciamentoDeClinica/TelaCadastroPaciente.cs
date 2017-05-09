@@ -47,23 +47,23 @@ namespace GerenciamentoDeClinica
                 conn.Cadastrar(paciente);
                 MessageBox.Show("Paciente cadastrado com sucesso!");
 
-                textBoxNome.Text = "";
-                maskedTextBoxCPF.Text = "";
-                textBoxRG.Text = "";
-                textBoxContato.Text = "";
-                textBoxLogradouro.Text = "";
-                textBoxNumero.Text = "";
-                textBoxComplemento.Text = "";
-                textBoxBairro.Text = "";
-                textBoxCidade.Text = "";
-                comboBoxUF.Text = "";
-                comboBoxPais.Text = "";
+                clearAll(textBoxNome, maskedTextBoxCPF, textBoxRG, textBoxContato,
+                    textBoxLogradouro, textBoxNumero, textBoxComplemento, textBoxBairro,
+                    textBoxCidade, comboBoxUF, comboBoxPais);
                 textBoxNome.Focus();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void clearAll(params Control[] controls)
+        {
+            foreach (Control control in controls)
+            {
+                control.Text = "";
             }
         }
     }
