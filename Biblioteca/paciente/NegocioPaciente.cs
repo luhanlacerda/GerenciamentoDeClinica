@@ -11,7 +11,7 @@ namespace Biblioteca.paciente
     {
         public void Cadastrar(Paciente p)
         {
-            if(p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
+            if(p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
             {
                 throw new Exception("Número de CPF inválido!");
             }
@@ -31,7 +31,7 @@ namespace Biblioteca.paciente
                 throw new Exception("O nome do paciente não poderá ter mais de 100 caracteres");
             }
 
-            if (p.Rg.Trim().Equals("") == true || p.Rg == null )
+            if (p.RG.Trim().Equals("") == true || p.RG == null )
             {
                 throw new Exception("Favor informar o RG do paciente");
             }
@@ -41,7 +41,7 @@ namespace Biblioteca.paciente
                 throw new Exception("Favor informar o convênio");
             }
 
-            if (p.Contato.Trim().Length < 14)
+            if (p.Celular.Trim().Length < 14)
             {
                 throw new Exception("Número de telefone inválido");
             }
@@ -49,45 +49,6 @@ namespace Biblioteca.paciente
             if (p.DtNascimento == null)
             {
                 throw new Exception("Informar data de nascimento");
-            }
-            
-            if (p.Endereco.Logradouro.Trim().Equals("") || p.Endereco.Logradouro == null)
-            {
-                throw new Exception("Informar nome da rua");
-            }
-
-            if (p.Endereco.Numero.Trim().Equals("") || p.Endereco.Numero == null)
-            {
-                throw new Exception("Informar número da residência");
-            }
-
-            if (p.Endereco.Complemento.Trim().Equals("") || p.Endereco.Complemento == null)
-            {
-                throw new Exception("Informar complemento, caso não tenha, colocar um -");
-            }
-
-            if (p.Endereco.Cep.Trim().Equals("") || p.Endereco.Cep == null)
-            {
-                throw new Exception("Informar número do CEP");
-            }
-
-            if (p.Endereco.Cidade.Trim().Equals("") || p.Endereco.Cidade == null)
-            {
-                throw new Exception("Informar nome da cidade");
-            }
-            
-            if (p.Endereco.Uf.Trim().Equals("") || p.Endereco.Uf == null)
-            {
-                throw new Exception("Informar nome da UF(Estado)");
-            }
-            
-            if (p.Endereco.Uf.Trim().Length > 2 || p.Endereco.Uf.Trim().Length < 2)
-            {
-                throw new Exception("Informar UF com 2 caracteres");
-            }
-            if (p.Endereco.Pais.Trim().Equals("") || p.Endereco.Pais == null)
-            {
-                throw new Exception("Informar nome do país");
             }
 
             //cadastrando
@@ -97,7 +58,7 @@ namespace Biblioteca.paciente
 
         public void Atualizar(Paciente p)
         {
-            if (p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
+            if (p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
             {
                 throw new Exception("Número de CPF inválido!");
             }
@@ -117,7 +78,7 @@ namespace Biblioteca.paciente
                 throw new Exception("O nome do paciente não poderá ter mais de 100 caracteres");
             }
 
-            if (p.Rg.Trim().Equals("") == true || p.Rg == null)
+            if (p.RG.Trim().Equals("") == true || p.RG == null)
             {
                 throw new Exception("Favor informar o RG do paciente");
             }
@@ -127,7 +88,7 @@ namespace Biblioteca.paciente
                 throw new Exception("Favor informar o convênio");
             }
 
-            if (p.Contato.Trim().Length < 14)
+            if (p.Celular.Trim().Length < 14)
             {
                 throw new Exception("Número de telefone inválido");
             }
@@ -189,7 +150,7 @@ namespace Biblioteca.paciente
 
         public void Remover(Paciente p)
         {
-            if (p.Cpf.Trim().Length < 14 || p.Cpf.Trim().Length > 14)
+            if (p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
             {
                 throw new Exception("Número de CPF inválido!");
             }

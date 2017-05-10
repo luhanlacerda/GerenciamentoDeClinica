@@ -102,7 +102,7 @@ namespace Biblioteca.consulta
             retorno = "Nome: " + this.Paciente.Nome + "\n";
             retorno += "Data: " + this.Data + "\n";
             retorno += "Horário: " + this.Horario + "\n";
-            retorno += "Médico: " + this.Medico.Crm + "\n";
+            retorno += "Médico: " + this.Medico.CRM + "\n";
             return retorno;
 
         }
