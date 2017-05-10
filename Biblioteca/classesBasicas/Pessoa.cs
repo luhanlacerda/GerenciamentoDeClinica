@@ -8,117 +8,13 @@ namespace Biblioteca.classesBasicas
 {
     public abstract class Pessoa : Endereco
     {
-        private String nome;
-        private String rg;
-        private String cpf;
-        private Endereco endereco;
-        private String contato;
-        private DateTime dtNascimento;
-        private String email;
-        private String estadoCivil;
-
-        public string Nome
-        {
-            get
-            {
-                return nome;
-            }
-
-            set
-            {
-                nome = value;
-            }
-        }
-
-        public string Rg
-        {
-            get
-            {
-                return rg;
-            }
-
-            set
-            {
-                rg = value;
-            }
-        }
-
-        public string Cpf
-        {
-            get
-            {
-                return cpf;
-            }
-
-            set
-            {
-                cpf = value;
-            }
-        }
-
-        internal Endereco Endereco
-        {
-            get
-            {
-                return endereco;
-            }
-
-            set
-            {
-                endereco = value;
-            }
-        }
-
-        public string Contato
-        {
-            get
-            {
-                return contato;
-            }
-
-            set
-            {
-                contato = value;
-            }
-        }
-
-        public DateTime DtNascimento
-        {
-            get
-            {
-                return dtNascimento;
-            }
-
-            set
-            {
-                dtNascimento = value;
-            }
-        }
-
-        public String Email
-        {
-            get
-            {
-                return email;
-            }
-
-            set
-            {
-                email = value;
-            }
-        }
-
-        public String EstadoCivil
-        {
-            get
-            {
-                return estadoCivil;
-            }
-
-            set
-            {
-                estadoCivil = value;
-            }
-        }
+        public String Nome { get; set; }
+        public String RG { get; set; }
+        public String CPF { get; set; }
+        public string Endereco { get; set; }
+        public String Celular { get; set; }
+        public DateTime DtNascimento { get; set; }
+        public String Email { get; set; }
+        public String Estado_Civil { get; set; }
     }
 }

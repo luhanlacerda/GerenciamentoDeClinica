@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.especialidade
 {
-    interface IEspecialidade
+    public interface IEspecialidade
     {
         //Cadastrar uma especialidade
         void Cadastrar(Especialidade especialidade);

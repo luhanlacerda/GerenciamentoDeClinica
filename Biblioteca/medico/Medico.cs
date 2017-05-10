@@ -1,4 +1,5 @@
-﻿using Biblioteca.especialidade;
+﻿using Biblioteca.classesBasicas;
+using Biblioteca.especialidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,43 +9,10 @@ using System.Threading.Tasks;
 namespace Biblioteca.medico
 {
 
-    public class Medico : classesBasicas.Pessoa
+    public class Medico : Pessoa
     {
-        private int crm;
-        private Especialidade especialidade; //vai usar o código da especialidade
-        //tes1
-        public int Crm
-        {
-            get
-            {
-                return crm;
-            }
-
-            set
-            {
-                crm = value;
-            }
-        }
-
-        public Especialidade Especialidade
-        {
-            get
-            {
-                return especialidade;
-            }
-
-            set
-            {
-                especialidade = value;
-            }
-        }
-        public String MedicoToString()
-        {
-            String retorno;
-            retorno = "Nome: " + this.Nome + "\n";
-            retorno += "CRM: " + this.Crm + "\n";
-            retorno += "Especialidade: " + this.Especialidade.Descricao;
-            return retorno;
-        }
+        public int ID_Medico { get; set; }
+        public string CRM { get; set; }
+        public Especialidade Especialidade { get; set; }
     }
 }
