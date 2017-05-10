@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace GerenciamentoDeClinica
 {
-    public partial class TelaCadastroConvenio : Form
+    public partial class TelaPesquisarMedico : Form
     {
-        public TelaCadastroConvenio()
+        public TelaPesquisarMedico()
         {
             InitializeComponent();
         }
 
-        private void btnCadastro_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }

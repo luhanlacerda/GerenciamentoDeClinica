@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace GerenciamentoDeClinica
 {
-    public partial class TelaCadastroConvenio : Form
+    public partial class TelaPesquisarSecretaria : Form
     {
-        public TelaCadastroConvenio()
+        public TelaPesquisarSecretaria()
         {
             InitializeComponent();
-        }
-
-        private void btnCadastro_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
