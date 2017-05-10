@@ -94,6 +94,12 @@
     <Compile Include="TelaCadastroPaciente.Designer.cs">
       <DependentUpon>TelaCadastroPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="TelaPesquisarConvenio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaPesquisarConvenio.Designer.cs">
+      <DependentUpon>TelaPesquisarConvenio.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="TelaCadastroPaciente.resx">
       <DependentUpon>TelaCadastroPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaPesquisarConvenio.resx">
+      <DependentUpon>TelaPesquisarConvenio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>

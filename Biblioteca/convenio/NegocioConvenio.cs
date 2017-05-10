@@ -1,4 +1,5 @@
 ﻿using Biblioteca.conexaoBD;
+using Biblioteca.convenio;
 using System;
 using System.Collections.Generic;
 
@@ -7,63 +8,98 @@ namespace Biblioteca.convenio
 
     public class NegocioConvenio : ConexaoSql, IConvenio
     {
-        private const string ERRO_NUMERO = "Número de convenio inválido.";
-        private const string ERRO_NOME = "Descrição de convenio inválido.";
-
+        #region Erros
+        //ID_Convenio, descricao
+        private const string ERRO_ID = "Número de convenio inválido.";
+        private const string ERRO_DESCRICAO = "Descrição de convenio inválido.";
+        private const string ERRO_EXECER_DESCRICAO = "A descrição deve conter 20 caracteres.";
+        #endregion
         public void Atualizar(Convenio convenio)
         {
+            #region Validações
             if (convenio.Id_convenio < 0)
             {
-                throw new Exception(ERRO_NUMERO);
+                throw new Exception(ERRO_ID);
             }
 
-            if (convenio.Descricao == null && convenio.Descricao.Trim().Equals(""))
+            if (string.IsNullOrWhiteSpace(convenio.Descricao.Trim()))
             {
-                throw new Exception(ERRO_NOME);
+                throw new Exception(ERRO_DESCRICAO);
             }
+
+            if (convenio.Descricao.Trim().Length < 1 || convenio.Descricao.Trim().Length > 20)
+            {
+                throw new Exception(ERRO_EXECER_DESCRICAO);
+            }
+
+            if (convenio.Descricao.Trim().Length != 20)
+            {
+                throw new Exception(ERRO_EXECER_DESCRICAO);
+            }
+
+            new ConvenioBD().Atualizar(convenio);
+            #endregion
         }
+
 
         public void Cadastrar(Convenio convenio)
         {
+            #region Validações
             if (convenio.Id_convenio < 0)
             {
-                throw new Exception(ERRO_NUMERO);
+                throw new Exception(ERRO_ID);
             }
 
-            if (convenio.Descricao == null && convenio.Descricao.Trim().Equals(""))
+            if (string.IsNullOrWhiteSpace(convenio.Descricao.Trim()))
             {
-                throw new Exception(ERRO_NOME);
+                throw new Exception(ERRO_DESCRICAO);
             }
+
+            if (convenio.Descricao.Trim().Length < 1 || convenio.Descricao.Trim().Length > 20)
+            {
+                throw new Exception(ERRO_EXECER_DESCRICAO);
+            }
+
+            if (convenio.Descricao.Trim().Length != 20)
+            {
+                throw new Exception(ERRO_EXECER_DESCRICAO);
+            }
+            new ConvenioBD().Cadastrar(convenio);
+            #endregion
         }
+
+
+        public void Remover(Convenio convenio)
+        {
+            #region Validações
+
+            if (convenio.Id_convenio < 1)
+            {
+                throw new Exception(ERRO_ID);
+            }
+            new ConvenioBD().Remover(convenio);
+            #endregion
+        }
+
 
         public List<Convenio> Listar(Convenio filtro)
         {
-            throw new NotImplementedException();
+            return new ConvenioBD().Listar(filtro);
         }
 
-        public void Remover(Convenio c)
-        {
-            if (c.Descricao.Trim().Length > 20)
-            {
-                throw new Exception("A descrição deve conter apenas 20 caracteres.");
-            }
 
-            if (VerificaExistencia(c) == false)
-            {
-                throw new Exception("Convenio não cadastrado no sistema.");
-            }
-        }
-
-        public bool VerificaExistencia(Convenio c)
+        public bool VerificaExistencia(Convenio convenio)
         {
 
-            if (VerificaExistencia(c) == false)
+            if (convenio.Id_convenio < 1)
             {
-                throw new Exception("Convenio não cadastrado no sistema.");
+                throw new Exception(ERRO_ID);
             }
 
-            return true;
-        }
+            return new ConvenioBD().VerificaExistencia(convenio);
 
+        }
     }
 }
+
+

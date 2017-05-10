@@ -165,7 +165,8 @@ namespace Biblioteca.secretaria
                 }
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
                 if (string.IsNullOrWhiteSpace(filtro.CPF.Trim()))
-                //"  Matheus Vasconcelos  " = por isso o trim. Não precisando de IsNullOrWhiteSpace, apenas de IsNullOrEmpty, mas por precaução houve a utilização
+                  /*"  Matheus Vasconcelos  " = por isso o trim. Não precisando de IsNullOrWhiteSpace,
+                   /apenas de IsNullOrEmpty, mas por precaução houve a utilização*/
                 {
                     sql += " AND CPF = @CPF";
 

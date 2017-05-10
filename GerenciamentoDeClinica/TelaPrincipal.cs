@@ -88,6 +88,18 @@ namespace GerenciamentoDeClinica
             TelaCadastrarPaciente = null;
             //throw new NotImplementedException();
         }
+
+        private void TelaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            TelaPesquisarConvenio pesqConvenio = new TelaPesquisarConvenio();
+            AddOwnedForm(pesqConvenio);
+            pesqConvenio.Show();
+        }
     }
 }
 
