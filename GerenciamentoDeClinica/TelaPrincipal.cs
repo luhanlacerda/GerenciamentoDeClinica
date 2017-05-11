@@ -121,6 +121,24 @@ namespace GerenciamentoDeClinica
             AddOwnedForm(pesqSecretaria);
             pesqSecretaria.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TelaTesteConexaoSql teste = new TelaTesteConexaoSql();
+            teste.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TelaPesquisarConsulta teste1 = new TelaPesquisarConsulta();
+            teste1.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TelaPesquisarSecretaria teste2 = new TelaPesquisarSecretaria();
+            teste2.Show();
+        }
     }
 }
 

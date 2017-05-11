@@ -11,6 +11,8 @@ namespace Biblioteca.paciente
 {
     public class PacienteBD : ConexaoSql, IPaciente
     {
+        private const string ERRO_CPF = "CPF inválido, ";
+
         public void Cadastrar(Paciente P)
         {
             throw new NotImplementedException();
