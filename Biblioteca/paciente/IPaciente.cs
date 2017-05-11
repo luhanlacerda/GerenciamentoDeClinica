@@ -9,16 +9,14 @@ namespace Biblioteca.paciente
     public interface IPaciente
     {
         //Cadastrar um paciente
-        void Cadastrar(Paciente p);
+        void Cadastrar(Paciente paciente);
         //Atualizar um paciente
-        void Atualizar(Paciente p);
+        void Atualizar(Paciente paciente);
         //Remover um paciente
-        void Remover(Paciente p);
-        //Devolver os pacientes que se encaixam no filtro de pesquisa
+        void Remover(Paciente paciente);
+        //Selecionar os paciente que se encaixam no filtro de pesquisa
         List<Paciente> Listar(Paciente filtro);
         //Verificar se um paciente já está cadastrado
-        Boolean VerificaExistencia(Paciente p);
-        //Selecionar paciente
-        Paciente SelecionarPaciente(Paciente p); 
+        bool VerificaExistencia(Paciente paciente); 
     }
 }

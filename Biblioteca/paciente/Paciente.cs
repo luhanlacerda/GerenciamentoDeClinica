@@ -1,5 +1,6 @@
 ﻿using Biblioteca.classesBasicas;
 using Biblioteca.convenio;
+using Biblioteca.secretaria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,8 @@ namespace Biblioteca.paciente
 
     public class Paciente : Pessoa
     {
-        private Convenio convenio;
-
-        public Convenio Convenio
-        {
-            get { return convenio; }
-            set { convenio = value; }
-        }
-
+        public int      ID_Paciente  { get; set; }
+        public Secretaria Secretaria { get; set; }
+        public Convenio Convenio     { get; set; }
     }
 }

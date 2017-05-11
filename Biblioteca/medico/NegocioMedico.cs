@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.medico
+namespace Biblioteca.paciente
 {
     public class NegocioMedico : IMedico
     {
@@ -309,17 +309,17 @@ namespace Biblioteca.medico
             new MedicoBD().Atualizar(medico);
         }
 
-        public List<Medico> Listar(Medico filtro)
-        {
-            return new MedicoBD().Listar(filtro);
-        }
-
         public void Remover(Medico medico)
         {
             if (medico.ID_Medico < 1)
             {
                 throw new Exception(ERRO_NUMERO);
             }
+        }
+
+        public List<Medico> Listar(Medico filtro)
+        {
+            return new MedicoBD().Listar(filtro);
         }
 
         public bool VerificaExistencia(Medico medico)

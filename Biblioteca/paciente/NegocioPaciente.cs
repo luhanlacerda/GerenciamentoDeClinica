@@ -7,172 +7,237 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.paciente
 {
-    public class NegocioPaciente : ConexaoSql, IPaciente
+    public class NegocioPaciente : IPaciente
     {
-        public void Cadastrar(Paciente p)
+        //ID_Paciente, CPF, RG, Nome, Endereco, Email, Celular, Estado_Civil, ID_Especialidade
+        #region Erros
+        private const string ERRO_NUMERO = "Número inválido.";
+        private const string ERRO_CPF = "CPF inválido.";
+        private const string ERRO_EXCEDER_CPF = "O CPF deve conter 14 caracteres.";
+        private const string ERRO_CRM = "CRM inválido";
+        private const string ERRO_RG = "RG inválido.";
+        private const string ERRO_EXCEDER_RG = "O RG não deve exceder 20 caracteres.";
+        private const string ERRO_NOME = "Nome inválido.";
+        private const string ERRO_EXCEDER_NOME = "O nome não deve exceder 200 caracteres.";
+        //private const string ERRO_ENDERECO = "Endereço inválido.";
+        //private const string ERRO_LOGRADOURO = "Rua inválida.";
+        //private const string ERRO_NUMEROLOGRADOURO = "Número da rua inválido.";
+        //private const string ERRO_COMPLEMENTO = "Complemento inválido.";
+        //private const string ERRO_BAIRRO = "Bairro inválido.";
+        //private const string ERRO_CIDADE = "Cidade inválida.";
+        //private const string ERRO_UF = "UF inválido.";
+        //private const string ERRO_CEP = "CEP inválido.";
+        // private const string ERRO_PAIS = "País inválido.";
+        private const string ERRO_EXCEDER_ENDERECO = "O endereço deve conter entre 10 e 80 caracteres.";
+        private const string ERRO_EMAIL = "E-mail inválido.";
+        private const string ERRO_EXCEDER_EMAIL = "O e-mail não deve exceder 30 caracteres.";
+        private const string ERRO_CELULAR = "Celular inválido.";
+        private const string ERRO_EXCEDER_CELULAR = "O celular deve conter 14 caracteres.";
+        private const string ERRO_ESTADO_CIVIL = "Estado civil inválido.";
+        private const string ERRO_EXCEDER_ESTADO_CIVIL = "O estado civil não deve exceder 20 caracteres.";
+        private const string ERRO_SECRETARIA = "Secretária inválida.";
+        private const string ERRO_CONVENIO = "Convênio inválido.";
+        #endregion
+
+
+        public void Cadastrar(Paciente paciente)
         {
-            if(p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
+            #region Validações
+            if (paciente.ID_Paciente < 1)
             {
-                throw new Exception("Número de CPF inválido!");
-            }
-            
-            if(VerificaExistencia(p) != false)
-            {
-                throw new Exception("Paciente já cadastrado no sistema!");
-            }
-            
-            if (p.Nome.Trim().Equals("") == true || p.Nome == null)
-            {
-                throw new Exception("Informar nome do paciente");
+                throw new Exception(ERRO_NUMERO);
             }
 
-            if (p.Nome.Trim().Length > 100)
+            if (string.IsNullOrWhiteSpace(paciente.Nome.Trim()))
             {
-                throw new Exception("O nome do paciente não poderá ter mais de 100 caracteres");
+                throw new Exception(ERRO_NOME);
             }
 
-            if (p.RG.Trim().Equals("") == true || p.RG == null )
+            if (paciente.Nome.Trim().Length < 1 || paciente.Nome.Trim().Length > 200)
             {
-                throw new Exception("Favor informar o RG do paciente");
+                throw new Exception(ERRO_EXCEDER_NOME);
             }
 
-            if (p.Convenio.Id_convenio <= 0)
+            if (string.IsNullOrWhiteSpace(paciente.CPF.Trim()))
             {
-                throw new Exception("Favor informar o convênio");
+                throw new Exception(ERRO_CPF);
             }
 
-            if (p.Celular.Trim().Length < 14)
+            if (paciente.CPF.Trim().Length != 14)
             {
-                throw new Exception("Número de telefone inválido");
+                throw new Exception(ERRO_EXCEDER_CPF);
             }
 
-            if (p.DtNascimento == null)
+            if (string.IsNullOrWhiteSpace(paciente.RG.Trim()))
             {
-                throw new Exception("Informar data de nascimento");
+                throw new Exception(ERRO_RG);
             }
 
-            //cadastrando
-            //new PacienteBD().Cadastrar(p);
-            Cadastrar(p);
+            if (paciente.RG.Trim().Length < 1 || paciente.RG.Trim().Length > 20)
+            {
+                throw new Exception(ERRO_EXCEDER_RG);
+            }
+
+            /*if (string.IsNullOrWhiteSpace(paciente.Endereco.Trim()))
+            {
+                throw new Exception(ERRO_ENDERECO);
+            }*/
+
+            if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
+            {
+                throw new Exception(ERRO_EXCEDER_ENDERECO);
+            }
+
+            if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
+            {
+                throw new Exception(ERRO_EXCEDER_EMAIL);
+            }
+
+            if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
+            {
+                throw new Exception(ERRO_CELULAR);
+            }
+
+            if (paciente.Celular.Length != 14)
+            {
+                throw new Exception(ERRO_EXCEDER_CELULAR);
+            }
+
+            if (string.IsNullOrEmpty(paciente.Estado_Civil.Trim()))
+            {
+                throw new Exception(ERRO_ESTADO_CIVIL);
+            }
+
+            if (paciente.Estado_Civil.Trim().Length < 0 || paciente.Estado_Civil.Trim().Length > 20)
+            {
+                throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
+            }
+
+            if (paciente.Secretaria.ID_Secretaria <= 0)
+            {
+                throw new Exception(ERRO_SECRETARIA);
+            }
+
+            if (paciente.Convenio.ID_Convenio <= 0)
+            {
+                throw new Exception(ERRO_CONVENIO);
+            }
+            #endregion
+
+            new PacienteBD().Cadastrar(paciente);
         }
 
-        public void Atualizar(Paciente p)
+        public void Atualizar(Paciente paciente)
         {
-            if (p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
+            #region Validações
+            if (paciente.ID_Paciente < 1)
             {
-                throw new Exception("Número de CPF inválido!");
-            }
-            /*
-            if (verificaExistencia(Paciente p) != false)
-            {
-                throw new Exception("Paciente já cadastrado no sistema!");
-            }
-            */
-            if (p.Nome.Trim().Equals("") == true || p.Nome == null)
-            {
-                throw new Exception("Informar nome do paciente");
+                throw new Exception(ERRO_NUMERO);
             }
 
-            if (p.Nome.Trim().Length > 100)
+            if (string.IsNullOrWhiteSpace(paciente.Nome.Trim()))
             {
-                throw new Exception("O nome do paciente não poderá ter mais de 100 caracteres");
+                throw new Exception(ERRO_NOME);
             }
 
-            if (p.RG.Trim().Equals("") == true || p.RG == null)
+            if (paciente.Nome.Trim().Length < 1 || paciente.Nome.Trim().Length > 200)
             {
-                throw new Exception("Favor informar o RG do paciente");
+                throw new Exception(ERRO_EXCEDER_NOME);
             }
 
-            if (p.Convenio.Id_convenio <= 0)
+            if (string.IsNullOrWhiteSpace(paciente.CPF.Trim()))
             {
-                throw new Exception("Favor informar o convênio");
+                throw new Exception(ERRO_CPF);
             }
 
-            if (p.Celular.Trim().Length < 14)
+            if (paciente.CPF.Trim().Length != 14)
             {
-                throw new Exception("Número de telefone inválido");
+                throw new Exception(ERRO_EXCEDER_CPF);
             }
 
-            if (p.DtNascimento == null)
+            if (string.IsNullOrWhiteSpace(paciente.RG.Trim()))
             {
-                throw new Exception("Informar data de nascimento");
+                throw new Exception(ERRO_RG);
             }
 
-            /*
-            if (p.Endereco.Logradouro.Trim().Equals("") || p.Endereco.Logradouro == null)
+            if (paciente.RG.Trim().Length < 1 || paciente.RG.Trim().Length > 20)
             {
-                throw new Exception("Informar nome da rua");
+                throw new Exception(ERRO_EXCEDER_RG);
             }
 
-            if (p.Endereco.Numero.Trim().Equals("") || p.Endereco.Numero == null)
+            /*if (string.IsNullOrWhiteSpace(paciente.Endereco.Trim()))
             {
-                throw new Exception("Informar número da residência");
+                throw new Exception(ERRO_ENDERECO);
+            }*/
+
+            if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
+            {
+                throw new Exception(ERRO_EXCEDER_ENDERECO);
             }
 
-            if (p.Endereco.Complemento.Trim().Equals("") || p.Endereco.Complemento == null)
+            if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
             {
-                throw new Exception("Informar complemento, caso não tenha, colocar um -");
+                throw new Exception(ERRO_EXCEDER_EMAIL);
             }
 
-            if (p.Endereco.Cep.Trim().Equals("") || p.Endereco.Cep == null)
+            if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
             {
-                throw new Exception("Informar número do CEP");
+                throw new Exception(ERRO_CELULAR);
             }
 
-            if (p.Endereco.Cidade.Trim().Equals("") || p.Endereco.Cidade == null)
+            if (paciente.Celular.Length != 14)
             {
-                throw new Exception("Informar nome da cidade");
+                throw new Exception(ERRO_EXCEDER_CELULAR);
             }
 
-            if (p.Endereco.Uf.Trim().Equals("") || p.Endereco.getUf() == null)
+            if (string.IsNullOrEmpty(paciente.Estado_Civil.Trim()))
             {
-                throw new Exception("Informar nome da UF(Estado)");
+                throw new Exception(ERRO_ESTADO_CIVIL);
             }
 
-            if (p.Endereco.Uf.Trim().Length > 2 || p.Endereco.Uf.Trim().Length < 2)
+            if (paciente.Estado_Civil.Trim().Length < 0 || paciente.Estado_Civil.Trim().Length > 20)
             {
-                throw new Exception("Informar UF com 2 caracteres");
+                throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
             }
-            if (p.Endereco.Pais.Trim().Equals("") || p.Endereco.Pais == null)
-            {
-                throw new Exception("Informar nome do país");
-            }
-            */
-            //Atualizando
-            //colocar o codigo de jogar para a camada de dados
 
+            if (paciente.Secretaria.ID_Secretaria <= 0)
+            {
+                throw new Exception(ERRO_SECRETARIA);
+            }
+
+            if (paciente.Convenio.ID_Convenio <= 0)
+            {
+                throw new Exception(ERRO_CONVENIO);
+            }
+            #endregion
+
+            new PacienteBD().Atualizar(paciente);
+        }
+
+        public void Remover(Paciente paciente)
+        {
+            if (paciente.ID_Paciente < 1)
+            {
+                throw new Exception(ERRO_NUMERO);
+            }
         }
 
         public List<Paciente> Listar(Paciente filtro)
         {
-            throw new NotImplementedException();
+            return new PacienteBD().Listar(filtro);
         }
 
-        public void Remover(Paciente p)
+        public bool VerificaExistencia(Paciente paciente)
         {
-            if (p.CPF.Trim().Length < 14 || p.CPF.Trim().Length > 14)
+            if (paciente.ID_Paciente < 1)
             {
-                throw new Exception("Número de CPF inválido!");
+                throw new Exception(ERRO_NUMERO);
             }
 
-            if (VerificaExistencia(p) == false)
-            {
-                throw new Exception("Paciente não cadastrado no sistema!");
-            }
-
-            //Atualizando
-            //colocar o codigo de jogar para a camada de dados
-        }
-
-        public Paciente SelecionarPaciente(Paciente p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool VerificaExistencia(Paciente p)
-        {
-            throw new NotImplementedException();
+            return new PacienteBD().VerificaExistencia(paciente);
         }
     }
+
+
 
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.medico
+namespace Biblioteca.paciente
 {
 
     public class Medico : Pessoa
