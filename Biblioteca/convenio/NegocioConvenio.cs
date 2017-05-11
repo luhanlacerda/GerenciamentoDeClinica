@@ -17,7 +17,7 @@ namespace Biblioteca.convenio
         public void Atualizar(Convenio convenio)
         {
             #region Validações
-            if (convenio.Id_convenio < 0)
+            if (convenio.ID_Convenio < 0)
             {
                 throw new Exception(ERRO_ID);
             }
@@ -45,7 +45,7 @@ namespace Biblioteca.convenio
         public void Cadastrar(Convenio convenio)
         {
             #region Validações
-            if (convenio.Id_convenio < 0)
+            if (convenio.ID_Convenio < 0)
             {
                 throw new Exception(ERRO_ID);
             }
@@ -73,7 +73,7 @@ namespace Biblioteca.convenio
         {
             #region Validações
 
-            if (convenio.Id_convenio < 1)
+            if (convenio.ID_Convenio < 1)
             {
                 throw new Exception(ERRO_ID);
             }
@@ -91,7 +91,7 @@ namespace Biblioteca.convenio
         public bool VerificaExistencia(Convenio convenio)
         {
 
-            if (convenio.Id_convenio < 1)
+            if (convenio.ID_Convenio < 1)
             {
                 throw new Exception(ERRO_ID);
             }

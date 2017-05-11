@@ -14,7 +14,7 @@ namespace Biblioteca.convenio
     {
 
 
-        public void Cadastrar(Convenio c)
+        public void Cadastrar(Convenio convenio)
         {
             #region
             try
@@ -29,10 +29,10 @@ namespace Biblioteca.convenio
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
                 cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = c.Id_convenio;
+                cmd.Parameters["@ID_Convenio"].Value = convenio.ID_Convenio;
 
                 cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                cmd.Parameters["@Descricao "].Value = c.Descricao;
+                cmd.Parameters["@Descricao "].Value = convenio.Descricao;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -48,7 +48,7 @@ namespace Biblioteca.convenio
             #endregion
         }
 
-        public void Atualizar(Convenio c)
+        public void Atualizar(Convenio convenio)
         {
             #region
             try
@@ -61,10 +61,10 @@ namespace Biblioteca.convenio
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
                 cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = c.Id_convenio;
+                cmd.Parameters["@ID_Convenio"].Value = convenio.ID_Convenio;
 
                 cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                cmd.Parameters["@Descricao "].Value = c.Descricao;
+                cmd.Parameters["@Descricao "].Value = convenio.Descricao;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -81,7 +81,7 @@ namespace Biblioteca.convenio
         }
 
 
-        public void Remover(Convenio c)
+        public void Remover(Convenio convenio)
         {
             #region
             try
@@ -94,7 +94,7 @@ namespace Biblioteca.convenio
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = c.Id_convenio;
+                cmd.Parameters["@ID_Convenio"].Value = convenio.ID_Convenio;
 
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
@@ -122,7 +122,7 @@ namespace Biblioteca.convenio
                 //Instrução a ser executada
                 string sql = "SELECT ID_Convenio,Descricao FROM Convenio where ID_Convenio = @ID_Convenio";
                 //Se foi passado um id_convenio válido, o mesmo entrará como critério de filtro
-                if (filtro.Id_convenio > 0)
+                if (filtro.ID_Convenio > 0)
                 {
                     sql += "and ID_Convenio = @ID_Convenio";
                 }
@@ -133,10 +133,10 @@ namespace Biblioteca.convenio
                 }
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
                 //Se foi passado um id_convenio válido, o mesmo entrará como critério de filtro
-                if (filtro.Id_convenio > 0)
+                if (filtro.ID_Convenio > 0)
                 {
                     cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                    cmd.Parameters["@ID_Convenio"].Value = filtro.Id_convenio;
+                    cmd.Parameters["@ID_Convenio"].Value = filtro.ID_Convenio;
                 }
                 //Se foi passado uma descricao válido, o mesmo entrará como critério de filtro
                 if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
@@ -151,7 +151,7 @@ namespace Biblioteca.convenio
                 {
                     Convenio convenio = new Convenio();
                     //Acessando os valores das colunas do resultado
-                    convenio.Id_convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
+                    convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
                     convenio.Descricao = DbReader.GetString(DbReader.GetOrdinal("Descricao"));
                     retorno.Add(convenio);
                 }
@@ -170,7 +170,7 @@ namespace Biblioteca.convenio
             
         }
 
-        public bool verificaExistencia(Convenio c)
+        public bool verificaExistencia(Convenio convenio)
         {
             #region
             bool retorno = false;
@@ -179,11 +179,12 @@ namespace Biblioteca.convenio
                 //Conectar ao banco
                 this.abrirConexao();
                 //instrução a ser executada
-                string sql = "Select ID_Convenio, Descricao FROM Convenio Where ID_Convenio = @ID_Convenio";
+                string sql = "Select ID_Convenio, Descricao FROM Convenio Where ID_Convenio = " +
+                    "@ID_Convenio";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 cmd.Parameters.Add("ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["ID_Convenio"].Value = c.Id_convenio;
+                cmd.Parameters["ID_Convenio"].Value = convenio.ID_Convenio;
 
                 //Executando a instrução e colocando o resultado num leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
