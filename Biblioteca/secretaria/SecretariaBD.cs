@@ -38,13 +38,13 @@ namespace Biblioteca.secretaria
                 cmd.Parameters["@Nome"].Value = secretaria.Nome.Trim();
 
                 cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = secretaria.Endereco.Trim();
+                cmd.Parameters["@Endereco"].Value = secretaria.Endereco.Logradouro.Trim();
 
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = secretaria.Email.Trim();
 
                 cmd.Parameters.Add("@Celular", SqlDbType.Char);
-                cmd.Parameters["@Celular"].Value = secretaria.Celular.Trim();
+                cmd.Parameters["@Celular"].Value = secretaria.Contato.Trim();
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = secretaria.Estado_Civil.Trim();
@@ -91,13 +91,13 @@ namespace Biblioteca.secretaria
                 cmd.Parameters["@Nome"].Value = secretaria.Nome.Trim();
 
                 cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = secretaria.Endereco.Trim();
+                cmd.Parameters["@Endereco"].Value = secretaria.Endereco;
 
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = secretaria.Email.Trim();
 
                 cmd.Parameters.Add("@Celular", SqlDbType.Char);
-                cmd.Parameters["@Celular"].Value = secretaria.Celular.Trim();
+                cmd.Parameters["@Celular"].Value = secretaria.Contato.Trim();
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = secretaria.Estado_Civil.Trim();
@@ -202,9 +202,9 @@ namespace Biblioteca.secretaria
                     secretaria.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     secretaria.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     secretaria.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
-                    secretaria.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
+                    //secretaria.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
                     secretaria.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    secretaria.Celular = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    secretaria.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
                     secretaria.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     #endregion
                     retorno.Add(secretaria);
