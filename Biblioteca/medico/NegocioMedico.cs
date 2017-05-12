@@ -52,7 +52,7 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_NOME);
             }
 
-            if (medico.Nome.Trim().Length < 1 || medico.Nome.Trim().Length > 200)
+            if (medico.Nome.Trim().Length < 1 || medico.Nome.Trim().Length > 100)
             {
                 throw new Exception(ERRO_EXCEDER_NOME);
             }
@@ -81,18 +81,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception(ERRO_EXCEDER_RG);
             }
-
-            /*if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
-            {
-                throw new Exception(ERRO_ENDERECO);
-            }
-
-            if (medico.Endereco.Trim().Length < 1 || medico.Endereco.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_ENDERECO);
-            }
-            */
-            /*
+            
             if (string.IsNullOrWhiteSpace(medico.Endereco.Logradouro.Trim()))
             {
                 throw new Exception(ERRO_LOGRADOURO);
@@ -139,18 +128,18 @@ namespace Biblioteca.paciente
             {
                 throw new Exception(ERRO_EMAIL);
             }
-            */
+
             if (medico.Email.Trim().Length < 1 || medico.Email.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_EMAIL);
             }
 
-            if (string.IsNullOrWhiteSpace(medico.Celular.Trim()))
+            if (string.IsNullOrWhiteSpace(medico.Contato.Trim()))
             {
                 throw new Exception(ERRO_CELULAR);
             }
 
-            if (medico.Celular.Length != 14)
+            if (medico.Contato.Length != 14)
             {
                 throw new Exception(ERRO_EXCEDER_CELULAR);
             }
@@ -217,17 +206,6 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_RG);
             }
 
-            /*if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
-            {
-                throw new Exception(ERRO_ENDERECO);
-            }
-
-            if (medico.Endereco.Trim().Length < 1 || medico.Endereco.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_ENDERECO);
-            }*/
-
-            /*
             if (string.IsNullOrWhiteSpace(medico.Endereco.Logradouro.Trim()))
             {
                 throw new Exception(ERRO_LOGRADOURO);
@@ -269,7 +247,6 @@ namespace Biblioteca.paciente
             }
 
             //Como fazer a validação do tamanho do endereço?
-            */
 
             if (string.IsNullOrWhiteSpace(medico.Email.Trim()) || new EmailAddressAttribute().IsValid(medico.Email.Trim()))
             {
@@ -281,12 +258,12 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_EMAIL);
             }
 
-            if (string.IsNullOrWhiteSpace(medico.Celular.Trim()))
+            if (string.IsNullOrWhiteSpace(medico.Contato.Trim()))
             {
                 throw new Exception(ERRO_CELULAR);
             }
 
-            if (medico.Celular.Length != 14)
+            if (medico.Contato.Length != 14)
             {
                 throw new Exception(ERRO_EXCEDER_CELULAR);
             }
