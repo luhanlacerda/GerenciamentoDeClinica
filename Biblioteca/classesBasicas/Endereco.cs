@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.classesBasicas
 {
-    public abstract class Endereco
+    public class Endereco
     {
         public String Logradouro    { get; set; }
         public String Numero        { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.classesBasicas
 {
-    public abstract class Pessoa : Endereco
+    public abstract class Pessoa
     {
         public String Nome            { get; set; }
         public String RG              { get; set; }
@@ -16,5 +16,10 @@ namespace Biblioteca.classesBasicas
         public DateTime Dt_Nascimento { get; set; }
         public String Email           { get; set; }
         public String Estado_Civil    { get; set; }
+
+        public Pessoa()
+        {
+            Endereco = new Endereco();
+        }
     }
 }
