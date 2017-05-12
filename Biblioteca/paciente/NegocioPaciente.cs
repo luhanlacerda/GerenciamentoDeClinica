@@ -83,7 +83,7 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_ENDERECO);
             }*/
 
-            if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
+           /* if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_ENDERECO);
             }
@@ -91,7 +91,7 @@ namespace Biblioteca.paciente
             if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_EMAIL);
-            }
+            }*/
 
             if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
             {
@@ -170,7 +170,7 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_ENDERECO);
             }*/
 
-            if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
+            /*if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_ENDERECO);
             }
@@ -178,7 +178,7 @@ namespace Biblioteca.paciente
             if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_EMAIL);
-            }
+            }*/
 
             if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
             {

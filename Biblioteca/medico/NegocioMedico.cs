@@ -82,7 +82,7 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_RG);
             }
 
-            if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
+            /*if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
             {
                 throw new Exception(ERRO_ENDERECO);
             }
@@ -91,6 +91,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception(ERRO_EXCEDER_ENDERECO);
             }
+            */
             /*
             if (string.IsNullOrWhiteSpace(medico.Endereco.Logradouro.Trim()))
             {
@@ -216,7 +217,7 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_RG);
             }
 
-            if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
+            /*if (string.IsNullOrWhiteSpace(medico.Endereco.Trim()))
             {
                 throw new Exception(ERRO_ENDERECO);
             }
@@ -224,7 +225,7 @@ namespace Biblioteca.paciente
             if (medico.Endereco.Trim().Length < 1 || medico.Endereco.Trim().Length > 30)
             {
                 throw new Exception(ERRO_EXCEDER_ENDERECO);
-            }
+            }*/
 
             /*
             if (string.IsNullOrWhiteSpace(medico.Endereco.Logradouro.Trim()))

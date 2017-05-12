@@ -216,7 +216,7 @@ namespace Biblioteca.paciente
                     medico.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     medico.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     medico.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
-                    medico.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
+                    //medico.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
                     medico.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
                     medico.Celular = DbReader.GetString(DbReader.GetOrdinal("Celular"));
                     medico.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));

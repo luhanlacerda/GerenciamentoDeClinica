@@ -232,7 +232,7 @@ namespace Biblioteca.secretaria
                 //Conectar ao banco
                 this.abrirConexao();
                 //instrução a ser executada
-                string sql = "SELECT COUNT(*) FROM Secretaria Where ID_Secretaria = @ID_Secretaria;";
+                string sql = "SELECT COUNT(*) FROM Secretaria WHERE ID_Secretaria = @ID_Secretaria;";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 cmd.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
