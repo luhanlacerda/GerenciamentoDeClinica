@@ -45,6 +45,9 @@
     <Compile Include="classesBasicas\Pessoa.cs" />
     <Compile Include="conexaoBD\ConexaoSql.cs" />
     <Compile Include="consulta\Consulta.cs" />
+    <Compile Include="consulta\ConsultaBD.cs" />
+    <Compile Include="consulta\IConsulta.cs" />
+    <Compile Include="consulta\NegocioConsulta.cs" />
     <Compile Include="convenio\Convenio.cs" />
     <Compile Include="convenio\ConvenioBD.cs" />
     <Compile Include="convenio\IConvenio.cs" />

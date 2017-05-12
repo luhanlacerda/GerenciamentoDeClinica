@@ -8,15 +8,15 @@ namespace Biblioteca.convenio
 {
     public interface IConvenio
     {
-        //Cadastrar um convenio
+        //Cadastrar um médico
         void Cadastrar(Convenio convenio);
-        //Atualizar um convenio
+        //Atualizar um médico
         void Atualizar(Convenio convenio);
-        //Remover um convenio
+        //Remover um médico
         void Remover(Convenio convenio);
-        //Selecionar os convenios que se encaixam no filtro de pesquisa
+        //Selecionar os médicos que se encaixam no filtro de pesquisa
         List<Convenio> Listar(Convenio filtro);
-        //Verificar se um convenio já está cadastrado
-        Boolean VerificaExistencia(Convenio convenio);
+        //Verificar se um médico já está cadastrado
+        bool VerificaExistencia(Convenio convenio);
     }
 }

@@ -124,8 +124,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception("Erro ao atualizar médico." + e);
             }
-
-            new MedicoBD().Atualizar(medico);
+            
         }
 
         public void Remover(Medico medico)

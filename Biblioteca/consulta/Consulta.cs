@@ -10,13 +10,15 @@ namespace Biblioteca.consulta
 {
     public class Consulta
     {
-        public int ID_Consulta { get; set; }
-        public DateTime Horario { get; set; } //DateTime salva a data e o horário indicado
-        public int Duracao { get; set; }
-        public string Observacoes { get; set; }
-        public string Receita { get; set; } 
-        public Paciente Paciente { get; set; }
-        public Medico Medico { get; set; }
+
+        public DateTime Horario      { get; set; } //DateTime salva a data e o horário indicado
+        public int Duracao           { get; set; }
+        public string Observacoes    { get; set; }
+        public string Descricao      { get; set; }
+        public int ID_Consulta       { get; set; }
+        public string Receita        { get; set; }
+        public Medico Medico         { get; set; }
+        public Paciente Paciente     { get; set; }
         public Secretaria Secretaria { get; set; }
     }
 }
