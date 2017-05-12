@@ -48,7 +48,7 @@ namespace Biblioteca.paciente
                 cmd.Parameters["@Email"].Value = paciente.Email;
 
                 cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Celular"].Value = paciente.Celular;
+                cmd.Parameters["@Celular"].Value = paciente.Contato;
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;

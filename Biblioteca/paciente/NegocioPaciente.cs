@@ -93,12 +93,12 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_EMAIL);
             }*/
 
-            if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
+            if (string.IsNullOrWhiteSpace(paciente.Contato.Trim()))
             {
                 throw new Exception(ERRO_CELULAR);
             }
 
-            if (paciente.Celular.Length != 14)
+            if (paciente.Contato.Length != 14)
             {
                 throw new Exception(ERRO_EXCEDER_CELULAR);
             }
@@ -175,12 +175,12 @@ namespace Biblioteca.paciente
                 throw new Exception(ERRO_EXCEDER_EMAIL);
             }*/
 
-            if (string.IsNullOrWhiteSpace(paciente.Celular.Trim()))
+            if (string.IsNullOrWhiteSpace(paciente.Contato.Trim()))
             {
                 throw new Exception(ERRO_CELULAR);
             }
 
-            if (paciente.Celular.Length != 14)
+            if (paciente.Contato.Length != 14)
             {
                 throw new Exception(ERRO_EXCEDER_CELULAR);
             }
