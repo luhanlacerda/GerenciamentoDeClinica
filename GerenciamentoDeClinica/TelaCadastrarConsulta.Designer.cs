@@ -29,45 +29,107 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtDuracao = new System.Windows.Forms.TextBox();
+            this.lblDescricao = new System.Windows.Forms.Label();
+            this.lblDuracao = new System.Windows.Forms.Label();
+            this.lblObservacoes = new System.Windows.Forms.Label();
+            this.lblHorario = new System.Windows.Forms.Label();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.txtDescricao);
+            this.groupBox1.Controls.Add(this.txtObservacoes);
+            this.groupBox1.Controls.Add(this.txtDuracao);
+            this.groupBox1.Controls.Add(this.lblDescricao);
+            this.groupBox1.Controls.Add(this.lblDuracao);
+            this.groupBox1.Controls.Add(this.lblObservacoes);
+            this.groupBox1.Controls.Add(this.lblHorario);
+            this.groupBox1.Controls.Add(this.btnCadastrar);
             this.groupBox1.Location = new System.Drawing.Point(1, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(340, 281);
+            this.groupBox1.Size = new System.Drawing.Size(437, 411);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastrar Consulta";
             // 
-            // button1
+            // txtDuracao
             // 
-            this.button1.Location = new System.Drawing.Point(169, 221);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtDuracao.Location = new System.Drawing.Point(277, 44);
+            this.txtDuracao.Name = "txtDuracao";
+            this.txtDuracao.Size = new System.Drawing.Size(132, 20);
+            this.txtDuracao.TabIndex = 6;
             // 
-            // label1
+            // lblDescricao
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Location = new System.Drawing.Point(21, 121);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(58, 13);
+            this.lblDescricao.TabIndex = 5;
+            this.lblDescricao.Text = "Descrição:";
+            // 
+            // lblDuracao
+            // 
+            this.lblDuracao.AutoSize = true;
+            this.lblDuracao.Location = new System.Drawing.Point(220, 47);
+            this.lblDuracao.Name = "lblDuracao";
+            this.lblDuracao.Size = new System.Drawing.Size(51, 13);
+            this.lblDuracao.TabIndex = 4;
+            this.lblDuracao.Text = "Duração:";
+            // 
+            // lblObservacoes
+            // 
+            this.lblObservacoes.AutoSize = true;
+            this.lblObservacoes.Location = new System.Drawing.Point(21, 250);
+            this.lblObservacoes.Name = "lblObservacoes";
+            this.lblObservacoes.Size = new System.Drawing.Size(73, 13);
+            this.lblObservacoes.TabIndex = 2;
+            this.lblObservacoes.Text = "Observações:";
+            // 
+            // lblHorario
+            // 
+            this.lblHorario.AutoSize = true;
+            this.lblHorario.Location = new System.Drawing.Point(21, 44);
+            this.lblHorario.Name = "lblHorario";
+            this.lblHorario.Size = new System.Drawing.Size(44, 13);
+            this.lblHorario.TabIndex = 1;
+            this.lblHorario.Text = "Horário:";
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Location = new System.Drawing.Point(334, 378);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrar.TabIndex = 0;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.Location = new System.Drawing.Point(24, 282);
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(385, 79);
+            this.txtObservacoes.TabIndex = 7;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(24, 154);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(385, 79);
+            this.txtDescricao.TabIndex = 8;
             // 
             // TelaCadastrarConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 285);
+            this.ClientSize = new System.Drawing.Size(440, 415);
             this.Controls.Add(this.groupBox1);
             this.Name = "TelaCadastrarConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -81,7 +143,13 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblHorario;
+        private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Label lblDuracao;
+        private System.Windows.Forms.Label lblObservacoes;
+        private System.Windows.Forms.Label lblDescricao;
+        private System.Windows.Forms.TextBox txtDuracao;
+        private System.Windows.Forms.TextBox txtObservacoes;
+        private System.Windows.Forms.TextBox txtDescricao;
     }
 }
