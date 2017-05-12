@@ -112,12 +112,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
             }
-
-            if (paciente.Secretaria.ID_Secretaria <= 0)
-            {
-                throw new Exception(ERRO_SECRETARIA);
-            }
-
+            
             if (paciente.Convenio.ID_Convenio <= 0)
             {
                 throw new Exception(ERRO_CONVENIO);
@@ -199,11 +194,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
             }
-
-            if (paciente.Secretaria.ID_Secretaria <= 0)
-            {
-                throw new Exception(ERRO_SECRETARIA);
-            }
+            
 
             if (paciente.Convenio.ID_Convenio <= 0)
             {

@@ -20,10 +20,10 @@ namespace Biblioteca.paciente
                 //Abrir Conexao
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Paciente (ID_Paciente, CPF, RG, Nome, Endereco, Email," +
-                    "Celular, Estado_Civil, ID_Secretaria, ID_Convenio" +
-                    "VALUES ID_Paciente, @CPF, @RG, @Nome, @Endereco, @Email, @Celular, @Estado_Civil" +
-                    "@ID_Secretaria, @ID_Convenio";
+                string sql = "INSERT INTO Paciente (ID_Paciente, CPF, RG, Nome, Endereco, Email, " +
+                    "Celular, Estado_Civil, ID_Convenio" +
+                    "VALUES ID_Paciente, @CPF, @RG, @Nome, @Endereco, @Email, @Celular, @Estado_Civil, " +
+                    "@ID_Convenio";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -52,10 +52,7 @@ namespace Biblioteca.paciente
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;
-
-                cmd.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
-                cmd.Parameters["@ID_Secretaria"].Value = paciente.Secretaria.ID_Secretaria;
-
+                
                 cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
                 cmd.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
                 #endregion
@@ -110,10 +107,7 @@ namespace Biblioteca.paciente
                 cmd.Parameters["@Email"].Value = paciente.Email;
 
                 cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;
-
-                cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
-                cmd.Parameters["@ID_Especialidade"].Value = paciente.Secretaria.ID_Secretaria;
+                cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil; 
 
                 cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
                 cmd.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
@@ -217,9 +211,8 @@ namespace Biblioteca.paciente
                     paciente.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
                     //paciente.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
                     paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    paciente.Celular = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato");
                     paciente.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
-                    paciente.Secretaria.ID_Secretaria = DbReader.GetInt32(DbReader.GetOrdinal("ID_Secretaria"));
                     paciente.Convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
                     #endregion
 

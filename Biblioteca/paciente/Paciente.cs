@@ -1,4 +1,5 @@
-﻿using Biblioteca.classesBasicas;
+﻿
+using Biblioteca.classesBasicas;
 using Biblioteca.convenio;
 using Biblioteca.secretaria;
 using System;
@@ -13,7 +14,6 @@ namespace Biblioteca.paciente
     public class Paciente : Pessoa
     {
         public int      ID_Paciente  { get; set; }
-        public Secretaria Secretaria { get; set; }
         public Convenio Convenio     { get; set; }
     }
 }
