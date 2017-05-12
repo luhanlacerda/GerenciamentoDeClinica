@@ -211,7 +211,7 @@ namespace Biblioteca.paciente
                     paciente.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
                     //paciente.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
                     paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato");
+                    paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
                     paciente.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     paciente.Convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
                     #endregion

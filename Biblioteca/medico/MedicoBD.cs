@@ -50,7 +50,7 @@ namespace Biblioteca.paciente
                 cmd.Parameters["@Email"].Value = medico.Email;
 
                 cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Celular"].Value = medico.Celular;
+                cmd.Parameters["@Celular"].Value = medico.Contato;
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;
@@ -218,7 +218,7 @@ namespace Biblioteca.paciente
                     medico.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
                     //medico.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
                     medico.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    medico.Celular = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    medico.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
                     medico.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     medico.Especialidade.ID_Especialidade = DbReader.GetInt32(DbReader.GetOrdinal("ID_Especialidade"));
                     #endregion
