@@ -50,7 +50,6 @@
             this.lblCPF = new System.Windows.Forms.Label();
             this.lblEstadoCivil = new System.Windows.Forms.Label();
             this.lblRG = new System.Windows.Forms.Label();
-            this.comboEstadoCivil = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
@@ -73,6 +72,9 @@
             this.comboPais = new System.Windows.Forms.ComboBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.rbSolteiro = new System.Windows.Forms.RadioButton();
+            this.rbCasado = new System.Windows.Forms.RadioButton();
+            this.rbViuvo = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
@@ -247,7 +249,7 @@
             // lblEstadoCivil
             // 
             this.lblEstadoCivil.AutoSize = true;
-            this.lblEstadoCivil.Location = new System.Drawing.Point(16, 162);
+            this.lblEstadoCivil.Location = new System.Drawing.Point(7, 163);
             this.lblEstadoCivil.Name = "lblEstadoCivil";
             this.lblEstadoCivil.Size = new System.Drawing.Size(65, 13);
             this.lblEstadoCivil.TabIndex = 42;
@@ -261,14 +263,6 @@
             this.lblRG.Size = new System.Drawing.Size(26, 13);
             this.lblRG.TabIndex = 20;
             this.lblRG.Text = "RG:";
-            // 
-            // comboEstadoCivil
-            // 
-            this.comboEstadoCivil.FormattingEnabled = true;
-            this.comboEstadoCivil.Location = new System.Drawing.Point(10, 178);
-            this.comboEstadoCivil.Name = "comboEstadoCivil";
-            this.comboEstadoCivil.Size = new System.Drawing.Size(100, 21);
-            this.comboEstadoCivil.TabIndex = 6;
             // 
             // txtNome
             // 
@@ -446,6 +440,9 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.rbViuvo);
+            this.GroupBox.Controls.Add(this.rbCasado);
+            this.GroupBox.Controls.Add(this.rbSolteiro);
             this.GroupBox.Controls.Add(this.pictureUser);
             this.GroupBox.Controls.Add(this.btnRemover);
             this.GroupBox.Controls.Add(this.comboPais);
@@ -470,7 +467,6 @@
             this.GroupBox.Controls.Add(this.txtBairro);
             this.GroupBox.Controls.Add(this.lblNome);
             this.GroupBox.Controls.Add(this.txtNome);
-            this.GroupBox.Controls.Add(this.comboEstadoCivil);
             this.GroupBox.Controls.Add(this.lblRG);
             this.GroupBox.Controls.Add(this.lblEstadoCivil);
             this.GroupBox.Controls.Add(this.lblCPF);
@@ -488,6 +484,39 @@
             this.GroupBox.TabIndex = 44;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Editar Campos";
+            // 
+            // rbSolteiro
+            // 
+            this.rbSolteiro.AutoSize = true;
+            this.rbSolteiro.Location = new System.Drawing.Point(9, 179);
+            this.rbSolteiro.Name = "rbSolteiro";
+            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
+            this.rbSolteiro.TabIndex = 64;
+            this.rbSolteiro.TabStop = true;
+            this.rbSolteiro.Text = "Solteiro(a)";
+            this.rbSolteiro.UseVisualStyleBackColor = true;
+            // 
+            // rbCasado
+            // 
+            this.rbCasado.AutoSize = true;
+            this.rbCasado.Location = new System.Drawing.Point(91, 179);
+            this.rbCasado.Name = "rbCasado";
+            this.rbCasado.Size = new System.Drawing.Size(73, 17);
+            this.rbCasado.TabIndex = 65;
+            this.rbCasado.TabStop = true;
+            this.rbCasado.Text = "Casado(a)";
+            this.rbCasado.UseVisualStyleBackColor = true;
+            // 
+            // rbViuvo
+            // 
+            this.rbViuvo.AutoSize = true;
+            this.rbViuvo.Location = new System.Drawing.Point(175, 179);
+            this.rbViuvo.Name = "rbViuvo";
+            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
+            this.rbViuvo.TabIndex = 66;
+            this.rbViuvo.TabStop = true;
+            this.rbViuvo.Text = "Viúvo(a)";
+            this.rbViuvo.UseVisualStyleBackColor = true;
             // 
             // TelaPesquisarPaciente
             // 
@@ -541,7 +570,6 @@
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.ComboBox comboEstadoCivil;
         private System.Windows.Forms.Label lblRG;
         private System.Windows.Forms.Label lblEstadoCivil;
         private System.Windows.Forms.Label lblCPF;
@@ -553,5 +581,8 @@
         private System.Windows.Forms.Label lblEndereco;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.RadioButton rbSolteiro;
+        private System.Windows.Forms.RadioButton rbViuvo;
+        private System.Windows.Forms.RadioButton rbCasado;
     }
 }
