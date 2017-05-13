@@ -1,4 +1,5 @@
-﻿using Biblioteca.conexaoBD;
+﻿using Biblioteca.utils;
+using Biblioteca.conexaoBD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,23 @@ namespace Biblioteca.paciente
 {
     public class NegocioPaciente : IPaciente
     {
-        //ID_Paciente, CPF, RG, Nome, Endereco, Email, Celular, Estado_Civil, ID_Especialidade
         #region Erros
         private const string ERRO_NUMERO = "Número inválido.";
         private const string ERRO_CPF = "CPF inválido.";
         private const string ERRO_EXCEDER_CPF = "O CPF deve conter 14 caracteres.";
-        private const string ERRO_CRM = "CRM inválido";
         private const string ERRO_RG = "RG inválido.";
         private const string ERRO_EXCEDER_RG = "O RG não deve exceder 20 caracteres.";
         private const string ERRO_NOME = "Nome inválido.";
         private const string ERRO_EXCEDER_NOME = "O nome não deve exceder 200 caracteres.";
-        //private const string ERRO_ENDERECO = "Endereço inválido.";
-        //private const string ERRO_LOGRADOURO = "Rua inválida.";
-        //private const string ERRO_NUMEROLOGRADOURO = "Número da rua inválido.";
-        //private const string ERRO_COMPLEMENTO = "Complemento inválido.";
-        //private const string ERRO_BAIRRO = "Bairro inválido.";
-        //private const string ERRO_CIDADE = "Cidade inválida.";
-        //private const string ERRO_UF = "UF inválido.";
-        //private const string ERRO_CEP = "CEP inválido.";
-        // private const string ERRO_PAIS = "País inválido.";
+        private const string ERRO_ENDERECO = "Endereço inválido.";
+        private const string ERRO_LOGRADOURO = "Rua inválida.";
+        private const string ERRO_NUMEROLOGRADOURO = "Número da rua inválido.";
+        private const string ERRO_COMPLEMENTO = "Complemento inválido.";
+        private const string ERRO_BAIRRO = "Bairro inválido.";
+        private const string ERRO_CIDADE = "Cidade inválida.";
+        private const string ERRO_UF = "UF inválido.";
+        private const string ERRO_CEP = "CEP inválido.";
+        private const string ERRO_PAIS = "País inválido.";
         private const string ERRO_EXCEDER_ENDERECO = "O endereço deve conter entre 10 e 80 caracteres.";
         private const string ERRO_EMAIL = "E-mail inválido.";
         private const string ERRO_EXCEDER_EMAIL = "O e-mail não deve exceder 30 caracteres.";
@@ -35,181 +34,131 @@ namespace Biblioteca.paciente
         private const string ERRO_EXCEDER_CELULAR = "O celular deve conter 14 caracteres.";
         private const string ERRO_ESTADO_CIVIL = "Estado civil inválido.";
         private const string ERRO_EXCEDER_ESTADO_CIVIL = "O estado civil não deve exceder 20 caracteres.";
-        private const string ERRO_SECRETARIA = "Secretária inválida.";
-        private const string ERRO_CONVENIO = "Convênio inválido.";
+        private const string ERRO_ESPECIALIDADE = "Especialidade inválida.";
         #endregion
-
 
         public void Cadastrar(Paciente paciente)
         {
-            #region Validações
-            if (paciente.ID_Paciente < 1)
+            try
             {
-                throw new Exception(ERRO_NUMERO);
+                #region Validações
+                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+
+                ClinicaUtils.ValidarVazio(paciente.Nome.Trim(), ClinicaUtils.ERRO_NOME);
+                ClinicaUtils.ValidarExceder(paciente.Nome.Trim(), 200, ClinicaUtils.ERRO_NOME);
+
+                //Se for vazia não vai possuir 14 caracteres, 
+                //sendo assim não necessário a validação de vazio
+                ClinicaUtils.ValidarTamanho(paciente.CPF, 14, ClinicaUtils.ERRO_CPF);
+               
+                ClinicaUtils.ValidarVazio(paciente.RG.Trim(), ClinicaUtils.ERRO_RG);
+                ClinicaUtils.ValidarExceder(paciente.RG.Trim(), 20, ClinicaUtils.ERRO_RG);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Logradouro.Trim(), ClinicaUtils.ERRO_LOGRADOURO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Logradouro.Trim(), 50, ClinicaUtils.ERRO_LOGRADOURO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Numero.Trim(), ClinicaUtils.ERRO_NUMERO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Numero.Trim(), 10, ClinicaUtils.ERRO_NUMERO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Complemento.Trim(), ClinicaUtils.ERRO_COMPLEMENTO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
+
+                ClinicaUtils.ValidarTamanho(paciente.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
+
+                ClinicaUtils.ValidarTamanho(paciente.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
+
+                ClinicaUtils.ValidarEmail(paciente.Email.Trim());
+
+                ClinicaUtils.ValidarVazio(paciente.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
+                ClinicaUtils.ValidarExceder(paciente.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);
+
+                ClinicaUtils.ValidarVazio(paciente.Estado_Civil.Trim(), ClinicaUtils.ERRO_ESTADO_CIVIL);
+                ClinicaUtils.ValidarExceder(paciente.Estado_Civil.Trim(), 10, ClinicaUtils.ERRO_ESTADO_CIVIL);
+                #endregion
+
+                new PacienteBD().Cadastrar(paciente);
             }
-
-            if (string.IsNullOrWhiteSpace(paciente.Nome.Trim()))
+            catch (Exception)
             {
-                throw new Exception(ERRO_NOME);
+                throw;
             }
-
-            if (paciente.Nome.Trim().Length < 1 || paciente.Nome.Trim().Length > 200)
-            {
-                throw new Exception(ERRO_EXCEDER_NOME);
-            }
-
-            if (string.IsNullOrWhiteSpace(paciente.CPF.Trim()))
-            {
-                throw new Exception(ERRO_CPF);
-            }
-
-            if (paciente.CPF.Trim().Length != 14)
-            {
-                throw new Exception(ERRO_EXCEDER_CPF);
-            }
-
-            if (string.IsNullOrWhiteSpace(paciente.RG.Trim()))
-            {
-                throw new Exception(ERRO_RG);
-            }
-
-            if (paciente.RG.Trim().Length < 1 || paciente.RG.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXCEDER_RG);
-            }
-
-            /*if (string.IsNullOrWhiteSpace(paciente.Endereco.Trim()))
-            {
-                throw new Exception(ERRO_ENDERECO);
-            }*/
-
-           /* if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_ENDERECO);
-            }
-
-            if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_EMAIL);
-            }*/
-
-            if (string.IsNullOrWhiteSpace(paciente.Contato.Trim()))
-            {
-                throw new Exception(ERRO_CELULAR);
-            }
-
-            if (paciente.Contato.Length != 14)
-            {
-                throw new Exception(ERRO_EXCEDER_CELULAR);
-            }
-
-            if (string.IsNullOrEmpty(paciente.Estado_Civil.Trim()))
-            {
-                throw new Exception(ERRO_ESTADO_CIVIL);
-            }
-
-            if (paciente.Estado_Civil.Trim().Length < 0 || paciente.Estado_Civil.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
-            }
-            
-            if (paciente.Convenio.ID_Convenio <= 0)
-            {
-                throw new Exception(ERRO_CONVENIO);
-            }
-            #endregion
-
-            new PacienteBD().Cadastrar(paciente);
         }
 
         public void Atualizar(Paciente paciente)
         {
-            #region Validações
-            if (paciente.ID_Paciente < 1)
+            try
             {
-                throw new Exception(ERRO_NUMERO);
+                #region Validações
+                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+
+                ClinicaUtils.ValidarVazio(paciente.Nome.Trim(), ClinicaUtils.ERRO_NOME);
+                ClinicaUtils.ValidarExceder(paciente.Nome.Trim(), 200, ClinicaUtils.ERRO_NOME);
+
+                //Se for vazia não vai possuir 14 caracteres, 
+                //sendo assim não necessário a validação de vazio
+                ClinicaUtils.ValidarTamanho(paciente.CPF, 14, ClinicaUtils.ERRO_CPF);
+
+                ClinicaUtils.ValidarVazio(paciente.RG.Trim(), ClinicaUtils.ERRO_RG);
+                ClinicaUtils.ValidarExceder(paciente.RG.Trim(), 20, ClinicaUtils.ERRO_RG);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Logradouro.Trim(), ClinicaUtils.ERRO_LOGRADOURO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Logradouro.Trim(), 50, ClinicaUtils.ERRO_LOGRADOURO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Numero.Trim(), ClinicaUtils.ERRO_NUMERO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Numero.Trim(), 10, ClinicaUtils.ERRO_NUMERO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Complemento.Trim(), ClinicaUtils.ERRO_COMPLEMENTO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
+
+                ClinicaUtils.ValidarTamanho(paciente.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
+
+                ClinicaUtils.ValidarTamanho(paciente.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
+
+                ClinicaUtils.ValidarVazio(paciente.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
+                ClinicaUtils.ValidarExceder(paciente.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
+
+                ClinicaUtils.ValidarEmail(paciente.Email.Trim());
+
+                ClinicaUtils.ValidarVazio(paciente.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
+                ClinicaUtils.ValidarExceder(paciente.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);
+
+                ClinicaUtils.ValidarVazio(paciente.Estado_Civil.Trim(), ClinicaUtils.ERRO_ESTADO_CIVIL);
+                ClinicaUtils.ValidarExceder(paciente.Estado_Civil.Trim(), 10, ClinicaUtils.ERRO_ESTADO_CIVIL);
+                #endregion
+
+                new PacienteBD().Atualizar(paciente);
             }
-
-            if (string.IsNullOrWhiteSpace(paciente.Nome.Trim()))
+            catch (Exception)
             {
-                throw new Exception(ERRO_NOME);
+                throw;
             }
-
-            if (paciente.Nome.Trim().Length < 1 || paciente.Nome.Trim().Length > 200)
-            {
-                throw new Exception(ERRO_EXCEDER_NOME);
-            }
-
-            if (string.IsNullOrWhiteSpace(paciente.CPF.Trim()))
-            {
-                throw new Exception(ERRO_CPF);
-            }
-
-            if (paciente.CPF.Trim().Length != 14)
-            {
-                throw new Exception(ERRO_EXCEDER_CPF);
-            }
-
-            if (string.IsNullOrWhiteSpace(paciente.RG.Trim()))
-            {
-                throw new Exception(ERRO_RG);
-            }
-
-            if (paciente.RG.Trim().Length < 1 || paciente.RG.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXCEDER_RG);
-            }
-
-            /*if (string.IsNullOrWhiteSpace(paciente.Endereco.Trim()))
-            {
-                throw new Exception(ERRO_ENDERECO);
-            }*/
-
-            /*if (paciente.Endereco.Trim().Length < 1 || paciente.Endereco.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_ENDERECO);
-            }
-
-            if (paciente.Email.Trim().Length < 1 || paciente.Email.Trim().Length > 30)
-            {
-                throw new Exception(ERRO_EXCEDER_EMAIL);
-            }*/
-
-            if (string.IsNullOrWhiteSpace(paciente.Contato.Trim()))
-            {
-                throw new Exception(ERRO_CELULAR);
-            }
-
-            if (paciente.Contato.Length != 14)
-            {
-                throw new Exception(ERRO_EXCEDER_CELULAR);
-            }
-
-            if (string.IsNullOrEmpty(paciente.Estado_Civil.Trim()))
-            {
-                throw new Exception(ERRO_ESTADO_CIVIL);
-            }
-
-            if (paciente.Estado_Civil.Trim().Length < 0 || paciente.Estado_Civil.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXCEDER_ESTADO_CIVIL);
-            }
-            
-
-            if (paciente.Convenio.ID_Convenio <= 0)
-            {
-                throw new Exception(ERRO_CONVENIO);
-            }
-            #endregion
-
-            new PacienteBD().Atualizar(paciente);
         }
 
         public void Remover(Paciente paciente)
         {
-            if (paciente.ID_Paciente < 1)
+            try
             {
-                throw new Exception(ERRO_NUMERO);
+                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+                new PacienteBD().Remover(paciente);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -220,12 +169,16 @@ namespace Biblioteca.paciente
 
         public bool VerificaExistencia(Paciente paciente)
         {
-            if (paciente.ID_Paciente < 1)
+            try
             {
-                throw new Exception(ERRO_NUMERO);
+                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+                return new PacienteBD().VerificaExistencia(paciente);
             }
-
-            return new PacienteBD().VerificaExistencia(paciente);
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
     }
 

@@ -20,47 +20,72 @@ namespace Biblioteca.paciente
                 //Abrir Conexao
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Paciente (ID_Paciente, CPF, RG, Nome, Endereco, Email, " +
-                    "Celular, Estado_Civil, ID_Convenio" +
-                    "VALUES ID_Paciente, @CPF, @RG, @Nome, @Endereco, @Email, @Celular, @Estado_Civil, " +
-                    "@ID_Convenio";
+                string sql = "INSERT INTO Paciente (Nome, CPF, Contato, CEP, RG, Email, Logradouro," +
+                    "Numero, Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil," +
+                    "Dt_Nascimento, ID_Convenio)" +
+                    "VALUES (@Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
+                    "@Numero, @Complemento, @Bairro, @Cidade, @UF, @Pais, @ID_Paciente, @Estado_Civil," +
+                    "@Dt_Nascimento, @ID_Convenio)";
 
-                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+                SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
                 #region Parâmetros
-                /* Não está mostrando o ID_Paciente, rever!
-                cmd.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                cmd.Parameters["@ID_Paciente"].Value = paciente.*/
+                scm.Parameters.Add("@Nome", SqlDbType.VarChar);
+                scm.Parameters["@Nome"].Value = paciente.Nome;
 
-                cmd.Parameters.Add("@CPF", SqlDbType.VarChar);
-                cmd.Parameters["@CPF"].Value = paciente.CPF;
+                scm.Parameters.Add("@CPF", SqlDbType.Char);
+                scm.Parameters["@CPF"].Value = paciente.CPF;
 
-                cmd.Parameters.Add("@RG", SqlDbType.VarChar);
-                cmd.Parameters["@RG"].Value = paciente.CPF;
+                scm.Parameters.Add("@Contato", SqlDbType.VarChar);
+                scm.Parameters["@Contato"].Value = paciente.Nome;
 
-                cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
-                cmd.Parameters["@Nome"].Value = paciente.Nome;
+                scm.Parameters.Add("@CEP", SqlDbType.Char);
+                scm.Parameters["@CEP"].Value = paciente.Endereco.CEP;
 
-                cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = paciente.Endereco;
+                scm.Parameters.Add("@RG", SqlDbType.VarChar);
+                scm.Parameters["@RG"].Value = paciente.RG;
 
-                cmd.Parameters.Add("@Email", SqlDbType.VarChar);
-                cmd.Parameters["@Email"].Value = paciente.Email;
+                scm.Parameters.Add("@Email", SqlDbType.VarChar);
+                scm.Parameters["@Email"].Value = paciente.Email;
 
-                cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Celular"].Value = paciente.Contato;
+                scm.Parameters.Add("@Logradouro", SqlDbType.VarChar);
+                scm.Parameters["@Logradouro"].Value = paciente.Endereco.Logradouro;
 
-                cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
-                cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;
-                
-                cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
+                scm.Parameters.Add("@Numero", SqlDbType.VarChar);
+                scm.Parameters["@Numero"].Value = paciente.Endereco.Numero;
+
+                scm.Parameters.Add("@Complemento", SqlDbType.VarChar);
+                scm.Parameters["@Complemento"].Value = paciente.Endereco.Complemento;
+
+                scm.Parameters.Add("@Bairro", SqlDbType.VarChar);
+                scm.Parameters["@Bairro"].Value = paciente.Endereco.Bairro;
+
+                scm.Parameters.Add("@Cidade", SqlDbType.VarChar);
+                scm.Parameters["@Cidade"].Value = paciente.Endereco.Cidade;
+
+                scm.Parameters.Add("@UF", SqlDbType.Char);
+                scm.Parameters["@UF"].Value = paciente.Endereco.UF;
+
+                scm.Parameters.Add("@Pais", SqlDbType.VarChar);
+                scm.Parameters["@Pais"].Value = paciente.Endereco.Pais;
+
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+
+                scm.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
+                scm.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;
+
+                scm.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
+                scm.Parameters["@Dt_Nascimento"].Value = paciente.Dt_Nascimento;
+
+                scm.Parameters.Add("@ID_Convenio", SqlDbType.Int);
+                scm.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
                 #endregion
 
                 //Executando a instrução
-                cmd.ExecuteNonQuery();
+                scm.ExecuteNonQuery();
                 //Liberando memória
-                cmd.Dispose();
+                scm.Dispose();
                 //Fechar Conexão
                 this.fecharConexao();
 
@@ -78,45 +103,74 @@ namespace Biblioteca.paciente
                 //Abri Conexao
                 this.abrirConexao();
 
-                string sql = "UPDATE Paciente SET ID_Paciente = @ID_Paciente, CPF = @CPF, RG = @RG," +
-                    "Nome = @Nome, Endereco = @Endereco, Email = @Email, Celular = @Celular" +
-                    "Estado_Civil = @Estado_Civil ID_Secretaria = @ID_Secretaria" +
+                string sql = "UPDATE Paciente SET Nome = @Nome, CPF = @CPF, Contato = @Contato, CEP = @CEP," +
+                    "RG = @RG, Email = @Email, Logradouro = @Logradouro, Numero = @Numero," +
+                    "Complemento = @Complemento, Bairro = @Bairro, Cidade = @Cidade, UF = @UF" +
+                    "Pais = @Pais, ID_Paciente = @ID_Paciente, Estado_Civil = @Estado_Civil," +
+                    "Dt_Nascimento = @Dt_Nascimento, ID_Convenio = @ID_Convenio" +
                     "WHERE ID_Paciente = @ID_Paciente;";
 
                 //Instrução a ser executada
-                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+                SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
                 //Recebendo os valores
                 #region Parâmetros
-                cmd.Parameters.Add("ID_Paciente", SqlDbType.VarChar);
-                cmd.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+                scm.Parameters.Add("@Nome", SqlDbType.VarChar);
+                scm.Parameters["@Nome"].Value = paciente.Nome;
 
-                cmd.Parameters.Add("@CPF", SqlDbType.VarChar);
-                cmd.Parameters["@CPF"].Value = paciente.CPF;
+                scm.Parameters.Add("@CPF", SqlDbType.Char);
+                scm.Parameters["@CPF"].Value = paciente.CPF;
 
-                cmd.Parameters.Add("@RG", SqlDbType.VarChar);
-                cmd.Parameters["@RG"].Value = paciente.RG;
+                scm.Parameters.Add("@Contato", SqlDbType.VarChar);
+                scm.Parameters["@Contato"].Value = paciente.Nome;
 
-                cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
-                cmd.Parameters["@Nome"].Value = paciente.Nome;
+                scm.Parameters.Add("@CEP", SqlDbType.Char);
+                scm.Parameters["@CEP"].Value = paciente.Endereco.CEP;
 
-                cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = paciente.Endereco;
+                scm.Parameters.Add("@RG", SqlDbType.VarChar);
+                scm.Parameters["@RG"].Value = paciente.RG;
 
-                cmd.Parameters.Add("@Email", SqlDbType.VarChar);
-                cmd.Parameters["@Email"].Value = paciente.Email;
+                scm.Parameters.Add("@Email", SqlDbType.VarChar);
+                scm.Parameters["@Email"].Value = paciente.Email;
 
-                cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil; 
+                scm.Parameters.Add("@Logradouro", SqlDbType.VarChar);
+                scm.Parameters["@Logradouro"].Value = paciente.Endereco.Logradouro;
 
-                cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
+                scm.Parameters.Add("@Numero", SqlDbType.VarChar);
+                scm.Parameters["@Numero"].Value = paciente.Endereco.Numero;
+
+                scm.Parameters.Add("@Complemento", SqlDbType.VarChar);
+                scm.Parameters["@Complemento"].Value = paciente.Endereco.Complemento;
+
+                scm.Parameters.Add("@Bairro", SqlDbType.VarChar);
+                scm.Parameters["@Bairro"].Value = paciente.Endereco.Bairro;
+
+                scm.Parameters.Add("@Cidade", SqlDbType.VarChar);
+                scm.Parameters["@Cidade"].Value = paciente.Endereco.Cidade;
+
+                scm.Parameters.Add("@UF", SqlDbType.Char);
+                scm.Parameters["@UF"].Value = paciente.Endereco.UF;
+
+                scm.Parameters.Add("@Pais", SqlDbType.VarChar);
+                scm.Parameters["@Pais"].Value = paciente.Endereco.Pais;
+
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+
+                scm.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
+                scm.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;
+
+                scm.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
+                scm.Parameters["@Dt_Nascimento"].Value = paciente.Dt_Nascimento;
+
+                scm.Parameters.Add("@ID_Convenio", SqlDbType.Int);
+                scm.Parameters["@ID_Convenio"].Value = paciente.Convenio.ID_Convenio;
                 #endregion
 
                 //Executando a instrução
-                cmd.ExecuteNonQuery();
+                scm.ExecuteNonQuery();
                 //Liberando memória
-                cmd.Dispose();
+                scm.Dispose();
                 //Fechar Conexao
                 this.fecharConexao();
             }
@@ -124,7 +178,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception("Erro ao pesquisar Médico." + e);
             }
-            
+
         }
 
         public void Remover(Paciente paciente)
@@ -136,15 +190,15 @@ namespace Biblioteca.paciente
                 //Instrução a ser executada
                 string sql = "DELETE Paciente WHERE ID_Paciente = @ID_Paciente";
 
-                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+                SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                cmd.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
 
                 //Executando instrução
-                cmd.ExecuteNonQuery();
+                scm.ExecuteNonQuery();
                 //Liberando memória
-                cmd.Dispose();
+                scm.Dispose();
                 //Fechar conexão
                 this.fecharConexao();
 
@@ -164,18 +218,19 @@ namespace Biblioteca.paciente
                 //Abrindo conexão
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT ID_Paciente, CPF, RG, Nome, Endereco, Email, Celular," +
-                    "Estado_Civil, ID_Secretaria, ID_Convenio FROM Paciente WHERE TRUE";
+                string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero," +
+                    "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento," +
+                    "ID_Convenio FROM Paciente WHERE TRUE";
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+                SqlCommand scm = new SqlCommand(sql, sqlConn);
 
                 #region Modos de Pesquisa
                 if (filtro.ID_Paciente > 0)
                 {
                     sql += " AND ID_Paciente = @ID_Paciente";
 
-                    cmd.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                    cmd.Parameters["@ID_Paciente"].Value = filtro.ID_Paciente;
+                    scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                    scm.Parameters["@ID_Paciente"].Value = filtro.ID_Paciente;
                 }
 
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
@@ -183,37 +238,46 @@ namespace Biblioteca.paciente
                 {
                     sql += " AND CPF = @CPF";
 
-                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar);
-                    cmd.Parameters["@CPF"].Value = filtro.CPF;
+                    scm.Parameters.Add("@CPF", SqlDbType.VarChar);
+                    scm.Parameters["@CPF"].Value = filtro.CPF;
                 }
                 if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
                 {
                     sql += " AND Nome = @Nome";
 
-                    cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
-                    cmd.Parameters["@Nome"].Value = filtro.Nome;
+                    scm.Parameters.Add("@Nome", SqlDbType.VarChar);
+                    scm.Parameters["@Nome"].Value = filtro.Nome;
                 }
                 #endregion
 
                 //Executando a instrução e colocando o resultado em um leitor
-                SqlDataReader DbReader = cmd.ExecuteReader();
+                SqlDataReader DbReader = scm.ExecuteReader();
                 //Lendo o resultado da consulta
                 while (DbReader.Read())
                 {
                     Paciente paciente = new Paciente();
-                    //Acessando os valores das colunas do resultado
-                    //ID_Medico, CPF, RG, Nome, Endereco, Email, Celular, Estado_Civil, 
-                    //ID_Secretaria, ID_Convenio;
+                    /*Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero, Complemento, Bairro,
+                    Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento, ID_Convenio;*/
                     #region Colunas
-                    paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
-                    paciente.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
-                    paciente.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
+
                     paciente.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
-                    //paciente.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
-                    paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
+                    paciente.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
+                    paciente.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
+                    paciente.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
+                    paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
+                    paciente.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
+                    paciente.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
+                    paciente.Endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("Complemento"));
+                    paciente.Endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("Bairro"));
+                    paciente.Endereco.Cidade = DbReader.GetString(DbReader.GetOrdinal("Cidade"));
+                    paciente.Endereco.UF = DbReader.GetString(DbReader.GetOrdinal("UF"));
+                    paciente.Endereco.Pais = DbReader.GetString(DbReader.GetOrdinal("Pais"));
+                    paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
                     paciente.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
+                    paciente.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento"));
                     paciente.Convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
+
                     #endregion
 
                     retorno.Add(paciente);
@@ -222,7 +286,7 @@ namespace Biblioteca.paciente
                 //Fechando leitor
                 DbReader.Close();
                 //Liberando memória
-                cmd.Dispose();
+                scm.Dispose();
                 //Fechando conexão
                 this.fecharConexao();
             }
@@ -244,16 +308,16 @@ namespace Biblioteca.paciente
                 //Instrução a ser executada
                 string sql = "SELECT COUNT(*) FROM Paciente WHERE ID_Paciente = @ID_Paciente";
 
-                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+                SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                cmd.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
 
                 //Executando a instrução e colocando o resultado em um leitor
-                retorno = (Int32)cmd.ExecuteScalar() > 0;
+                retorno = (Int32)scm.ExecuteScalar() > 0;
 
                 //Liberando memória
-                cmd.Dispose();
+                scm.Dispose();
                 //Fechar conexão
                 this.fecharConexao();
 

@@ -167,7 +167,7 @@ namespace Biblioteca.paciente
             {
                 throw new Exception("Erro ao atualizar médico." + e);
             }
-            
+
         }
 
         public void Remover(Medico medico)
@@ -252,23 +252,26 @@ namespace Biblioteca.paciente
                     Medico medico = new Medico();
                     //Acessando os valores das colunas do resultado
                     #region Colunas
-                    //ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Celular, Estado_Civil, ID_Especialidade
-                    medico.ID_Medico = DbReader.GetInt32(DbReader.GetOrdinal("ID_Medico"));
-                    medico.CRM = DbReader.GetString(DbReader.GetOrdinal("CRM"));
-                    medico.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
-                    medico.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
+                    //Nome, ID_Medico, RG, Email, CRM, Complemento, CEP, Cidade, Estado_Civil, CPF,
+                    //Contato, Logradouro, Numero, Bairro, UF, Pais, Dt_Nascimento, ID_Especialidade 
+
                     medico.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
-                    medico.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
-                    medico.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
+                    medico.ID_Medico = DbReader.GetInt32(DbReader.GetOrdinal("ID_Medico"));
+                    medico.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
+                    medico.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
+                    medico.CRM = DbReader.GetString(DbReader.GetOrdinal("CRM"));
                     medico.Endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("Complemento"));
-                    medico.Endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("Bairro"));
                     medico.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
                     medico.Endereco.Cidade = DbReader.GetString(DbReader.GetOrdinal("Cidade"));
+                    medico.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
+                    medico.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
+                    medico.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    medico.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
+                    medico.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
+                    medico.Endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("Bairro"));
                     medico.Endereco.UF = DbReader.GetString(DbReader.GetOrdinal("UF"));
                     medico.Endereco.Pais = DbReader.GetString(DbReader.GetOrdinal("Pais"));
-                    medico.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    medico.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
-                    medico.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
+                    medico.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento")); 
                     medico.Especialidade.ID_Especialidade = DbReader.GetInt32(DbReader.GetOrdinal("ID_Especialidade"));
                     #endregion
 
