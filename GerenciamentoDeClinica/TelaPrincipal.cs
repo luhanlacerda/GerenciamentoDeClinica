@@ -151,6 +151,11 @@ namespace GerenciamentoDeClinica
             TelaPesquisarPaciente pesqPaciente = new TelaPesquisarPaciente();
             pesqPaciente.Show();
         }
+
+        private void arquivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

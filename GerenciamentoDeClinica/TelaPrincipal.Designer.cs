@@ -83,6 +83,7 @@
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
+            this.arquivoToolStripMenuItem.Click += new System.EventHandler(this.arquivoToolStripMenuItem_Click);
             // 
             // testarConexãoBDToolStripMenuItem
             // 
@@ -156,14 +157,14 @@
             // marcarToolStripMenuItem
             // 
             this.marcarToolStripMenuItem.Name = "marcarToolStripMenuItem";
-            this.marcarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.marcarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.marcarToolStripMenuItem.Text = "Marcar";
             this.marcarToolStripMenuItem.Click += new System.EventHandler(this.marcarToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem2
             // 
             this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem2.Text = "Consultar";
             this.consultarToolStripMenuItem2.Click += new System.EventHandler(this.consultarToolStripMenuItem2_Click);
             // 
