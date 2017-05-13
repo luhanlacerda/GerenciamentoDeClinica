@@ -1,4 +1,4 @@
-﻿using Biblioteca.conexaoBD;
+﻿using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,92 +7,74 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.especialidade
 {
-    public class NegocioEspecialidade : ConexaoSql, IEspecialidade
+    public class NegocioEspecialidade : IEspecialidade
     {
-        private const string ERRO_ID = "Código da especialidade inválido";
-        private const string ERRO_DESCRICAO = "Descrição da especialidade inválida";
-
         public void Cadastrar(Especialidade especialidade)
         {
-            if (especialidade.ID_Especialidade <= 0)
+            try
             {
-                throw new Exception(ERRO_ID);
-            }
+                ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
 
-            if (especialidade.Descricao.Trim().Equals("") == true || especialidade.Descricao == null)
+                ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
+                ClinicaUtils.ValidarTamanho(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
+
+                new EspecialidadeBD().Cadastrar(especialidade);
+            }
+            catch (Exception)
             {
-                throw new Exception(ERRO_DESCRICAO);
+                throw;
             }
-
-            if (especialidade.Descricao.Trim().Length > 20)
-            {
-                throw new Exception("A descrição da especialidade não deverá ter mais de 20 caracteres");
-            }
-
-            if (VerificaExistencia(especialidade) != false)
-            {
-                throw new Exception("Especialidade já cadastrada no sistema");
-            }
-
-            //Cadastrando nova especialidade
-            Cadastrar(especialidade);
         }
 
         public void Atualizar(Especialidade especialidade)
         {
-            if (especialidade.ID_Especialidade <= 0)
+            try
             {
-                throw new Exception(ERRO_ID);
-            }
+                ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
 
-            if (especialidade.Descricao.Trim().Equals("") == true || especialidade.Descricao == null)
+                ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
+                ClinicaUtils.ValidarTamanho(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
+
+                new EspecialidadeBD().Atualizar(especialidade);
+            }
+            catch (Exception)
             {
-                throw new Exception(ERRO_DESCRICAO);
+                throw;
             }
-
-            if (especialidade.Descricao.Trim().Length > 20)
-            {
-                throw new Exception("A descrição da especialidade não deverá ter mais de 20 caracteres");
-            }
-
-            if (VerificaExistencia(especialidade) != false)
-            {
-                throw new Exception("Especialidade já cadastrada no sistema");
-            }
-
-            //Atualizando nova especialidade
-            Atualizar(especialidade);
         }
 
         public void Remover(Especialidade especialidade)
         {
-            if (especialidade.ID_Especialidade <= 0)
+            try
             {
-                throw new Exception(ERRO_ID);
-            }
+                ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
 
-            if (VerificaExistencia(especialidade) == false)
+                new EspecialidadeBD().Remover(especialidade);
+            }
+            catch (Exception)
             {
-                throw new Exception("Especialidade não cadastrada no sistema");
+                throw;
             }
-
-            //Removendo
-            Remover(especialidade);
-        }
-
-        public bool VerificaExistencia(Especialidade especialidade)
-        {
-            if (especialidade.ID_Especialidade < 0)
-            {
-                throw new Exception(ERRO_ID);
-            }
-
-            return new EspecialidadeBD().VerificaExistencia(especialidade);
         }
 
         public List<Especialidade> Listar(Especialidade filtro)
         {
             return new EspecialidadeBD().Listar(filtro);
         }
+
+        public bool VerificaExistencia(Especialidade especialidade)
+        {
+            try
+            {
+                ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
+
+                return new EspecialidadeBD().VerificaExistencia(especialidade);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -36,14 +36,14 @@ namespace Biblioteca.secretaria
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
-                ClinicaUtils.ValidarExceder(secretaria.Endereco.Numero.Trim(), 20, ClinicaUtils.ERRO_NUMERO);
+                ClinicaUtils.ValidarExceder(secretaria.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
 
                 ClinicaUtils.ValidarTamanho(secretaria.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
 
-                ClinicaUtils.ValidarTamanho(secretaria.Endereco.CEP.Trim(), 14, ClinicaUtils.ERRO_CEP);
+                ClinicaUtils.ValidarTamanho(secretaria.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
@@ -92,14 +92,14 @@ namespace Biblioteca.secretaria
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
-                ClinicaUtils.ValidarExceder(secretaria.Endereco.Numero.Trim(), 20, ClinicaUtils.ERRO_NUMERO);
+                ClinicaUtils.ValidarExceder(secretaria.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
 
                 ClinicaUtils.ValidarTamanho(secretaria.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
 
-                ClinicaUtils.ValidarTamanho(secretaria.Endereco.CEP.Trim(), 14, ClinicaUtils.ERRO_CEP);
+                ClinicaUtils.ValidarTamanho(secretaria.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
 
                 ClinicaUtils.ValidarVazio(secretaria.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
                 ClinicaUtils.ValidarExceder(secretaria.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
