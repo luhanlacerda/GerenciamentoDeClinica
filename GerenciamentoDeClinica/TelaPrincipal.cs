@@ -139,6 +139,18 @@ namespace GerenciamentoDeClinica
             TelaPesquisarSecretaria teste2 = new TelaPesquisarSecretaria();
             teste2.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TelaPesquisarMedico pesqMed = new TelaPesquisarMedico();
+            pesqMed.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TelaPesquisarPaciente pesqPaciente = new TelaPesquisarPaciente();
+            pesqPaciente.Show();
+        }
     }
 }
 
