@@ -35,5 +35,10 @@ namespace GerenciamentoDeClinica
                 control.Text = "";
             }
         }
+
+        private void GroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
