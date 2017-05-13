@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.txtDuracao = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.lblDuracao = new System.Windows.Forms.Label();
             this.lblObservacoes = new System.Windows.Forms.Label();
             this.lblHorario = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.txtObservacoes = new System.Windows.Forms.TextBox();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.txtDescricao);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.txtDuracao);
@@ -57,12 +59,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastrar Consulta";
             // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(24, 154);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(385, 79);
+            this.txtDescricao.TabIndex = 2;
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.Location = new System.Drawing.Point(24, 282);
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(385, 79);
+            this.txtObservacoes.TabIndex = 3;
+            // 
             // txtDuracao
             // 
-            this.txtDuracao.Location = new System.Drawing.Point(277, 44);
+            this.txtDuracao.Location = new System.Drawing.Point(165, 63);
             this.txtDuracao.Name = "txtDuracao";
             this.txtDuracao.Size = new System.Drawing.Size(132, 20);
-            this.txtDuracao.TabIndex = 6;
+            this.txtDuracao.TabIndex = 1;
             // 
             // lblDescricao
             // 
@@ -76,7 +94,7 @@
             // lblDuracao
             // 
             this.lblDuracao.AutoSize = true;
-            this.lblDuracao.Location = new System.Drawing.Point(220, 47);
+            this.lblDuracao.Location = new System.Drawing.Point(162, 44);
             this.lblDuracao.Name = "lblDuracao";
             this.lblDuracao.Size = new System.Drawing.Size(51, 13);
             this.lblDuracao.TabIndex = 4;
@@ -105,25 +123,17 @@
             this.btnCadastrar.Location = new System.Drawing.Point(334, 378);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 0;
+            this.btnCadastrar.TabIndex = 4;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             // 
-            // txtObservacoes
+            // dateTimePicker1
             // 
-            this.txtObservacoes.Location = new System.Drawing.Point(24, 282);
-            this.txtObservacoes.Multiline = true;
-            this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(385, 79);
-            this.txtObservacoes.TabIndex = 7;
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Location = new System.Drawing.Point(24, 154);
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(385, 79);
-            this.txtDescricao.TabIndex = 8;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(24, 60);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
+            this.dateTimePicker1.TabIndex = 0;
             // 
             // TelaCadastrarConsulta
             // 
@@ -151,5 +161,6 @@
         private System.Windows.Forms.TextBox txtDuracao;
         private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

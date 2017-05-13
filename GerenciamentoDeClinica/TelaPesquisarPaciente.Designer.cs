@@ -36,7 +36,7 @@
             this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedCPFPesq = new System.Windows.Forms.MaskedTextBox();
+            this.maskedPesqCPF = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomePesq = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
@@ -64,10 +64,9 @@
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.maskedCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtLogradouro = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
-            this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboPais = new System.Windows.Forms.ComboBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.GroupBox = new System.Windows.Forms.GroupBox();
@@ -75,6 +74,7 @@
             this.rbViuvo = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
+            this.comboCidade = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
@@ -82,37 +82,43 @@
             // 
             // btnRemover
             // 
+            this.btnRemover.Enabled = false;
             this.btnRemover.Location = new System.Drawing.Point(373, 369);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
             this.btnRemover.TabIndex = 24;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnEditar
             // 
+            this.btnEditar.Enabled = false;
             this.btnEditar.Location = new System.Drawing.Point(373, 340);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 23;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAtualizar
             // 
+            this.btnAtualizar.Enabled = false;
             this.btnAtualizar.Location = new System.Drawing.Point(373, 311);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 22;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.maskedCPFPesq);
+            this.groupBox2.Controls.Add(this.maskedPesqCPF);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtNomePesq);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
@@ -130,6 +136,7 @@
             this.btnNovaBusca.TabIndex = 3;
             this.btnNovaBusca.Text = "Nova Busca";
             this.btnNovaBusca.UseVisualStyleBackColor = true;
+            this.btnNovaBusca.Click += new System.EventHandler(this.btnNovaBusca_Click);
             // 
             // btnPesquisar
             // 
@@ -139,6 +146,7 @@
             this.btnPesquisar.TabIndex = 2;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // label6
             // 
@@ -149,13 +157,13 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "CPF:";
             // 
-            // maskedCPFPesq
+            // maskedPesqCPF
             // 
-            this.maskedCPFPesq.Location = new System.Drawing.Point(51, 61);
-            this.maskedCPFPesq.Mask = "000.000.000-00";
-            this.maskedCPFPesq.Name = "maskedCPFPesq";
-            this.maskedCPFPesq.Size = new System.Drawing.Size(100, 20);
-            this.maskedCPFPesq.TabIndex = 1;
+            this.maskedPesqCPF.Location = new System.Drawing.Point(51, 61);
+            this.maskedPesqCPF.Mask = "000.000.000-00";
+            this.maskedPesqCPF.Name = "maskedPesqCPF";
+            this.maskedPesqCPF.Size = new System.Drawing.Size(100, 20);
+            this.maskedPesqCPF.TabIndex = 1;
             // 
             // label1
             // 
@@ -175,6 +183,7 @@
             // 
             // txtEndereco
             // 
+            this.txtEndereco.Enabled = false;
             this.txtEndereco.Location = new System.Drawing.Point(11, 224);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(325, 20);
@@ -200,6 +209,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(128, 136);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
@@ -216,6 +226,7 @@
             // 
             // maskedCPF
             // 
+            this.maskedCPF.Enabled = false;
             this.maskedCPF.Location = new System.Drawing.Point(10, 83);
             this.maskedCPF.Mask = "000.000.000-00";
             this.maskedCPF.Name = "maskedCPF";
@@ -224,6 +235,7 @@
             // 
             // txtRG
             // 
+            this.txtRG.Enabled = false;
             this.txtRG.Location = new System.Drawing.Point(128, 83);
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
@@ -231,6 +243,7 @@
             // 
             // maskedCell
             // 
+            this.maskedCell.Enabled = false;
             this.maskedCell.Location = new System.Drawing.Point(246, 83);
             this.maskedCell.Mask = "(##) #.####-####";
             this.maskedCell.Name = "maskedCell";
@@ -266,6 +279,7 @@
             // 
             // txtNome
             // 
+            this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(10, 43);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
@@ -282,6 +296,7 @@
             // 
             // txtBairro
             // 
+            this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(11, 263);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(175, 20);
@@ -335,7 +350,7 @@
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(162, 350);
+            this.lblCidade.Location = new System.Drawing.Point(161, 349);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 50;
@@ -344,7 +359,7 @@
             // lblUF
             // 
             this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(286, 349);
+            this.lblUF.Location = new System.Drawing.Point(289, 349);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(24, 13);
             this.lblUF.TabIndex = 51;
@@ -370,6 +385,7 @@
             // 
             // maskedCEP
             // 
+            this.maskedCEP.Enabled = false;
             this.maskedCEP.Location = new System.Drawing.Point(236, 263);
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
@@ -378,20 +394,23 @@
             // 
             // txtLogradouro
             // 
+            this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Location = new System.Drawing.Point(12, 314);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(136, 20);
             this.txtLogradouro.TabIndex = 16;
             // 
-            // textBox3
+            // txtComplemento
             // 
-            this.textBox3.Location = new System.Drawing.Point(164, 314);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(71, 20);
-            this.textBox3.TabIndex = 17;
+            this.txtComplemento.Enabled = false;
+            this.txtComplemento.Location = new System.Drawing.Point(164, 314);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(71, 20);
+            this.txtComplemento.TabIndex = 17;
             // 
             // txtNumero
             // 
+            this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(266, 314);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(66, 20);
@@ -399,21 +418,16 @@
             // 
             // comboUF
             // 
+            this.comboUF.Enabled = false;
             this.comboUF.FormattingEnabled = true;
-            this.comboUF.Location = new System.Drawing.Point(289, 365);
+            this.comboUF.Location = new System.Drawing.Point(291, 365);
             this.comboUF.Name = "comboUF";
-            this.comboUF.Size = new System.Drawing.Size(47, 21);
+            this.comboUF.Size = new System.Drawing.Size(44, 21);
             this.comboUF.TabIndex = 21;
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.Location = new System.Drawing.Point(164, 366);
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 20;
             // 
             // comboPais
             // 
+            this.comboPais.Enabled = false;
             this.comboPais.FormattingEnabled = true;
             this.comboPais.Location = new System.Drawing.Point(12, 365);
             this.comboPais.Name = "comboPais";
@@ -432,6 +446,7 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.comboCidade);
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
             this.GroupBox.Controls.Add(this.rbViuvo);
             this.GroupBox.Controls.Add(this.rbCasado);
@@ -440,11 +455,10 @@
             this.GroupBox.Controls.Add(this.btnRemover);
             this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.btnEditar);
-            this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.btnAtualizar);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
-            this.GroupBox.Controls.Add(this.textBox3);
+            this.GroupBox.Controls.Add(this.txtComplemento);
             this.GroupBox.Controls.Add(this.txtLogradouro);
             this.GroupBox.Controls.Add(this.maskedCEP);
             this.GroupBox.Controls.Add(this.lblDataNascimento);
@@ -479,6 +493,7 @@
             // 
             // dateTimeDtNasc
             // 
+            this.dateTimeDtNasc.Enabled = false;
             this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
@@ -488,6 +503,7 @@
             // rbViuvo
             // 
             this.rbViuvo.AutoSize = true;
+            this.rbViuvo.Enabled = false;
             this.rbViuvo.Location = new System.Drawing.Point(154, 179);
             this.rbViuvo.Name = "rbViuvo";
             this.rbViuvo.Size = new System.Drawing.Size(64, 17);
@@ -499,6 +515,7 @@
             // rbCasado
             // 
             this.rbCasado.AutoSize = true;
+            this.rbCasado.Enabled = false;
             this.rbCasado.Location = new System.Drawing.Point(78, 179);
             this.rbCasado.Name = "rbCasado";
             this.rbCasado.Size = new System.Drawing.Size(73, 17);
@@ -510,6 +527,7 @@
             // rbSolteiro
             // 
             this.rbSolteiro.AutoSize = true;
+            this.rbSolteiro.Enabled = false;
             this.rbSolteiro.Location = new System.Drawing.Point(9, 179);
             this.rbSolteiro.Name = "rbSolteiro";
             this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
@@ -517,6 +535,15 @@
             this.rbSolteiro.TabStop = true;
             this.rbSolteiro.Text = "Solteiro(a)";
             this.rbSolteiro.UseVisualStyleBackColor = true;
+            // 
+            // comboCidade
+            // 
+            this.comboCidade.Enabled = false;
+            this.comboCidade.FormattingEnabled = true;
+            this.comboCidade.Location = new System.Drawing.Point(164, 365);
+            this.comboCidade.Name = "comboCidade";
+            this.comboCidade.Size = new System.Drawing.Size(121, 21);
+            this.comboCidade.TabIndex = 20;
             // 
             // TelaPesquisarPaciente
             // 
@@ -542,7 +569,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNomePesq;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedCPFPesq;
+        private System.Windows.Forms.MaskedTextBox maskedPesqCPF;
         private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnRemover;
@@ -551,10 +578,9 @@
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.ComboBox comboPais;
-        private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.MaskedTextBox maskedCEP;
         private System.Windows.Forms.Label lblDataNascimento;
@@ -584,5 +610,6 @@
         private System.Windows.Forms.RadioButton rbViuvo;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
+        private System.Windows.Forms.ComboBox comboCidade;
     }
 }
