@@ -487,7 +487,7 @@
             this.GroupBox.Size = new System.Drawing.Size(464, 406);
             this.GroupBox.TabIndex = 44;
             this.GroupBox.TabStop = false;
-            this.GroupBox.Text = "Cadastrar";
+            this.GroupBox.Text = "Editar Campos";
             // 
             // TelaPesquisarPaciente
             // 
