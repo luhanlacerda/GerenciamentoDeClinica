@@ -74,78 +74,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TelaCadastrarConsulta.cs">
+    <Compile Include="consulta\TelaCadastrarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastrarConsulta.Designer.cs">
+    <Compile Include="consulta\TelaCadastrarConsulta.Designer.cs">
       <DependentUpon>TelaCadastrarConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaCadastrarEspecialidade.cs">
+    <Compile Include="especialidade\TelaCadastrarEspecialidade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastrarEspecialidade.Designer.cs">
+    <Compile Include="especialidade\TelaCadastrarEspecialidade.Designer.cs">
       <DependentUpon>TelaCadastrarEspecialidade.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaCadastrarSecretaria.cs">
+    <Compile Include="secretaria\TelaCadastrarSecretaria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastrarSecretaria.Designer.cs">
+    <Compile Include="secretaria\TelaCadastrarSecretaria.Designer.cs">
       <DependentUpon>TelaCadastrarSecretaria.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaCadastroConvenio.cs">
+    <Compile Include="convenio\TelaCadastroConvenio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastroConvenio.Designer.cs">
+    <Compile Include="convenio\TelaCadastroConvenio.Designer.cs">
       <DependentUpon>TelaCadastroConvenio.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaCadastroMedico.cs">
+    <Compile Include="medico\TelaCadastroMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastroMedico.Designer.cs">
+    <Compile Include="medico\TelaCadastroMedico.Designer.cs">
       <DependentUpon>TelaCadastroMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TelaCadastroPaciente.cs">
+    <Compile Include="paciente\TelaCadastroPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCadastroPaciente.Designer.cs">
+    <Compile Include="paciente\TelaCadastroPaciente.Designer.cs">
       <DependentUpon>TelaCadastroPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarConsulta.cs">
+    <Compile Include="consulta\TelaPesquisarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarConsulta.Designer.cs">
+    <Compile Include="consulta\TelaPesquisarConsulta.Designer.cs">
       <DependentUpon>TelaPesquisarConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarConvenio.cs">
+    <Compile Include="convenio\TelaPesquisarConvenio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarConvenio.Designer.cs">
+    <Compile Include="convenio\TelaPesquisarConvenio.Designer.cs">
       <DependentUpon>TelaPesquisarConvenio.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarEspecialidade.cs">
+    <Compile Include="especialidade\TelaPesquisarEspecialidade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarEspecialidade.Designer.cs">
+    <Compile Include="especialidade\TelaPesquisarEspecialidade.Designer.cs">
       <DependentUpon>TelaPesquisarEspecialidade.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarMedico.cs">
+    <Compile Include="medico\TelaPesquisarMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarMedico.Designer.cs">
+    <Compile Include="medico\TelaPesquisarMedico.Designer.cs">
       <DependentUpon>TelaPesquisarMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarPaciente.cs">
+    <Compile Include="paciente\TelaPesquisarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarPaciente.Designer.cs">
+    <Compile Include="paciente\TelaPesquisarPaciente.Designer.cs">
       <DependentUpon>TelaPesquisarPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPesquisarSecretaria.cs">
+    <Compile Include="secretaria\TelaPesquisarSecretaria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPesquisarSecretaria.Designer.cs">
+    <Compile Include="secretaria\TelaPesquisarSecretaria.Designer.cs">
       <DependentUpon>TelaPesquisarSecretaria.cs</DependentUpon>
     </Compile>
     <Compile Include="TelaPrincipal.cs">
@@ -160,19 +160,19 @@
     <Compile Include="TelaTesteConexaoSql.Designer.cs">
       <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TelaCadastrarConsulta.resx">
+    <EmbeddedResource Include="consulta\TelaCadastrarConsulta.resx">
       <DependentUpon>TelaCadastrarConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaCadastrarEspecialidade.resx">
+    <EmbeddedResource Include="especialidade\TelaCadastrarEspecialidade.resx">
       <DependentUpon>TelaCadastrarEspecialidade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaCadastrarSecretaria.resx">
+    <EmbeddedResource Include="secretaria\TelaCadastrarSecretaria.resx">
       <DependentUpon>TelaCadastrarSecretaria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaCadastroConvenio.resx">
+    <EmbeddedResource Include="convenio\TelaCadastroConvenio.resx">
       <DependentUpon>TelaCadastroConvenio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaCadastroMedico.resx">
+    <EmbeddedResource Include="medico\TelaCadastroMedico.resx">
       <DependentUpon>TelaCadastroMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -184,25 +184,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TelaCadastroPaciente.resx">
+    <EmbeddedResource Include="paciente\TelaCadastroPaciente.resx">
       <DependentUpon>TelaCadastroPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarConsulta.resx">
+    <EmbeddedResource Include="consulta\TelaPesquisarConsulta.resx">
       <DependentUpon>TelaPesquisarConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarConvenio.resx">
+    <EmbeddedResource Include="convenio\TelaPesquisarConvenio.resx">
       <DependentUpon>TelaPesquisarConvenio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarEspecialidade.resx">
+    <EmbeddedResource Include="especialidade\TelaPesquisarEspecialidade.resx">
       <DependentUpon>TelaPesquisarEspecialidade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarMedico.resx">
+    <EmbeddedResource Include="medico\TelaPesquisarMedico.resx">
       <DependentUpon>TelaPesquisarMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarPaciente.resx">
+    <EmbeddedResource Include="paciente\TelaPesquisarPaciente.resx">
       <DependentUpon>TelaPesquisarPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPesquisarSecretaria.resx">
+    <EmbeddedResource Include="secretaria\TelaPesquisarSecretaria.resx">
       <DependentUpon>TelaPesquisarSecretaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">

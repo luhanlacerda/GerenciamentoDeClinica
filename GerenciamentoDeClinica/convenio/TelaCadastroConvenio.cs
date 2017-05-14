@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinicas
+namespace GerenciamentoDeClinica.convenio
 {
-    public partial class TelaCadastroMedico : Form
+    public partial class TelaCadastroConvenio : Form
     {
-        public TelaCadastroMedico()
+        public TelaCadastroConvenio()
         {
             InitializeComponent();
         }
 
-        private void TelaCadastroMedico_Load(object sender, EventArgs e)
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

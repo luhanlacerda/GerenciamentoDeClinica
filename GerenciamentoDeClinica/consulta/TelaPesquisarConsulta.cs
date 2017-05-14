@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.consulta
 {
-    public partial class TelaCadastrarConsulta : Form
+    public partial class TelaPesquisarConsulta : Form
     {
-        public TelaCadastrarConsulta()
+        public TelaPesquisarConsulta()
         {
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

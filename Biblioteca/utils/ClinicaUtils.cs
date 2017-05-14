@@ -9,6 +9,9 @@ namespace Biblioteca.utils
 {
     public class ClinicaUtils
     {
+        public static readonly string[] UF_LIST = { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" };
+        public const int CPF_SIZE = 10;
+
         #region Erros
         //Mensagens de erro
         private const string ERRO_INVALIDO = "%s inválido.";

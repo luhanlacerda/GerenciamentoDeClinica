@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.consulta
 {
-    public partial class TelaCadastrarSecretaria : Form
+    public partial class TelaCadastrarConsulta : Form
     {
-        public TelaCadastrarSecretaria()
+        public TelaCadastrarConsulta()
         {
             InitializeComponent();
         }
+
+
     }
 }

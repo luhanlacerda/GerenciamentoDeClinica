@@ -1,4 +1,11 @@
-﻿using GerenciamentoDeClinicas;
+﻿using GerenciamentoDeClinica.consulta;
+using GerenciamentoDeClinica.convenio;
+using GerenciamentoDeClinica.especialidade;
+using GerenciamentoDeClinica.medico;
+using GerenciamentoDeClinica.paciente;
+using GerenciamentoDeClinica.secretaria;
+using GerenciamentoDeClinicas;
+using GerenciamentoDeClinicas.medico;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

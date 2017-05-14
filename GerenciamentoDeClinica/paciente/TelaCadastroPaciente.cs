@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.paciente
 {
     public partial class TelaCadastroPaciente : Form
     {

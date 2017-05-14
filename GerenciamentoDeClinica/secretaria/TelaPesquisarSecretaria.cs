@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.secretaria
 {
-    public partial class TelaPesquisarPaciente : Form
+    public partial class TelaPesquisarSecretaria : Form
     {
-        public TelaPesquisarPaciente()
+        public TelaPesquisarSecretaria()
         {
             InitializeComponent();
         }
@@ -125,20 +125,96 @@ namespace GerenciamentoDeClinica
             comboUF.Enabled = false;
         }
 
-        private void btnRemover_Click(object sender, EventArgs e)
+        private void GroupBox_Enter(object sender, EventArgs e)
         {
-            enableRemover();
+
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
+        private void maskedCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
-            enableAtualizar();
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void txtRG_TextChanged(object sender, EventArgs e)
         {
-            enableEditar();
+
+        }
+
+        private void maskedCell_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void dateTimeDtNasc_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbSolteiro_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbCasado_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbViuvo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEndereco_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBairro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedCEP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtLogradouro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCidade_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+
+            enablePesquisar();
+
         }
 
         private void btnNovaBusca_Click(object sender, EventArgs e)
@@ -146,9 +222,19 @@ namespace GerenciamentoDeClinica
             enableNovaBusca();
         }
 
-        private void btnPesquisar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            enablePesquisar();
+            enableEditar();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            enableAtualizar();  
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            enableRemover();
         }
     }
 }

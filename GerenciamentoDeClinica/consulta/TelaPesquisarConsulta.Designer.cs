@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica
+﻿namespace GerenciamentoDeClinica.consulta
 {
     partial class TelaPesquisarConsulta
     {

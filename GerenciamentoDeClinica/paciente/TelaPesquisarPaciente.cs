@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.paciente
 {
-    public partial class TelaPesquisarMedico : Form
+    public partial class TelaPesquisarPaciente : Form
     {
-        public TelaPesquisarMedico()
+        public TelaPesquisarPaciente()
         {
             InitializeComponent();
         }
@@ -21,8 +21,8 @@ namespace GerenciamentoDeClinica
         {
             btnPesquisar.Enabled = false;
             btnNovaBusca.Enabled = true;
-            txtPesqNome.Enabled = false;
-            txtPesqCRM.Enabled = false;
+            txtNomePesq.Enabled = false;
+            maskedPesqCPF.Enabled = false;
             btnEditar.Enabled = true;
         }
 
@@ -30,27 +30,24 @@ namespace GerenciamentoDeClinica
         {
             btnNovaBusca.Enabled = false;
             btnPesquisar.Enabled = true;
-            txtPesqNome.Enabled = true;
-            txtPesqCRM.Enabled = true;
+            txtNomePesq.Enabled = true;
+            maskedPesqCPF.Enabled = true;
             btnEditar.Enabled = false;
             btnRemover.Enabled = false;
             btnAtualizar.Enabled = false;
 
             maskedCell.Enabled = false;
-            txtCRM.Enabled = false;
-            comboEspecialidade.Enabled = false;
             txtEmail.Enabled = false;
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 
@@ -60,8 +57,6 @@ namespace GerenciamentoDeClinica
             btnAtualizar.Enabled = true;
             btnRemover.Enabled = true;
 
-            txtCRM.Enabled = false;
-            comboEspecialidade.Enabled = false;
             txtNome.Enabled = false;
             maskedCPF.Enabled = false;
             txtRG.Enabled = false;
@@ -72,14 +67,13 @@ namespace GerenciamentoDeClinica
             rbCasado.Enabled = true;
             rbViuvo.Enabled = true;
 
-            txtEndereco.Enabled = true;
             txtBairro.Enabled = true;
             maskedCEP.Enabled = true;
             txtLogradouro.Enabled = true;
             txtComplemento.Enabled = true;
             txtNumero.Enabled = true;
             comboPais.Enabled = true;
-            comboCidade.Enabled = true;
+            txtCidade.Enabled = true;
             comboUF.Enabled = true;
         }
 
@@ -91,20 +85,17 @@ namespace GerenciamentoDeClinica
             btnNovaBusca.Enabled = true;
 
             maskedCell.Enabled = false;
-            txtCRM.Enabled = false;
-            comboEspecialidade.Enabled = false;
             txtEmail.Enabled = false;
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 
@@ -116,40 +107,28 @@ namespace GerenciamentoDeClinica
             btnNovaBusca.Enabled = true;
 
             maskedCell.Enabled = false;
-            txtCRM.Enabled = false;
-            comboEspecialidade.Enabled = false;
             txtEmail.Enabled = false;
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void btnRemover_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            enablePesquisar();
-        }
-
-        private void btnNovaBusca_Click(object sender, EventArgs e)
-        {
-            enableNovaBusca();
+            enableRemover();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
+
             enableAtualizar();
         }
 
@@ -158,9 +137,14 @@ namespace GerenciamentoDeClinica
             enableEditar();
         }
 
-        private void btnRemover_Click(object sender, EventArgs e)
+        private void btnNovaBusca_Click(object sender, EventArgs e)
         {
-            enableRemover();
+            enableNovaBusca();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            enablePesquisar();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace Biblioteca.conexaoBD
+namespace Biblioteca.utils
 {
     public class ConexaoSql
     {

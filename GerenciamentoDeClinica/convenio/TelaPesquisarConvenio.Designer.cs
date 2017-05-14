@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica
+﻿namespace GerenciamentoDeClinica.convenio
 {
     partial class TelaPesquisarConvenio
     {

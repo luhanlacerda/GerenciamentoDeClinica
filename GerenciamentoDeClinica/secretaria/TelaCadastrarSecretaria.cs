@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica
+namespace GerenciamentoDeClinica.secretaria
 {
-    public partial class TelaPesquisarEspecialidade : Form
+    public partial class TelaCadastrarSecretaria : Form
     {
-        public TelaPesquisarEspecialidade()
+        public TelaCadastrarSecretaria()
         {
             InitializeComponent();
         }
