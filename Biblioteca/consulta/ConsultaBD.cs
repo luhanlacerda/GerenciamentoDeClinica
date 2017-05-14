@@ -11,6 +11,7 @@ namespace Biblioteca.consulta
 {
     public class ConsultaBD : ConexaoSql, IConsulta
     {
+        
 
         public void Cadastrar(Consulta consulta)
         {

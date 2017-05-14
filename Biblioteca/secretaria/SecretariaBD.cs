@@ -18,8 +18,10 @@ namespace Biblioteca.secretaria
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Secretaria (ID_Secretaria, CPF, RG, Nome, Endereco, Email, Celular, Estado_Civil)" +
-                    " VALUES (@ID_Secretaria, @CPF, @RG, @Nome, @Endereco, @Email, @Celular, @Estado_Civil);";
+                string sql = "INSERT INTO Secretaria (ID_Secretaria, CPF, RG, Nome, Endereco, Email," + 
+                    "Celular, Estado_Civil)" +
+                    "VALUES (@ID_Secretaria, @CPF, @RG, @Nome, @Endereco, @Email, @Celular," + 
+                    "@Estado_Civil);";
 
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
