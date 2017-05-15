@@ -1,4 +1,5 @@
-﻿using Biblioteca.utils;
+﻿
+using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.paciente
+namespace Biblioteca.medico
 {
     public class MedicoBD : ConexaoSql, IMedico
     {
@@ -18,10 +19,10 @@ namespace Biblioteca.paciente
                 //Abrindo conexão
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Medico (ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Celular, " +
-                    "Estado_Civil, ID_Especialidade" +
-                    " VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento, @Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Celular, " +
-                    "@Estado_Civil, @ID_Especialidade);";
+                string sql = "INSERT INTO Medico (ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero," +
+                    "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, ID_Especialidade)" +
+                    " VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento,"+
+                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @ID_Especialidade);";
 
                 //Instrução a ser excecutada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
@@ -70,8 +71,8 @@ namespace Biblioteca.paciente
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = medico.Email;
 
-                cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
-                cmd.Parameters["@Celular"].Value = medico.Contato;
+                cmd.Parameters.Add("@Contato", SqlDbType.VarChar);
+                cmd.Parameters["@Contato"].Value = medico.Contato;
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;

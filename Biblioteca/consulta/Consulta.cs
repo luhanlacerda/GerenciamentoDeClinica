@@ -1,4 +1,4 @@
-﻿using Biblioteca.paciente;
+﻿using Biblioteca.medico;
 using Biblioteca.secretaria;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿using Biblioteca.classesBasicas;
 using Biblioteca.convenio;
-using Biblioteca.paciente;
+using Biblioteca.medico;
 using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace GerenciamentoDeClinica.paciente
             try
             {
                 Paciente paciente = new Paciente();
-               
+
                 paciente.ID_Paciente = Convert.ToInt32(textBox1.Text);
                 paciente.Convenio = new Convenio { ID_Convenio = 1 };
 
@@ -70,6 +70,7 @@ namespace GerenciamentoDeClinica.paciente
             {
                 MessageBox.Show(this, ex.Message);
             }
+            
         }
 
         private void clearAll(params Control[] controls)

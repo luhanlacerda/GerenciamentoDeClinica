@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.paciente
+namespace Biblioteca.medico
 {
     public class NegocioMedico : IMedico
     {
-        //ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Celular, Estado_Civil, ID_Especialidade
+        //ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, 
+        //Bairro, CEP, Cidade, UF, Pais, Email, Celular, Estado_Civil, ID_Especialidade
         #region Erros
         private const string ERRO_NUMERO = "Número inválido.";
         private const string ERRO_CPF = "CPF inválido.";
@@ -47,7 +48,7 @@ namespace Biblioteca.paciente
                 ClinicaUtils.ValidarCodigo(medico.ID_Medico);
 
                 ClinicaUtils.ValidarVazio(medico.Nome.Trim(), ClinicaUtils.ERRO_NOME);
-                ClinicaUtils.ValidarExceder(medico.Nome.Trim(), 200, ClinicaUtils.ERRO_NOME);
+                ClinicaUtils.ValidarExceder(medico.Nome.Trim(), 100, ClinicaUtils.ERRO_NOME);
 
                 //Se for vazia não vai possuir 14 caracteres, sendo assim não necessário a validação de vazio
                 ClinicaUtils.ValidarTamanho(medico.CPF, 14, ClinicaUtils.ERRO_CPF);
@@ -73,14 +74,16 @@ namespace Biblioteca.paciente
                 ClinicaUtils.ValidarVazio(medico.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
                 ClinicaUtils.ValidarExceder(medico.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
 
-                ClinicaUtils.ValidarTamanho(medico.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
 
+                ClinicaUtils.ValidarTamanho(medico.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
+                   
                 ClinicaUtils.ValidarTamanho(medico.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
 
                 ClinicaUtils.ValidarVazio(medico.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
                 ClinicaUtils.ValidarExceder(medico.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
 
-                ClinicaUtils.ValidarEmail(medico.Email.Trim());
+                ClinicaUtils.ValidarVazio(medico.Email.Trim(), ClinicaUtils.ERRO_EMAIL);
+                ClinicaUtils.ValidarExceder(medico.Email.Trim(), 30, ClinicaUtils.ERRO_EMAIL);
 
                 ClinicaUtils.ValidarVazio(medico.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
                 ClinicaUtils.ValidarExceder(medico.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);

@@ -41,6 +41,13 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSolteiro = new System.Windows.Forms.RadioButton();
+            this.rbCasado = new System.Windows.Forms.RadioButton();
+            this.rbViuvo = new System.Windows.Forms.RadioButton();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -57,18 +64,11 @@
             this.lblCEP = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
-            this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.rbCasado = new System.Windows.Forms.RadioButton();
-            this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPais = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -146,7 +146,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(386, 328);
+            this.btnCadastrar.Location = new System.Drawing.Point(383, 318);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 17;
@@ -200,14 +200,80 @@
             this.GroupBox.Controls.Add(this.lblEmail);
             this.GroupBox.Location = new System.Drawing.Point(3, 0);
             this.GroupBox.Name = "GroupBox";
-            this.GroupBox.Size = new System.Drawing.Size(470, 368);
+            this.GroupBox.Size = new System.Drawing.Size(470, 349);
             this.GroupBox.TabIndex = 43;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(192, 17);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(75, 20);
+            this.textBox2.TabIndex = 80;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(101, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(192, 318);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.TabIndex = 16;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbSolteiro);
+            this.groupBox1.Controls.Add(this.rbCasado);
+            this.groupBox1.Controls.Add(this.rbViuvo);
+            this.groupBox1.Location = new System.Drawing.Point(11, 162);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 48);
+            this.groupBox1.TabIndex = 79;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estado Civil";
+            // 
+            // rbSolteiro
+            // 
+            this.rbSolteiro.AutoSize = true;
+            this.rbSolteiro.Location = new System.Drawing.Point(6, 19);
+            this.rbSolteiro.Name = "rbSolteiro";
+            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
+            this.rbSolteiro.TabIndex = 6;
+            this.rbSolteiro.TabStop = true;
+            this.rbSolteiro.Text = "Solteiro(a)";
+            this.rbSolteiro.UseVisualStyleBackColor = true;
+            // 
+            // rbCasado
+            // 
+            this.rbCasado.AutoSize = true;
+            this.rbCasado.Location = new System.Drawing.Point(129, 19);
+            this.rbCasado.Name = "rbCasado";
+            this.rbCasado.Size = new System.Drawing.Size(73, 17);
+            this.rbCasado.TabIndex = 7;
+            this.rbCasado.TabStop = true;
+            this.rbCasado.Text = "Casado(a)";
+            this.rbCasado.UseVisualStyleBackColor = true;
+            // 
+            // rbViuvo
+            // 
+            this.rbViuvo.AutoSize = true;
+            this.rbViuvo.Location = new System.Drawing.Point(254, 19);
+            this.rbViuvo.Name = "rbViuvo";
+            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
+            this.rbViuvo.TabIndex = 8;
+            this.rbViuvo.TabStop = true;
+            this.rbViuvo.Text = "Viúvo(a)";
+            this.rbViuvo.UseVisualStyleBackColor = true;
+            // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(9, 331);
+            this.txtCidade.Location = new System.Drawing.Point(9, 317);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 14;
@@ -215,21 +281,21 @@
             // comboUF
             // 
             this.comboUF.FormattingEnabled = true;
-            this.comboUF.Location = new System.Drawing.Point(140, 331);
+            this.comboUF.Location = new System.Drawing.Point(140, 317);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
             this.comboUF.TabIndex = 15;
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(101, 282);
+            this.txtNumero.Location = new System.Drawing.Point(101, 274);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 12;
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(9, 282);
+            this.txtComplemento.Location = new System.Drawing.Point(9, 274);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 11;
@@ -253,7 +319,7 @@
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(196, 315);
+            this.lblPais.Location = new System.Drawing.Point(196, 301);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(32, 13);
             this.lblPais.TabIndex = 78;
@@ -262,7 +328,7 @@
             // lblUF
             // 
             this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(137, 315);
+            this.lblUF.Location = new System.Drawing.Point(137, 301);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(24, 13);
             this.lblUF.TabIndex = 77;
@@ -271,7 +337,7 @@
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(7, 315);
+            this.lblCidade.Location = new System.Drawing.Point(7, 301);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 76;
@@ -280,7 +346,7 @@
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(189, 263);
+            this.lblBairro.Location = new System.Drawing.Point(189, 255);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(37, 13);
             this.lblBairro.TabIndex = 75;
@@ -289,7 +355,7 @@
             // lblComplemento
             // 
             this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(6, 263);
+            this.lblComplemento.Location = new System.Drawing.Point(6, 255);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(74, 13);
             this.lblComplemento.TabIndex = 74;
@@ -298,7 +364,7 @@
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(98, 263);
+            this.lblNumero.Location = new System.Drawing.Point(98, 255);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(47, 13);
             this.lblNumero.TabIndex = 73;
@@ -324,7 +390,7 @@
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(192, 282);
+            this.txtBairro.Location = new System.Drawing.Point(192, 274);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 13;
@@ -336,39 +402,6 @@
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
             this.dateTimeDtNasc.TabIndex = 4;
-            // 
-            // rbViuvo
-            // 
-            this.rbViuvo.AutoSize = true;
-            this.rbViuvo.Location = new System.Drawing.Point(254, 19);
-            this.rbViuvo.Name = "rbViuvo";
-            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
-            this.rbViuvo.TabIndex = 8;
-            this.rbViuvo.TabStop = true;
-            this.rbViuvo.Text = "Viúvo(a)";
-            this.rbViuvo.UseVisualStyleBackColor = true;
-            // 
-            // rbCasado
-            // 
-            this.rbCasado.AutoSize = true;
-            this.rbCasado.Location = new System.Drawing.Point(129, 19);
-            this.rbCasado.Name = "rbCasado";
-            this.rbCasado.Size = new System.Drawing.Size(73, 17);
-            this.rbCasado.TabIndex = 7;
-            this.rbCasado.TabStop = true;
-            this.rbCasado.Text = "Casado(a)";
-            this.rbCasado.UseVisualStyleBackColor = true;
-            // 
-            // rbSolteiro
-            // 
-            this.rbSolteiro.AutoSize = true;
-            this.rbSolteiro.Location = new System.Drawing.Point(6, 19);
-            this.rbSolteiro.Name = "rbSolteiro";
-            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
-            this.rbSolteiro.TabIndex = 6;
-            this.rbSolteiro.TabStop = true;
-            this.rbSolteiro.Text = "Solteiro(a)";
-            this.rbSolteiro.UseVisualStyleBackColor = true;
             // 
             // pictureUser
             // 
@@ -389,44 +422,11 @@
             this.lblDataNascimento.TabIndex = 53;
             this.lblDataNascimento.Text = "Data de Nascimento:";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbSolteiro);
-            this.groupBox1.Controls.Add(this.rbCasado);
-            this.groupBox1.Controls.Add(this.rbViuvo);
-            this.groupBox1.Location = new System.Drawing.Point(11, 162);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(324, 48);
-            this.groupBox1.TabIndex = 79;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estado Civil";
-            // 
-            // txtPais
-            // 
-            this.txtPais.Location = new System.Drawing.Point(192, 332);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(143, 20);
-            this.txtPais.TabIndex = 16;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(101, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 18;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(192, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(75, 20);
-            this.textBox2.TabIndex = 80;
-            // 
             // TelaCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 371);
+            this.ClientSize = new System.Drawing.Size(476, 352);
             this.Controls.Add(this.GroupBox);
             this.Name = "TelaCadastroPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -434,9 +434,9 @@
             this.Load += new System.EventHandler(this.TelaCadastroPaciente_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.ResumeLayout(false);
 
         }
