@@ -20,9 +20,11 @@ namespace Biblioteca.medico
                 this.abrirConexao();
 
                 string sql = "INSERT INTO Medico (ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero," +
-                    "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, ID_Especialidade)" +
+                    "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento," +
+                    "ID_Especialidade)" +
                     " VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento,"+
-                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @ID_Especialidade);";
+                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento," + 
+                    "@ID_Especialidade);";
 
                 //Instrução a ser excecutada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
@@ -76,6 +78,9 @@ namespace Biblioteca.medico
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;
+
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.Date);
+                cmd.Parameters["@Dt_Nascimento"].Value = medico.Dt_Nascimento;
 
                 cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
                 cmd.Parameters["@ID_Especialidade"].Value = medico.Especialidade.ID_Especialidade;
