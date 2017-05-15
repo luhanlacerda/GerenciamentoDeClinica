@@ -20,16 +20,19 @@ namespace Biblioteca.paciente
                 //Abrir Conexao
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Paciente (Nome, CPF, Contato, CEP, RG, Email, Logradouro," +
-                    "Numero, Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil," +
+                string sql = "INSERT INTO Paciente (ID_Paciente, Nome, CPF, Contato, CEP, RG, Email," +
+                    "Logradouro,Numero, Complemento, Bairro, Cidade, UF, Pais, Estado_Civil," +
                     "Dt_Nascimento, ID_Convenio)" +
-                    "VALUES (@Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
-                    "@Numero, @Complemento, @Bairro, @Cidade, @UF, @Pais, @ID_Paciente, @Estado_Civil," +
+                    "VALUES (@ID_Paciente, @Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
+                    "@Numero, @Complemento, @Bairro, @Cidade, @UF, @Pais, @Estado_Civil," +
                     "@Dt_Nascimento, @ID_Convenio)";
 
                 SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
                 #region Parâmetros
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
+
                 scm.Parameters.Add("@Nome", SqlDbType.VarChar);
                 scm.Parameters["@Nome"].Value = paciente.Nome;
 
@@ -37,7 +40,7 @@ namespace Biblioteca.paciente
                 scm.Parameters["@CPF"].Value = paciente.CPF;
 
                 scm.Parameters.Add("@Contato", SqlDbType.VarChar);
-                scm.Parameters["@Contato"].Value = paciente.Nome;
+                scm.Parameters["@Contato"].Value = paciente.Contato;
 
                 scm.Parameters.Add("@CEP", SqlDbType.Char);
                 scm.Parameters["@CEP"].Value = paciente.Endereco.CEP;
@@ -68,9 +71,6 @@ namespace Biblioteca.paciente
 
                 scm.Parameters.Add("@Pais", SqlDbType.VarChar);
                 scm.Parameters["@Pais"].Value = paciente.Endereco.Pais;
-
-                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
 
                 scm.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 scm.Parameters["@Estado_Civil"].Value = paciente.Estado_Civil;

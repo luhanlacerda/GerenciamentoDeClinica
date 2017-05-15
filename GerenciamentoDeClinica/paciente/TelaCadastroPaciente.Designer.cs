@@ -36,13 +36,11 @@
             this.txtRG = new System.Windows.Forms.TextBox();
             this.maskedCell = new System.Windows.Forms.MaskedTextBox();
             this.lblCPF = new System.Windows.Forms.Label();
-            this.lblEstadoCivil = new System.Windows.Forms.Label();
             this.lblRG = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -64,8 +62,13 @@
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -111,7 +114,7 @@
             // maskedCell
             // 
             this.maskedCell.Location = new System.Drawing.Point(246, 83);
-            this.maskedCell.Mask = "(##) #.####-####";
+            this.maskedCell.Mask = "(##)#####-####";
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
             this.maskedCell.TabIndex = 3;
@@ -124,15 +127,6 @@
             this.lblCPF.Size = new System.Drawing.Size(30, 13);
             this.lblCPF.TabIndex = 21;
             this.lblCPF.Text = "CPF:";
-            // 
-            // lblEstadoCivil
-            // 
-            this.lblEstadoCivil.AutoSize = true;
-            this.lblEstadoCivil.Location = new System.Drawing.Point(8, 169);
-            this.lblEstadoCivil.Name = "lblEstadoCivil";
-            this.lblEstadoCivil.Size = new System.Drawing.Size(65, 13);
-            this.lblEstadoCivil.TabIndex = 42;
-            this.lblEstadoCivil.Text = "Estado Civil:";
             // 
             // lblRG
             // 
@@ -152,7 +146,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(358, 328);
+            this.btnCadastrar.Location = new System.Drawing.Point(386, 328);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 17;
@@ -171,7 +165,10 @@
             // 
             // GroupBox
             // 
-            this.GroupBox.Controls.Add(this.comboPais);
+            this.GroupBox.Controls.Add(this.textBox2);
+            this.GroupBox.Controls.Add(this.textBox1);
+            this.GroupBox.Controls.Add(this.txtPais);
+            this.GroupBox.Controls.Add(this.groupBox1);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -188,16 +185,12 @@
             this.GroupBox.Controls.Add(this.lblCEP);
             this.GroupBox.Controls.Add(this.txtBairro);
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
-            this.GroupBox.Controls.Add(this.rbViuvo);
-            this.GroupBox.Controls.Add(this.rbCasado);
-            this.GroupBox.Controls.Add(this.rbSolteiro);
             this.GroupBox.Controls.Add(this.pictureUser);
             this.GroupBox.Controls.Add(this.lblDataNascimento);
             this.GroupBox.Controls.Add(this.lblNome);
             this.GroupBox.Controls.Add(this.btnCadastrar);
             this.GroupBox.Controls.Add(this.txtNome);
             this.GroupBox.Controls.Add(this.lblRG);
-            this.GroupBox.Controls.Add(this.lblEstadoCivil);
             this.GroupBox.Controls.Add(this.lblCPF);
             this.GroupBox.Controls.Add(this.maskedCell);
             this.GroupBox.Controls.Add(this.txtRG);
@@ -211,15 +204,6 @@
             this.GroupBox.TabIndex = 43;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
-            this.GroupBox.Enter += new System.EventHandler(this.GroupBox_Enter);
-            // 
-            // comboPais
-            // 
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(198, 331);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 16;
             // 
             // txtCidade
             // 
@@ -264,7 +248,6 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 9;
-            this.maskedCEP.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedCEP_MaskInputRejected);
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
@@ -357,7 +340,7 @@
             // rbViuvo
             // 
             this.rbViuvo.AutoSize = true;
-            this.rbViuvo.Location = new System.Drawing.Point(173, 185);
+            this.rbViuvo.Location = new System.Drawing.Point(254, 19);
             this.rbViuvo.Name = "rbViuvo";
             this.rbViuvo.Size = new System.Drawing.Size(64, 17);
             this.rbViuvo.TabIndex = 8;
@@ -368,7 +351,7 @@
             // rbCasado
             // 
             this.rbCasado.AutoSize = true;
-            this.rbCasado.Location = new System.Drawing.Point(89, 185);
+            this.rbCasado.Location = new System.Drawing.Point(129, 19);
             this.rbCasado.Name = "rbCasado";
             this.rbCasado.Size = new System.Drawing.Size(73, 17);
             this.rbCasado.TabIndex = 7;
@@ -379,7 +362,7 @@
             // rbSolteiro
             // 
             this.rbSolteiro.AutoSize = true;
-            this.rbSolteiro.Location = new System.Drawing.Point(9, 185);
+            this.rbSolteiro.Location = new System.Drawing.Point(6, 19);
             this.rbSolteiro.Name = "rbSolteiro";
             this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
             this.rbSolteiro.TabIndex = 6;
@@ -406,6 +389,39 @@
             this.lblDataNascimento.TabIndex = 53;
             this.lblDataNascimento.Text = "Data de Nascimento:";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbSolteiro);
+            this.groupBox1.Controls.Add(this.rbCasado);
+            this.groupBox1.Controls.Add(this.rbViuvo);
+            this.groupBox1.Location = new System.Drawing.Point(11, 162);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 48);
+            this.groupBox1.TabIndex = 79;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estado Civil";
+            // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(192, 332);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.TabIndex = 16;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(101, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(192, 17);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(75, 20);
+            this.textBox2.TabIndex = 80;
+            // 
             // TelaCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,6 +435,8 @@
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -431,7 +449,6 @@
         private System.Windows.Forms.TextBox txtRG;
         private System.Windows.Forms.MaskedTextBox maskedCell;
         private System.Windows.Forms.Label lblCPF;
-        private System.Windows.Forms.Label lblEstadoCivil;
         private System.Windows.Forms.Label lblRG;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnCadastrar;
@@ -443,7 +460,6 @@
         private System.Windows.Forms.RadioButton rbViuvo;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -459,5 +475,9 @@
         private System.Windows.Forms.Label lblLogradouro;
         private System.Windows.Forms.Label lblCEP;
         private System.Windows.Forms.TextBox txtBairro;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
