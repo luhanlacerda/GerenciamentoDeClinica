@@ -30,6 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastrarSecretaria));
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.comboPais = new System.Windows.Forms.ComboBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.comboUF = new System.Windows.Forms.ComboBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.maskedCEP = new System.Windows.Forms.MaskedTextBox();
+            this.lblPais = new System.Windows.Forms.Label();
+            this.lblUF = new System.Windows.Forms.Label();
+            this.lblCidade = new System.Windows.Forms.Label();
+            this.lblBairro = new System.Windows.Forms.Label();
+            this.lblComplemento = new System.Windows.Forms.Label();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.lblLogradouro = new System.Windows.Forms.Label();
+            this.lblCEP = new System.Windows.Forms.Label();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.rbViuvo = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
@@ -48,22 +64,6 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.comboPais = new System.Windows.Forms.ComboBox();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.comboUF = new System.Windows.Forms.ComboBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.txtComplemento = new System.Windows.Forms.TextBox();
-            this.txtLogradouro = new System.Windows.Forms.TextBox();
-            this.maskedCEP = new System.Windows.Forms.MaskedTextBox();
-            this.lblPais = new System.Windows.Forms.Label();
-            this.lblUF = new System.Windows.Forms.Label();
-            this.lblCidade = new System.Windows.Forms.Label();
-            this.lblBairro = new System.Windows.Forms.Label();
-            this.lblComplemento = new System.Windows.Forms.Label();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.lblLogradouro = new System.Windows.Forms.Label();
-            this.lblCEP = new System.Windows.Forms.Label();
-            this.txtBairro = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.SuspendLayout();
@@ -110,6 +110,137 @@
             this.GroupBox.TabIndex = 44;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
+            // 
+            // comboPais
+            // 
+            this.comboPais.FormattingEnabled = true;
+            this.comboPais.Location = new System.Drawing.Point(198, 326);
+            this.comboPais.Name = "comboPais";
+            this.comboPais.Size = new System.Drawing.Size(136, 21);
+            this.comboPais.TabIndex = 16;
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(9, 326);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(117, 20);
+            this.txtCidade.TabIndex = 14;
+            // 
+            // comboUF
+            // 
+            this.comboUF.FormattingEnabled = true;
+            this.comboUF.Location = new System.Drawing.Point(140, 326);
+            this.comboUF.Name = "comboUF";
+            this.comboUF.Size = new System.Drawing.Size(47, 21);
+            this.comboUF.TabIndex = 15;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(101, 277);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(69, 20);
+            this.txtNumero.TabIndex = 12;
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.Location = new System.Drawing.Point(9, 277);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(71, 20);
+            this.txtComplemento.TabIndex = 11;
+            // 
+            // txtLogradouro
+            // 
+            this.txtLogradouro.Location = new System.Drawing.Point(99, 224);
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
+            this.txtLogradouro.TabIndex = 10;
+            // 
+            // maskedCEP
+            // 
+            this.maskedCEP.Location = new System.Drawing.Point(9, 224);
+            this.maskedCEP.Mask = "#####-###";
+            this.maskedCEP.Name = "maskedCEP";
+            this.maskedCEP.Size = new System.Drawing.Size(74, 20);
+            this.maskedCEP.TabIndex = 9;
+            // 
+            // lblPais
+            // 
+            this.lblPais.AutoSize = true;
+            this.lblPais.Location = new System.Drawing.Point(196, 310);
+            this.lblPais.Name = "lblPais";
+            this.lblPais.Size = new System.Drawing.Size(32, 13);
+            this.lblPais.TabIndex = 94;
+            this.lblPais.Text = "País:";
+            // 
+            // lblUF
+            // 
+            this.lblUF.AutoSize = true;
+            this.lblUF.Location = new System.Drawing.Point(137, 310);
+            this.lblUF.Name = "lblUF";
+            this.lblUF.Size = new System.Drawing.Size(24, 13);
+            this.lblUF.TabIndex = 93;
+            this.lblUF.Text = "UF:";
+            // 
+            // lblCidade
+            // 
+            this.lblCidade.AutoSize = true;
+            this.lblCidade.Location = new System.Drawing.Point(7, 310);
+            this.lblCidade.Name = "lblCidade";
+            this.lblCidade.Size = new System.Drawing.Size(43, 13);
+            this.lblCidade.TabIndex = 92;
+            this.lblCidade.Text = "Cidade:";
+            // 
+            // lblBairro
+            // 
+            this.lblBairro.AutoSize = true;
+            this.lblBairro.Location = new System.Drawing.Point(189, 258);
+            this.lblBairro.Name = "lblBairro";
+            this.lblBairro.Size = new System.Drawing.Size(37, 13);
+            this.lblBairro.TabIndex = 91;
+            this.lblBairro.Text = "Bairro:";
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Location = new System.Drawing.Point(6, 258);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(74, 13);
+            this.lblComplemento.TabIndex = 90;
+            this.lblComplemento.Text = "Complemento:";
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Location = new System.Drawing.Point(98, 258);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(47, 13);
+            this.lblNumero.TabIndex = 89;
+            this.lblNumero.Text = "Número:";
+            // 
+            // lblLogradouro
+            // 
+            this.lblLogradouro.AutoSize = true;
+            this.lblLogradouro.Location = new System.Drawing.Point(98, 208);
+            this.lblLogradouro.Name = "lblLogradouro";
+            this.lblLogradouro.Size = new System.Drawing.Size(64, 13);
+            this.lblLogradouro.TabIndex = 88;
+            this.lblLogradouro.Text = "Logradouro:";
+            // 
+            // lblCEP
+            // 
+            this.lblCEP.AutoSize = true;
+            this.lblCEP.Location = new System.Drawing.Point(6, 208);
+            this.lblCEP.Name = "lblCEP";
+            this.lblCEP.Size = new System.Drawing.Size(31, 13);
+            this.lblCEP.TabIndex = 87;
+            this.lblCEP.Text = "CEP;";
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.Location = new System.Drawing.Point(192, 277);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(143, 20);
+            this.txtBairro.TabIndex = 13;
             // 
             // rbViuvo
             // 
@@ -271,137 +402,6 @@
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
             // 
-            // comboPais
-            // 
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(198, 326);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 16;
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.Location = new System.Drawing.Point(9, 326);
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 14;
-            // 
-            // comboUF
-            // 
-            this.comboUF.FormattingEnabled = true;
-            this.comboUF.Location = new System.Drawing.Point(140, 326);
-            this.comboUF.Name = "comboUF";
-            this.comboUF.Size = new System.Drawing.Size(47, 21);
-            this.comboUF.TabIndex = 15;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(101, 277);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 12;
-            // 
-            // txtComplemento
-            // 
-            this.txtComplemento.Location = new System.Drawing.Point(9, 277);
-            this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 11;
-            // 
-            // txtLogradouro
-            // 
-            this.txtLogradouro.Location = new System.Drawing.Point(99, 224);
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
-            this.txtLogradouro.TabIndex = 10;
-            // 
-            // maskedCEP
-            // 
-            this.maskedCEP.Location = new System.Drawing.Point(9, 224);
-            this.maskedCEP.Mask = "#####-###";
-            this.maskedCEP.Name = "maskedCEP";
-            this.maskedCEP.Size = new System.Drawing.Size(74, 20);
-            this.maskedCEP.TabIndex = 9;
-            // 
-            // lblPais
-            // 
-            this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(196, 310);
-            this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(32, 13);
-            this.lblPais.TabIndex = 94;
-            this.lblPais.Text = "País:";
-            // 
-            // lblUF
-            // 
-            this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(137, 310);
-            this.lblUF.Name = "lblUF";
-            this.lblUF.Size = new System.Drawing.Size(24, 13);
-            this.lblUF.TabIndex = 93;
-            this.lblUF.Text = "UF:";
-            // 
-            // lblCidade
-            // 
-            this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(7, 310);
-            this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(43, 13);
-            this.lblCidade.TabIndex = 92;
-            this.lblCidade.Text = "Cidade:";
-            // 
-            // lblBairro
-            // 
-            this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(189, 258);
-            this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(37, 13);
-            this.lblBairro.TabIndex = 91;
-            this.lblBairro.Text = "Bairro:";
-            // 
-            // lblComplemento
-            // 
-            this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(6, 258);
-            this.lblComplemento.Name = "lblComplemento";
-            this.lblComplemento.Size = new System.Drawing.Size(74, 13);
-            this.lblComplemento.TabIndex = 90;
-            this.lblComplemento.Text = "Complemento:";
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(98, 258);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(47, 13);
-            this.lblNumero.TabIndex = 89;
-            this.lblNumero.Text = "Número:";
-            // 
-            // lblLogradouro
-            // 
-            this.lblLogradouro.AutoSize = true;
-            this.lblLogradouro.Location = new System.Drawing.Point(98, 208);
-            this.lblLogradouro.Name = "lblLogradouro";
-            this.lblLogradouro.Size = new System.Drawing.Size(64, 13);
-            this.lblLogradouro.TabIndex = 88;
-            this.lblLogradouro.Text = "Logradouro:";
-            // 
-            // lblCEP
-            // 
-            this.lblCEP.AutoSize = true;
-            this.lblCEP.Location = new System.Drawing.Point(6, 208);
-            this.lblCEP.Name = "lblCEP";
-            this.lblCEP.Size = new System.Drawing.Size(31, 13);
-            this.lblCEP.TabIndex = 87;
-            this.lblCEP.Text = "CEP;";
-            // 
-            // txtBairro
-            // 
-            this.txtBairro.Location = new System.Drawing.Point(192, 277);
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(143, 20);
-            this.txtBairro.TabIndex = 13;
-            // 
             // TelaCadastrarSecretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +411,7 @@
             this.Name = "TelaCadastrarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.Load += new System.EventHandler(this.TelaCadastrarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();

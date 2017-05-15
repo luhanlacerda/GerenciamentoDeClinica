@@ -76,6 +76,7 @@ namespace Biblioteca.utils
         {
             if (!ClinicaUtils.EMAIL_VALIDATION.IsValid(email))
                 throw new Exception(string.Format(ERRO_INVALIDO, ClinicaUtils.ERRO_EMAIL));
+
         }
     }
 }

@@ -39,5 +39,11 @@ namespace GerenciamentoDeClinicas.medico
                 }
             }
         }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+         
+
+        }
     }
 }

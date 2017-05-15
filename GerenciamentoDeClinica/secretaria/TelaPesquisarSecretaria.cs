@@ -41,14 +41,13 @@ namespace GerenciamentoDeClinica.secretaria
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 
@@ -68,14 +67,13 @@ namespace GerenciamentoDeClinica.secretaria
             rbCasado.Enabled = true;
             rbViuvo.Enabled = true;
 
-            txtEndereco.Enabled = true;
             txtBairro.Enabled = true;
             maskedCEP.Enabled = true;
             txtLogradouro.Enabled = true;
             txtComplemento.Enabled = true;
             txtNumero.Enabled = true;
             comboPais.Enabled = true;
-            comboCidade.Enabled = true;
+            txtCidade.Enabled = true;
             comboUF.Enabled = true;
         }
 
@@ -91,14 +89,13 @@ namespace GerenciamentoDeClinica.secretaria
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 
@@ -114,14 +111,13 @@ namespace GerenciamentoDeClinica.secretaria
             rbSolteiro.Enabled = false;
             rbCasado.Enabled = false;
             rbViuvo.Enabled = false;
-            txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             maskedCEP.Enabled = false;
             txtLogradouro.Enabled = false;
             txtComplemento.Enabled = false;
             txtNumero.Enabled = false;
             comboPais.Enabled = false;
-            comboCidade.Enabled = false;
+            txtCidade.Enabled = false;
             comboUF.Enabled = false;
         }
 

@@ -16,5 +16,10 @@ namespace GerenciamentoDeClinica.secretaria
         {
             InitializeComponent();
         }
+
+        private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -53,10 +53,6 @@
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.GroupBox = new System.Windows.Forms.GroupBox();
-            this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
-            this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.rbCasado = new System.Windows.Forms.RadioButton();
-            this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
@@ -73,6 +69,10 @@
             this.lblLogradouro = new System.Windows.Forms.Label();
             this.lblCEP = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
+            this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
+            this.rbViuvo = new System.Windows.Forms.RadioButton();
+            this.rbCasado = new System.Windows.Forms.RadioButton();
+            this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
@@ -339,53 +339,9 @@
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Editar Campos";
             // 
-            // dateTimeDtNasc
-            // 
-            this.dateTimeDtNasc.Enabled = false;
-            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
-            this.dateTimeDtNasc.Name = "dateTimeDtNasc";
-            this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
-            this.dateTimeDtNasc.TabIndex = 8;
-            // 
-            // rbViuvo
-            // 
-            this.rbViuvo.AutoSize = true;
-            this.rbViuvo.Enabled = false;
-            this.rbViuvo.Location = new System.Drawing.Point(154, 179);
-            this.rbViuvo.Name = "rbViuvo";
-            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
-            this.rbViuvo.TabIndex = 12;
-            this.rbViuvo.TabStop = true;
-            this.rbViuvo.Text = "Viúvo(a)";
-            this.rbViuvo.UseVisualStyleBackColor = true;
-            // 
-            // rbCasado
-            // 
-            this.rbCasado.AutoSize = true;
-            this.rbCasado.Enabled = false;
-            this.rbCasado.Location = new System.Drawing.Point(78, 179);
-            this.rbCasado.Name = "rbCasado";
-            this.rbCasado.Size = new System.Drawing.Size(73, 17);
-            this.rbCasado.TabIndex = 11;
-            this.rbCasado.TabStop = true;
-            this.rbCasado.Text = "Casado(a)";
-            this.rbCasado.UseVisualStyleBackColor = true;
-            // 
-            // rbSolteiro
-            // 
-            this.rbSolteiro.AutoSize = true;
-            this.rbSolteiro.Enabled = false;
-            this.rbSolteiro.Location = new System.Drawing.Point(9, 179);
-            this.rbSolteiro.Name = "rbSolteiro";
-            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
-            this.rbSolteiro.TabIndex = 10;
-            this.rbSolteiro.TabStop = true;
-            this.rbSolteiro.Text = "Solteiro(a)";
-            this.rbSolteiro.UseVisualStyleBackColor = true;
-            // 
             // comboPais
             // 
+            this.comboPais.Enabled = false;
             this.comboPais.FormattingEnabled = true;
             this.comboPais.Location = new System.Drawing.Point(198, 322);
             this.comboPais.Name = "comboPais";
@@ -394,6 +350,7 @@
             // 
             // txtCidade
             // 
+            this.txtCidade.Enabled = false;
             this.txtCidade.Location = new System.Drawing.Point(9, 322);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
@@ -401,6 +358,7 @@
             // 
             // comboUF
             // 
+            this.comboUF.Enabled = false;
             this.comboUF.FormattingEnabled = true;
             this.comboUF.Location = new System.Drawing.Point(140, 322);
             this.comboUF.Name = "comboUF";
@@ -409,6 +367,7 @@
             // 
             // txtNumero
             // 
+            this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(101, 273);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
@@ -416,6 +375,7 @@
             // 
             // txtComplemento
             // 
+            this.txtComplemento.Enabled = false;
             this.txtComplemento.Location = new System.Drawing.Point(9, 273);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
@@ -423,6 +383,7 @@
             // 
             // txtLogradouro
             // 
+            this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Location = new System.Drawing.Point(99, 220);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
@@ -430,6 +391,7 @@
             // 
             // maskedCEP
             // 
+            this.maskedCEP.Enabled = false;
             this.maskedCEP.Location = new System.Drawing.Point(9, 220);
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
@@ -510,10 +472,56 @@
             // 
             // txtBairro
             // 
+            this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(192, 273);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 17;
+            // 
+            // dateTimeDtNasc
+            // 
+            this.dateTimeDtNasc.Enabled = false;
+            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
+            this.dateTimeDtNasc.Name = "dateTimeDtNasc";
+            this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
+            this.dateTimeDtNasc.TabIndex = 8;
+            // 
+            // rbViuvo
+            // 
+            this.rbViuvo.AutoSize = true;
+            this.rbViuvo.Enabled = false;
+            this.rbViuvo.Location = new System.Drawing.Point(154, 179);
+            this.rbViuvo.Name = "rbViuvo";
+            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
+            this.rbViuvo.TabIndex = 12;
+            this.rbViuvo.TabStop = true;
+            this.rbViuvo.Text = "Viúvo(a)";
+            this.rbViuvo.UseVisualStyleBackColor = true;
+            // 
+            // rbCasado
+            // 
+            this.rbCasado.AutoSize = true;
+            this.rbCasado.Enabled = false;
+            this.rbCasado.Location = new System.Drawing.Point(78, 179);
+            this.rbCasado.Name = "rbCasado";
+            this.rbCasado.Size = new System.Drawing.Size(73, 17);
+            this.rbCasado.TabIndex = 11;
+            this.rbCasado.TabStop = true;
+            this.rbCasado.Text = "Casado(a)";
+            this.rbCasado.UseVisualStyleBackColor = true;
+            // 
+            // rbSolteiro
+            // 
+            this.rbSolteiro.AutoSize = true;
+            this.rbSolteiro.Enabled = false;
+            this.rbSolteiro.Location = new System.Drawing.Point(9, 179);
+            this.rbSolteiro.Name = "rbSolteiro";
+            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
+            this.rbSolteiro.TabIndex = 10;
+            this.rbSolteiro.TabStop = true;
+            this.rbSolteiro.Text = "Solteiro(a)";
+            this.rbSolteiro.UseVisualStyleBackColor = true;
             // 
             // TelaPesquisarPaciente
             // 

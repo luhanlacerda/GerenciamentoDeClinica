@@ -42,12 +42,6 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
-            this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
-            this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.rbCasado = new System.Windows.Forms.RadioButton();
-            this.rbSolteiro = new System.Windows.Forms.RadioButton();
-            this.pictureUser = new System.Windows.Forms.PictureBox();
-            this.lblDataNascimento = new System.Windows.Forms.Label();
             this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
@@ -64,6 +58,12 @@
             this.lblLogradouro = new System.Windows.Forms.Label();
             this.lblCEP = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
+            this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
+            this.rbViuvo = new System.Windows.Forms.RadioButton();
+            this.rbCasado = new System.Windows.Forms.RadioButton();
+            this.rbSolteiro = new System.Windows.Forms.RadioButton();
+            this.pictureUser = new System.Windows.Forms.PictureBox();
+            this.lblDataNascimento = new System.Windows.Forms.Label();
             this.GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.SuspendLayout();
@@ -213,66 +213,6 @@
             this.GroupBox.Text = "Cadastrar";
             this.GroupBox.Enter += new System.EventHandler(this.GroupBox_Enter);
             // 
-            // dateTimeDtNasc
-            // 
-            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
-            this.dateTimeDtNasc.Name = "dateTimeDtNasc";
-            this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
-            this.dateTimeDtNasc.TabIndex = 4;
-            // 
-            // rbViuvo
-            // 
-            this.rbViuvo.AutoSize = true;
-            this.rbViuvo.Location = new System.Drawing.Point(173, 185);
-            this.rbViuvo.Name = "rbViuvo";
-            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
-            this.rbViuvo.TabIndex = 8;
-            this.rbViuvo.TabStop = true;
-            this.rbViuvo.Text = "Viúvo(a)";
-            this.rbViuvo.UseVisualStyleBackColor = true;
-            // 
-            // rbCasado
-            // 
-            this.rbCasado.AutoSize = true;
-            this.rbCasado.Location = new System.Drawing.Point(89, 185);
-            this.rbCasado.Name = "rbCasado";
-            this.rbCasado.Size = new System.Drawing.Size(73, 17);
-            this.rbCasado.TabIndex = 7;
-            this.rbCasado.TabStop = true;
-            this.rbCasado.Text = "Casado(a)";
-            this.rbCasado.UseVisualStyleBackColor = true;
-            // 
-            // rbSolteiro
-            // 
-            this.rbSolteiro.AutoSize = true;
-            this.rbSolteiro.Location = new System.Drawing.Point(9, 185);
-            this.rbSolteiro.Name = "rbSolteiro";
-            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
-            this.rbSolteiro.TabIndex = 6;
-            this.rbSolteiro.TabStop = true;
-            this.rbSolteiro.Text = "Solteiro(a)";
-            this.rbSolteiro.UseVisualStyleBackColor = true;
-            // 
-            // pictureUser
-            // 
-            this.pictureUser.Image = ((System.Drawing.Image)(resources.GetObject("pictureUser.Image")));
-            this.pictureUser.Location = new System.Drawing.Point(358, 40);
-            this.pictureUser.Name = "pictureUser";
-            this.pictureUser.Size = new System.Drawing.Size(100, 116);
-            this.pictureUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureUser.TabIndex = 62;
-            this.pictureUser.TabStop = false;
-            // 
-            // lblDataNascimento
-            // 
-            this.lblDataNascimento.AutoSize = true;
-            this.lblDataNascimento.Location = new System.Drawing.Point(8, 120);
-            this.lblDataNascimento.Name = "lblDataNascimento";
-            this.lblDataNascimento.Size = new System.Drawing.Size(107, 13);
-            this.lblDataNascimento.TabIndex = 53;
-            this.lblDataNascimento.Text = "Data de Nascimento:";
-            // 
             // comboPais
             // 
             this.comboPais.FormattingEnabled = true;
@@ -324,6 +264,8 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 9;
+            this.maskedCEP.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedCEP_MaskInputRejected);
+            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -403,6 +345,66 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 13;
+            // 
+            // dateTimeDtNasc
+            // 
+            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
+            this.dateTimeDtNasc.Name = "dateTimeDtNasc";
+            this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
+            this.dateTimeDtNasc.TabIndex = 4;
+            // 
+            // rbViuvo
+            // 
+            this.rbViuvo.AutoSize = true;
+            this.rbViuvo.Location = new System.Drawing.Point(173, 185);
+            this.rbViuvo.Name = "rbViuvo";
+            this.rbViuvo.Size = new System.Drawing.Size(64, 17);
+            this.rbViuvo.TabIndex = 8;
+            this.rbViuvo.TabStop = true;
+            this.rbViuvo.Text = "Viúvo(a)";
+            this.rbViuvo.UseVisualStyleBackColor = true;
+            // 
+            // rbCasado
+            // 
+            this.rbCasado.AutoSize = true;
+            this.rbCasado.Location = new System.Drawing.Point(89, 185);
+            this.rbCasado.Name = "rbCasado";
+            this.rbCasado.Size = new System.Drawing.Size(73, 17);
+            this.rbCasado.TabIndex = 7;
+            this.rbCasado.TabStop = true;
+            this.rbCasado.Text = "Casado(a)";
+            this.rbCasado.UseVisualStyleBackColor = true;
+            // 
+            // rbSolteiro
+            // 
+            this.rbSolteiro.AutoSize = true;
+            this.rbSolteiro.Location = new System.Drawing.Point(9, 185);
+            this.rbSolteiro.Name = "rbSolteiro";
+            this.rbSolteiro.Size = new System.Drawing.Size(72, 17);
+            this.rbSolteiro.TabIndex = 6;
+            this.rbSolteiro.TabStop = true;
+            this.rbSolteiro.Text = "Solteiro(a)";
+            this.rbSolteiro.UseVisualStyleBackColor = true;
+            // 
+            // pictureUser
+            // 
+            this.pictureUser.Image = ((System.Drawing.Image)(resources.GetObject("pictureUser.Image")));
+            this.pictureUser.Location = new System.Drawing.Point(358, 40);
+            this.pictureUser.Name = "pictureUser";
+            this.pictureUser.Size = new System.Drawing.Size(100, 116);
+            this.pictureUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureUser.TabIndex = 62;
+            this.pictureUser.TabStop = false;
+            // 
+            // lblDataNascimento
+            // 
+            this.lblDataNascimento.AutoSize = true;
+            this.lblDataNascimento.Location = new System.Drawing.Point(8, 120);
+            this.lblDataNascimento.Name = "lblDataNascimento";
+            this.lblDataNascimento.Size = new System.Drawing.Size(107, 13);
+            this.lblDataNascimento.TabIndex = 53;
+            this.lblDataNascimento.Text = "Data de Nascimento:";
             // 
             // TelaCadastroPaciente
             // 
