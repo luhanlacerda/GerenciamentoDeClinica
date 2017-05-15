@@ -74,16 +74,14 @@ namespace Biblioteca.medico
                 ClinicaUtils.ValidarVazio(medico.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
                 ClinicaUtils.ValidarExceder(medico.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
 
-
                 ClinicaUtils.ValidarTamanho(medico.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
-                   
+
                 ClinicaUtils.ValidarTamanho(medico.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
 
                 ClinicaUtils.ValidarVazio(medico.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
                 ClinicaUtils.ValidarExceder(medico.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
 
-                ClinicaUtils.ValidarVazio(medico.Email.Trim(), ClinicaUtils.ERRO_EMAIL);
-                ClinicaUtils.ValidarExceder(medico.Email.Trim(), 30, ClinicaUtils.ERRO_EMAIL);
+                ClinicaUtils.ValidarEmail(medico.Email.Trim());
 
                 ClinicaUtils.ValidarVazio(medico.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
                 ClinicaUtils.ValidarExceder(medico.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);

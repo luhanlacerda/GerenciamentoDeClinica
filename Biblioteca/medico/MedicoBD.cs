@@ -79,7 +79,7 @@ namespace Biblioteca.medico
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;
 
-                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.Date);
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
                 cmd.Parameters["@Dt_Nascimento"].Value = medico.Dt_Nascimento;
 
                 cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
@@ -109,8 +109,8 @@ namespace Biblioteca.medico
 
                 string sql = "UPDATE Medico SET ID_Medico = @ID_Medico, CPF = @CPF, RG = @RG, Nome = @Nome, " +
                     "Logradouro = @Logradouro, Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, " +
-                    "CEP = @CEP, Cidade = @Cidade, UF = @UF, Pais = @Pais, Email = @Email, Celular = @Celular, " +
-                    "Estado_Civil = @Estado_Civil, ID_Especialidade = @ID_Especialidade WHERE ID_Medico = @ID_Medico;";
+                    "CEP = @CEP, Cidade = @Cidade, UF = @UF, Pais = @Pais, Email = @Email, Contato = @Contato, " +
+                    "Estado_Civil = @Estado_Civil, Dt_Nascimento = @Dt_Nascimento, ID_Especialidade = @ID_Especialidade WHERE ID_Medico = @ID_Medico;";
 
                 //Instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
@@ -155,8 +155,14 @@ namespace Biblioteca.medico
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = medico.Email;
 
-                cmd.Parameters.Add("@Celular", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Contato", SqlDbType.VarChar);
+                cmd.Parameters["@Contato"].Value = medico.Contato;
+
+                cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;
+
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
+                cmd.Parameters["@Dt_Nascimento"].Value = medico.Dt_Nascimento;
 
                 cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
                 cmd.Parameters["@ID_Especialidade"].Value = medico.Especialidade.ID_Especialidade;
@@ -212,7 +218,7 @@ namespace Biblioteca.medico
                 this.abrirConexao();
                 //Instrução a ser executada
                 string sql = "SELECT ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, Bairro, CEP, " +
-                    "Cidade, UF, Pais, Email, Celular, Estado_Civil, ID_Especialidade FROM Medico WHERE TRUE"; //Por que TRUE?
+                    "Cidade, UF, Pais, Email, Celular, Estado_Civil, Dt_Nascimento, ID_Especialidade FROM Medico WHERE TRUE"; //Por que TRUE?
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
                 //Se foi passado um ID_Medico válido, o mesmo entrará como critério de filtro
