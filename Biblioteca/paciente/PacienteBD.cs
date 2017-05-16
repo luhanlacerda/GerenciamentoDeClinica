@@ -21,7 +21,7 @@ namespace Biblioteca.medico
                 this.abrirConexao();
 
                 string sql = "INSERT INTO Paciente (ID_Paciente, Nome, CPF, Contato, CEP, RG, Email," +
-                    "Logradouro,Numero, Complemento, Bairro, Cidade, UF, Pais, Estado_Civil," +
+                    "Logradouro, Numero, Complemento, Bairro, Cidade, UF, Pais, Estado_Civil," +
                     "Dt_Nascimento, ID_Convenio)" +
                     "VALUES (@ID_Paciente, @Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
                     "@Numero, @Complemento, @Bairro, @Cidade, @UF, @Pais, @Estado_Civil," +
@@ -176,7 +176,7 @@ namespace Biblioteca.medico
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao pesquisar Médico." + e);
+                throw new Exception("Erro ao Atualizar Paciente." + e);
             }
 
         }
