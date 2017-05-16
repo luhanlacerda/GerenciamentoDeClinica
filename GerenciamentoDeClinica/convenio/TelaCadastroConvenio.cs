@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.convenio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,12 +20,15 @@ namespace GerenciamentoDeClinica.convenio
 
         private void btnCadastro_Click(object sender, EventArgs e)
         {
+            Convenio convenio = new Convenio();
 
+            convenio.ID_Convenio = Convert.ToInt32(txtID.Text);
+            convenio.Descricao = txtDescricao.Text;
+
+
+            new ConvenioBD().Cadastrar(convenio);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

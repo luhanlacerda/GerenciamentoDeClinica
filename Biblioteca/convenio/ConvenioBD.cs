@@ -23,7 +23,7 @@ namespace Biblioteca.convenio
                 this.abrirConexao();
 
                 string sql = "insert into Convenio (ID_Convenio, Descricao)" +
-                    "values (@ID_Convenio,@Descricao)";
+                             "values (@ID_Convenio,@Descricao)";
 
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
@@ -32,7 +32,7 @@ namespace Biblioteca.convenio
                 cmd.Parameters["@ID_Convenio"].Value = convenio.ID_Convenio;
 
                 cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                cmd.Parameters["@Descricao "].Value = convenio.Descricao;
+                cmd.Parameters["@Descricao"].Value = convenio.Descricao;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
