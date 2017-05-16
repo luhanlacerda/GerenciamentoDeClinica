@@ -65,7 +65,7 @@ namespace GerenciamentoDeClinicas.medico
                 medico.Endereco.Bairro = txtBairro.Text;
                 medico.Endereco.Cidade = txtCidade.Text;
                 medico.Endereco.UF = comboUF.SelectedItem.ToString();
-                medico.Endereco.Pais = comboPais.ToString();
+                medico.Endereco.Pais = comboPais.SelectedItem.ToString();
                 RadioButton radio = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
                 if (radio.Name == rbSolteiro.Name)
                 {

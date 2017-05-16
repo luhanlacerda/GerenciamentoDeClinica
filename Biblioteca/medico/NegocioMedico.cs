@@ -76,7 +76,7 @@ namespace Biblioteca.medico
 
 
                 ClinicaUtils.ValidarTamanho(medico.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
-                   
+
                 ClinicaUtils.ValidarTamanho(medico.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
 
                 ClinicaUtils.ValidarVazio(medico.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);

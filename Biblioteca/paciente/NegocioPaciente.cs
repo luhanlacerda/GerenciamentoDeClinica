@@ -44,7 +44,7 @@ namespace Biblioteca.medico
                 ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
 
                 ClinicaUtils.ValidarVazio(paciente.Nome.Trim(), ClinicaUtils.ERRO_NOME);
-                ClinicaUtils.ValidarExceder(paciente.Nome.Trim(), 200, ClinicaUtils.ERRO_NOME);
+                ClinicaUtils.ValidarExceder(paciente.Nome.Trim(), 100, ClinicaUtils.ERRO_NOME);
 
                 //Se for vazia não vai possuir 14 caracteres, 
                 //sendo assim não necessário a validação de vazio

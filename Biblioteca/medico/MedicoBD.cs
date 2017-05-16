@@ -22,7 +22,7 @@ namespace Biblioteca.medico
                 string sql = "INSERT INTO Medico (ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero," +
                     "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento," +
                     "ID_Especialidade)" +
-                    " VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento,"+
+                    "VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento,"+
                     "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento," + 
                     "@ID_Especialidade);";
 
@@ -79,7 +79,7 @@ namespace Biblioteca.medico
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = medico.Estado_Civil;
 
-                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.Date);
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
                 cmd.Parameters["@Dt_Nascimento"].Value = medico.Dt_Nascimento;
 
                 cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
@@ -95,7 +95,6 @@ namespace Biblioteca.medico
             }
             catch (Exception e)
             {
-
                 throw new Exception("Erro ao cadastrar médico." + e);
             }
         }
