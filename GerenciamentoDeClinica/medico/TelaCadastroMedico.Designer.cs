@@ -41,7 +41,6 @@
             this.lblCRM = new System.Windows.Forms.Label();
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
             this.pictureUser = new System.Windows.Forms.PictureBox();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -69,6 +68,7 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -76,6 +76,7 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.txtPais);
             this.GroupBox.Controls.Add(this.txtEspecialidade);
             this.GroupBox.Controls.Add(this.txtID);
             this.GroupBox.Controls.Add(this.groupBox1);
@@ -84,7 +85,6 @@
             this.GroupBox.Controls.Add(this.lblCRM);
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
             this.GroupBox.Controls.Add(this.pictureUser);
-            this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -221,14 +221,6 @@
             this.pictureUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureUser.TabIndex = 62;
             this.pictureUser.TabStop = false;
-            // 
-            // comboPais
-            // 
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(197, 367);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 18;
             // 
             // txtCidade
             // 
@@ -385,6 +377,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(10, 43);
+            this.txtNome.MaxLength = 10;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 0;
@@ -455,6 +448,13 @@
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
             // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(192, 368);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.TabIndex = 18;
+            // 
             // TelaCadastroMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,7 +480,6 @@
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
         private System.Windows.Forms.PictureBox pictureUser;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -517,5 +516,6 @@
         private System.Windows.Forms.RadioButton rbViuvo;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtEspecialidade;
+        private System.Windows.Forms.TextBox txtPais;
     }
 }

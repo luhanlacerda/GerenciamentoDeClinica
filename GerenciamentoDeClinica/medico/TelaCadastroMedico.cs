@@ -52,7 +52,7 @@ namespace GerenciamentoDeClinicas.medico
                 medico.ID_Medico = Convert.ToInt32(txtID.Text);
                 medico.Nome = txtNome.Text;
                 medico.CPF = maskedCPF.Text;
-                medico.RG = txtRG.Text;
+                medico .RG = txtRG.Text;
                 medico.Contato = maskedCell.Text;
                 medico.CRM = txtCRM.Text;
                 medico.Especialidade.ID_Especialidade = Convert.ToInt32(txtEspecialidade.Text);
@@ -65,7 +65,7 @@ namespace GerenciamentoDeClinicas.medico
                 medico.Endereco.Bairro = txtBairro.Text;
                 medico.Endereco.Cidade = txtCidade.Text;
                 medico.Endereco.UF = comboUF.SelectedItem.ToString();
-                medico.Endereco.Pais = comboPais.SelectedItem.ToString();
+                medico.Endereco.Pais = txtPais.Text;
                 RadioButton radio = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
                 if (radio.Name == rbSolteiro.Name)
                 {
