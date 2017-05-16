@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.classesBasicas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -77,6 +78,51 @@ namespace Biblioteca.utils
             if (!ClinicaUtils.EMAIL_VALIDATION.IsValid(email))
                 throw new Exception(string.Format(ERRO_INVALIDO, ClinicaUtils.ERRO_EMAIL));
 
+        }
+
+        public static void ValidarPessoa(Pessoa pessoa)
+        {
+            #region Validações
+            ClinicaUtils.ValidarVazio(pessoa.Nome.Trim(), ClinicaUtils.ERRO_NOME);
+            ClinicaUtils.ValidarExceder(pessoa.Nome.Trim(), 100, ClinicaUtils.ERRO_NOME);
+
+            //Se for vazia não vai possuir 14 caracteres, 
+            //sendo assim não necessário a validação de vazio
+            ClinicaUtils.ValidarTamanho(pessoa.CPF, 14, ClinicaUtils.ERRO_CPF);
+
+            ClinicaUtils.ValidarVazio(pessoa.RG.Trim(), ClinicaUtils.ERRO_RG);
+            ClinicaUtils.ValidarExceder(pessoa.RG.Trim(), 20, ClinicaUtils.ERRO_RG);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Logradouro.Trim(), ClinicaUtils.ERRO_LOGRADOURO);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Logradouro.Trim(), 50, ClinicaUtils.ERRO_LOGRADOURO);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Numero.Trim(), ClinicaUtils.ERRO_NUMERO);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Numero.Trim(), 10, ClinicaUtils.ERRO_NUMERO);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Complemento.Trim(), ClinicaUtils.ERRO_COMPLEMENTO);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
+
+            ClinicaUtils.ValidarTamanho(pessoa.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
+
+            ClinicaUtils.ValidarTamanho(pessoa.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
+
+            ClinicaUtils.ValidarVazio(pessoa.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
+            ClinicaUtils.ValidarExceder(pessoa.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
+
+            ClinicaUtils.ValidarEmail(pessoa.Email.Trim());
+
+            ClinicaUtils.ValidarVazio(pessoa.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
+            ClinicaUtils.ValidarExceder(pessoa.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);
+
+            ClinicaUtils.ValidarVazio(pessoa.Estado_Civil.Trim(), ClinicaUtils.ERRO_ESTADO_CIVIL);
+            ClinicaUtils.ValidarExceder(pessoa.Estado_Civil.Trim(), 10, ClinicaUtils.ERRO_ESTADO_CIVIL);
+            #endregion
         }
     }
 }
