@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.especialidade;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,25 @@ namespace GerenciamentoDeClinica.especialidade
         public TelaCadastrarEspecialidade()
         {
             InitializeComponent();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Especialidade especialidade = new Especialidade();
+
+                especialidade.ID_Especialidade = Convert.ToInt32(txtID.Text);
+                especialidade.Descricao = txtDescricao.Text;
+
+                new EspecialidadeBD().Cadastrar(especialidade);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
+
+
         }
     }
 }

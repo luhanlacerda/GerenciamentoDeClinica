@@ -20,13 +20,20 @@ namespace GerenciamentoDeClinica.convenio
 
         private void btnCadastro_Click(object sender, EventArgs e)
         {
-            Convenio convenio = new Convenio();
+            try
+            {
+                Convenio convenio = new Convenio();
 
-            convenio.ID_Convenio = Convert.ToInt32(txtID.Text);
-            convenio.Descricao = txtDescricao.Text;
+                convenio.ID_Convenio = Convert.ToInt32(txtID.Text);
+                convenio.Descricao = txtDescricao.Text;
 
 
-            new ConvenioBD().Cadastrar(convenio);
+                new ConvenioBD().Cadastrar(convenio);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
         }
 
         

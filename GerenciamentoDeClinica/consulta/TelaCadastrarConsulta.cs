@@ -17,6 +17,9 @@ namespace GerenciamentoDeClinica.consulta
             InitializeComponent();
         }
 
+        private void TelaCadastrarConsulta_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
