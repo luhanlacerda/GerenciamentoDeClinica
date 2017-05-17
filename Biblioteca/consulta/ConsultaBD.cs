@@ -20,9 +20,9 @@ namespace Biblioteca.consulta
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrucao a ser executanda
-                string sql = "INSERT INTO Consulta (Horario, Duracao, Observacao, Descricao, ID_Receita" +
-                    "ID_Medico, ID_Paciente, ID_Secretaria)" +
-                    "VALUES (@Horario, @Duracao, @Observacao, @Descricao, @ID_Receita, @ID_Medico," +
+                string sql = "INSERT INTO Consulta (Horario, Duracao, Observacoes, Descricao_Receita, ID_Receita" +
+                                                    "ID_Medico, ID_Paciente, ID_Secretaria)" +
+                    "VALUES (@Horario, @Duracao, @Observacao, @Descricao_Receita, @ID_Receita, @ID_Medico," +
                     "@ID_Paciente, @ID_Secretaria)";
 
                 SqlCommand scm = new SqlCommand (sql, sqlConn);
@@ -35,11 +35,11 @@ namespace Biblioteca.consulta
                 scm.Parameters.Add("@Duracao", SqlDbType.Int);
                 scm.Parameters["@Duracao"].Value = consulta.Duracao;
 
-                scm.Parameters.Add("@Observacao", SqlDbType.VarChar);
-                scm.Parameters["@Observacao"].Value = consulta.Observacoes;
+                scm.Parameters.Add("@Observacoes", SqlDbType.VarChar);
+                scm.Parameters["@Observacoes"].Value = consulta.Observacoes;
 
-                scm.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                scm.Parameters["@Descricao"].Value = consulta.Descricao;
+                scm.Parameters.Add("@Descricao_Receita", SqlDbType.VarChar);
+                scm.Parameters["@Descricao_Receita"].Value = consulta.Descricao;
 
                 scm.Parameters.Add("@ID_Receita", SqlDbType.Int);
                 scm.Parameters["@ID_Receita"].Value = consulta.ID_Consulta;

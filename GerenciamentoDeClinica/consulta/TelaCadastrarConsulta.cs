@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.consulta;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,25 @@ namespace GerenciamentoDeClinica.consulta
             InitializeComponent();
         }
 
-        private void TelaCadastrarConsulta_Load(object sender, EventArgs e)
-        {
 
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Consulta consulta = new Consulta();
+
+                consulta.Horario = dateTimePicker1.Value;
+                consulta.ID_Consulta = Convert.ToInt32(txtID.Text);
+                consulta.Duracao = Convert.ToInt32(txtDuracao.Text);
+                consulta.Descricao = txtDescricao.Text;
+                consulta.Observacoes = txtObservacoes.Text;
+
+                new ConsultaBD().Cadastrar(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
         }
     }
 }
