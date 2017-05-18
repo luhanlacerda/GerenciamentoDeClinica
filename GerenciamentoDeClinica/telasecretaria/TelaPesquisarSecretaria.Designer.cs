@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica.secretaria
+﻿namespace GerenciamentoDeClinica.telasecretaria
 {
     partial class TelaPesquisarSecretaria
     {

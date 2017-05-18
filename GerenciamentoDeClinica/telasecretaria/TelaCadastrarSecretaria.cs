@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica.consulta
+namespace GerenciamentoDeClinica.telasecretaria
 {
-    public partial class TelaPesquisarConsulta : Form
+    public partial class TelaCadastrarSecretaria : Form
     {
-        public TelaPesquisarConsulta()
+        public TelaCadastrarSecretaria()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
         {
 
         }

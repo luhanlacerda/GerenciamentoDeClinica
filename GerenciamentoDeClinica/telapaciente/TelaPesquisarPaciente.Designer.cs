@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica.paciente
+﻿namespace GerenciamentoDeClinica.telapaciente
 {
     partial class TelaPesquisarPaciente
     {

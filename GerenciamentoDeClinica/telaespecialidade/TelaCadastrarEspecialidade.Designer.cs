@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica.especialidade
+﻿namespace GerenciamentoDeClinica.telaespecialidade
 {
     partial class TelaCadastrarEspecialidade
     {

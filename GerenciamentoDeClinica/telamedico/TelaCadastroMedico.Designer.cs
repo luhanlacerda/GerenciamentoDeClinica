@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinicas.medico
+﻿namespace GerenciamentoDeClinicas.telamedico
 {
     partial class TelaCadastroMedico
     {

@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica.paciente
+namespace GerenciamentoDeClinica.telapaciente
 {
     public partial class TelaCadastroPaciente : Form
     {

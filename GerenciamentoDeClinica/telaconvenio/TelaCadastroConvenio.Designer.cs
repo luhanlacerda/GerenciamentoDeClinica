@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoDeClinica.convenio
+﻿namespace GerenciamentoDeClinica.telaconvenio
 {
     partial class TelaCadastroConvenio
     {

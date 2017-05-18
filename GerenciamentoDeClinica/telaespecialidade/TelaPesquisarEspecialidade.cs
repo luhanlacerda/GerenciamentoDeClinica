@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica.secretaria
+namespace GerenciamentoDeClinica.telaespecialidade
 {
-    public partial class TelaCadastrarSecretaria : Form
+    public partial class TelaPesquisarEspecialidade : Form
     {
-        public TelaCadastrarSecretaria()
+        public TelaPesquisarEspecialidade()
         {
             InitializeComponent();
-        }
-
-        private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

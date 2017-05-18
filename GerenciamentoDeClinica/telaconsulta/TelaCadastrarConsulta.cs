@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinica.consulta
+namespace GerenciamentoDeClinica.telaconsulta
 {
     public partial class TelaCadastrarConsulta : Form
     {
