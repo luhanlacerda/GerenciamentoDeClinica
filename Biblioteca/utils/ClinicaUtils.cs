@@ -48,50 +48,35 @@ namespace Biblioteca.utils
         public static void ValidarCodigo(int value)
         {
             if (value < 1)
-            {
-                string erro = string.Format(ERRO_INVALIDO, ERRO_CODIGO);
-                throw new Exception(erro);
-            }
+                throw new Exception(string.Format(ERRO_INVALIDO, ERRO_CODIGO));
         }
 
         //Validação de um objeto nulo, vazio ou apenas espaços em branco
         public static void ValidarVazio(string value, string error)
         {
             if (string.IsNullOrWhiteSpace(value))
-            {
-                string erro = string.Format(ERRO_INVALIDO, error);
-                throw new Exception(erro);
-            }
+                throw new Exception(string.Format(ERRO_INVALIDO, error));
         }
 
         //Validação de excedência de um valor máximo mostrado
         public static void ValidarExceder(string value, int maximum, string error)
         {
             if (value.Length > maximum)
-            {
-                string erro = string.Format(ERRO_EXCEDER, error, maximum);
-                throw new Exception(erro);
-            }
+                throw new Exception(string.Format(ERRO_EXCEDER, error, maximum));
         }
 
         //Validação de um tamanho fixo
         public static void ValidarTamanho(string value, int size, string error)
         {
             if (value.Length != size)
-            {
-                string erro = string.Format(ERRO_TAMANHO, error, size);
-                throw new Exception(erro);
-            }
+                throw new Exception(string.Format(ERRO_TAMANHO, error, size));
         }
 
         //Validação se o e-mail é válido
         public static void ValidarEmail(string email)
         {
             if (!ClinicaUtils.EMAIL_VALIDATION.IsValid(email))
-            {
-                string erro = string.Format(ERRO_INVALIDO, ClinicaUtils.ERRO_EMAIL);
-                throw new Exception(erro);
-            }
+                throw new Exception(string.Format(ERRO_INVALIDO, ClinicaUtils.ERRO_EMAIL));
 
         }
 
