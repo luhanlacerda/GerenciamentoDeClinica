@@ -288,17 +288,17 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(101, 274);
+            this.txtNumero.Location = new System.Drawing.Point(9, 274);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 12;
+            this.txtNumero.TabIndex = 11;
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(9, 274);
+            this.txtComplemento.Location = new System.Drawing.Point(99, 274);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 11;
+            this.txtComplemento.TabIndex = 12;
             // 
             // txtLogradouro
             // 
@@ -355,7 +355,7 @@
             // lblComplemento
             // 
             this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(6, 255);
+            this.lblComplemento.Location = new System.Drawing.Point(96, 255);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(74, 13);
             this.lblComplemento.TabIndex = 74;
@@ -364,7 +364,7 @@
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(98, 255);
+            this.lblNumero.Location = new System.Drawing.Point(6, 255);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(47, 13);
             this.lblNumero.TabIndex = 73;

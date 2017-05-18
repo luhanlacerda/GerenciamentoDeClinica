@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroMedico));
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.txtEspecialidade = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -68,7 +69,6 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -115,10 +115,17 @@
             this.GroupBox.Location = new System.Drawing.Point(1, 1);
             this.GroupBox.Name = "GroupBox";
             this.GroupBox.Size = new System.Drawing.Size(465, 398);
-            this.GroupBox.TabIndex = 44;
+            this.GroupBox.TabIndex = 13;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
             this.GroupBox.Leave += new System.EventHandler(this.maskedCEP_Leave);
+            // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(192, 368);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.TabIndex = 18;
             // 
             // txtEspecialidade
             // 
@@ -239,17 +246,17 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(101, 324);
+            this.txtNumero.Location = new System.Drawing.Point(9, 324);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 14;
+            this.txtNumero.TabIndex = 13;
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(9, 324);
+            this.txtComplemento.Location = new System.Drawing.Point(99, 324);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 13;
+            this.txtComplemento.TabIndex = 14;
             // 
             // txtLogradouro
             // 
@@ -315,7 +322,7 @@
             // lblComplemento
             // 
             this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(6, 305);
+            this.lblComplemento.Location = new System.Drawing.Point(96, 305);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(74, 13);
             this.lblComplemento.TabIndex = 47;
@@ -324,7 +331,7 @@
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(98, 305);
+            this.lblNumero.Location = new System.Drawing.Point(6, 305);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(47, 13);
             this.lblNumero.TabIndex = 46;
@@ -447,13 +454,6 @@
             this.lblEmail.Size = new System.Drawing.Size(38, 13);
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
-            // 
-            // txtPais
-            // 
-            this.txtPais.Location = new System.Drawing.Point(192, 368);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(143, 20);
-            this.txtPais.TabIndex = 18;
             // 
             // TelaCadastroMedico
             // 
