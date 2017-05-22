@@ -12,45 +12,25 @@ namespace Biblioteca.medico
 
         public void Cadastrar(Paciente paciente)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
-                ClinicaUtils.ValidarPessoa(paciente);
+            ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+            ClinicaUtils.ValidarPessoa(paciente);
 
-                new PacienteBD().Cadastrar(paciente);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new PacienteBD().Cadastrar(paciente);
+
         }
 
         public void Atualizar(Paciente paciente)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
-                ClinicaUtils.ValidarPessoa(paciente);
+            ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+            ClinicaUtils.ValidarPessoa(paciente);
 
-                new PacienteBD().Atualizar(paciente);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new PacienteBD().Atualizar(paciente);
         }
 
         public void Remover(Paciente paciente)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
-                new PacienteBD().Remover(paciente);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+            new PacienteBD().Remover(paciente);
         }
 
         public List<Paciente> Listar(Paciente filtro)
@@ -60,16 +40,8 @@ namespace Biblioteca.medico
 
         public bool VerificaExistencia(Paciente paciente)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
-                return new PacienteBD().VerificaExistencia(paciente);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            
+            ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
+            return new PacienteBD().VerificaExistencia(paciente);
         }
     }
 

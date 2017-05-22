@@ -12,32 +12,18 @@ namespace Biblioteca.secretaria
     {
         public void Atualizar(Secretaria secretaria)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
-                ClinicaUtils.ValidarPessoa(secretaria);
+            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
+            ClinicaUtils.ValidarPessoa(secretaria);
 
-                new SecretariaBD().Cadastrar(secretaria);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new SecretariaBD().Cadastrar(secretaria);
         }
 
         public void Cadastrar(Secretaria secretaria)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
-                ClinicaUtils.ValidarPessoa(secretaria);
+            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
+            ClinicaUtils.ValidarPessoa(secretaria);
 
-                new SecretariaBD().Cadastrar(secretaria);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new SecretariaBD().Cadastrar(secretaria);
         }
 
         public List<Secretaria> Listar(Secretaria filtro)
@@ -47,30 +33,16 @@ namespace Biblioteca.secretaria
 
         public void Remover(Secretaria secretaria)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
+            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
 
-                new SecretariaBD().Remover(secretaria);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new SecretariaBD().Remover(secretaria);
         }
 
         public bool VerificaExistencia(Secretaria secretaria)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
+            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
 
-                return new SecretariaBD().VerificaExistencia(secretaria);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return new SecretariaBD().VerificaExistencia(secretaria);
         }
     }
 }

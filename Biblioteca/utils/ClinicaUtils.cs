@@ -11,13 +11,28 @@ namespace Biblioteca.utils
     public class ClinicaUtils
     {
         public static readonly string[] UF_LIST = { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" };
+
+        #region Tamanhos Pré-Definidos
         public const int CPF_SIZE = 14;
+        public const int NOME_SIZE = 100;
+        public const int RG_SIZE = 20;
+        public const int ENDERECO_SIZE = 50;
+        public const int NUMERO_SIZE = 10;
+        public const int COMPLEMENTO_SIZE = 10;
+        public const int BAIRRO_SIZE = 20;
+        public const int CIDADE_SIZE = 50;
+        public const int UF_SIZE = 2;
+        public const int CEP_SIZE = 9;
+        public const int PAIS_SIZE = 30;
+        public const int CONTATO_SIZE = 14;
+        public const int ESTADO_CIVIL_SIZE = 10;
+        #endregion
 
         #region Erros
         //Mensagens de erro
-        private const string ERRO_INVALIDO = "%s inválido.";
-        private const string ERRO_EXCEDER = "O %s não deve exceder %i caracteres.";
-        private const string ERRO_TAMANHO = "O %s deve possuir %i caracteres.";
+        private const string ERRO_INVALIDO = "{0} inválido.";
+        private const string ERRO_EXCEDER = "O {0} não deve exceder {1:D} caracteres.";
+        private const string ERRO_TAMANHO = "O {0} deve possuir {1:D} caracteres.";
 
         //Todos os possíveis tipos
         public const string ERRO_CODIGO = "Código";
@@ -75,54 +90,52 @@ namespace Biblioteca.utils
         //Validação se o e-mail é válido
         public static void ValidarEmail(string email)
         {
-            if (!ClinicaUtils.EMAIL_VALIDATION.IsValid(email))
-                throw new Exception(string.Format(ERRO_INVALIDO, ClinicaUtils.ERRO_EMAIL));
+            if (!EMAIL_VALIDATION.IsValid(email))
+                throw new Exception(string.Format(ERRO_INVALIDO, ERRO_EMAIL));
 
         }
 
         public static void ValidarPessoa(Pessoa pessoa)
         {
-            #region Validações
-            ClinicaUtils.ValidarVazio(pessoa.Nome.Trim(), ClinicaUtils.ERRO_NOME);
-            ClinicaUtils.ValidarExceder(pessoa.Nome.Trim(), 100, ClinicaUtils.ERRO_NOME);
+            ValidarVazio(pessoa.Nome.Trim(), ERRO_NOME);
+            ValidarExceder(pessoa.Nome.Trim(), NOME_SIZE, ERRO_NOME);
 
             //Se for vazia não vai possuir 14 caracteres, 
             //sendo assim não necessário a validação de vazio
-            ClinicaUtils.ValidarTamanho(pessoa.CPF, 14, ClinicaUtils.ERRO_CPF);
+            ValidarTamanho(pessoa.CPF, CPF_SIZE, ERRO_CPF);
 
-            ClinicaUtils.ValidarVazio(pessoa.RG.Trim(), ClinicaUtils.ERRO_RG);
-            ClinicaUtils.ValidarExceder(pessoa.RG.Trim(), 20, ClinicaUtils.ERRO_RG);
+            ValidarVazio(pessoa.RG.Trim(), ERRO_RG);
+            ValidarExceder(pessoa.RG.Trim(), RG_SIZE, ERRO_RG);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Logradouro.Trim(), ClinicaUtils.ERRO_LOGRADOURO);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Logradouro.Trim(), 50, ClinicaUtils.ERRO_LOGRADOURO);
+            ValidarVazio(pessoa.Endereco.Logradouro.Trim(), ERRO_LOGRADOURO);
+            ValidarExceder(pessoa.Endereco.Logradouro.Trim(), ENDERECO_SIZE, ERRO_LOGRADOURO);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Numero.Trim(), ClinicaUtils.ERRO_NUMERO);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Numero.Trim(), 10, ClinicaUtils.ERRO_NUMERO);
+            ValidarVazio(pessoa.Endereco.Numero.Trim(), ERRO_NUMERO);
+            ValidarExceder(pessoa.Endereco.Numero.Trim(), NUMERO_SIZE, ERRO_NUMERO);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Complemento.Trim(), ClinicaUtils.ERRO_COMPLEMENTO);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Complemento.Trim(), 10, ClinicaUtils.ERRO_COMPLEMENTO);
+            ValidarVazio(pessoa.Endereco.Complemento.Trim(), ERRO_COMPLEMENTO);
+            ValidarExceder(pessoa.Endereco.Complemento.Trim(), COMPLEMENTO_SIZE, ERRO_COMPLEMENTO);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Bairro.Trim(), ClinicaUtils.ERRO_BAIRRO);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Bairro.Trim(), 20, ClinicaUtils.ERRO_BAIRRO);
+            ValidarVazio(pessoa.Endereco.Bairro.Trim(), ERRO_BAIRRO);
+            ValidarExceder(pessoa.Endereco.Bairro.Trim(), BAIRRO_SIZE, ERRO_BAIRRO);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Cidade.Trim(), ClinicaUtils.ERRO_CIDADE);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Cidade.Trim(), 50, ClinicaUtils.ERRO_CIDADE);
+            ValidarVazio(pessoa.Endereco.Cidade.Trim(), ERRO_CIDADE);
+            ValidarExceder(pessoa.Endereco.Cidade.Trim(), CIDADE_SIZE, ERRO_CIDADE);
 
-            ClinicaUtils.ValidarTamanho(pessoa.Endereco.UF.Trim(), 2, ClinicaUtils.ERRO_UF);
+            ValidarTamanho(pessoa.Endereco.UF.Trim(), UF_SIZE, ERRO_UF);
 
-            ClinicaUtils.ValidarTamanho(pessoa.Endereco.CEP.Trim(), 9, ClinicaUtils.ERRO_CEP);
+            ValidarTamanho(pessoa.Endereco.CEP.Trim(), CEP_SIZE, ERRO_CEP);
 
-            ClinicaUtils.ValidarVazio(pessoa.Endereco.Pais.Trim(), ClinicaUtils.ERRO_PAIS);
-            ClinicaUtils.ValidarExceder(pessoa.Endereco.Pais.Trim(), 30, ClinicaUtils.ERRO_PAIS);
+            ValidarVazio(pessoa.Endereco.Pais.Trim(), ERRO_PAIS);
+            ValidarExceder(pessoa.Endereco.Pais.Trim(), PAIS_SIZE, ERRO_PAIS);
 
-            ClinicaUtils.ValidarEmail(pessoa.Email.Trim());
+            ValidarEmail(pessoa.Email.Trim());
 
-            ClinicaUtils.ValidarVazio(pessoa.Contato.Trim(), ClinicaUtils.ERRO_CONTATO);
-            ClinicaUtils.ValidarExceder(pessoa.Contato.Trim(), 14, ClinicaUtils.ERRO_CONTATO);
+            ValidarVazio(pessoa.Contato.Trim(), ERRO_CONTATO);
+            ValidarExceder(pessoa.Contato.Trim(), CONTATO_SIZE, ERRO_CONTATO);
 
-            ClinicaUtils.ValidarVazio(pessoa.Estado_Civil.Trim(), ClinicaUtils.ERRO_ESTADO_CIVIL);
-            ClinicaUtils.ValidarExceder(pessoa.Estado_Civil.Trim(), 10, ClinicaUtils.ERRO_ESTADO_CIVIL);
-            #endregion
+            ValidarVazio(pessoa.Estado_Civil.Trim(), ERRO_ESTADO_CIVIL);
+            ValidarExceder(pessoa.Estado_Civil.Trim(), ESTADO_CIVIL_SIZE, ERRO_ESTADO_CIVIL);
         }
     }
 }

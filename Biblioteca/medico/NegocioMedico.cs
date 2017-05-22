@@ -13,47 +13,25 @@ namespace Biblioteca.medico
 
         public void Cadastrar(Medico medico)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(medico.ID_Medico);
-                ClinicaUtils.ValidarPessoa(medico);               
+            ClinicaUtils.ValidarCodigo(medico.ID_Medico);
+            ClinicaUtils.ValidarPessoa(medico);
 
-                new MedicoBD().Cadastrar(medico);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new MedicoBD().Cadastrar(medico);
         }
 
         public void Atualizar(Medico medico)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(medico.ID_Medico);
-                ClinicaUtils.ValidarPessoa(medico);
+            ClinicaUtils.ValidarCodigo(medico.ID_Medico);
+            ClinicaUtils.ValidarPessoa(medico);
 
-                new MedicoBD().Atualizar(medico);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            new MedicoBD().Atualizar(medico);
         }
 
         public void Remover(Medico medico)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(medico.ID_Medico);
+            ClinicaUtils.ValidarCodigo(medico.ID_Medico);
 
-                new MedicoBD().Remover(medico);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            new MedicoBD().Remover(medico);
         }
 
         public List<Medico> Listar(Medico filtro)
@@ -63,16 +41,9 @@ namespace Biblioteca.medico
 
         public bool VerificaExistencia(Medico medico)
         {
-            try
-            {
-                ClinicaUtils.ValidarCodigo(medico.ID_Medico);
+            ClinicaUtils.ValidarCodigo(medico.ID_Medico);
 
-                return new MedicoBD().VerificaExistencia(medico);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return new MedicoBD().VerificaExistencia(medico);
         }
     }
 }
