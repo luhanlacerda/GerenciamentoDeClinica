@@ -37,6 +37,15 @@ namespace GerenciamentoDeClinica.telaespecialidade
             {
                 MessageBox.Show(this, ex.Message);
             }
+
+
+        }
+
+        private void TelaCadastrarEspecialidade_Load(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
+
