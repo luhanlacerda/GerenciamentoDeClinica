@@ -81,7 +81,7 @@ namespace Biblioteca.especialidade
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@Id_Especialidade", SqlDbType.Int);
-                cmd.Parameters["@Especialidade"].Value = especialidade.ID_Especialidade;
+                cmd.Parameters["@Id_Especialidade"].Value = especialidade.ID_Especialidade;
 
                 //executando
                 cmd.ExecuteNonQuery();
@@ -103,7 +103,7 @@ namespace Biblioteca.especialidade
             {
                 //abrir conexão
                 this.abrirConexao();
-                string sql = "SELECT ID_Especialidade, Descricacao FROM Especialidade WHERE ID_Especialidade = ID_Especialidade";
+                string sql = "SELECT ID_Especialidade, Descricao FROM Especialidade WHERE ID_Especialidade = ID_Especialidade";
                 //se foi passada um id válido, este id entrará como critério de filtro
                 if (filtro.ID_Especialidade > 0)
                 {

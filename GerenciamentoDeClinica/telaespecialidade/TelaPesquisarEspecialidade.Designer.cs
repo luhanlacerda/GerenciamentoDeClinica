@@ -30,18 +30,19 @@
         {
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listViewEspecialidades = new System.Windows.Forms.ListView();
             this.lbPesqlD = new System.Windows.Forms.Label();
             this.txtPesqID = new System.Windows.Forms.TextBox();
             this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.listBoxEspecialidade = new System.Windows.Forms.ListBox();
+            this.Código = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Descrição = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,33 +56,24 @@
             this.btnRemover.TabIndex = 7;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(281, 38);
+            this.btnAtualizar.Location = new System.Drawing.Point(281, 62);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 5;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(281, 67);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 6;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnRemover);
             this.groupBox3.Controls.Add(this.btnAtualizar);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.btnEditar);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtDescricao);
             this.groupBox3.Controls.Add(this.txtID);
@@ -128,7 +120,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBoxEspecialidade);
+            this.groupBox2.Controls.Add(this.listViewEspecialidades);
             this.groupBox2.Controls.Add(this.lbPesqlD);
             this.groupBox2.Controls.Add(this.txtPesqID);
             this.groupBox2.Controls.Add(this.btnNovaBusca);
@@ -139,6 +131,21 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar por Filtro";
+            // 
+            // listViewEspecialidades
+            // 
+            this.listViewEspecialidades.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Código,
+            this.Descrição});
+            this.listViewEspecialidades.FullRowSelect = true;
+            this.listViewEspecialidades.Location = new System.Drawing.Point(9, 66);
+            this.listViewEspecialidades.MultiSelect = false;
+            this.listViewEspecialidades.Name = "listViewEspecialidades";
+            this.listViewEspecialidades.Size = new System.Drawing.Size(347, 116);
+            this.listViewEspecialidades.TabIndex = 8;
+            this.listViewEspecialidades.UseCompatibleStateImageBehavior = false;
+            this.listViewEspecialidades.View = System.Windows.Forms.View.Details;
+            this.listViewEspecialidades.SelectedIndexChanged += new System.EventHandler(this.listViewEspecialidades_SelectedIndexChanged);
             // 
             // lbPesqlD
             // 
@@ -175,13 +182,13 @@
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // listBoxEspecialidade
+            // Código
             // 
-            this.listBoxEspecialidade.FormattingEnabled = true;
-            this.listBoxEspecialidade.Location = new System.Drawing.Point(11, 64);
-            this.listBoxEspecialidade.Name = "listBoxEspecialidade";
-            this.listBoxEspecialidade.Size = new System.Drawing.Size(354, 108);
-            this.listBoxEspecialidade.TabIndex = 8;
+            this.Código.Text = "Código";
+            // 
+            // Descrição
+            // 
+            this.Descrição.Text = "Descrição";
             // 
             // TelaPesquisarEspecialidade
             // 
@@ -206,7 +213,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnAtualizar;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Label lbPesqlD;
@@ -215,6 +221,8 @@
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtPesqID;
-        private System.Windows.Forms.ListBox listBoxEspecialidade;
+        private System.Windows.Forms.ListView listViewEspecialidades;
+        private System.Windows.Forms.ColumnHeader Código;
+        private System.Windows.Forms.ColumnHeader Descrição;
     }
 }
