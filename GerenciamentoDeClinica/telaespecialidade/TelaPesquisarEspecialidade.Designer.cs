@@ -41,6 +41,7 @@
             this.txtPesqID = new System.Windows.Forms.TextBox();
             this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.listBoxEspecialidade = new System.Windows.Forms.ListBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -84,9 +85,9 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtDescricao);
             this.groupBox3.Controls.Add(this.txtID);
-            this.groupBox3.Location = new System.Drawing.Point(2, 99);
+            this.groupBox3.Location = new System.Drawing.Point(11, 197);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(364, 129);
+            this.groupBox3.Size = new System.Drawing.Size(364, 142);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Editar Campos";
@@ -127,13 +128,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.listBoxEspecialidade);
             this.groupBox2.Controls.Add(this.lbPesqlD);
             this.groupBox2.Controls.Add(this.txtPesqID);
             this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 90);
+            this.groupBox2.Size = new System.Drawing.Size(373, 188);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar por Filtro";
@@ -171,12 +173,21 @@
             this.btnPesquisar.TabIndex = 1;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // listBoxEspecialidade
+            // 
+            this.listBoxEspecialidade.FormattingEnabled = true;
+            this.listBoxEspecialidade.Location = new System.Drawing.Point(11, 64);
+            this.listBoxEspecialidade.Name = "listBoxEspecialidade";
+            this.listBoxEspecialidade.Size = new System.Drawing.Size(354, 108);
+            this.listBoxEspecialidade.TabIndex = 8;
             // 
             // TelaPesquisarEspecialidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 231);
+            this.ClientSize = new System.Drawing.Size(393, 351);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Name = "TelaPesquisarEspecialidade";
@@ -198,11 +209,12 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.TextBox txtPesqID;
         private System.Windows.Forms.Label lbPesqlD;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtPesqID;
+        private System.Windows.Forms.ListBox listBoxEspecialidade;
     }
 }

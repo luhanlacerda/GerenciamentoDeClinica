@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,13 +7,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Biblioteca.especialidade
+namespace Biblioteca.utils
 {
-    public class Especialidade
+    public class XmlUtils
     {
-        public int ID_Especialidade { get; set; }
-        public String Descricao { get; set; }
-
         //Converter cliente para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter
         public string ToXML()
@@ -33,7 +29,5 @@ namespace Biblioteca.especialidade
 
             return stringWriter.ToString();
         }
-
     }
-
 }

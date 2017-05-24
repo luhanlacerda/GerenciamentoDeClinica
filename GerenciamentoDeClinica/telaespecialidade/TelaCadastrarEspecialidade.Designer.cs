@@ -102,6 +102,7 @@
             this.Name = "TelaCadastrarEspecialidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Especialidade";
+            this.Load += new System.EventHandler(this.TelaCadastrarEspecialidade_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
