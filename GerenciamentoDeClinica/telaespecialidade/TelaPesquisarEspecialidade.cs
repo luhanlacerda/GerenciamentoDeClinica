@@ -66,23 +66,27 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
         private void listViewEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnAtualizar.Enabled = true;
-            btnRemover.Enabled = true;
-        }
-
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
             if (listViewEspecialidades.SelectedItems.Count > 0)
             {
                 ListViewItem selected = listViewEspecialidades.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
                 Especialidade especialidade = new Especialidade()
                 {
                     ID_Especialidade = Convert.ToInt32(selected.Text),
-                    Descricao = selected.Text
+                    Descricao = selected.SubItems[1].Text
                 };
 
-                
+                txtID.Text = Convert.ToString(especialidade.ID_Especialidade);
+                txtDescricao.Text = especialidade.Descricao;
+
+                btnAtualizar.Enabled = true;
+                btnRemover.Enabled = true;
+
             }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            //falta implementar
         }
     }
 }

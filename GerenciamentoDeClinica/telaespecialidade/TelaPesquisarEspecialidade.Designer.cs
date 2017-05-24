@@ -42,7 +42,7 @@
             this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.Código = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Descrição = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Teste = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -136,7 +136,7 @@
             // 
             this.listViewEspecialidades.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Código,
-            this.Descrição});
+            this.Teste});
             this.listViewEspecialidades.FullRowSelect = true;
             this.listViewEspecialidades.Location = new System.Drawing.Point(9, 66);
             this.listViewEspecialidades.MultiSelect = false;
@@ -186,9 +186,9 @@
             // 
             this.Código.Text = "Código";
             // 
-            // Descrição
+            // Teste
             // 
-            this.Descrição.Text = "Descrição";
+            this.Teste.Text = "Descrição";
             // 
             // TelaPesquisarEspecialidade
             // 
@@ -223,6 +223,6 @@
         private System.Windows.Forms.TextBox txtPesqID;
         private System.Windows.Forms.ListView listViewEspecialidades;
         private System.Windows.Forms.ColumnHeader Código;
-        private System.Windows.Forms.ColumnHeader Descrição;
+        private System.Windows.Forms.ColumnHeader Teste;
     }
 }
