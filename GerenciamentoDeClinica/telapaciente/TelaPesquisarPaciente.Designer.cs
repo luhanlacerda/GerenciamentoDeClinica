@@ -36,9 +36,7 @@
             this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedPesqCPF = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNomePesq = new System.Windows.Forms.TextBox();
+            this.maskedFiltroCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblContato = new System.Windows.Forms.Label();
@@ -117,9 +115,7 @@
             this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.maskedPesqCPF);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtNomePesq);
+            this.groupBox2.Controls.Add(this.maskedFiltroCPF);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(464, 100);
@@ -150,35 +146,19 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 68);
+            this.label6.Location = new System.Drawing.Point(7, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 23;
             this.label6.Text = "CPF:";
             // 
-            // maskedPesqCPF
+            // maskedFiltroCPF
             // 
-            this.maskedPesqCPF.Location = new System.Drawing.Point(51, 61);
-            this.maskedPesqCPF.Mask = "000.000.000-00";
-            this.maskedPesqCPF.Name = "maskedPesqCPF";
-            this.maskedPesqCPF.Size = new System.Drawing.Size(100, 20);
-            this.maskedPesqCPF.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Nome:";
-            // 
-            // txtNomePesq
-            // 
-            this.txtNomePesq.Location = new System.Drawing.Point(50, 35);
-            this.txtNomePesq.Name = "txtNomePesq";
-            this.txtNomePesq.Size = new System.Drawing.Size(168, 20);
-            this.txtNomePesq.TabIndex = 0;
+            this.maskedFiltroCPF.Location = new System.Drawing.Point(51, 38);
+            this.maskedFiltroCPF.Mask = "000.000.000-00";
+            this.maskedFiltroCPF.Name = "maskedFiltroCPF";
+            this.maskedFiltroCPF.Size = new System.Drawing.Size(100, 20);
+            this.maskedFiltroCPF.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -528,7 +508,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 449);
+            this.ClientSize = new System.Drawing.Size(468, 449);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox);
             this.Name = "TelaPesquisarPaciente";
@@ -547,10 +527,8 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNomePesq;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedPesqCPF;
+        private System.Windows.Forms.MaskedTextBox maskedFiltroCPF;
         private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnRemover;

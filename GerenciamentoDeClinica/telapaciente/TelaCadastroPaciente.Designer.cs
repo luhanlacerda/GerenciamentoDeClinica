@@ -315,6 +315,7 @@
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 9;
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
+            
             // 
             // lblPais
             // 

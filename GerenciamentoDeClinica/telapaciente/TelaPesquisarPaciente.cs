@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Biblioteca.fachada;
+using Biblioteca.paciente;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace GerenciamentoDeClinica.telapaciente
 {
     public partial class TelaPesquisarPaciente : Form
     {
+        Fachada fachada = new Fachada();
+
         public TelaPesquisarPaciente()
         {
             InitializeComponent();
@@ -21,8 +25,7 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             btnPesquisar.Enabled = false;
             btnNovaBusca.Enabled = true;
-            txtNomePesq.Enabled = false;
-            maskedPesqCPF.Enabled = false;
+            maskedFiltroCPF.Enabled = false;
             btnEditar.Enabled = true;
         }
 
@@ -30,8 +33,7 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             btnNovaBusca.Enabled = false;
             btnPesquisar.Enabled = true;
-            txtNomePesq.Enabled = true;
-            maskedPesqCPF.Enabled = true;
+            maskedFiltroCPF.Enabled = true;
             btnEditar.Enabled = false;
             btnRemover.Enabled = false;
             btnAtualizar.Enabled = false;
@@ -144,7 +146,26 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (maskedFiltroCPF.Text.Equals(""))
+                {
+                    MessageBox.Show(this, "Informe um CPF para pesquisar um paciente.");
+                    maskedFiltroCPF.Focus();
+                    return;
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
+
             enablePesquisar();
         }
+
     }
+
 }
+

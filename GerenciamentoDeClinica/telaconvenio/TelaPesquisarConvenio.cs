@@ -21,7 +21,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             InitializeComponent();
         }
 
-        public void enabledPesquisar()
+        void enabledPesquisar()
         {
             btnPesquisar.Enabled = false;
             txtIDFiltro.Enabled = false;
@@ -30,7 +30,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnEditar.Enabled = true;
         }
 
-        public void enabledBusca()
+        void enabledBusca()
         {
             btnPesquisar.Enabled = true;
             txtIDFiltro.Enabled = true;
@@ -44,7 +44,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             ClearTextBoxes();
         }
 
-        public void enabledEditar()
+        void enabledEditar()
         {
             btnPesquisar.Enabled = false;
             txtIDFiltro.Enabled = false;
@@ -56,7 +56,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnRemover.Enabled = true;
         }
 
-        public void enabledRemover()
+        void enabledRemover()
         {
             btnRemover.Enabled = false;
             txtDescricao.Enabled = false;
@@ -65,7 +65,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnEditar.Enabled = true;
         }
 
-        public void enabledAtualizar()
+        void enabledAtualizar()
         {
             btnRemover.Enabled = false;
             txtDescricao.Enabled = false;
@@ -74,7 +74,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnEditar.Enabled = true;
         }
 
-        public void ClearTextBoxes()
+        void ClearTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
 
@@ -90,12 +90,18 @@ namespace GerenciamentoDeClinica.telaconvenio
             func(Controls);
         }
 
-        private void btnPesquisar_Click(object sender, EventArgs e)
+        void btnPesquisar_Click(object sender, EventArgs e)
         {
             listViewConvenios.SelectedItems.Clear();
             try
             {
-                enabledPesquisar();
+
+                if (txtIDFiltro.Text.Equals("") || txtDescricaoFiltro.Text.Equals(""))
+                {
+                    MessageBox.Show(this, "Informe um ID ou Descrição no filtro para pesquisar convenio.");
+                    txtIDFiltro.Focus();
+                    return;
+                }
 
                 List<Convenio> convenios = fachada.Listar(new Convenio());
 
@@ -111,7 +117,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                 MessageBox.Show(ex.Message);
             }
 
-            //listViewConvenios.Items.Clear();
+            enabledPesquisar();
         }
 
         private void listViewConvenios_SelectedIndexChanged(object sender, EventArgs e)
@@ -146,7 +152,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                     fachada.Remover(convenio);
                     listViewConvenios.Items.Remove(selected);
                     MessageBox.Show("Convenio excluido com sucesso!");
-                    ClearTextBoxes();  
+                    ClearTextBoxes();
                 }
                 catch (Exception ex)
                 {
@@ -159,8 +165,8 @@ namespace GerenciamentoDeClinica.telaconvenio
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            
-           Convenio convenio = new Convenio()
+
+            Convenio convenio = new Convenio()
             {
                 ID_Convenio = Convert.ToInt32(txtID.Text),
                 Descricao = txtDescricao.Text
@@ -189,7 +195,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                 MessageBox.Show(ex.Message);
             }
 
-             enabledAtualizar();
+            enabledAtualizar();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -203,5 +209,5 @@ namespace GerenciamentoDeClinica.telaconvenio
             enabledBusca();
         }
     }
- }
+}
 

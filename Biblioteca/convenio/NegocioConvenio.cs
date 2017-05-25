@@ -14,7 +14,7 @@ namespace Biblioteca.convenio
 
             if (VerificaExistencia(especialidade) != false)
             {
-                throw new Exception("Código de especialidade já cadastrado");
+                throw new Exception("Código de convenio já cadastrado");
             }
 
             ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);

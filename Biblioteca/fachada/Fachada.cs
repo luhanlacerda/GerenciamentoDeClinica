@@ -2,12 +2,9 @@
 using Biblioteca.convenio;
 using Biblioteca.especialidade;
 using Biblioteca.medico;
+using Biblioteca.paciente;
 using Biblioteca.secretaria;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Biblioteca.fachada
 {

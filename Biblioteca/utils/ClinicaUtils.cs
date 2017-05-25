@@ -53,7 +53,6 @@ namespace Biblioteca.utils
         public const string ERRO_CONTATO = "Contato";
         public const string ERRO_ESTADO_CIVIL = "Estado Civil";
         public const string ERRO_ESPECIALIDADE = "Especialidade";
-
         //Utilizado para a validação de e-mail
         //readonly é muito similar ao const, mas pode ser inicializado (Construtor) posteriormente a sua declaração e pode utilizar referências (classes) 
         private static readonly EmailAddressAttribute EMAIL_VALIDATION = new EmailAddressAttribute();

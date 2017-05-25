@@ -3,15 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Biblioteca.medico
+namespace Biblioteca.paciente
 {
     public class PacienteBD : ConexaoSql, IPaciente
     {
-
 
         public void Cadastrar(Paciente paciente)
         {
@@ -220,7 +216,7 @@ namespace Biblioteca.medico
                 //Instrução a ser executada
                 string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero," +
                     "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento," +
-                    "ID_Convenio FROM Paciente WHERE TRUE";
+                    "ID_Convenio FROM Paciente WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
 
@@ -243,7 +239,7 @@ namespace Biblioteca.medico
                 }
                 if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
                 {
-                    sql += " AND Nome = @Nome";
+                    sql += " AND Nome LIKE %@Nome%";
 
                     scm.Parameters.Add("@Nome", SqlDbType.VarChar);
                     scm.Parameters["@Nome"].Value = filtro.Nome;

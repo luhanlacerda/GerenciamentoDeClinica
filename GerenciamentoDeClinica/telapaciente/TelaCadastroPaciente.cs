@@ -1,6 +1,7 @@
 ﻿using Biblioteca.classesBasicas;
 using Biblioteca.convenio;
 using Biblioteca.medico;
+using Biblioteca.paciente;
 using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,27 @@ namespace GerenciamentoDeClinica.telapaciente
         public TelaCadastroPaciente()
         {
             InitializeComponent();
+        }
+
+        public  void CleanForm()
+        {
+            foreach (var control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+
+                if (control is RadioButton)
+                {
+                    ((RadioButton)control).Checked = false;
+                }
+
+                if (control is MaskedTextBox)
+                {
+                    ((MaskedTextBox)control).Clear();
+                }
+            }
         }
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
@@ -64,21 +86,16 @@ namespace GerenciamentoDeClinica.telapaciente
                 }
 
                 new NegocioPaciente().Cadastrar(paciente);
+                MessageBox.Show("Paciente cadastrado com sucesso.");
+                CleanForm();
+                txtNome.Focus();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message);
             }
-            
-        }
 
-        private void clearAll(params Control[] controls)
-        {
-            foreach (Control control in controls)
-            {
-                control.Text = "";
-            }
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)
