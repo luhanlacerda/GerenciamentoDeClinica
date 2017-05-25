@@ -37,12 +37,11 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listViewEspecialidades = new System.Windows.Forms.ListView();
+            this.Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Descricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbPesqlD = new System.Windows.Forms.Label();
             this.txtPesqID = new System.Windows.Forms.TextBox();
-            this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.Código = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Teste = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +122,6 @@
             this.groupBox2.Controls.Add(this.listViewEspecialidades);
             this.groupBox2.Controls.Add(this.lbPesqlD);
             this.groupBox2.Controls.Add(this.txtPesqID);
-            this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
@@ -135,8 +133,8 @@
             // listViewEspecialidades
             // 
             this.listViewEspecialidades.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Código,
-            this.Teste});
+            this.Codigo,
+            this.Descricao});
             this.listViewEspecialidades.FullRowSelect = true;
             this.listViewEspecialidades.Location = new System.Drawing.Point(9, 66);
             this.listViewEspecialidades.MultiSelect = false;
@@ -146,6 +144,14 @@
             this.listViewEspecialidades.UseCompatibleStateImageBehavior = false;
             this.listViewEspecialidades.View = System.Windows.Forms.View.Details;
             this.listViewEspecialidades.SelectedIndexChanged += new System.EventHandler(this.listViewEspecialidades_SelectedIndexChanged);
+            // 
+            // Codigo
+            // 
+            this.Codigo.Text = "Código";
+            // 
+            // Descricao
+            // 
+            this.Descricao.Text = "Descrição";
             // 
             // lbPesqlD
             // 
@@ -160,35 +166,18 @@
             // 
             this.txtPesqID.Location = new System.Drawing.Point(33, 25);
             this.txtPesqID.Name = "txtPesqID";
-            this.txtPesqID.Size = new System.Drawing.Size(146, 20);
+            this.txtPesqID.Size = new System.Drawing.Size(135, 20);
             this.txtPesqID.TabIndex = 0;
-            // 
-            // btnNovaBusca
-            // 
-            this.btnNovaBusca.Location = new System.Drawing.Point(281, 22);
-            this.btnNovaBusca.Name = "btnNovaBusca";
-            this.btnNovaBusca.Size = new System.Drawing.Size(75, 23);
-            this.btnNovaBusca.TabIndex = 2;
-            this.btnNovaBusca.Text = "Nova Busca";
-            this.btnNovaBusca.UseVisualStyleBackColor = true;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(200, 22);
+            this.btnPesquisar.Location = new System.Drawing.Point(281, 19);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 1;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // Código
-            // 
-            this.Código.Text = "Código";
-            // 
-            // Teste
-            // 
-            this.Teste.Text = "Descrição";
             // 
             // TelaPesquisarEspecialidade
             // 
@@ -213,7 +202,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnAtualizar;
-        private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Label lbPesqlD;
         private System.Windows.Forms.Label label4;
@@ -222,7 +210,7 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtPesqID;
         private System.Windows.Forms.ListView listViewEspecialidades;
-        private System.Windows.Forms.ColumnHeader Código;
-        private System.Windows.Forms.ColumnHeader Teste;
+        private System.Windows.Forms.ColumnHeader Codigo;
+        private System.Windows.Forms.ColumnHeader Descricao;
     }
 }

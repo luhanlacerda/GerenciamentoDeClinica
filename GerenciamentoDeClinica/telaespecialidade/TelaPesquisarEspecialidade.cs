@@ -56,6 +56,8 @@ namespace GerenciamentoDeClinica.telaespecialidade
                     fachada.Remover(especialidade);
                     listViewEspecialidades.Items.Remove(selected);
                     MessageBox.Show("Especialidade excluída com sucesso!");
+                    txtDescricao.Enabled = false;
+                    txtID.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -78,6 +80,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 txtID.Text = Convert.ToString(especialidade.ID_Especialidade);
                 txtDescricao.Text = especialidade.Descricao;
 
+                txtDescricao.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnRemover.Enabled = true;
 
@@ -86,7 +89,36 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            //falta implementar
+            Especialidade especialidade = new Especialidade()
+            {
+                ID_Especialidade = Convert.ToInt32(txtID.Text),
+                Descricao = txtDescricao.Text
+            };
+
+            try
+            {
+                fachada.Atualizar(especialidade);
+                MessageBox.Show("Especialidade atualizada com sucesso!");
+                txtID.Clear();
+                txtDescricao.Clear();
+                txtDescricao.Enabled = false;
+
+                listViewEspecialidades.Items.Clear();
+
+                List<Especialidade> especialidades = fachada.Listar(new Especialidade());
+
+                foreach (Especialidade listarEspecialidades in especialidades)
+                {
+                    ListViewItem linha = listViewEspecialidades.Items.Add(listarEspecialidades.ID_Especialidade.ToString());
+                    linha.SubItems.Add(listarEspecialidades.Descricao.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
+
