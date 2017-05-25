@@ -18,18 +18,15 @@ namespace Biblioteca.secretaria
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Secretaria (ID_Secretaria, CPF, RG, Nome, Endereco, Email," + 
-                    "Celular, Estado_Civil)" +
-                    "VALUES (@ID_Secretaria, @CPF, @RG, @Nome, @Endereco, @Email, @Celular," + 
-                    "@Estado_Civil);";
+                string sql = "INSERT INTO Secretaria (CPF, RG, Nome, Email, Logradouro," +
+                    "Numero, Complemento, Bairro, CEP, Cidade, UF, Pais, Estado_Civil, Contato, Dt_Nascimento)" +
+                    "VALUES (@CPF, @RG, @Nome, @Email, @Logradouro," +
+                    "@Numero, @Complemento, @Bairro, @CEP, @Cidade, @UF, @Pais, @Estado_Civil, @Contato, @Dt_Nascimento);";
 
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
                 #region Parâmetros
-                cmd.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
-                cmd.Parameters["@ID_Secretaria"].Value = secretaria.ID_Secretaria;
-
                 cmd.Parameters.Add("@CPF", SqlDbType.Char);
                 cmd.Parameters["@CPF"].Value = secretaria.CPF.Trim();
 
@@ -39,17 +36,41 @@ namespace Biblioteca.secretaria
                 cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
                 cmd.Parameters["@Nome"].Value = secretaria.Nome.Trim();
 
-                cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = secretaria.Endereco.Logradouro.Trim();
-
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = secretaria.Email.Trim();
 
-                cmd.Parameters.Add("@Celular", SqlDbType.Char);
-                cmd.Parameters["@Celular"].Value = secretaria.Contato.Trim();
+                cmd.Parameters.Add("@Logradouro", SqlDbType.VarChar);
+                cmd.Parameters["@Logradouro"].Value = secretaria.Endereco.Logradouro.Trim();
+
+                cmd.Parameters.Add("@Numero", SqlDbType.VarChar);
+                cmd.Parameters["@Numero"].Value = secretaria.Endereco.Numero.Trim();
+
+                cmd.Parameters.Add("@Complemento", SqlDbType.VarChar);
+                cmd.Parameters["@Complemento"].Value = secretaria.Endereco.Complemento.Trim();
+
+                cmd.Parameters.Add("@Bairro", SqlDbType.VarChar);
+                cmd.Parameters["@Bairro"].Value = secretaria.Endereco.Bairro.Trim();
+
+                cmd.Parameters.Add("@CEP", SqlDbType.VarChar);
+                cmd.Parameters["@CEP"].Value = secretaria.Endereco.CEP.Trim();
+
+                cmd.Parameters.Add("@Cidade", SqlDbType.VarChar);
+                cmd.Parameters["@Cidade"].Value = secretaria.Endereco.Cidade.Trim();
+
+                cmd.Parameters.Add("@UF", SqlDbType.VarChar);
+                cmd.Parameters["@UF"].Value = secretaria.Endereco.UF.Trim();
+
+                cmd.Parameters.Add("@Pais", SqlDbType.VarChar);
+                cmd.Parameters["@Pais"].Value = secretaria.Endereco.Pais.Trim();
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = secretaria.Estado_Civil.Trim();
+
+                cmd.Parameters.Add("@Contato", SqlDbType.Char);
+                cmd.Parameters["@Contato"].Value = secretaria.Contato.Trim();
+
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
+                cmd.Parameters["@Dt_Nascimento"].Value = secretaria.Dt_Nascimento;
                 #endregion
 
                 //executando a instrucao 
@@ -72,9 +93,9 @@ namespace Biblioteca.secretaria
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "UPDATE Secretaria SET ID_Secretaria = @ID_Secretaria, " +
-                    "CPF = @CPF, RG = @RG, Nome = @Nome, Endereco = @Endereco, Email = @Email, " +
-                    "Celular = @Celular, Estado_Civil = @Estado_Civil WHERE ID_Secretaria = @ID_Secretaria;";
+                string sql = "UPDATE Secretaria CPF = @CPF, RG = @RG, Nome = @Nome, Email = @Email, Logradourod = @Logradouro," +
+                    "Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, CEP = @CEP, Cidade = @Cidade, UF = @UF," +
+                    "Pais = @Pais, Estado_Civil = @Estado_Civil, Contato = @Contato, Dt_Nascimento = @Dt_Nascimento WHERE ID_Secretaria = @ID_Secretaria;";
 
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
@@ -92,17 +113,41 @@ namespace Biblioteca.secretaria
                 cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
                 cmd.Parameters["@Nome"].Value = secretaria.Nome.Trim();
 
-                cmd.Parameters.Add("@Endereco", SqlDbType.VarChar);
-                cmd.Parameters["@Endereco"].Value = secretaria.Endereco;
-
                 cmd.Parameters.Add("@Email", SqlDbType.VarChar);
                 cmd.Parameters["@Email"].Value = secretaria.Email.Trim();
 
-                cmd.Parameters.Add("@Celular", SqlDbType.Char);
-                cmd.Parameters["@Celular"].Value = secretaria.Contato.Trim();
+                cmd.Parameters.Add("@Logradouro", SqlDbType.VarChar);
+                cmd.Parameters["@Logradouro"].Value = secretaria.Endereco.Logradouro.Trim();
+
+                cmd.Parameters.Add("@Numero", SqlDbType.VarChar);
+                cmd.Parameters["@Numero"].Value = secretaria.Endereco.Numero.Trim();
+
+                cmd.Parameters.Add("@Complemento", SqlDbType.VarChar);
+                cmd.Parameters["@Complemento"].Value = secretaria.Endereco.Complemento.Trim();
+
+                cmd.Parameters.Add("@Bairro", SqlDbType.VarChar);
+                cmd.Parameters["@Bairro"].Value = secretaria.Endereco.Bairro.Trim();
+
+                cmd.Parameters.Add("@CEP", SqlDbType.VarChar);
+                cmd.Parameters["@CEP"].Value = secretaria.Endereco.CEP.Trim();
+
+                cmd.Parameters.Add("@Cidade", SqlDbType.VarChar);
+                cmd.Parameters["@Cidade"].Value = secretaria.Endereco.Cidade.Trim();
+
+                cmd.Parameters.Add("@UF", SqlDbType.VarChar);
+                cmd.Parameters["@UF"].Value = secretaria.Endereco.UF.Trim();
+
+                cmd.Parameters.Add("@Pais", SqlDbType.VarChar);
+                cmd.Parameters["@Pais"].Value = secretaria.Endereco.Pais.Trim();
 
                 cmd.Parameters.Add("@Estado_Civil", SqlDbType.VarChar);
                 cmd.Parameters["@Estado_Civil"].Value = secretaria.Estado_Civil.Trim();
+
+                cmd.Parameters.Add("@Contato", SqlDbType.Char);
+                cmd.Parameters["@Contato"].Value = secretaria.Contato.Trim();
+
+                cmd.Parameters.Add("@Dt_Nascimento", SqlDbType.DateTime);
+                cmd.Parameters["@Dt_Nascimento"].Value = secretaria.Dt_Nascimento;
                 #endregion
 
                 //executando a instrucao 
@@ -153,7 +198,8 @@ namespace Biblioteca.secretaria
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT ID_Secretaria, CPF, RG, Nome, Endereco, Email, Celular, Estado_Civil FROM Secretaria WHERE TRUE";
+                string sql = "SELECT ID_Secretaria, CPF, RG, Nome, Email, Logradouro, Numero, Complemento, Bairro, CEP, Cidade, UF, Pais," +
+                    "Estado_Civil, Contato, Dt_Nascimento FROM Secretaria WHERE TRUE";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
                 //Se foi passado um id_secretaria válido, o mesmo entrará como critério de filtro
@@ -204,9 +250,16 @@ namespace Biblioteca.secretaria
                     secretaria.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     secretaria.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     secretaria.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
-                    //secretaria.Endereco = DbReader.GetString(DbReader.GetOrdinal("Endereco"));
+                    secretaria.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
+                    secretaria.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
+                    secretaria.Endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("Complemento"));
+                    secretaria.Endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("Bairro"));
+                    secretaria.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
+                    secretaria.Endereco.Cidade = DbReader.GetString(DbReader.GetOrdinal("Cidade"));
+                    secretaria.Endereco.UF = DbReader.GetString(DbReader.GetOrdinal("UF"));
+                    secretaria.Endereco.Pais = DbReader.GetString(DbReader.GetOrdinal("Pais"));
                     secretaria.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
-                    secretaria.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    secretaria.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
                     secretaria.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     #endregion
                     retorno.Add(secretaria);
