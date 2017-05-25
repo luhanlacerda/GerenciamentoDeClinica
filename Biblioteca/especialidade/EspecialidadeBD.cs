@@ -18,12 +18,13 @@ namespace Biblioteca.especialidade
             {
                 //abrir conexão
                 this.abrirConexao();
-                string sql = "INSERT INTO Especialidade (ID_Especialidade, Descricao) VALUES(@ID_Especialidade, @Descricao)";
+                string sql = "INSERT INTO Especialidade (Descricao) VALUES(@Descricao)";
+                //string sql = "INSERT INTO Especialidade (ID_Especialidade, Descricao) VALUES(@ID_Especialidade, @Descricao)";
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
-                cmd.Parameters["@ID_Especialidade"].Value = especialidade.ID_Especialidade;
+                //cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
+                //cmd.Parameters["@ID_Especialidade"].Value = especialidade.ID_Especialidade;
 
                 cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
                 cmd.Parameters["@Descricao"].Value = especialidade.Descricao;
@@ -47,7 +48,7 @@ namespace Biblioteca.especialidade
             {
                 //abrir conexão
                 this.abrirConexao();
-                string sql = "UPDATE Especialidade SET ID_Especialidade = @Id_Especialidade, Descricao = @Descricao WHERE ID_Especialidade = @ID_Especialidade";
+                string sql = "UPDATE Especialidade SET Descricao = @Descricao WHERE ID_Especialidade = @ID_Especialidade";
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 

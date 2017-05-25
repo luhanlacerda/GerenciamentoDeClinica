@@ -58,6 +58,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
                     MessageBox.Show("Especialidade excluída com sucesso!");
                     txtDescricao.Enabled = false;
                     txtID.Clear();
+                    txtDescricao.Clear();
                 }
                 catch (Exception ex)
                 {

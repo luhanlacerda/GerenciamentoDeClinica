@@ -28,25 +28,19 @@ namespace GerenciamentoDeClinica.telaespecialidade
             {
                 Especialidade especialidade = new Especialidade();
 
-                especialidade.ID_Especialidade = Convert.ToInt32(txtID.Text);
+                //especialidade.ID_Especialidade = Convert.ToInt32(txtID.Text);
                 especialidade.Descricao = txtDescricao.Text;
 
                 new EspecialidadeBD().Cadastrar(especialidade);
 
                 MessageBox.Show("Especialidade cadastrada com sucesso!");
-                txtID.Clear();
+                //txtID.Clear();
                 txtDescricao.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message);
             }
-
-
-        }
-
-        private void TelaCadastrarEspecialidade_Load(object sender, EventArgs e)
-        {
 
 
         }
