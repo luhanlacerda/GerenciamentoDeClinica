@@ -388,6 +388,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 0;
+            this.txtNome.Leave += new System.EventHandler(this.txtNome_Leave);
             // 
             // lblRG
             // 

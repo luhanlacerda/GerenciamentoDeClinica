@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -86,6 +88,15 @@ namespace GerenciamentoDeClinicas.telamedico
                 MessageBox.Show(this, ex.Message);
             }
 
+        }
+
+        private void txtNome_Leave(object sender, EventArgs e)
+        {
+            Medico medico = new Medico();
+            medico.Nome = txtNome.Text;
+
+            ClinicaXMLUtils.Create();
+            ClinicaXMLUtils.SetCadastrarMedico(medico);
         }
     }
 }
