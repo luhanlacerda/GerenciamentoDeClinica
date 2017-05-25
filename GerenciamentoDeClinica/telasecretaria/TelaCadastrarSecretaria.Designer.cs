@@ -34,7 +34,6 @@
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -64,6 +63,7 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -71,8 +71,8 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.txtPais);
             this.GroupBox.Controls.Add(this.groupBox1);
-            this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -154,14 +154,6 @@
             this.rbViuvo.Text = "Viúvo(a)";
             this.rbViuvo.UseVisualStyleBackColor = true;
             // 
-            // comboPais
-            // 
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(198, 326);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 16;
-            // 
             // txtCidade
             // 
             this.txtCidade.Location = new System.Drawing.Point(9, 326);
@@ -205,6 +197,7 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 9;
+            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -329,6 +322,7 @@
             this.btnCadastrar.TabIndex = 17;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // txtNome
             // 
@@ -403,6 +397,13 @@
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
             // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(199, 325);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(134, 20);
+            this.txtPais.TabIndex = 96;
+            // 
             // TelaCadastrarSecretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +440,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -459,5 +459,6 @@
         private System.Windows.Forms.RadioButton rbSolteiro;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.RadioButton rbViuvo;
+        private System.Windows.Forms.TextBox txtPais;
     }
 }
