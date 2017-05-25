@@ -8,97 +8,52 @@ namespace Biblioteca.convenio
 
     public class NegocioConvenio : ConexaoSql, IConvenio
     {
-        #region Erros
-        //ID_Convenio, descricao
-        private const string ERRO_ID = "Número de convenio inválido.";
-        private const string ERRO_DESCRICAO = "Descrição de convenio inválido.";
-        private const string ERRO_EXECER_DESCRICAO = "A descrição deve conter 20 caracteres.";
-        #endregion
-        public void Atualizar(Convenio convenio)
+        public void Cadastrar(Convenio especialidade)
         {
-            #region Validações
-            if (convenio.ID_Convenio < 0)
+            ClinicaUtils.ValidarCodigo(especialidade.ID_Convenio);
+
+            if (VerificaExistencia(especialidade) != false)
             {
-                throw new Exception(ERRO_ID);
+                throw new Exception("Código de especialidade já cadastrado");
             }
 
-            if (string.IsNullOrWhiteSpace(convenio.Descricao.Trim()))
-            {
-                throw new Exception(ERRO_DESCRICAO);
-            }
+            ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
+            ClinicaUtils.ValidarExceder(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 
-            if (convenio.Descricao.Trim().Length < 1 || convenio.Descricao.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXECER_DESCRICAO);
-            }
-
-            if (convenio.Descricao.Trim().Length != 20)
-            {
-                throw new Exception(ERRO_EXECER_DESCRICAO);
-            }
-
-            new ConvenioBD().Atualizar(convenio);
-            #endregion
+            new ConvenioBD().Cadastrar(especialidade);
         }
 
 
-        public void Cadastrar(Convenio convenio)
+        public void Atualizar(Convenio especialidade)
         {
-            #region Validações
-            if (convenio.ID_Convenio < 0)
-            {
-                throw new Exception(ERRO_ID);
-            }
+            ClinicaUtils.ValidarCodigo(especialidade.ID_Convenio);
 
-            if (string.IsNullOrWhiteSpace(convenio.Descricao.Trim()))
-            {
-                throw new Exception(ERRO_DESCRICAO);
-            }
+            ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
+            ClinicaUtils.ValidarExceder(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 
-            if (convenio.Descricao.Trim().Length < 1 || convenio.Descricao.Trim().Length > 20)
-            {
-                throw new Exception(ERRO_EXECER_DESCRICAO);
-            }
-
-            if (convenio.Descricao.Trim().Length != 20)
-            {
-                throw new Exception(ERRO_EXECER_DESCRICAO);
-            }
-            new ConvenioBD().Cadastrar(convenio);
-            #endregion
+            new ConvenioBD().Atualizar(especialidade);
         }
 
 
-        public void Remover(Convenio convenio)
+        public void Remover(Convenio especialidade)
         {
-            #region Validações
+            ClinicaUtils.ValidarCodigo(especialidade.ID_Convenio);
 
-            if (convenio.ID_Convenio < 1)
-            {
-                throw new Exception(ERRO_ID);
-            }
-            new ConvenioBD().Remover(convenio);
-            #endregion
+            new ConvenioBD().Remover(especialidade);
         }
-
 
         public List<Convenio> Listar(Convenio filtro)
         {
             return new ConvenioBD().Listar(filtro);
         }
 
-
-        public bool VerificaExistencia(Convenio convenio)
+        public bool VerificaExistencia(Convenio especialidade)
         {
+            ClinicaUtils.ValidarCodigo(especialidade.ID_Convenio);
 
-            if (convenio.ID_Convenio < 1)
-            {
-                throw new Exception(ERRO_ID);
-            }
-
-            return new ConvenioBD().VerificaExistencia(convenio);
-
+            return new ConvenioBD().VerificaExistencia(especialidade);
         }
+
     }
 }
 

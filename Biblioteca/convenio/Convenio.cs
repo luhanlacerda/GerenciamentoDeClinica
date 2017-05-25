@@ -9,8 +9,9 @@ namespace Biblioteca.convenio
     public class Convenio
     {
         public int ID_Convenio  { get; set; }
-        public String Descricao { get; set; }
+        public string Descricao { get; set; }
 
+        
     }
 }
 

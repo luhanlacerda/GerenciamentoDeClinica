@@ -120,7 +120,7 @@ namespace Biblioteca.convenio
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT ID_Convenio,Descricao FROM Convenio where ID_Convenio = @ID_Convenio";
+                string sql = "SELECT ID_Convenio,Descricao FROM Convenio where 1=1";
                 //Se foi passado um id_convenio válido, o mesmo entrará como critério de filtro
                 if (filtro.ID_Convenio > 0)
                 {
