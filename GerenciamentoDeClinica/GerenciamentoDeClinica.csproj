@@ -242,6 +242,10 @@
       <Project>{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}</Project>
       <Name>Biblioteca</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WcfService\WcfService.csproj">
+      <Project>{436DE641-FD53-4EDE-8D09-84531054B3CF}</Project>
+      <Name>WcfService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

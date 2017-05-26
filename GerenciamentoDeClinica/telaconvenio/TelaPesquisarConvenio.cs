@@ -41,7 +41,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnRemover.Enabled = false;
             btnAtualizar.Enabled = false;
             txtIDFiltro.Focus();
-            ClearTextBoxes();
+            ClearTextBoxs();
         }
 
         void enabledEditar()
@@ -74,7 +74,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             btnEditar.Enabled = true;
         }
 
-        void ClearTextBoxes()
+        void ClearTextBoxs()
         {
             Action<Control.ControlCollection> func = null;
 
@@ -95,13 +95,6 @@ namespace GerenciamentoDeClinica.telaconvenio
             listViewConvenios.SelectedItems.Clear();
             try
             {
-
-                if (txtIDFiltro.Text.Equals("") || txtDescricaoFiltro.Text.Equals(""))
-                {
-                    MessageBox.Show(this, "Informe um ID ou Descrição no filtro para pesquisar convenio.");
-                    txtIDFiltro.Focus();
-                    return;
-                }
 
                 List<Convenio> convenios = fachada.Listar(new Convenio());
 
@@ -152,7 +145,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                     fachada.Remover(convenio);
                     listViewConvenios.Items.Remove(selected);
                     MessageBox.Show("Convenio excluido com sucesso!");
-                    ClearTextBoxes();
+                    ClearTextBoxs();
                 }
                 catch (Exception ex)
                 {

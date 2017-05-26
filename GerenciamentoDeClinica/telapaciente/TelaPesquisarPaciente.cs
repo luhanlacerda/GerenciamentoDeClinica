@@ -14,7 +14,6 @@ namespace GerenciamentoDeClinica.telapaciente
 {
     public partial class TelaPesquisarPaciente : Form
     {
-        Fachada fachada = new Fachada();
 
         public TelaPesquisarPaciente()
         {
@@ -125,8 +124,18 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
+            try
+            {
+             
+                   
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             enableRemover();
-        }
+        }        
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
@@ -148,14 +157,13 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             try
             {
-                if (maskedFiltroCPF.Text.Equals(""))
+                List<Paciente> pacientes = new PacienteBD().Listar(new Paciente { });
+
+                foreach (Paciente paciente in pacientes)
                 {
-                    MessageBox.Show(this, "Informe um CPF para pesquisar um paciente.");
-                    maskedFiltroCPF.Focus();
-                    return;
+                    paciente.
                 }
 
-               
             }
             catch (Exception ex)
             {

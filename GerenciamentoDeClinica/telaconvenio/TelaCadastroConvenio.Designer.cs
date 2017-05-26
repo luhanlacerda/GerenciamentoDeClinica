@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.lblID = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.btnCadastro = new System.Windows.Forms.Button();
@@ -40,8 +38,6 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Controls.Add(this.lblID);
             this.groupBox1.Controls.Add(this.txtDescricao);
             this.groupBox1.Controls.Add(this.lblDescricao);
             this.groupBox1.Controls.Add(this.btnCadastro);
@@ -52,25 +48,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro";
             // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(14, 49);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(66, 20);
-            this.txtID.TabIndex = 0;
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(11, 33);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(21, 13);
-            this.lblID.TabIndex = 4;
-            this.lblID.Text = "ID:";
-            // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(14, 88);
+            this.txtDescricao.Location = new System.Drawing.Point(11, 51);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(155, 20);
             this.txtDescricao.TabIndex = 1;
@@ -78,7 +58,7 @@
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(11, 72);
+            this.lblDescricao.Location = new System.Drawing.Point(8, 35);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(58, 13);
             this.lblDescricao.TabIndex = 1;
@@ -86,7 +66,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(199, 124);
+            this.btnCadastro.Location = new System.Drawing.Point(198, 116);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(75, 23);
             this.btnCadastro.TabIndex = 2;
@@ -115,7 +95,5 @@
         private System.Windows.Forms.Button btnCadastro;
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Label lblID;
     }
 }

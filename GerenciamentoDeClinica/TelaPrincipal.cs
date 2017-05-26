@@ -15,6 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WcfService;
+using Biblioteca.convenio;
 
 namespace GerenciamentoDeClinica
 {
@@ -161,6 +163,25 @@ namespace GerenciamentoDeClinica
 
         private void arquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Service1 service = new Service1();
+                Convenio convenio = new Convenio();
+
+                int conv = convenio.ID_Convenio = 55;
+                string conven = convenio.Descricao = "teste";
+                MessageBox.Show(conv + conven);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
 
         }
     }

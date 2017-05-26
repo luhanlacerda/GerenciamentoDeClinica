@@ -18,24 +18,39 @@ namespace GerenciamentoDeClinica.telaconvenio
             InitializeComponent();
         }
 
+
+        void ClearTextBoxs()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
         private void btnCadastro_Click(object sender, EventArgs e)
         {
             try
             {
                 Convenio convenio = new Convenio();
 
-                convenio.ID_Convenio = Convert.ToInt32(txtID.Text);
-                convenio.Descricao = txtDescricao.Text;
-
+                convenio.Descricao = txtDescricao.Text; 
 
                 new ConvenioBD().Cadastrar(convenio);
+                MessageBox.Show("Convenio cadastrado com sucesso.");
+                ClearTextBoxs();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message);
             }
         }
-
-        
     }
 }
