@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="classesBasicas\Endereco.cs" />
     <Compile Include="classesBasicas\Pessoa.cs" />
-    <Compile Include="fachada\Fachada.cs" />
     <Compile Include="utils\ClinicaXMLUtils.cs" />
     <Compile Include="utils\ConexaoSql.cs" />
     <Compile Include="consulta\Consulta.cs" />

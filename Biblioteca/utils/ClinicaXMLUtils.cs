@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -53,7 +54,7 @@ namespace Biblioteca.utils
         private static void CheckXmlLoad()
         {
             if (document == null)
-                throw new Exception("XML não carregado.");
+                throw new FaultException("XML não carregado.");
         }
 
         public static void SetCadastrarMedico(Medico medico)

@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Biblioteca.medico
 {
+    [ServiceContract]
     public interface IMedico
     {
+        [OperationContract]
         //Cadastrar um médico
-        void Cadastrar(Medico medico);
+        void CadastrarMedico(Medico medico);
+        [OperationContract]
         //Atualizar um médico
-        void Atualizar(Medico medico);
+        void AtualizarMedico(Medico medico);
+        [OperationContract]
         //Remover um médico
-        void Remover(Medico medico);
+        void RemoverMedico(Medico medico);
+        [OperationContract]
         //Selecionar os médicos que se encaixam no filtro de pesquisa
-        List<Medico> Listar(Medico filtro);
+        List<Medico> ListarMedico(Medico filtro);
+        [OperationContract]
         //Verificar se um médico já está cadastrado
-        bool VerificaExistencia(Medico medico); //Qual a diferença de bool para Boolean?
+        bool VerificarExistenciaMedico(Medico medico); //Qual a diferença de bool para Boolean?
     }
 }

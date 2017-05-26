@@ -10,39 +10,39 @@ namespace Biblioteca.secretaria
 {
     public class NegocioSecretaria : ISecretaria
     {
-        public void Atualizar(Secretaria secretaria)
+        public void AtualizarSecretaria(Secretaria secretaria)
         {
             ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
             ClinicaUtils.ValidarPessoa(secretaria);
 
-            new SecretariaBD().Cadastrar(secretaria);
+            new SecretariaBD().CadastrarSecretaria(secretaria);
         }
 
-        public void Cadastrar(Secretaria secretaria)
+        public void CadastrarSecretaria(Secretaria secretaria)
         {
             ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
             ClinicaUtils.ValidarPessoa(secretaria);
 
-            new SecretariaBD().Cadastrar(secretaria);
+            new SecretariaBD().CadastrarSecretaria(secretaria);
         }
 
-        public List<Secretaria> Listar(Secretaria filtro)
+        public List<Secretaria> ListarSecretaria(Secretaria filtro)
         {
-            return new SecretariaBD().Listar(filtro);
+            return new SecretariaBD().ListarSecretaria(filtro);
         }
 
-        public void Remover(Secretaria secretaria)
-        {
-            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
-
-            new SecretariaBD().Remover(secretaria);
-        }
-
-        public bool VerificaExistencia(Secretaria secretaria)
+        public void RemoverSecretaria(Secretaria secretaria)
         {
             ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
 
-            return new SecretariaBD().VerificaExistencia(secretaria);
+            new SecretariaBD().RemoverSecretaria(secretaria);
+        }
+
+        public bool VerificarExistenciaSecretaria(Secretaria secretaria)
+        {
+            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
+
+            return new SecretariaBD().VerificarExistenciaSecretaria(secretaria);
         }
     }
 }

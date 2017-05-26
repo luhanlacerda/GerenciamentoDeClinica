@@ -11,39 +11,39 @@ namespace Biblioteca.medico
     public class NegocioMedico : IMedico
     {
 
-        public void Cadastrar(Medico medico)
+        public void CadastrarMedico(Medico medico)
         {
             ClinicaUtils.ValidarCodigo(medico.ID_Medico);
             ClinicaUtils.ValidarPessoa(medico);
 
-            new MedicoBD().Cadastrar(medico);
+            new MedicoBD().CadastrarMedico(medico);
         }
 
-        public void Atualizar(Medico medico)
+        public void AtualizarMedico(Medico medico)
         {
             ClinicaUtils.ValidarCodigo(medico.ID_Medico);
             ClinicaUtils.ValidarPessoa(medico);
 
-            new MedicoBD().Atualizar(medico);
+            new MedicoBD().AtualizarMedico(medico);
         }
 
-        public void Remover(Medico medico)
+        public void RemoverMedico(Medico medico)
         {
             ClinicaUtils.ValidarCodigo(medico.ID_Medico);
 
-            new MedicoBD().Remover(medico);
+            new MedicoBD().RemoverMedico(medico);
         }
 
-        public List<Medico> Listar(Medico filtro)
+        public List<Medico> ListarMedico(Medico filtro)
         {
-            return new MedicoBD().Listar(filtro);
+            return new MedicoBD().ListarMedico(filtro);
         }
 
-        public bool VerificaExistencia(Medico medico)
+        public bool VerificarExistenciaMedico(Medico medico)
         {
             ClinicaUtils.ValidarCodigo(medico.ID_Medico);
 
-            return new MedicoBD().VerificaExistencia(medico);
+            return new MedicoBD().VerificarExistenciaMedico(medico);
         }
     }
 }

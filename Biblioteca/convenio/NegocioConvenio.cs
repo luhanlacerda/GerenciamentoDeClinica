@@ -1,56 +1,53 @@
 ﻿using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace Biblioteca.convenio
 {
 
     public class NegocioConvenio : ConexaoSql, IConvenio
     {
-        public void Cadastrar(Convenio convenio)
+        public void CadastrarConvenio(Convenio convenio)
         {
-            ClinicaUtils.ValidarCodigo(convenio.ID_Convenio);
-
-            if (VerificaExistencia(convenio) != false)
+            if (VerificarExistenciaConvenio(convenio) != false)
             {
-                throw new Exception("Código de convenio já cadastrado");
+                throw new FaultException("Código de convenio já cadastrado");
             }
 
             ClinicaUtils.ValidarVazio(convenio.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
             ClinicaUtils.ValidarExceder(convenio.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 
-            new ConvenioBD().Cadastrar(convenio);
+            new ConvenioBD().CadastrarConvenio(convenio);
         }
 
 
-        public void Atualizar(Convenio convenio)
+        public void AtualizarConvenio(Convenio convenio)
         {
             ClinicaUtils.ValidarCodigo(convenio.ID_Convenio);
 
             ClinicaUtils.ValidarVazio(convenio.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
             ClinicaUtils.ValidarExceder(convenio.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 
-            new ConvenioBD().Atualizar(convenio);
+            new ConvenioBD().AtualizarConvenio(convenio);
         }
 
 
-        public void Remover(Convenio convenio)
+        public void RemoverConvenio(Convenio convenio)
         {
             ClinicaUtils.ValidarCodigo(convenio.ID_Convenio);
 
-            new ConvenioBD().Remover(convenio);
+            new ConvenioBD().RemoverConvenio(convenio);
         }
 
-        public List<Convenio> Listar(Convenio filtro)
+        public List<Convenio> ListarConvenio(Convenio filtro)
         {
-            return new ConvenioBD().Listar(filtro);
+            return new ConvenioBD().ListarConvenio(filtro);
         }
 
-        public bool VerificaExistencia(Convenio convenio)
+        public bool VerificarExistenciaConvenio(Convenio convenio)
         {
-            ClinicaUtils.ValidarCodigo(convenio.ID_Convenio);
-
-            return new ConvenioBD().VerificaExistencia(convenio);
+            return new ConvenioBD().VerificarExistenciaConvenio(convenio);
         }
 
     }

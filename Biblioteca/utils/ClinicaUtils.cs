@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,35 +63,35 @@ namespace Biblioteca.utils
         public static void ValidarCodigo(int value)
         {
             if (value < 1)
-                throw new Exception(string.Format(ERRO_INVALIDO, ERRO_CODIGO));
+                throw new FaultException(string.Format(ERRO_INVALIDO, ERRO_CODIGO));
         }
 
         //Validação de um objeto nulo, vazio ou apenas espaços em branco
         public static void ValidarVazio(string value, string error)
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new Exception(string.Format(ERRO_INVALIDO, error));
+                throw new FaultException(string.Format(ERRO_INVALIDO, error));
         }
 
         //Validação de excedência de um valor máximo mostrado
         public static void ValidarExceder(string value, int maximum, string error)
         {
             if (value.Length > maximum)
-                throw new Exception(string.Format(ERRO_EXCEDER, error, maximum));
+                throw new FaultException(string.Format(ERRO_EXCEDER, error, maximum));
         }
 
         //Validação de um tamanho fixo
         public static void ValidarTamanho(string value, int size, string error)
         {
             if (value.Length != size)
-                throw new Exception(string.Format(ERRO_TAMANHO, error, size));
+                throw new FaultException(string.Format(ERRO_TAMANHO, error, size));
         }
 
         //Validação se o e-mail é válido
         public static void ValidarEmail(string email)
         {
             if (!EMAIL_VALIDATION.IsValid(email))
-                throw new Exception(string.Format(ERRO_INVALIDO, ERRO_EMAIL));
+                throw new FaultException(string.Format(ERRO_INVALIDO, ERRO_EMAIL));
 
         }
 

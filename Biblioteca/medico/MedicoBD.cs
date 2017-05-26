@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Biblioteca.medico
 {
     public class MedicoBD : ConexaoSql, IMedico
     {
-        public void Cadastrar(Medico medico)
+        public void CadastrarMedico(Medico medico)
         {
             try
             {
@@ -93,13 +94,13 @@ namespace Biblioteca.medico
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao cadastrar médico." + e);
+                throw new FaultException("Erro ao cadastrar médico." + e);
             }
         }
 
-        public void Atualizar(Medico medico)
+        public void AtualizarMedico(Medico medico)
         {
             try
             {
@@ -174,14 +175,14 @@ namespace Biblioteca.medico
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao atualizar médico." + e);
+                throw new FaultException("Erro ao atualizar médico." + e);
             }
 
         }
 
-        public void Remover(Medico medico)
+        public void RemoverMedico(Medico medico)
         {
             try
             {
@@ -202,13 +203,13 @@ namespace Biblioteca.medico
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao remover médico." + e);
+                throw new FaultException("Erro ao remover médico." + e);
             }
         }
 
-        public List<Medico> Listar(Medico filtro)
+        public List<Medico> ListarMedico(Medico filtro)
         {
             List<Medico> retorno = new List<Medico>();
             try
@@ -296,15 +297,15 @@ namespace Biblioteca.medico
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
 
-                throw new Exception("Erro ao conectar e selecionar." + e.Message);
+                throw new FaultException("Erro ao conectar e selecionar." + e.Message);
             }
             return retorno;
         }
 
-        public bool VerificaExistencia(Medico medico)
+        public bool VerificarExistenciaMedico(Medico medico)
         {
             bool retorno;
 
@@ -327,9 +328,9 @@ namespace Biblioteca.medico
                 //Fechar conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao verificar médico." + e);
+                throw new FaultException("Erro ao verificar médico." + e);
             }
             return retorno;
         }

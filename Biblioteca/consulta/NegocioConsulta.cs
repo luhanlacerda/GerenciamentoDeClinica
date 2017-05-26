@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,86 +25,88 @@ namespace Biblioteca.consulta
         #endregion
         //Verificar validação do tamanho máximo do ENDEREÇO!
 
-        public void Cadastrar(Consulta consulta)
+        public void CadastrarConsulta(Consulta consulta)
         {
             #region Validações
             if (consulta.Duracao < 1)
             {
-                throw new Exception (ERRO_DURACAO);
+                throw new FaultException (ERRO_DURACAO);
             }
 
             if (string.IsNullOrWhiteSpace(consulta.Observacoes.Trim()))
             {
-                throw new Exception(ERRO_OBSERVACAO);
+                throw new FaultException(ERRO_OBSERVACAO);
             }
 
             if (consulta.Observacoes.Trim().Length < 1 || consulta.Observacoes.Length > 500)
             {
-                throw new Exception(ERRO_EXCEDER_OBSERVACAO);
+                throw new FaultException(ERRO_EXCEDER_OBSERVACAO);
             }
 
             if (string.IsNullOrWhiteSpace(consulta.Descricao.Trim()))
             {
-                throw new Exception(ERRO_DESCRICAO);
+                throw new FaultException(ERRO_DESCRICAO);
             }
 
             if (consulta.Descricao.Trim().Length < 1 || consulta.Descricao.Length > 20)
             {
-                throw new Exception (ERRO_EXCEDER_DESCRICAO);
+                throw new FaultException (ERRO_EXCEDER_DESCRICAO);
             }
 
             if (consulta.ID_Consulta < 1)
             {
-                throw new Exception (ERRO_NUMERO);
+                throw new FaultException (ERRO_NUMERO);
             }
 
             if (consulta.Medico.ID_Medico < 1)
             {
-                throw new Exception (ERRO_MEDICO); 
+                throw new FaultException (ERRO_MEDICO); 
             }
 
             if (consulta.Paciente.ID_Paciente < 1)
             {
-                throw new Exception(ERRO_PACIENTE);
+                throw new FaultException(ERRO_PACIENTE);
             }
 
             if (consulta.Secretaria.ID_Secretaria < 1)
             {
-                throw new Exception (ERRO_SECRETARIA);
+                throw new FaultException (ERRO_SECRETARIA);
             }
 #endregion
 
-            new ConsultaBD().Cadastrar(consulta);
+            new ConsultaBD().CadastrarConsulta(consulta);
         }
 
-        public void Atualizar(Consulta consulta)
+        public void AtualizarConsulta(Consulta consulta)
         {
 
-            new ConsultaBD().Atualizar(consulta);
+            new ConsultaBD().AtualizarConsulta(consulta);
         }
 
-        public void Remover(Consulta consulta)
-        {
-            if (consulta.ID_Consulta < 1)
-            {
-                throw new Exception (ERRO_NUMERO);
-            }
-
-        }
-
-        public List<Consulta> Listar(Consulta filtro)
-        {
-            return new ConsultaBD().Listar(filtro);
-        }
-
-        public bool VerificarExistencia(Consulta consulta)
+        public void RemoverConsulta(Consulta consulta)
         {
             if (consulta.ID_Consulta < 1)
             {
-                throw new Exception(ERRO_NUMERO);
+                throw new FaultException (ERRO_NUMERO);
             }
 
-            return new ConsultaBD().VerificarExistencia(consulta);
+            new ConsultaBD().RemoverConsulta(consulta);
+
+        }
+
+        public List<Consulta> ListarConsulta(Consulta filtro)
+        {
+            return new ConsultaBD().ListarConsulta(filtro);
+        }
+
+        public bool VerificarExistenciaConsulta(Consulta consulta)
+        {
+            if (consulta.ID_Consulta < 1)
+            {
+                throw new FaultException(ERRO_NUMERO);
+            }
+
+            return new ConsultaBD().VerificarExistenciaConsulta(consulta);
         }
     }
 }

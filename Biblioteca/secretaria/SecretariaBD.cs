@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace Biblioteca.secretaria
 {
     public class SecretariaBD : ConexaoSql, ISecretaria
     {
-        public void Cadastrar(Secretaria secretaria)
+        public void CadastrarSecretaria(Secretaria secretaria)
         {
             try
             {
@@ -80,13 +81,13 @@ namespace Biblioteca.secretaria
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao cadastrar secretária." + e);
+                throw new FaultException("Erro ao cadastrar secretária." + e);
             }
         }
 
-        public void Atualizar(Secretaria secretaria)
+        public void AtualizarSecretaria(Secretaria secretaria)
         {
             try
             {
@@ -157,13 +158,13 @@ namespace Biblioteca.secretaria
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao atualizar secretária." + e);
+                throw new FaultException("Erro ao atualizar secretária." + e);
             }
         }
 
-        public void Remover(Secretaria secretaria)
+        public void RemoverSecretaria(Secretaria secretaria)
         {
             try
             {
@@ -184,13 +185,13 @@ namespace Biblioteca.secretaria
                 //Fechando conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao remover secretária." + e);
+                throw new FaultException("Erro ao remover secretária." + e);
             }
         }
 
-        public List<Secretaria> Listar(Secretaria filtro)
+        public List<Secretaria> ListarSecretaria(Secretaria filtro)
         {
             List<Secretaria> retorno = new List<Secretaria>();
             try
@@ -271,14 +272,14 @@ namespace Biblioteca.secretaria
                 //Fechando a conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao conectar e selecionar." + e.Message);
+                throw new FaultException("Erro ao conectar e selecionar." + e.Message);
             }
             return retorno;
         }
 
-        public bool VerificaExistencia(Secretaria secretaria)
+        public bool VerificarExistenciaSecretaria(Secretaria secretaria)
         {
             bool retorno;
 
@@ -301,9 +302,9 @@ namespace Biblioteca.secretaria
                 //Fechar conexao
                 this.fecharConexao();
             }
-            catch (Exception)
+            catch (FaultException)
             {
-                throw new Exception("Erro ao verificar secretária.");
+                throw new FaultException("Erro ao verificar secretária.");
             }
 
             return retorno;

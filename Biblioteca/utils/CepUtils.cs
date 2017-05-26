@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 using Biblioteca.classesBasicas;
+using System.ServiceModel;
 
 namespace Biblioteca.utils
 {
@@ -33,7 +34,7 @@ namespace Biblioteca.utils
                 endereco.Cidade = xml.DocumentElement.SelectSingleNode("/xmlcep/localidade").InnerText;
                 endereco.UF = xml.DocumentElement.SelectSingleNode("/xmlcep/uf").InnerText;
             }
-            catch (Exception)
+            catch (FaultException)
             {
             }
 

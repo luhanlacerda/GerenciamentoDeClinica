@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.ServiceModel;
 
 namespace Biblioteca.convenio
 {
@@ -10,7 +11,7 @@ namespace Biblioteca.convenio
     {
 
 
-        public void Cadastrar(Convenio convenio)
+        public void CadastrarConvenio(Convenio convenio)
         {
             #region
             try
@@ -18,15 +19,12 @@ namespace Biblioteca.convenio
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "insert into Convenio (ID_Convenio, Descricao)" +
-                             "values (@ID_Convenio,@Descricao)";
+                string sql = "insert into Convenio (Descricao)" +
+                             "values (@Descricao)";
 
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
-                cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
-                cmd.Parameters["@ID_Convenio"].Value = convenio.ID_Convenio;
-
                 cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
                 cmd.Parameters["@Descricao"].Value = convenio.Descricao;
 
@@ -37,14 +35,14 @@ namespace Biblioteca.convenio
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao cadastrar convenio." + e);
+                throw new FaultException("Erro ao cadastrar convenio." + e);
             }
             #endregion
         }
 
-        public void Atualizar(Convenio convenio)
+        public void AtualizarConvenio(Convenio convenio)
         {
             #region
             try
@@ -69,15 +67,15 @@ namespace Biblioteca.convenio
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao atualizar Convenio." + e);
+                throw new FaultException("Erro ao atualizar Convenio." + e);
             }
             #endregion
         }
 
 
-        public void Remover(Convenio convenio)
+        public void RemoverConvenio(Convenio convenio)
         {
             #region
             try
@@ -99,15 +97,15 @@ namespace Biblioteca.convenio
                 //Fechando conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao remover Convenio." + e);
+                throw new FaultException("Erro ao remover Convenio." + e);
             }
             #endregion
         }
 
 
-        public List<Convenio> Listar(Convenio filtro)
+        public List<Convenio> ListarConvenio(Convenio filtro)
         {
             
             List<Convenio> retorno = new List<Convenio>();
@@ -158,15 +156,15 @@ namespace Biblioteca.convenio
                 //Fechando a conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao conectar e selecionar." + e.Message);
+                throw new FaultException("Erro ao conectar e selecionar." + e.Message);
             }
             return retorno;
             
         }
 
-        public bool verificaExistencia(Convenio convenio)
+        public bool VerificarExistenciaConvenio(Convenio convenio)
         {
             #region
             bool retorno = false;
@@ -197,9 +195,9 @@ namespace Biblioteca.convenio
                 //Fechar conexao
                 this.fecharConexao();
             }
-            catch (Exception)
+            catch (FaultException)
             {
-                throw new Exception("Convenio esta ativo.");
+                throw new FaultException("Convenio esta ativo.");
             }
 
             return retorno;
@@ -207,7 +205,7 @@ namespace Biblioteca.convenio
 
         public bool VerificaExistencia(Convenio convenio)
         {
-            throw new NotImplementedException();
+            throw new FaultException();
         }
         #endregion
     }

@@ -1,19 +1,20 @@
 ﻿using Biblioteca.utils;
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace Biblioteca.paciente
 {
     public class NegocioPaciente : IPaciente
     {
 
-        public void Cadastrar(Paciente paciente)
+        public void CadastrarPaciente(Paciente paciente)
         {
             ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
 
-            if (VerificaExistencia(paciente) != false)
+            if (VerificarExistenciaPaciente(paciente) != false)
             {
-                throw new Exception("Código de paciente já cadastrado");
+                throw new FaultException("Código de paciente já cadastrado");
             }
 
             ClinicaUtils.ValidarVazio(paciente.Nome.Trim(), ClinicaUtils.ERRO_NOME);
@@ -69,11 +70,11 @@ namespace Biblioteca.paciente
 
 
 
-            new PacienteBD().Cadastrar(paciente);
+            new PacienteBD().CadastrarPaciente(paciente);
         }
 
 
-        public void Atualizar(Paciente paciente)
+        public void AtualizarPaciente(Paciente paciente)
         {
             ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
 
@@ -119,27 +120,27 @@ namespace Biblioteca.paciente
             ClinicaUtils.ValidarVazio(paciente.Estado_Civil, ClinicaUtils.ERRO_ESTADO_CIVIL);
             ClinicaUtils.ValidarExceder(paciente.Estado_Civil, 10, ClinicaUtils.ERRO_ESTADO_CIVIL);
 
-            new PacienteBD().Atualizar(paciente);
+            new PacienteBD().AtualizarPaciente(paciente);
         }
 
 
-        public void Remover(Paciente paciente)
+        public void RemoverPaciente(Paciente paciente)
         {
             ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
 
-            new PacienteBD().Remover(paciente);
+            new PacienteBD().RemoverPaciente(paciente);
         }
 
-        public List<Paciente> Listar(Paciente filtro)
+        public List<Paciente> ListarPaciente(Paciente filtro)
         {
-            return new PacienteBD().Listar(filtro);
+            return new PacienteBD().ListarPaciente(filtro);
         }
 
-        public bool VerificaExistencia(Paciente paciente)
+        public bool VerificarExistenciaPaciente(Paciente paciente)
         {
             ClinicaUtils.ValidarCodigo(paciente.ID_Paciente);
 
-            return new PacienteBD().VerificaExistencia(paciente);
+            return new PacienteBD().VerificarExistenciaPaciente(paciente);
         }
 
     }

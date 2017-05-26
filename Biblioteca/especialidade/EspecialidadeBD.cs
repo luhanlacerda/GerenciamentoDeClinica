@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Biblioteca.especialidade
     public class EspecialidadeBD : ConexaoSql, IEspecialidade
     {
 
-        public void Cadastrar(Especialidade especialidade)
+        public void CadastrarEspecialidade(Especialidade especialidade)
         {
             try
             {
@@ -36,13 +37,13 @@ namespace Biblioteca.especialidade
                 //fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                throw new Exception("Erro ao conectar e cadastrar " + ex.Message);
+                throw new FaultException("Erro ao conectar e cadastrar " + ex.Message);
             }
         }
 
-        public void Atualizar(Especialidade especialidade)
+        public void AtualizarEspecialidade(Especialidade especialidade)
         {
             try
             {
@@ -65,13 +66,13 @@ namespace Biblioteca.especialidade
                 //fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                throw new Exception("Erro ao conectar e atualizar " + ex.Message);
+                throw new FaultException("Erro ao conectar e atualizar " + ex.Message);
             }
         }
 
-        public void Remover(Especialidade especialidade)
+        public void RemoverEspecialidade(Especialidade especialidade)
         {
             try
             {
@@ -91,13 +92,13 @@ namespace Biblioteca.especialidade
                 //fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                throw new Exception("Erro ao conectar e remover " + ex.Message);
+                throw new FaultException("Erro ao conectar e remover " + ex.Message);
             }
         }
 
-        public List<Especialidade> Listar(Especialidade filtro)
+        public List<Especialidade> ListarEspecialidade(Especialidade filtro)
         {
             List<Especialidade> retorno = new List<Especialidade>();
             try
@@ -148,14 +149,14 @@ namespace Biblioteca.especialidade
                 //fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                throw new Exception("Erro ao conectar e listar " + ex.Message);
+                throw new FaultException("Erro ao conectar e listar " + ex.Message);
             }
             return retorno;
         }
 
-        public bool VerificaExistencia(Especialidade especialidade)
+        public bool VerificarExistenciaEspecialidade(Especialidade especialidade)
         {
             bool retorno = false;
 
@@ -181,9 +182,9 @@ namespace Biblioteca.especialidade
                 //fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                throw new Exception("Erro ao conectar e selecionar " + ex.Message);
+                throw new FaultException("Erro ao conectar e selecionar " + ex.Message);
             }
             return retorno;
         }

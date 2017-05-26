@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Biblioteca.consulta
 {
+    [ServiceContract]
     public interface IConsulta
     {
+        [OperationContract]
         //Cadastrar Consulta
-        void Cadastrar (Consulta consulta);
+        void CadastrarConsulta (Consulta consulta);
+        [OperationContract]
         //Atualizar Consulta
-        void Atualizar(Consulta consulta);
+        void AtualizarConsulta(Consulta consulta);
+        [OperationContract]
         //Remover Consulta
-        void Remover(Consulta consulta);
+        void RemoverConsulta(Consulta consulta);
+        [OperationContract]
         //Selecionando as consultas que se encaixam no filtro
-        List<Consulta> Listar(Consulta filtro);
+        List<Consulta> ListarConsulta(Consulta filtro);
+        [OperationContract]
         //Vereficar se uma consulta ja está cadastrado
-        bool VerificarExistencia(Consulta consulta);
+        bool VerificarExistenciaConsulta(Consulta consulta);
     }
 }

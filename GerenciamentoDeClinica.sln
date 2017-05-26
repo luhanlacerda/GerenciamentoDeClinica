@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoDeClinica", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca", "Biblioteca\Biblioteca.csproj", "{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{436DE641-FD53-4EDE-8D09-84531054B3CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{436DE641-FD53-4EDE-8D09-84531054B3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{436DE641-FD53-4EDE-8D09-84531054B3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{436DE641-FD53-4EDE-8D09-84531054B3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{436DE641-FD53-4EDE-8D09-84531054B3CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

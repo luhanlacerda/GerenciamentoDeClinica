@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace Biblioteca.consulta
     {
         
 
-        public void Cadastrar(Consulta consulta)
+        public void CadastrarConsulta(Consulta consulta)
         {
             try
             {
@@ -60,13 +61,13 @@ namespace Biblioteca.consulta
                 //Fechando conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao cadastrar consulta." + e);
+                throw new FaultException("Erro ao cadastrar consulta." + e);
             }
         }
 
-        public void Atualizar(Consulta consulta)
+        public void AtualizarConsulta(Consulta consulta)
         {
             try
             {
@@ -90,14 +91,14 @@ namespace Biblioteca.consulta
                 //Fechando conexao 
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException)
             {
-                throw new Exception("Erro ao atualizar consulta.");
+                throw new FaultException("Erro ao atualizar consulta.");
             }
         }
 
 
-        public void Remover(Consulta consulta)
+        public void RemoverConsulta(Consulta consulta)
         {
             try
             {
@@ -118,14 +119,14 @@ namespace Biblioteca.consulta
                 //Fechando conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao remover consulta." + e);
+                throw new FaultException("Erro ao remover consulta." + e);
             }
         }
 
 
-        public List<Consulta> Listar(Consulta filtro)
+        public List<Consulta> ListarConsulta(Consulta filtro)
         {
 
             List<Consulta> retorno = new List<Consulta>();
@@ -135,8 +136,8 @@ namespace Biblioteca.consulta
                 //Conectar ao banco
                 this.abrirConexao();
                 //Instruçao a ser executada
-                string sql = "SELECT Horario, Duracao, Observacoes, Descricao, ID_Receita, ID_Medico" +
-                    "ID_Paciente, ID_Secretaria FROM Consulta_Receita WHERE TRUE";
+                string sql = "SELECT Horario, Duracao, Observacoes, Descricao, ID_Receita, ID_Medico," +
+                    "ID_Paciente, ID_Secretaria FROM Consulta_Receita WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
                 //Se foi passado um ID valido, o mesmo entrara como criterio de filtro.
@@ -144,7 +145,7 @@ namespace Biblioteca.consulta
                 //Filtro por ID_Consulta
                 if (filtro.ID_Consulta > 0)
                 {
-                    sql += "AND ID_Consulta = @ID_Consulta";
+                    sql += " AND ID_Consulta = @ID_Consulta";
 
                     scm.Parameters.Add("@ID_Consulta", SqlDbType.Int);
                     scm.Parameters["@ID_Consulta"].Value = filtro.ID_Consulta;
@@ -153,7 +154,7 @@ namespace Biblioteca.consulta
                 //Filtro por ID_Medico
                 if (filtro.Medico.ID_Medico > 0)
                 {
-                    sql += "AND ID_Medico = @ID_Medico";
+                    sql += " AND ID_Medico = @ID_Medico";
 
                     scm.Parameters.Add("@ID_Medico", SqlDbType.Int);
                     scm.Parameters["@ID_Medico"].Value = filtro.Medico.ID_Medico;
@@ -162,7 +163,7 @@ namespace Biblioteca.consulta
                 //Filtro por ID_Secretaria
                 if (filtro.Secretaria.ID_Secretaria > 0)
                 {
-                    sql += "AND ID_Secretaria = @ID_Secretaria";
+                    sql += " AND ID_Secretaria = @ID_Secretaria";
 
                     scm.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
                     scm.Parameters["@ID_Secretaria"].Value = filtro.Secretaria.ID_Secretaria;
@@ -200,9 +201,9 @@ namespace Biblioteca.consulta
                 //Fechar conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao conectar e listar" + e);
+                throw new FaultException("Erro ao conectar e listar" + e);
             }
 
             return retorno;
@@ -210,7 +211,7 @@ namespace Biblioteca.consulta
 
 
 
-        public bool VerificarExistencia(Consulta consulta)
+        public bool VerificarExistenciaConsulta(Consulta consulta)
         {
             bool retorno;
 
@@ -219,7 +220,7 @@ namespace Biblioteca.consulta
                 //Conectar ao banco
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT (*) COUNT Consulta_Receita WHERE ID_Consulta = @ID_Consulta";
+                string sql = "SELECT COUNT(*) FROM Consulta WHERE ID_Consulta = @ID_Consulta";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
 
@@ -235,9 +236,9 @@ namespace Biblioteca.consulta
 
 
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao verificar médico." + e);
+                throw new FaultException("Erro ao verificar médico." + e);
             }
 
             return retorno;

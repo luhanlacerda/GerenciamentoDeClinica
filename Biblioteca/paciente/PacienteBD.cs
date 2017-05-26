@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.ServiceModel;
 
 namespace Biblioteca.paciente
 {
     public class PacienteBD : ConexaoSql, IPaciente
     {
 
-        public void Cadastrar(Paciente paciente)
+        public void CadastrarPaciente(Paciente paciente)
         {
             try
             {
@@ -86,13 +87,13 @@ namespace Biblioteca.paciente
                 this.fecharConexao();
 
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao cadastrar Paciente." + e);
+                throw new FaultException("Erro ao cadastrar Paciente." + e);
             }
         }
 
-        public void Atualizar(Paciente paciente)
+        public void AtualizarPaciente(Paciente paciente)
         {
             try
             {
@@ -170,14 +171,14 @@ namespace Biblioteca.paciente
                 //Fechar Conexao
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao Atualizar Paciente." + e);
+                throw new FaultException("Erro ao Atualizar Paciente." + e);
             }
 
         }
 
-        public void Remover(Paciente paciente)
+        public void RemoverPaciente(Paciente paciente)
         {
             try
             {
@@ -199,13 +200,13 @@ namespace Biblioteca.paciente
                 this.fecharConexao();
 
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao remover Paciente." + e);
+                throw new FaultException("Erro ao remover Paciente." + e);
             }
         }
 
-        public List<Paciente> Listar(Paciente filtro)
+        public List<Paciente> ListarPaciente(Paciente filtro)
         {
             List<Paciente> retorno = new List<Paciente>();
 
@@ -286,14 +287,14 @@ namespace Biblioteca.paciente
                 //Fechando conexão
                 this.fecharConexao();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao conectar e selecionar." + e);
+                throw new FaultException("Erro ao conectar e selecionar." + e);
             }
             return retorno;
         }
 
-        public bool VerificaExistencia(Paciente paciente)
+        public bool VerificarExistenciaPaciente(Paciente paciente)
         {
             bool retorno;
 
@@ -318,9 +319,9 @@ namespace Biblioteca.paciente
                 this.fecharConexao();
 
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
-                throw new Exception("Erro ao verificar paciente." + e);
+                throw new FaultException("Erro ao verificar paciente." + e);
             }
 
             return retorno;
