@@ -1,11 +1,9 @@
 ﻿using GerenciamentoDeClinica.telaconsulta;
 using GerenciamentoDeClinica.telaconvenio;
 using GerenciamentoDeClinica.telaespecialidade;
-using GerenciamentoDeClinica.medico;
+using GerenciamentoDeClinica.telamedico;
 using GerenciamentoDeClinica.telapaciente;
 using GerenciamentoDeClinica.telasecretaria;
-using GerenciamentoDeClinicas;
-using GerenciamentoDeClinicas.telamedico;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WcfService;
-using Biblioteca.convenio;
 
 namespace GerenciamentoDeClinica
 {
@@ -40,13 +36,6 @@ namespace GerenciamentoDeClinica
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void testarConexãoBDToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TelaTesteConexaoSql testConexao = new TelaTesteConexaoSql();
-            AddOwnedForm(testConexao);
-            testConexao.Show();
         }
 
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,10 +122,9 @@ namespace GerenciamentoDeClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TelaTesteConexaoSql teste = new TelaTesteConexaoSql();
-            teste.Show();
+            TelaTesteWebService telaTesteWebService = new TelaTesteWebService();
+            telaTesteWebService.Show();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             TelaPesquisarConsulta teste1 = new TelaPesquisarConsulta();
@@ -166,23 +154,11 @@ namespace GerenciamentoDeClinica
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void testarWebServiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Service1 service = new Service1();
-                Convenio convenio = new Convenio();
-
-                int conv = convenio.ID_Convenio = 55;
-                string conven = convenio.Descricao = "teste";
-                MessageBox.Show(conv + conven);
-            }
-            catch (Exception ex)
-            {
-                
-            }
-
-
+            TelaTesteWebService telaTesteWebService = new TelaTesteWebService();
+            AddOwnedForm(telaTesteWebService);
+            telaTesteWebService.Show();
         }
     }
 }

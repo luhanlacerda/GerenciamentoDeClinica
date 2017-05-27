@@ -1,4 +1,4 @@
-﻿using Biblioteca.convenio;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +43,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
                 convenio.Descricao = txtDescricao.Text; 
 
-                new ConvenioBD().Cadastrar(convenio);
+                //new ConvenioBD().Cadastrar(convenio);
                 MessageBox.Show("Convenio cadastrado com sucesso.");
                 ClearTextBoxs();
             }

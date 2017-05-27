@@ -1,6 +1,5 @@
-﻿using Biblioteca.classesBasicas;
-using Biblioteca.medico;
-using Biblioteca.utils;
+﻿using GerenciamentoDeClinica.localhost;
+using GerenciamentoDeClinica.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciamentoDeClinicas.telamedico
+namespace GerenciamentoDeClinica.telamedico
 {
     public partial class TelaCadastroMedico : Form
     {
@@ -31,7 +30,7 @@ namespace GerenciamentoDeClinicas.telamedico
         {
             if (maskedCEP.MaskFull)
             {
-                Endereco endereco = CepUtils.PegarEndereco(maskedCEP.Text);
+                Endereco endereco = ClinicaUtils.PegarEndereco(maskedCEP.Text);
                 if (endereco != null)
                 {
                     txtLogradouro.Text = endereco.Logradouro;
@@ -49,7 +48,7 @@ namespace GerenciamentoDeClinicas.telamedico
             {
                 Medico medico = new Medico();
 
-                medico.Especialidade = new Biblioteca.especialidade.Especialidade { ID_Especialidade = 1 };
+                medico.Especialidade = new Especialidade { ID_Especialidade = 1 };
 
                 medico.ID_Medico = Convert.ToInt32(txtID.Text);
                 medico.Nome = txtNome.Text;
@@ -80,7 +79,7 @@ namespace GerenciamentoDeClinicas.telamedico
                     medico.Estado_Civil = rbViuvo.Text;
                 }
 
-                new NegocioMedico().Cadastrar(medico);
+                //new NegocioMedico().Cadastrar(medico);
 
             }
             catch (Exception ex)

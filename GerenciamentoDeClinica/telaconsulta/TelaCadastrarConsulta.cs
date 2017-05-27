@@ -1,4 +1,4 @@
-﻿using Biblioteca.consulta;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 consulta.Descricao = txtDescricao.Text;
                 consulta.Observacoes = txtObservacoes.Text;
 
-                new ConsultaBD().Cadastrar(consulta);
+                //new ConsultaBD().Cadastrar(consulta);
             }
             catch (Exception ex)
             {

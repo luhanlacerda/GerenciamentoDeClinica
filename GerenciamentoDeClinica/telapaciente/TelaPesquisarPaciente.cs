@@ -1,6 +1,4 @@
-﻿using Biblioteca.fachada;
-using Biblioteca.paciente;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -157,12 +155,12 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             try
             {
-                List<Paciente> pacientes = new PacienteBD().Listar(new Paciente { });
+                /*List<Paciente> pacientes = new PacienteBD().Listar(new Paciente { });
 
                 foreach (Paciente paciente in pacientes)
                 {
                     paciente.
-                }
+                }*/
 
             }
             catch (Exception ex)

@@ -1,4 +1,4 @@
-﻿using Biblioteca.especialidade;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 //especialidade.ID_Especialidade = Convert.ToInt32(txtID.Text);
                 especialidade.Descricao = txtDescricao.Text;
 
-                new EspecialidadeBD().Cadastrar(especialidade);
+                //new EspecialidadeBD().Cadastrar(especialidade);
 
                 MessageBox.Show("Especialidade cadastrada com sucesso!");
                 //txtID.Clear();

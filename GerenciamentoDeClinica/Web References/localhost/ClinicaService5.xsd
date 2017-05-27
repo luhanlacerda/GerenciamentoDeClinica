@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
+  <xs:element name="CadastrarConsulta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" minOccurs="0" name="consulta" nillable="true" type="q1:Consulta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarConsultaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarConsulta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" minOccurs="0" name="consulta" nillable="true" type="q2:Consulta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarConsultaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverConsulta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" minOccurs="0" name="consulta" nillable="true" type="q3:Consulta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverConsultaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConsulta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" minOccurs="0" name="filtro" nillable="true" type="q4:Consulta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConsultaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" minOccurs="0" name="ListarConsultaResult" nillable="true" type="q5:ArrayOfConsulta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarConvenio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="convenio" nillable="true" type="q6:Convenio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarConvenioResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarConvenio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="convenio" nillable="true" type="q7:Convenio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarConvenioResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverConvenio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="convenio" nillable="true" type="q8:Convenio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverConvenioResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConvenio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="filtro" nillable="true" type="q9:Convenio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConvenioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="ListarConvenioResult" nillable="true" type="q10:ArrayOfConvenio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarEspecialidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="especialidade" nillable="true" type="q11:Especialidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarEspecialidadeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarEspecialidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="especialidade" nillable="true" type="q12:Especialidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarEspecialidadeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverEspecialidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="especialidade" nillable="true" type="q13:Especialidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverEspecialidadeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEspecialidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="filtro" nillable="true" type="q14:Especialidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEspecialidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="ListarEspecialidadeResult" nillable="true" type="q15:ArrayOfEspecialidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarMedico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="medico" nillable="true" type="q16:Medico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarMedicoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarMedico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="medico" nillable="true" type="q17:Medico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarMedicoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverMedico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="medico" nillable="true" type="q18:Medico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverMedicoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMedico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="filtro" nillable="true" type="q19:Medico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMedicoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="ListarMedicoResult" nillable="true" type="q20:ArrayOfMedico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="paciente" nillable="true" type="q21:Paciente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="paciente" nillable="true" type="q22:Paciente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="paciente" nillable="true" type="q23:Paciente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverPacienteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPaciente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="filtro" nillable="true" type="q24:Paciente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPacienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="ListarPacienteResult" nillable="true" type="q25:ArrayOfPaciente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarSecretaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="secretaria" nillable="true" type="q26:Secretaria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CadastrarSecretariaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarSecretaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="secretaria" nillable="true" type="q27:Secretaria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizarSecretariaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverSecretaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="secretaria" nillable="true" type="q28:Secretaria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverSecretariaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSecretaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="filtro" nillable="true" type="q29:Secretaria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSecretariaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="ListarSecretariaResult" nillable="true" type="q30:ArrayOfSecretaria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -63,6 +63,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +77,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="telaconsulta\TelaCadastrarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,11 +162,18 @@
     <Compile Include="TelaPrincipal.Designer.cs">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaTesteConexaoSql.cs">
+    <Compile Include="TelaTesteWebService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaTesteConexaoSql.Designer.cs">
-      <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
+    <Compile Include="TelaTesteWebService.Designer.cs">
+      <DependentUpon>TelaTesteWebService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utils\ClinicaUtils.cs" />
+    <Compile Include="utils\ClinicaXMLUtils.cs" />
+    <Compile Include="Web References\localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <EmbeddedResource Include="telaconsulta\TelaCadastrarConsulta.resx">
       <DependentUpon>TelaCadastrarConsulta.cs</DependentUpon>
@@ -208,19 +223,64 @@
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaTesteConexaoSql.resx">
-      <DependentUpon>TelaTesteConexaoSql.cs</DependentUpon>
+    <EmbeddedResource Include="TelaTesteWebService.resx">
+      <DependentUpon>TelaTesteWebService.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GerenciamentoDeClinica_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <None Include="Web References\localhost\ClinicaService.wsdl" />
+    <None Include="Web References\localhost\ClinicaService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\Consulta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Convenio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Especialidade.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Medico.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Paciente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Secretaria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -238,17 +298,26 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Biblioteca\Biblioteca.csproj">
-      <Project>{0F8B51B6-DFDB-4804-B7C2-2099E274BD31}</Project>
-      <Name>Biblioteca</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WcfService\WcfService.csproj">
-      <Project>{436DE641-FD53-4EDE-8D09-84531054B3CF}</Project>
-      <Name>WcfService</Name>
-    </ProjectReference>
+    <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:55868/ClinicaService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:55868/ClinicaService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>GerenciamentoDeClinica_localhost_ClinicaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhost\ClinicaService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

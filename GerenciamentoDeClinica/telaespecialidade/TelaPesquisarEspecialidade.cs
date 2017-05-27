@@ -1,5 +1,4 @@
-﻿using Biblioteca.especialidade;
-using Biblioteca.fachada;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +13,6 @@ namespace GerenciamentoDeClinica.telaespecialidade
 {
     public partial class TelaPesquisarEspecialidade : Form
     {
-        Fachada fachada = new Fachada();
-
         public TelaPesquisarEspecialidade()
         {
             InitializeComponent();
@@ -26,7 +23,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
             listViewEspecialidades.Items.Clear();
             try
             {
-                List<Especialidade> especialidades = fachada.Listar(new Especialidade());
+                List<Especialidade> especialidades = new List<Especialidade>();//fachada.Listar(new Especialidade());
 
                 foreach (Especialidade especialidade in especialidades)
                 {
@@ -53,7 +50,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
                 try
                 {
-                    fachada.Remover(especialidade);
+                    //fachada.Remover(especialidade);
                     listViewEspecialidades.Items.Remove(selected);
                     MessageBox.Show("Especialidade excluída com sucesso!");
                     txtDescricao.Enabled = false;
@@ -98,7 +95,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
             try
             {
-                fachada.Atualizar(especialidade);
+                //fachada.Atualizar(especialidade);
                 MessageBox.Show("Especialidade atualizada com sucesso!");
                 txtID.Clear();
                 txtDescricao.Clear();
@@ -106,7 +103,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
                 listViewEspecialidades.Items.Clear();
 
-                List<Especialidade> especialidades = fachada.Listar(new Especialidade());
+                List<Especialidade> especialidades = new List<Especialidade>();//fachada.Listar(new Especialidade());
 
                 foreach (Especialidade listarEspecialidades in especialidades)
                 {

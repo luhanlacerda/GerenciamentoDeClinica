@@ -1,5 +1,4 @@
-﻿using Biblioteca.convenio;
-using Biblioteca.fachada;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +13,6 @@ namespace GerenciamentoDeClinica.telaconvenio
 {
     public partial class TelaPesquisarConvenio : Form
     {
-        Fachada fachada = new Fachada();
-
         public TelaPesquisarConvenio()
         {
             InitializeComponent();
@@ -96,7 +93,7 @@ namespace GerenciamentoDeClinica.telaconvenio
             try
             {
 
-                List<Convenio> convenios = fachada.Listar(new Convenio());
+                List<Convenio> convenios = new List<Convenio>();//fachada.Listar(new Convenio());
 
                 foreach (Convenio convenio in convenios)
                 {
@@ -142,7 +139,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
                 try
                 {
-                    fachada.Remover(convenio);
+                    //fachada.Remover(convenio);
                     listViewConvenios.Items.Remove(selected);
                     MessageBox.Show("Convenio excluido com sucesso!");
                     ClearTextBoxs();
@@ -167,7 +164,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
             try
             {
-                fachada.Atualizar(convenio);
+                //fachada.Atualizar(convenio);
                 MessageBox.Show("Convenio atualizado com sucesso!");
                 txtID.Clear();
                 txtDescricao.Clear();
@@ -175,7 +172,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
                 listViewConvenios.Items.Clear();
 
-                List<Convenio> convenios = fachada.Listar(new Convenio());
+                List<Convenio> convenios = new List<Convenio>();//fachada.Listar(new Convenio());
 
                 foreach (Convenio listarEspecialidades in convenios)
                 {

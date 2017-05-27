@@ -1,8 +1,5 @@
-﻿using Biblioteca.classesBasicas;
-using Biblioteca.convenio;
-using Biblioteca.medico;
-using Biblioteca.paciente;
-using Biblioteca.utils;
+﻿using GerenciamentoDeClinica.localhost;
+using GerenciamentoDeClinica.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -85,7 +82,7 @@ namespace GerenciamentoDeClinica.telapaciente
                     paciente.Estado_Civil = rbViuvo.Text;
                 }
 
-                new NegocioPaciente().Cadastrar(paciente);
+                //new NegocioPaciente().Cadastrar(paciente);
                 MessageBox.Show("Paciente cadastrado com sucesso.");
                 CleanForm();
                 txtNome.Focus();
@@ -102,7 +99,7 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             if (maskedCEP.MaskFull)
             {
-                Endereco endereco = CepUtils.PegarEndereco(maskedCEP.Text);
+                Endereco endereco = ClinicaUtils.PegarEndereco(maskedCEP.Text);
                 if (endereco != null)
                 {
                     txtLogradouro.Text = endereco.Logradouro;

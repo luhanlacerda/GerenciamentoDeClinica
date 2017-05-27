@@ -1,6 +1,5 @@
-﻿using Biblioteca.classesBasicas;
-using Biblioteca.secretaria;
-using Biblioteca.utils;
+﻿using GerenciamentoDeClinica.localhost;
+using GerenciamentoDeClinica.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +52,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 secretaria.Contato = maskedCell.Text;
                 secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
 
-                new SecretariaBD().Cadastrar(secretaria);
+                //new SecretariaBD().Cadastrar(secretaria);
 
                 MessageBox.Show("Secretária cadastrada com sucesso!");
                 txtNome.Clear();
@@ -84,7 +83,7 @@ namespace GerenciamentoDeClinica.telasecretaria
         {
             if (maskedCEP.MaskFull)
             {
-                Endereco endereco = CepUtils.PegarEndereco(maskedCEP.Text);
+                Endereco endereco = ClinicaUtils.PegarEndereco(maskedCEP.Text);
                 if (endereco != null)
                 {
                     txtLogradouro.Text = endereco.Logradouro;
