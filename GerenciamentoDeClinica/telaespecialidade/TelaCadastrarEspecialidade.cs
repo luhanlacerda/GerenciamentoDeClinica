@@ -32,6 +32,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 especialidade.Descricao = txtDescricao.Text;
 
                 //new EspecialidadeBD().Cadastrar(especialidade);
+                new ClinicaService().CadastrarEspecialidade(especialidade);
 
                 MessageBox.Show("Especialidade cadastrada com sucesso!");
                 //txtID.Clear();

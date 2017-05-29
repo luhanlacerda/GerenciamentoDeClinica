@@ -13,6 +13,8 @@ namespace GerenciamentoDeClinica.telaespecialidade
 {
     public partial class TelaPesquisarEspecialidade : Form
     {
+        ClinicaService clinicaService = new ClinicaService();
+
         public TelaPesquisarEspecialidade()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
             listViewEspecialidades.Items.Clear();
             try
             {
-                List<Especialidade> especialidades = new List<Especialidade>();//fachada.Listar(new Especialidade());
+                List<Especialidade> especialidades = new List<Especialidade>(); //clinicaService.ListarEspecialidade(new Especialidade()); //fachada.Listar(new Especialidade());
 
                 foreach (Especialidade especialidade in especialidades)
                 {
