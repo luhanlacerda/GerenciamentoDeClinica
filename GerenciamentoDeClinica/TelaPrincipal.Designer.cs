@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testarWebServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.médicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarMedicos = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,8 +55,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.testarWebServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +84,13 @@
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
             this.arquivoToolStripMenuItem.Click += new System.EventHandler(this.arquivoToolStripMenuItem_Click);
+            // 
+            // testarWebServiceToolStripMenuItem
+            // 
+            this.testarWebServiceToolStripMenuItem.Name = "testarWebServiceToolStripMenuItem";
+            this.testarWebServiceToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.testarWebServiceToolStripMenuItem.Text = "Testar WebService";
+            this.testarWebServiceToolStripMenuItem.Click += new System.EventHandler(this.testarWebServiceToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -291,22 +297,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(274, 218);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // testarWebServiceToolStripMenuItem
-            // 
-            this.testarWebServiceToolStripMenuItem.Name = "testarWebServiceToolStripMenuItem";
-            this.testarWebServiceToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.testarWebServiceToolStripMenuItem.Text = "Testar WebService";
-            this.testarWebServiceToolStripMenuItem.Click += new System.EventHandler(this.testarWebServiceToolStripMenuItem_Click);
-            // 
             // button1
             // 
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -328,7 +318,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(507, 328);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
@@ -375,7 +364,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem testarWebServiceToolStripMenuItem;
         private System.Windows.Forms.Button button1;
     }

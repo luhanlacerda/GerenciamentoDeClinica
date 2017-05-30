@@ -94,6 +94,12 @@
     <Compile Include="telaespecialidade\TelaCadastrarEspecialidade.Designer.cs">
       <DependentUpon>TelaCadastrarEspecialidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="TelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaLogin.Designer.cs">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="telasecretaria\TelaCadastrarSecretaria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="telaespecialidade\TelaCadastrarEspecialidade.resx">
       <DependentUpon>TelaCadastrarEspecialidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaLogin.resx">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="telasecretaria\TelaCadastrarSecretaria.resx">
       <DependentUpon>TelaCadastrarSecretaria.cs</DependentUpon>

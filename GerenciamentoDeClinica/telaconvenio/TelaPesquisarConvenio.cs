@@ -13,15 +13,18 @@ namespace GerenciamentoDeClinica.telaconvenio
 {
     public partial class TelaPesquisarConvenio : Form
     {
+
+        ClinicaService clinicaService = new ClinicaService();
+
         public TelaPesquisarConvenio()
         {
             InitializeComponent();
         }
 
+        #region Enabled Buttons and Clear filds
         void enabledPesquisar()
         {
             btnPesquisar.Enabled = false;
-            txtIDFiltro.Enabled = false;
             txtDescricaoFiltro.Enabled = false;
             btnBusca.Enabled = true;
             btnEditar.Enabled = true;
@@ -30,21 +33,19 @@ namespace GerenciamentoDeClinica.telaconvenio
         void enabledBusca()
         {
             btnPesquisar.Enabled = true;
-            txtIDFiltro.Enabled = true;
             txtDescricaoFiltro.Enabled = true;
             btnBusca.Enabled = false;
             txtDescricao.Enabled = false;
             btnEditar.Enabled = false;
             btnRemover.Enabled = false;
             btnAtualizar.Enabled = false;
-            txtIDFiltro.Focus();
+            txtDescricaoFiltro.Focus();
             ClearTextBoxs();
         }
 
         void enabledEditar()
         {
             btnPesquisar.Enabled = false;
-            txtIDFiltro.Enabled = false;
             txtDescricaoFiltro.Enabled = false;
             btnBusca.Enabled = true;
             txtDescricao.Enabled = true;
@@ -86,6 +87,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
             func(Controls);
         }
+        #endregion
 
         void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -93,7 +95,11 @@ namespace GerenciamentoDeClinica.telaconvenio
             try
             {
 
-                List<Convenio> convenios = new List<Convenio>();//fachada.Listar(new Convenio());
+                Convenio[] convenios = clinicaService.ListarConvenio(new Convenio
+                {
+                    Descricao = txtDescricaoFiltro.Text
+                });
+
 
                 foreach (Convenio convenio in convenios)
                 {
@@ -109,9 +115,10 @@ namespace GerenciamentoDeClinica.telaconvenio
 
             enabledPesquisar();
         }
-
         private void listViewConvenios_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            #region click in list
             if (listViewConvenios.SelectedItems.Count > 0)
             {
                 ListViewItem selected = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
@@ -123,9 +130,10 @@ namespace GerenciamentoDeClinica.telaconvenio
 
                 txtID.Text = Convert.ToString(convenio.ID_Convenio);
                 txtDescricao.Text = convenio.Descricao;
-
             }
+            #endregion
         }
+
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
@@ -156,29 +164,22 @@ namespace GerenciamentoDeClinica.telaconvenio
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
 
-            Convenio convenio = new Convenio()
-            {
-                ID_Convenio = Convert.ToInt32(txtID.Text),
-                Descricao = txtDescricao.Text
-            };
-
             try
             {
-                //fachada.Atualizar(convenio);
+                
                 MessageBox.Show("Convenio atualizado com sucesso!");
                 txtID.Clear();
                 txtDescricao.Clear();
                 txtDescricao.Enabled = false;
 
                 listViewConvenios.Items.Clear();
-
-                List<Convenio> convenios = new List<Convenio>();//fachada.Listar(new Convenio());
-
+                
+                /*
                 foreach (Convenio listarEspecialidades in convenios)
                 {
                     ListViewItem linha = listViewConvenios.Items.Add(listarEspecialidades.ID_Convenio.ToString());
                     linha.SubItems.Add(listarEspecialidades.Descricao.ToString());
-                }
+                }*/
             }
             catch (Exception ex)
             {
