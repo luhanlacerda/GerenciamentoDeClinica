@@ -60,7 +60,7 @@
     <Compile Include="especialidade\EspecialidadeBD.cs" />
     <Compile Include="especialidade\IEspecialidade.cs" />
     <Compile Include="especialidade\NegocioEspecialidade.cs" />
-    <Compile Include="IClinicaService.cs" />
+    <Compile Include="wcf\IClinicaService.cs" />
     <Compile Include="medico\IMedico.cs" />
     <Compile Include="medico\Medico.cs" />
     <Compile Include="medico\MedicoBD.cs" />
@@ -74,7 +74,7 @@
     <Compile Include="secretaria\NegocioSecretaria.cs" />
     <Compile Include="secretaria\Secretaria.cs" />
     <Compile Include="secretaria\SecretariaBD.cs" />
-    <Compile Include="ClinicaService.cs" />
+    <Compile Include="wcf\ClinicaService.cs" />
     <Compile Include="utils\ClinicaUtils.cs" />
     <Compile Include="utils\ConexaoSql.cs" />
   </ItemGroup>

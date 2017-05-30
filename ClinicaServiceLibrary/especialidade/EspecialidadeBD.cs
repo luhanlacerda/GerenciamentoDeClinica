@@ -103,32 +103,36 @@ namespace ClinicaServiceLibrary.especialidade
             List<Especialidade> retorno = new List<Especialidade>();
             try
             {
-                //abrir conexão
                 this.abrirConexao();
-                string sql = "SELECT ID_Especialidade, Descricao FROM Especialidade WHERE 1=1";
-                SqlCommand cmd = new SqlCommand(sql, sqlConn);
-                //se foi passada um id válido, este id entrará como critério de filtro
+                //instrucao a ser executada
+                string sql = "SELECT ID_Especialidade, Descricao FROM Especialidade where ID_Especialidade = ID_Especialidade ";
+                //se foi passada uma matricula válida, esta matricula entrará como critério de filtro
                 if (filtro.ID_Especialidade > 0)
                 {
                     sql += " AND ID_Especialidade = @ID_Especialidade";
-
-                    cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
-                    cmd.Parameters["@ID_Especialidade"].Value = filtro.Descricao;
                 }
-                //se foi passada uma descrição válida, esta descrição entrará como critério de filtro
-                if (!string.IsNullOrWhiteSpace(filtro.Descricao))
+                //se foi passada um nome válido, este nome entrará como critério de filtro
+                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
                 {
-                    sql += " AND Descricao LIKE '%@Descricao%'";
-
-                    cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                    cmd.Parameters["@Descricao"].Value = filtro.Descricao;
+                    sql += " AND Descricao LIKE @Descricao";
                 }
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                Console.WriteLine(cmd.CommandText);
-
-                //executando a instrução e colocando o resultado em um leitor
+                //se foi passada uma matricula válida, esta matricula entrará como critério de filtro
+                if (filtro.ID_Especialidade > 0)
+                {
+                    cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
+                    cmd.Parameters["@ID_Especialidade"].Value = filtro.ID_Especialidade;
+                }
+                //se foi passada um nome válido, este nome entrará como critério de filtro
+                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
+                {
+                    cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
+                    cmd.Parameters["@Descricao"].Value = "%" + filtro.Descricao + "%";
+                }
+                //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
-                //lendo uma consulta
+                //lendo o resultado da consulta
                 while (DbReader.Read())
                 {
                     Especialidade especialidade = new Especialidade();
@@ -139,14 +143,14 @@ namespace ClinicaServiceLibrary.especialidade
                 }
                 //fechando o leitor de resultados
                 DbReader.Close();
-                //liberando memória
+                //liberando a memoria 
                 cmd.Dispose();
-                //fechando conexão
+                //fechando a conexao
                 this.fecharConexao();
             }
-            catch (FaultException ex)
+            catch (Exception ex)
             {
-                throw new FaultException("Erro ao conectar e listar " + ex.Message);
+                throw new Exception("Erro ao conecar e selecionar " + ex.Message);
             }
             return retorno;
         }

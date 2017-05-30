@@ -1,2 +1,2 @@
 ﻿<%@ Assembly Name="ClinicaServiceLibrary" %>
-<%@ ServiceHost Language="C#" Debug="true" Service="ClinicaServiceLibrary.ClinicaService" %>
+<%@ ServiceHost Language="C#" Debug="true" Service="ClinicaServiceLibrary.wcf.ClinicaService" %>
