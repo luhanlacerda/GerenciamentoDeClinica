@@ -10,11 +10,6 @@ namespace ClinicaServiceLibrary.convenio
     {
         public void Cadastrar(Convenio convenio)
         {
-            if (VerificarExistencia(convenio) != false)
-            {
-                throw new FaultException("Código de convenio já cadastrado");
-            }
-
             ClinicaUtils.ValidarVazio(convenio.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
             ClinicaUtils.ValidarExceder(convenio.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 

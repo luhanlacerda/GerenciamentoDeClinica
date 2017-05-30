@@ -1,4 +1,5 @@
-﻿using ClinicaServiceLibrary.utils;
+﻿
+using ClinicaServiceLibrary.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,7 +37,7 @@ namespace ClinicaServiceLibrary.convenio
             }
             catch (FaultException e)
             {
-                throw new FaultException("Erro ao cadastrar convenio." + e);
+                throw new FaultException("Erro ao conectar e cadastrar " + e);
             }
             #endregion
         }
@@ -113,26 +114,23 @@ namespace ClinicaServiceLibrary.convenio
                 this.abrirConexao();
                 //Instrução a ser executada
                 string sql = "SELECT ID_Convenio,Descricao FROM Convenio where 1=1";
-                //Se foi passado um id_convenio válido, o mesmo entrará como critério de filtro
-                if (filtro.ID_Convenio > 0)
-                {
-                    sql += "and ID_Convenio = @ID_Convenio";
-                }
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
                 //Se foi passado uma descrição válida,  o mesmo entrará como critério de filtro
                 if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
                 {
-                    sql += " and Descricao like %@Descricao%";
-                }
-                SqlCommand cmd = new SqlCommand(sql, sqlConn);
-                //Se foi passado um id_convenio válido, o mesmo entrará como critério de filtro
-                if (filtro.ID_Convenio > 0)
-                {
+                    sql += " AND ID_Convenio = @ID_Convenio";
+
                     cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
                     cmd.Parameters["@ID_Convenio"].Value = filtro.ID_Convenio;
                 }
+
                 //Se foi passado uma descricao válido, o mesmo entrará como critério de filtro
-                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
+                if(string.IsNullOrWhiteSpace(filtro.Descricao))
                 {
+                    sql += " AND Descricao LIKE '%@Descricao%'";
+
                     cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
                     cmd.Parameters["@Descricao"].Value = filtro.Descricao;
                 }
@@ -154,9 +152,9 @@ namespace ClinicaServiceLibrary.convenio
                 //Fechando a conexão
                 this.fecharConexao();
             }
-            catch (FaultException e)
+            catch (FaultException ex)
             {
-                throw new FaultException("Erro ao conectar e selecionar." + e.Message);
+                throw new FaultException("Erro ao conectar e selecionar." + ex.Message);
             }
             return retorno;
             

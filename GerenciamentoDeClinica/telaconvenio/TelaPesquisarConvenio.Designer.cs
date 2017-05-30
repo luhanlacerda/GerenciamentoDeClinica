@@ -40,9 +40,7 @@
             this.txtDescricaoFiltro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBusca = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.txtIDFiltro = new System.Windows.Forms.TextBox();
             this.listViewConvenios = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,7 +57,7 @@
             this.groupBox3.Controls.Add(this.btnEditar);
             this.groupBox3.Controls.Add(this.txtDescricao);
             this.groupBox3.Controls.Add(this.lblDescricao);
-            this.groupBox3.Location = new System.Drawing.Point(1, 291);
+            this.groupBox3.Location = new System.Drawing.Point(1, 280);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(356, 112);
             this.groupBox3.TabIndex = 8;
@@ -138,19 +136,17 @@
             this.groupBox2.Controls.Add(this.txtDescricaoFiltro);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnBusca);
-            this.groupBox2.Controls.Add(this.lblID);
             this.groupBox2.Controls.Add(this.btnPesquisar);
-            this.groupBox2.Controls.Add(this.txtIDFiltro);
             this.groupBox2.Location = new System.Drawing.Point(1, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(356, 118);
+            this.groupBox2.Size = new System.Drawing.Size(356, 107);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar por Filtro";
             // 
             // txtDescricaoFiltro
             // 
-            this.txtDescricaoFiltro.Location = new System.Drawing.Point(14, 80);
+            this.txtDescricaoFiltro.Location = new System.Drawing.Point(14, 42);
             this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
             this.txtDescricaoFiltro.Size = new System.Drawing.Size(159, 20);
             this.txtDescricaoFiltro.TabIndex = 1;
@@ -158,7 +154,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 64);
+            this.label2.Location = new System.Drawing.Point(11, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 5;
@@ -166,7 +162,7 @@
             // 
             // btnBusca
             // 
-            this.btnBusca.Location = new System.Drawing.Point(179, 39);
+            this.btnBusca.Location = new System.Drawing.Point(260, 39);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(75, 23);
             this.btnBusca.TabIndex = 3;
@@ -174,18 +170,9 @@
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(11, 26);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(21, 13);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "ID:";
-            // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(98, 39);
+            this.btnPesquisar.Location = new System.Drawing.Point(179, 39);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
@@ -193,20 +180,13 @@
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // txtIDFiltro
-            // 
-            this.txtIDFiltro.Location = new System.Drawing.Point(14, 42);
-            this.txtIDFiltro.Name = "txtIDFiltro";
-            this.txtIDFiltro.Size = new System.Drawing.Size(66, 20);
-            this.txtIDFiltro.TabIndex = 0;
-            // 
             // listViewConvenios
             // 
             this.listViewConvenios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
             this.listViewConvenios.FullRowSelect = true;
-            this.listViewConvenios.Location = new System.Drawing.Point(1, 124);
+            this.listViewConvenios.Location = new System.Drawing.Point(1, 113);
             this.listViewConvenios.Name = "listViewConvenios";
             this.listViewConvenios.Size = new System.Drawing.Size(356, 161);
             this.listViewConvenios.TabIndex = 9;
@@ -258,7 +238,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TextBox txtDescricaoFiltro;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.TextBox txtIDFiltro;
     }
 }
