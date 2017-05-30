@@ -36,12 +36,12 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.listViewEspecialidades = new System.Windows.Forms.ListView();
             this.Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Descricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbPesqlD = new System.Windows.Forms.Label();
-            this.txtPesqID = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.txtPesqDesc = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -119,9 +119,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtPesqDesc);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.listViewEspecialidades);
-            this.groupBox2.Controls.Add(this.lbPesqlD);
-            this.groupBox2.Controls.Add(this.txtPesqID);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
@@ -129,6 +129,15 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar por Filtro";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Descrição:";
             // 
             // listViewEspecialidades
             // 
@@ -153,31 +162,22 @@
             // 
             this.Descricao.Text = "Descrição";
             // 
-            // lbPesqlD
-            // 
-            this.lbPesqlD.AutoSize = true;
-            this.lbPesqlD.Location = new System.Drawing.Point(6, 28);
-            this.lbPesqlD.Name = "lbPesqlD";
-            this.lbPesqlD.Size = new System.Drawing.Size(21, 13);
-            this.lbPesqlD.TabIndex = 7;
-            this.lbPesqlD.Text = "ID:";
-            // 
-            // txtPesqID
-            // 
-            this.txtPesqID.Location = new System.Drawing.Point(33, 25);
-            this.txtPesqID.Name = "txtPesqID";
-            this.txtPesqID.Size = new System.Drawing.Size(135, 20);
-            this.txtPesqID.TabIndex = 0;
-            // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(281, 19);
+            this.btnPesquisar.Location = new System.Drawing.Point(290, 23);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 1;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // txtPesqDesc
+            // 
+            this.txtPesqDesc.Location = new System.Drawing.Point(74, 25);
+            this.txtPesqDesc.Name = "txtPesqDesc";
+            this.txtPesqDesc.Size = new System.Drawing.Size(200, 20);
+            this.txtPesqDesc.TabIndex = 10;
             // 
             // TelaPesquisarEspecialidade
             // 
@@ -203,14 +203,14 @@
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.Label lbPesqlD;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtPesqID;
         private System.Windows.Forms.ListView listViewEspecialidades;
         private System.Windows.Forms.ColumnHeader Codigo;
         private System.Windows.Forms.ColumnHeader Descricao;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPesqDesc;
     }
 }

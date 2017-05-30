@@ -26,10 +26,13 @@ namespace GerenciamentoDeClinica.telaespecialidade
         {
             try
             {
-                Especialidade especialidade = new Especialidade();
+                Especialidade especialidade = new Especialidade()
+                {
+                    Descricao = txtDescricao.Text
+                };
 
                 //especialidade.ID_Especialidade = Convert.ToInt32(txtID.Text);
-                especialidade.Descricao = txtDescricao.Text;
+                //especialidade.Descricao = txtDescricao.Text;
 
                 //new EspecialidadeBD().Cadastrar(especialidade);
                 new ClinicaService().CadastrarEspecialidade(especialidade);

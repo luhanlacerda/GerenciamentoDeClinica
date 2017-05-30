@@ -105,31 +105,26 @@ namespace ClinicaServiceLibrary.especialidade
             {
                 //abrir conexão
                 this.abrirConexao();
-                string sql = "SELECT ID_Especialidade, Descricao FROM Especialidade WHERE ID_Especialidade = ID_Especialidade";
-                //se foi passada um id válido, este id entrará como critério de filtro
-                if (filtro.ID_Especialidade > 0)
-                {
-                    sql += "AND ID_Especialidade = @ID_Especialidade";
-                }
-                //se foi passada uma descrição válida, esta descrição entrará como critério de filtro
-                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
-                {
-                    sql += "AND Descricao LIKE '%@Descricao%'";
-                }
+                string sql = "SELECT ID_Especialidade, Descricao FROM Especialidade WHERE 1=1";
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
-
                 //se foi passada um id válido, este id entrará como critério de filtro
                 if (filtro.ID_Especialidade > 0)
                 {
-                    cmd.Parameters.Add("@Id_Especialidade", SqlDbType.Int);
+                    sql += " AND ID_Especialidade = @ID_Especialidade";
+
+                    cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
                     cmd.Parameters["@ID_Especialidade"].Value = filtro.Descricao;
                 }
                 //se foi passada uma descrição válida, esta descrição entrará como critério de filtro
-                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
+                if (!string.IsNullOrWhiteSpace(filtro.Descricao))
                 {
+                    sql += " AND Descricao LIKE '%@Descricao%'";
+
                     cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
                     cmd.Parameters["@Descricao"].Value = filtro.Descricao;
                 }
+
+                Console.WriteLine(cmd.CommandText);
 
                 //executando a instrução e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();

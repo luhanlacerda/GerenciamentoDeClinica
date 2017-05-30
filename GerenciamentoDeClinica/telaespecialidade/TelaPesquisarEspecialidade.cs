@@ -25,7 +25,10 @@ namespace GerenciamentoDeClinica.telaespecialidade
             listViewEspecialidades.Items.Clear();
             try
             {
-                List<Especialidade> especialidades = new List<Especialidade>(); //clinicaService.ListarEspecialidade(new Especialidade()); //fachada.Listar(new Especialidade());
+                Especialidade[] especialidades = clinicaService.ListarEspecialidade(new Especialidade
+                {
+                    Descricao = txtPesqDesc.Text
+                }); 
 
                 foreach (Especialidade especialidade in especialidades)
                 {
@@ -119,6 +122,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
             }
 
         }
+
     }
 }
 
