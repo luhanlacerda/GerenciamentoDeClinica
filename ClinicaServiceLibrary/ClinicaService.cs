@@ -20,37 +20,44 @@ namespace ClinicaServiceLibrary
     {
         public void AtualizarConsulta(Consulta consulta)
         {
-            throw new NotImplementedException();
+            NegocioConsulta negocioConsulta = new NegocioConsulta();
+            negocioConsulta.Atualizar(consulta);
         }
 
         public void AtualizarConvenio(Convenio convenio)
         {
-            throw new NotImplementedException();
+            NegocioConvenio negocioConvenio = new NegocioConvenio();
+            negocioConvenio.Atualizar(convenio);
         }
 
         public void AtualizarEspecialidade(Especialidade especialidade)
         {
-            throw new NotImplementedException();
+            NegocioEspecialidade negocioEspecialidade = new NegocioEspecialidade();
+            negocioEspecialidade.Atualizar(especialidade);
         }
 
         public void AtualizarMedico(Medico medico)
         {
-            throw new NotImplementedException();
+            NegocioMedico negocioMedico = new NegocioMedico();
+            negocioMedico.Atualizar(medico);
         }
 
         public void AtualizarPaciente(Paciente paciente)
         {
-            throw new NotImplementedException();
+            NegocioPaciente negocioPaciente = new NegocioPaciente();
+            negocioPaciente.Atualizar(paciente);
         }
 
         public void AtualizarSecretaria(Secretaria secretaria)
         {
-            throw new NotImplementedException();
+            NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
+            negocioSecretaria.Atualizar(secretaria);
         }
 
         public void CadastrarConsulta(Consulta consulta)
         {
-            throw new NotImplementedException();
+            NegocioConsulta negocioConsulta = new NegocioConsulta();
+            negocioConsulta.Cadastrar(consulta);
         }
 
         public void CadastrarConvenio(Convenio convenio)
@@ -61,82 +68,98 @@ namespace ClinicaServiceLibrary
 
         public void CadastrarEspecialidade(Especialidade especialidade)
         {
-            throw new NotImplementedException();
+            NegocioEspecialidade negocioEspecialidade = new NegocioEspecialidade();
+            negocioEspecialidade.Cadastrar(especialidade);
         }
 
         public void CadastrarMedico(Medico medico)
         {
-            throw new NotImplementedException();
+            NegocioMedico negocioMedico = new NegocioMedico();
+            negocioMedico.Cadastrar(medico);
         }
 
         public void CadastrarPaciente(Paciente paciente)
         {
-            throw new NotImplementedException();
+            NegocioPaciente negocioPaciente = new NegocioPaciente();
+            negocioPaciente.Cadastrar(paciente);
         }
 
         public void CadastrarSecretaria(Secretaria secretaria)
         {
-            throw new NotImplementedException();
+            NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
+            negocioSecretaria.Cadastrar(secretaria);
         }
 
         public List<Consulta> ListarConsulta(Consulta filtro)
         {
-            throw new NotImplementedException();
+            NegocioConsulta negocioConsulta = new NegocioConsulta();
+            return negocioConsulta.Listar(filtro);
         }
 
         public List<Convenio> ListarConvenio(Convenio filtro)
         {
-            throw new NotImplementedException();
+            NegocioConvenio negocioConvenio = new NegocioConvenio();
+            return negocioConvenio.Listar(filtro);
         }
 
         public List<Especialidade> ListarEspecialidade(Especialidade filtro)
         {
-            throw new NotImplementedException();
+            NegocioEspecialidade negocioEspecialidade = new NegocioEspecialidade();
+            return negocioEspecialidade.Listar(filtro);
         }
 
         public List<Medico> ListarMedico(Medico filtro)
         {
-            throw new NotImplementedException();
+            NegocioMedico negocioMedico = new NegocioMedico();
+            return negocioMedico.Listar(filtro);
         }
 
         public List<Paciente> ListarPaciente(Paciente filtro)
         {
-            throw new NotImplementedException();
+            NegocioPaciente negocioPaciente = new NegocioPaciente();
+            return negocioPaciente.Listar(filtro);
         }
 
         public List<Secretaria> ListarSecretaria(Secretaria filtro)
         {
-            throw new NotImplementedException();
+            NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
+            return negocioSecretaria.Listar(filtro);
         }
 
         public void RemoverConsulta(Consulta consulta)
         {
-            throw new NotImplementedException();
+            NegocioConsulta negocioConsulta = new NegocioConsulta();
+            negocioConsulta.Remover(consulta);
         }
 
         public void RemoverConvenio(Convenio convenio)
         {
-            throw new NotImplementedException();
+            NegocioConvenio negocioConvenio = new NegocioConvenio();
+            negocioConvenio.Remover(convenio);
         }
 
         public void RemoverEspecialidade(Especialidade especialidade)
         {
-            throw new NotImplementedException();
+            NegocioEspecialidade negocioEspecialidade = new NegocioEspecialidade();
+            negocioEspecialidade.Remover(especialidade);
         }
 
         public void RemoverMedico(Medico medico)
         {
-            throw new NotImplementedException();
+            NegocioMedico negocioMedico = new NegocioMedico();
+            negocioMedico.Remover(medico);
         }
 
         public void RemoverPaciente(Paciente paciente)
         {
-            throw new NotImplementedException();
+            NegocioPaciente negocioPaciente = new NegocioPaciente();
+            negocioPaciente.Remover(paciente);
         }
 
         public void RemoverSecretaria(Secretaria secretaria)
         {
-            throw new NotImplementedException();
+            NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
+            negocioSecretaria.Remover(secretaria);
         }
     }
 }
