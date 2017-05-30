@@ -27,8 +27,9 @@ namespace GerenciamentoDeClinica.telaespecialidade
             {
                 Especialidade[] especialidades = clinicaService.ListarEspecialidade(new Especialidade
                 {
+                    ID_Especialidade = 0,
                     Descricao = txtPesqDesc.Text
-                }); 
+                });
 
                 foreach (Especialidade especialidade in especialidades)
                 {
@@ -50,17 +51,20 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 ListViewItem selected = listViewEspecialidades.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
                 Especialidade especialidade = new Especialidade()
                 {
-                    ID_Especialidade = Convert.ToInt32(selected.Text)
+                    ID_Especialidade = Convert.ToInt32(selected.Text),
+                    ID_EspecialidadeSpecified = true
                 };
 
                 try
                 {
-                    //fachada.Remover(especialidade);
+                    clinicaService.RemoverEspecialidade(especialidade);
                     listViewEspecialidades.Items.Remove(selected);
                     MessageBox.Show("Especialidade excluída com sucesso!");
                     txtDescricao.Enabled = false;
                     txtID.Clear();
                     txtDescricao.Clear();
+
+
                 }
                 catch (Exception ex)
                 {
@@ -95,25 +99,28 @@ namespace GerenciamentoDeClinica.telaespecialidade
             Especialidade especialidade = new Especialidade()
             {
                 ID_Especialidade = Convert.ToInt32(txtID.Text),
+                ID_EspecialidadeSpecified = true,
                 Descricao = txtDescricao.Text
             };
 
             try
             {
-                //fachada.Atualizar(especialidade);
+                clinicaService.AtualizarEspecialidade(especialidade);
                 MessageBox.Show("Especialidade atualizada com sucesso!");
                 txtID.Clear();
                 txtDescricao.Clear();
                 txtDescricao.Enabled = false;
 
                 listViewEspecialidades.Items.Clear();
-
-                List<Especialidade> especialidades = new List<Especialidade>();//fachada.Listar(new Especialidade());
-
-                foreach (Especialidade listarEspecialidades in especialidades)
+                Especialidade[] especialidades = clinicaService.ListarEspecialidade(new Especialidade
                 {
-                    ListViewItem linha = listViewEspecialidades.Items.Add(listarEspecialidades.ID_Especialidade.ToString());
-                    linha.SubItems.Add(listarEspecialidades.Descricao.ToString());
+                    ID_Especialidade = 0
+                });
+
+                foreach (Especialidade listaEspecialidades in especialidades)
+                {
+                    ListViewItem linha = listViewEspecialidades.Items.Add(listaEspecialidades.ID_Especialidade.ToString());
+                    linha.SubItems.Add(listaEspecialidades.Descricao.ToString());
                 }
             }
             catch (Exception ex)

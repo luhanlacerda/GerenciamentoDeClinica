@@ -78,12 +78,12 @@ namespace ClinicaServiceLibrary.especialidade
             {
                 //abrir conexão
                 this.abrirConexao();
-                string sql = "DELETE FROM Especialidade WHERE ID_Especialidade = @Id_Especialidade";
+                string sql = "DELETE FROM Especialidade WHERE ID_Especialidade = @ID_Especialidade";
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@Id_Especialidade", SqlDbType.Int);
-                cmd.Parameters["@Id_Especialidade"].Value = especialidade.ID_Especialidade;
+                cmd.Parameters.Add("@ID_Especialidade", SqlDbType.Int);
+                cmd.Parameters["@ID_Especialidade"].Value = especialidade.ID_Especialidade;
 
                 //executando
                 cmd.ExecuteNonQuery();
