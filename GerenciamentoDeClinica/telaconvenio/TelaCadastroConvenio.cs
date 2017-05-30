@@ -39,13 +39,15 @@ namespace GerenciamentoDeClinica.telaconvenio
         {
             try
             {
-                Convenio convenio = new Convenio();
+                Convenio convenio = new Convenio()
+                {
+                    Descricao = txtDescricao.Text
+                };
 
-                convenio.Descricao = txtDescricao.Text; 
-
-                //new ConvenioBD().Cadastrar(convenio);
+                new ClinicaService().CadastrarConvenio(convenio);
                 MessageBox.Show("Convenio cadastrado com sucesso.");
                 ClearTextBoxs();
+                txtDescricao.Focus();
             }
             catch (Exception ex)
             {
