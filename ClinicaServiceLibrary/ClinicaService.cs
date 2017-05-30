@@ -1,16 +1,16 @@
-﻿using ClinicaServiceLibrary.classesbasicas;
+﻿using ClinicaServiceLibrary.consulta;
 using ClinicaServiceLibrary.convenio;
+using ClinicaServiceLibrary.especialidade;
+using ClinicaServiceLibrary.medico;
+using ClinicaServiceLibrary.paciente;
+using ClinicaServiceLibrary.secretaria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using ClinicaServiceLibrary.consulta;
-using ClinicaServiceLibrary.especialidade;
-using ClinicaServiceLibrary.medico;
-using ClinicaServiceLibrary.paciente;
-using ClinicaServiceLibrary.secretaria;
+
 
 namespace ClinicaServiceLibrary
 {
