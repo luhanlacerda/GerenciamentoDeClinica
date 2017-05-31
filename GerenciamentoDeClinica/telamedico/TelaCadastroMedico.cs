@@ -23,7 +23,12 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void TelaCadastroMedico_Load(object sender, EventArgs e)
         {
-            comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            //comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
+
+            ClinicaService service = new ClinicaService();
+            comboBox1.DataSource = new BindingList<Especialidade>(service.ListarEspecialidade(new Especialidade()));
+            comboBox1.DisplayMember = "Descricao";
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)
@@ -48,17 +53,16 @@ namespace GerenciamentoDeClinica.telamedico
             {
                 Medico medico = new Medico();
 
-                medico.Especialidade = new Especialidade { ID_Especialidade = 1 };
+                medico.Especialidade = ((BindingList<Especialidade>)comboBox1.DataSource).ElementAt(comboBox1.SelectedIndex);
 
-                medico.ID_Medico = Convert.ToInt32(txtID.Text);
                 medico.Nome = txtNome.Text;
                 medico.CPF = maskedCPF.Text;
-                medico .RG = txtRG.Text;
+                medico.RG = txtRG.Text;
                 medico.Contato = maskedCell.Text;
                 medico.CRM = txtCRM.Text;
-                medico.Especialidade.ID_Especialidade = Convert.ToInt32(txtEspecialidade.Text);
-                medico.Dt_Nascimento= dateTimeDtNasc.Value;
+                medico.Dt_Nascimento = dateTimeDtNasc.Value;
                 medico.Email = txtEmail.Text;
+                medico.Endereco = new Endereco();
                 medico.Endereco.CEP = maskedCEP.Text;
                 medico.Endereco.Logradouro = txtLogradouro.Text;
                 medico.Endereco.Complemento = txtComplemento.Text;
@@ -67,20 +71,22 @@ namespace GerenciamentoDeClinica.telamedico
                 medico.Endereco.Cidade = txtCidade.Text;
                 medico.Endereco.UF = comboUF.SelectedItem.ToString();
                 medico.Endereco.Pais = txtPais.Text;
-                RadioButton radio = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                if (radio.Name == rbSolteiro.Name)
+                if (rbSolteiro.Checked)
                 {
                     medico.Estado_Civil = rbSolteiro.Text;
-                } else if (radio.Name == rbCasado.Name)
+                }
+                else if (rbCasado.Checked)
                 {
                     medico.Estado_Civil = rbCasado.Text;
-                } else
+                }
+                else
                 {
                     medico.Estado_Civil = rbViuvo.Text;
                 }
 
-                //new NegocioMedico().Cadastrar(medico);
-
+                ClinicaService service = new ClinicaService();
+                service.CadastrarMedico(medico);
+                MessageBox.Show("Médico cadastrado com sucesso!");                
             }
             catch (Exception ex)
             {
@@ -89,13 +95,13 @@ namespace GerenciamentoDeClinica.telamedico
 
         }
 
-        private void txtNome_Leave(object sender, EventArgs e)
+        /*private void txtNome_Leave(object sender, EventArgs e)
         {
             Medico medico = new Medico();
             medico.Nome = txtNome.Text;
 
             ClinicaXMLUtils.Create();
             ClinicaXMLUtils.SetCadastrarMedico(medico);
-        }
+        }*/
     }
 }

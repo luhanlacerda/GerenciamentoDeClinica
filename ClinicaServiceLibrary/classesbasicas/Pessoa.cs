@@ -20,7 +20,7 @@ namespace ClinicaServiceLibrary.classesbasicas
         public Endereco Endereco      { get; set; }
         [DataMember]
         public String Contato         { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public DateTime Dt_Nascimento { get; set; }
         [DataMember]
         public String Email           { get; set; }

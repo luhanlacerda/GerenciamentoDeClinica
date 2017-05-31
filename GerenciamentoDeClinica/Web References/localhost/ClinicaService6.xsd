@@ -8,7 +8,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="CRM" nillable="true" type="xs:string" />
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" minOccurs="0" name="Especialidade" nillable="true" type="q2:Especialidade" />
-          <xs:element minOccurs="0" name="ID_Medico" type="xs:int" />
+          <xs:element name="ID_Medico" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

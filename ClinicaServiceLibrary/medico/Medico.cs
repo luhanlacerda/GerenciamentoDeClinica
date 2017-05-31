@@ -15,7 +15,7 @@ namespace ClinicaServiceLibrary.medico
     [DataContract]
     public class Medico : Pessoa
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int ID_Medico { get; set; }
         [DataMember]
         public string CRM { get; set; }

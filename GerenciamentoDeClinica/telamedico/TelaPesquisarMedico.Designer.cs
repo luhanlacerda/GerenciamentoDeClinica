@@ -77,6 +77,10 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.listMedicos = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CRM = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -126,7 +130,7 @@
             this.groupBox2.Controls.Add(this.lblPesqCRM);
             this.groupBox2.Location = new System.Drawing.Point(2, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 120);
+            this.groupBox2.Size = new System.Drawing.Size(465, 113);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtro de pesquisa";
@@ -566,16 +570,46 @@
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
             // 
+            // listMedicos
+            // 
+            this.listMedicos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Nome,
+            this.CRM});
+            this.listMedicos.FullRowSelect = true;
+            this.listMedicos.Location = new System.Drawing.Point(472, 9);
+            this.listMedicos.Name = "listMedicos";
+            this.listMedicos.Size = new System.Drawing.Size(214, 504);
+            this.listMedicos.TabIndex = 46;
+            this.listMedicos.UseCompatibleStateImageBehavior = false;
+            this.listMedicos.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 35;
+            // 
+            // Nome
+            // 
+            this.Nome.Text = "Nome";
+            this.Nome.Width = 115;
+            // 
+            // CRM
+            // 
+            this.CRM.Text = "CRM";
+            // 
             // TelaPesquisarMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 514);
+            this.ClientSize = new System.Drawing.Size(691, 514);
+            this.Controls.Add(this.listMedicos);
             this.Controls.Add(this.GroupBox);
             this.Controls.Add(this.groupBox2);
             this.Name = "TelaPesquisarMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Médico";
+            this.Load += new System.EventHandler(this.TelaPesquisarMedico_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.GroupBox.ResumeLayout(false);
@@ -636,5 +670,9 @@
         private System.Windows.Forms.RadioButton rbSolteiro;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.RadioButton rbViuvo;
+        private System.Windows.Forms.ListView listMedicos;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Nome;
+        private System.Windows.Forms.ColumnHeader CRM;
     }
 }

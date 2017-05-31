@@ -4,7 +4,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CPF" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Contato" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Dt_Nascimento" type="xs:dateTime" />
+      <xs:element name="Dt_Nascimento" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Endereco" nillable="true" type="tns:Endereco" />
       <xs:element minOccurs="0" name="Estado_Civil" nillable="true" type="xs:string" />

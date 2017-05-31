@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GerenciamentoDeClinica.localhost;
+using GerenciamentoDeClinica.utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +19,16 @@ namespace GerenciamentoDeClinica.telamedico
             InitializeComponent();
         }
 
-        void enablePesquisar()
+        private void TelaPesquisarMedico_Load(object sender, EventArgs e)
+        {
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
+
+            ClinicaService service = new ClinicaService();
+            comboEspecialidade.DataSource = new BindingList<Especialidade>(service.ListarEspecialidade(new Especialidade()));
+            comboEspecialidade.DisplayMember = "Descricao";
+        }
+
+        private void enablePesquisar()
         {
             btnPesquisar.Enabled = false;
             btnNovaBusca.Enabled = true;
@@ -26,7 +37,7 @@ namespace GerenciamentoDeClinica.telamedico
             btnEditar.Enabled = true;
         }
 
-        void enableNovaBusca()
+        private void enableNovaBusca()
         {
             btnNovaBusca.Enabled = false;
             btnPesquisar.Enabled = true;
@@ -53,7 +64,7 @@ namespace GerenciamentoDeClinica.telamedico
             comboUF.Enabled = false;
         }
 
-        void enableEditar()
+        private void enableEditar()
         {
             btnEditar.Enabled = false;
             btnAtualizar.Enabled = true;
@@ -81,7 +92,7 @@ namespace GerenciamentoDeClinica.telamedico
             comboUF.Enabled = true;
         }
 
-        void enableAtualizar()
+        private void enableAtualizar()
         {
             btnAtualizar.Enabled = false;
             btnEditar.Enabled = false;
@@ -105,7 +116,7 @@ namespace GerenciamentoDeClinica.telamedico
             comboUF.Enabled = false;
         }
 
-        void enableRemover()
+        private void enableRemover()
         {
             btnAtualizar.Enabled = false;
             btnEditar.Enabled = false;
@@ -127,16 +138,31 @@ namespace GerenciamentoDeClinica.telamedico
             comboPais.Enabled = false;
             txtCidade.Enabled = false;
             comboUF.Enabled = false;
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             enablePesquisar();
+
+            try
+            {
+                ClinicaService service = new ClinicaService();
+
+                Medico filtro = new Medico
+                {
+                    Nome = txtPesqNome.Text.Trim(),
+                    CRM = txtPesqCRM.Text.Trim()
+                };
+
+                Medico[] medicos = service.ListarMedico(filtro);
+
+                //service.CadastrarMedico(medico);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
         }
 
         private void btnNovaBusca_Click(object sender, EventArgs e)

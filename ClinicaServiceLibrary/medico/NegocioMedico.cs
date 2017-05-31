@@ -13,7 +13,6 @@ namespace ClinicaServiceLibrary.medico
 
         public void Cadastrar(Medico medico)
         {
-            ClinicaUtils.ValidarCodigo(medico.ID_Medico);
             ClinicaUtils.ValidarPessoa(medico);
 
             new MedicoBD().Cadastrar(medico);

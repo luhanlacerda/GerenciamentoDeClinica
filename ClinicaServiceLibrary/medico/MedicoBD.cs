@@ -19,11 +19,11 @@ namespace ClinicaServiceLibrary.medico
                 //Abrindo conexão
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Medico (ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero," +
-                    "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento," +
-                    "ID_Especialidade)" +
-                    "VALUES (@ID_Medico, @CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento,"+
-                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento," + 
+                string sql = "INSERT INTO Medico (CRM, CPF, RG, Nome, Logradouro, Numero, " +
+                    "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento, " +
+                    "ID_Especialidade) " +
+                    "VALUES (@CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento, "+
+                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento, " + 
                     "@ID_Especialidade);";
 
                 //Instrução a ser excecutada
@@ -31,9 +31,6 @@ namespace ClinicaServiceLibrary.medico
 
                 //Recebendo os valores
                 #region Parâmetros
-                cmd.Parameters.Add("@ID_Medico", SqlDbType.Int);
-                cmd.Parameters["@ID_Medico"].Value = medico.ID_Medico;
-
                 cmd.Parameters.Add("@CRM", SqlDbType.VarChar);
                 cmd.Parameters["@CRM"].Value = medico.CRM;
 

@@ -235,6 +235,7 @@
     <EmbeddedResource Include="TelaTesteWebService.resx">
       <DependentUpon>TelaTesteWebService.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="GerenciamentoDeClinica.utils.ClinicaUtils.datasource" />
     <None Include="GerenciamentoDeClinica_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,12 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\localhost\ClinicaService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClinicaServiceLibrary\ClinicaServiceLibrary.csproj">
-      <Project>{B68B7F6A-504C-4E0B-B105-44968C701EB6}</Project>
-      <Name>ClinicaServiceLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

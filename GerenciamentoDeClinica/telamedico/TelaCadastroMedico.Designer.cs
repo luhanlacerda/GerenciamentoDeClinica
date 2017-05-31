@@ -1,4 +1,6 @@
-﻿namespace GerenciamentoDeClinica.telamedico
+﻿using GerenciamentoDeClinica.utils;
+
+namespace GerenciamentoDeClinica.telamedico
 {
     partial class TelaCadastroMedico
     {
@@ -30,9 +32,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroMedico));
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtPais = new System.Windows.Forms.TextBox();
-            this.txtEspecialidade = new System.Windows.Forms.TextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
@@ -76,9 +77,8 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.comboBox1);
             this.GroupBox.Controls.Add(this.txtPais);
-            this.GroupBox.Controls.Add(this.txtEspecialidade);
-            this.GroupBox.Controls.Add(this.txtID);
             this.GroupBox.Controls.Add(this.groupBox1);
             this.GroupBox.Controls.Add(this.lblEspecialidade);
             this.GroupBox.Controls.Add(this.txtCRM);
@@ -120,26 +120,20 @@
             this.GroupBox.Text = "Cadastrar";
             this.GroupBox.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(128, 135);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(140, 21);
+            this.comboBox1.TabIndex = 81;
+            // 
             // txtPais
             // 
             this.txtPais.Location = new System.Drawing.Point(192, 368);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(143, 20);
             this.txtPais.TabIndex = 18;
-            // 
-            // txtEspecialidade
-            // 
-            this.txtEspecialidade.Location = new System.Drawing.Point(127, 136);
-            this.txtEspecialidade.Name = "txtEspecialidade";
-            this.txtEspecialidade.Size = new System.Drawing.Size(100, 20);
-            this.txtEspecialidade.TabIndex = 5;
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(127, 17);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 81;
             // 
             // groupBox1
             // 
@@ -197,9 +191,9 @@
             // 
             // txtCRM
             // 
-            this.txtCRM.Location = new System.Drawing.Point(10, 136);
+            this.txtCRM.Location = new System.Drawing.Point(8, 136);
             this.txtCRM.Name = "txtCRM";
-            this.txtCRM.Size = new System.Drawing.Size(100, 20);
+            this.txtCRM.Size = new System.Drawing.Size(98, 20);
             this.txtCRM.TabIndex = 4;
             // 
             // lblCRM
@@ -213,11 +207,13 @@
             // 
             // dateTimeDtNasc
             // 
-            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeDtNasc.CustomFormat = "dd/MM/yyyy";
+            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeDtNasc.Location = new System.Drawing.Point(8, 181);
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
             this.dateTimeDtNasc.TabIndex = 6;
+            this.dateTimeDtNasc.Value = new System.DateTime(2017, 5, 31, 0, 0, 0, 0);
             // 
             // pictureUser
             // 
@@ -238,7 +234,6 @@
             // 
             // comboUF
             // 
-            this.comboUF.FormattingEnabled = true;
             this.comboUF.Location = new System.Drawing.Point(139, 367);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
@@ -388,7 +383,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 0;
-            this.txtNome.Leave += new System.EventHandler(this.txtNome_Leave);
             // 
             // lblRG
             // 
@@ -479,7 +473,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox GroupBox;
-        private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
@@ -515,8 +508,8 @@
         private System.Windows.Forms.RadioButton rbSolteiro;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.RadioButton rbViuvo;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtEspecialidade;
         private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
     }
 }
