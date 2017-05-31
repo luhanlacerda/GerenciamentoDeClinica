@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClinicaServiceLibrary.secretaria
 {
-    [DataContract]
+    [DataContract, KnownType(typeof(Pessoa))]
     public class Secretaria : Pessoa
     {
         [DataMember]

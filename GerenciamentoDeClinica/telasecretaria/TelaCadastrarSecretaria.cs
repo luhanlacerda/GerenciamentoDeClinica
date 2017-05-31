@@ -29,6 +29,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 secretaria.RG = txtRG.Text;
                 secretaria.CPF = maskedCPF.Text;
                 secretaria.Email = txtEmail.Text;
+                secretaria.Endereco = new Endereco();
                 secretaria.Endereco.Logradouro = txtLogradouro.Text;
                 secretaria.Endereco.Numero = txtNumero.Text;
                 secretaria.Endereco.Complemento = txtComplemento.Text;
@@ -52,7 +53,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 secretaria.Contato = maskedCell.Text;
                 secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
 
-                //new SecretariaBD().Cadastrar(secretaria);
+                new ClinicaService().CadastrarSecretaria(secretaria);
 
                 MessageBox.Show("Secretária cadastrada com sucesso!");
                 txtNome.Clear();

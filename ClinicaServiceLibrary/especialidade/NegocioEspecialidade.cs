@@ -12,15 +12,6 @@ namespace ClinicaServiceLibrary.especialidade
     {
         public void Cadastrar(Especialidade especialidade)
         {
-            //ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
-
-            /*
-            if (VerificarExistencia(especialidade) != false)
-            {
-                throw new FaultException("Código de especialidade já cadastrado");
-            }
-            */
-
             ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
             ClinicaUtils.ValidarExceder(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 
@@ -30,8 +21,6 @@ namespace ClinicaServiceLibrary.especialidade
 
         public void Atualizar(Especialidade especialidade)
         {
-            //ClinicaUtils.ValidarCodigo(especialidade.ID_Especialidade);
-
             ClinicaUtils.ValidarVazio(especialidade.Descricao.Trim(), ClinicaUtils.ERRO_ESPECIALIDADE);
             ClinicaUtils.ValidarExceder(especialidade.Descricao.Trim(), 20, ClinicaUtils.ERRO_ESPECIALIDADE);
 

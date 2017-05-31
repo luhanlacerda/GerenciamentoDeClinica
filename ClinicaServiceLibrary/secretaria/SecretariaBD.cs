@@ -217,24 +217,24 @@ namespace ClinicaServiceLibrary.secretaria
                   /*"  Matheus Vasconcelos  " = por isso o trim. Não precisando de IsNullOrWhiteSpace,
                    /apenas de IsNullOrEmpty, mas por precaução houve a utilização*/
                 {
-                    sql += " AND CPF = @CPF";
+                    sql += " AND CPF LIKE @CPF";
 
                     cmd.Parameters.Add("@CPF", SqlDbType.Char);
-                    cmd.Parameters["@CPF"].Value = filtro.CPF.Trim();
+                    cmd.Parameters["@CPF"].Value = "%" + filtro.CPF.Trim() + "%";
                 }
                 if (string.IsNullOrWhiteSpace(filtro.RG.Trim()))
                 {
-                    sql += " AND RG = @RG";
+                    sql += " AND RG LIKE @RG";
 
                     cmd.Parameters.Add("@RG", SqlDbType.VarChar);
-                    cmd.Parameters["@RG"].Value = filtro.CPF.Trim();
+                    cmd.Parameters["@RG"].Value = "%" + filtro.CPF.Trim() + "%";
                 }
                 if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
                 {
-                    sql += " AND Nome = @Nome";
+                    sql += " AND Nome LIKE @Nome";
 
                     cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
-                    cmd.Parameters["@Nome"].Value = filtro.Nome.Trim();
+                    cmd.Parameters["@Nome"].Value = "%" + filtro.Nome.Trim() + "%";
                 }
                 #endregion
 

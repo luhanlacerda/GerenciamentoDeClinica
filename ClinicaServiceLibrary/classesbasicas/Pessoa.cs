@@ -26,10 +26,5 @@ namespace ClinicaServiceLibrary.classesbasicas
         public String Email           { get; set; }
         [DataMember]
         public String Estado_Civil    { get; set; }
-
-        public Pessoa()
-        {
-            Endereco = new Endereco();
-        }
     }
 }
