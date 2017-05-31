@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastrarSecretaria));
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
@@ -63,7 +64,6 @@
             this.lblContato = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -108,6 +108,13 @@
             this.GroupBox.TabIndex = 44;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
+            // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(199, 325);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(134, 20);
+            this.txtPais.TabIndex = 96;
             // 
             // groupBox1
             // 
@@ -280,6 +287,7 @@
             // 
             // dateTimeDtNasc
             // 
+            this.dateTimeDtNasc.CustomFormat = "dd/MM/yyyy";
             this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 135);
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
@@ -396,13 +404,6 @@
             this.lblEmail.Size = new System.Drawing.Size(38, 13);
             this.lblEmail.TabIndex = 34;
             this.lblEmail.Text = "E-mail:";
-            // 
-            // txtPais
-            // 
-            this.txtPais.Location = new System.Drawing.Point(199, 325);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(134, 20);
-            this.txtPais.TabIndex = 96;
             // 
             // TelaCadastrarSecretaria
             // 

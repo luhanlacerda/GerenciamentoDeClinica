@@ -74,8 +74,8 @@
             this.listViewSecretarias = new System.Windows.Forms.ListView();
             this.ID_Secretaria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -320,6 +320,7 @@
             // 
             // dateTimeDtNasc
             // 
+            this.dateTimeDtNasc.CustomFormat = "dd/MM/yyyy";
             this.dateTimeDtNasc.Enabled = false;
             this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimeDtNasc.Location = new System.Drawing.Point(9, 136);
@@ -527,15 +528,15 @@
             // 
             this.Nome.Text = "Nome";
             // 
-            // Contato
-            // 
-            this.Contato.DisplayIndex = 2;
-            this.Contato.Text = "Contato";
-            // 
             // CPF
             // 
             this.CPF.DisplayIndex = 3;
             this.CPF.Text = "CPF";
+            // 
+            // Contato
+            // 
+            this.Contato.DisplayIndex = 2;
+            this.Contato.Text = "Contato";
             // 
             // TelaPesquisarSecretaria
             // 

@@ -51,7 +51,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                     secretaria.Estado_Civil = rbSolteiro.Text;
                 }
                 secretaria.Contato = maskedCell.Text;
-                secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
+                secretaria.Dt_Nascimento = dateTimeDtNasc.Value.Date;
 
                 new ClinicaService().CadastrarSecretaria(secretaria);
 
