@@ -17,18 +17,16 @@ namespace ClinicaServiceLibrary.paciente
                 //Abrir Conexao
                 this.abrirConexao();
 
-                string sql = "INSERT INTO Paciente (ID_Paciente, Nome, CPF, Contato, CEP, RG, Email," +
+                string sql = "INSERT INTO Paciente ( Nome, CPF, Contato, CEP, RG, Email," +
                     "Logradouro, Numero, Complemento, Bairro, Cidade, UF, Pais, Estado_Civil," +
                     "Dt_Nascimento, ID_Convenio)" +
-                    "VALUES (@ID_Paciente, @Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
+                    "VALUES (@Nome, @CPF, @Contato, @CEP, @RG, @Email, @Logradouro," +
                     "@Numero, @Complemento, @Bairro, @Cidade, @UF, @Pais, @Estado_Civil," +
                     "@Dt_Nascimento, @ID_Convenio)";
 
                 SqlCommand scm = new SqlCommand(sql, this.sqlConn);
 
                 #region Parâmetros
-                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
-                scm.Parameters["@ID_Paciente"].Value = paciente.ID_Paciente;
 
                 scm.Parameters.Add("@Nome", SqlDbType.VarChar);
                 scm.Parameters["@Nome"].Value = paciente.Nome;
@@ -89,7 +87,7 @@ namespace ClinicaServiceLibrary.paciente
             }
             catch (FaultException e)
             {
-                throw new FaultException("Erro ao cadastrar Paciente." + e);
+                throw new FaultException("Erro ao cadastrar Paciente." + e.Message);
             }
         }
 

@@ -43,8 +43,6 @@ namespace GerenciamentoDeClinica.telapaciente
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
@@ -68,6 +66,8 @@ namespace GerenciamentoDeClinica.telapaciente
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
+            this.comboConvenio = new System.Windows.Forms.ComboBox();
+            this.lblConvenio = new System.Windows.Forms.Label();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -76,7 +76,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(125, 120);
+            this.lblEmail.Location = new System.Drawing.Point(234, 123);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(38, 13);
             this.lblEmail.TabIndex = 34;
@@ -84,7 +84,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(128, 136);
+            this.txtEmail.Location = new System.Drawing.Point(237, 139);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
             this.txtEmail.TabIndex = 5;
@@ -92,7 +92,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblContato
             // 
             this.lblContato.AutoSize = true;
-            this.lblContato.Location = new System.Drawing.Point(244, 67);
+            this.lblContato.Location = new System.Drawing.Point(355, 70);
             this.lblContato.Name = "lblContato";
             this.lblContato.Size = new System.Drawing.Size(47, 13);
             this.lblContato.TabIndex = 22;
@@ -100,7 +100,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // maskedCPF
             // 
-            this.maskedCPF.Location = new System.Drawing.Point(10, 83);
+            this.maskedCPF.Location = new System.Drawing.Point(121, 86);
             this.maskedCPF.Mask = "000.000.000-00";
             this.maskedCPF.Name = "maskedCPF";
             this.maskedCPF.Size = new System.Drawing.Size(100, 20);
@@ -108,14 +108,14 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // txtRG
             // 
-            this.txtRG.Location = new System.Drawing.Point(128, 83);
+            this.txtRG.Location = new System.Drawing.Point(239, 86);
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
             this.txtRG.TabIndex = 2;
             // 
             // maskedCell
             // 
-            this.maskedCell.Location = new System.Drawing.Point(246, 83);
+            this.maskedCell.Location = new System.Drawing.Point(357, 86);
             this.maskedCell.Mask = "(##)#####-####";
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
@@ -124,7 +124,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblCPF
             // 
             this.lblCPF.AutoSize = true;
-            this.lblCPF.Location = new System.Drawing.Point(11, 67);
+            this.lblCPF.Location = new System.Drawing.Point(122, 70);
             this.lblCPF.Name = "lblCPF";
             this.lblCPF.Size = new System.Drawing.Size(30, 13);
             this.lblCPF.TabIndex = 21;
@@ -133,7 +133,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblRG
             // 
             this.lblRG.AutoSize = true;
-            this.lblRG.Location = new System.Drawing.Point(125, 67);
+            this.lblRG.Location = new System.Drawing.Point(236, 70);
             this.lblRG.Name = "lblRG";
             this.lblRG.Size = new System.Drawing.Size(26, 13);
             this.lblRG.TabIndex = 20;
@@ -141,14 +141,14 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(10, 43);
+            this.txtNome.Location = new System.Drawing.Point(121, 46);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 0;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(383, 318);
+            this.btnCadastrar.Location = new System.Drawing.Point(371, 429);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 17;
@@ -159,7 +159,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(9, 27);
+            this.lblNome.Location = new System.Drawing.Point(120, 30);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(38, 13);
             this.lblNome.TabIndex = 11;
@@ -167,8 +167,8 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // GroupBox
             // 
-            this.GroupBox.Controls.Add(this.textBox2);
-            this.GroupBox.Controls.Add(this.textBox1);
+            this.GroupBox.Controls.Add(this.lblConvenio);
+            this.GroupBox.Controls.Add(this.comboConvenio);
             this.GroupBox.Controls.Add(this.txtPais);
             this.GroupBox.Controls.Add(this.groupBox1);
             this.GroupBox.Controls.Add(this.txtCidade);
@@ -202,30 +202,16 @@ namespace GerenciamentoDeClinica.telapaciente
             this.GroupBox.Controls.Add(this.lblEmail);
             this.GroupBox.Location = new System.Drawing.Point(3, 0);
             this.GroupBox.Name = "GroupBox";
-            this.GroupBox.Size = new System.Drawing.Size(470, 349);
+            this.GroupBox.Size = new System.Drawing.Size(475, 462);
             this.GroupBox.TabIndex = 43;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(192, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(75, 20);
-            this.textBox2.TabIndex = 80;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(101, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 18;
-            // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(192, 318);
+            this.txtPais.Location = new System.Drawing.Point(301, 383);
             this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.Size = new System.Drawing.Size(144, 20);
             this.txtPais.TabIndex = 16;
             // 
             // groupBox1
@@ -233,7 +219,7 @@ namespace GerenciamentoDeClinica.telapaciente
             this.groupBox1.Controls.Add(this.rbSolteiro);
             this.groupBox1.Controls.Add(this.rbCasado);
             this.groupBox1.Controls.Add(this.rbViuvo);
-            this.groupBox1.Location = new System.Drawing.Point(11, 162);
+            this.groupBox1.Location = new System.Drawing.Point(120, 227);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
             this.groupBox1.TabIndex = 79;
@@ -275,55 +261,52 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(9, 317);
+            this.txtCidade.Location = new System.Drawing.Point(118, 382);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 14;
             // 
             // comboUF
             // 
-            this.comboUF.FormattingEnabled = true;
-            this.comboUF.Location = new System.Drawing.Point(140, 317);
+            this.comboUF.Location = new System.Drawing.Point(241, 381);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
             this.comboUF.TabIndex = 15;
-            this.comboUF.DataSource = ClinicaUtils.UF_LIST;
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(9, 274);
+            this.txtNumero.Location = new System.Drawing.Point(118, 339);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 11;
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(99, 274);
+            this.txtComplemento.Location = new System.Drawing.Point(208, 339);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 12;
             // 
             // txtLogradouro
             // 
-            this.txtLogradouro.Location = new System.Drawing.Point(99, 229);
+            this.txtLogradouro.Location = new System.Drawing.Point(208, 294);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
             this.txtLogradouro.TabIndex = 10;
             // 
             // maskedCEP
             // 
-            this.maskedCEP.Location = new System.Drawing.Point(9, 229);
+            this.maskedCEP.Location = new System.Drawing.Point(118, 294);
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 9;
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
-            
             // 
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(196, 301);
+            this.lblPais.Location = new System.Drawing.Point(305, 366);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(32, 13);
             this.lblPais.TabIndex = 78;
@@ -332,7 +315,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblUF
             // 
             this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(137, 301);
+            this.lblUF.Location = new System.Drawing.Point(255, 366);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(24, 13);
             this.lblUF.TabIndex = 77;
@@ -341,7 +324,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(7, 301);
+            this.lblCidade.Location = new System.Drawing.Point(116, 366);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 76;
@@ -350,7 +333,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(189, 255);
+            this.lblBairro.Location = new System.Drawing.Point(298, 320);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(37, 13);
             this.lblBairro.TabIndex = 75;
@@ -359,7 +342,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblComplemento
             // 
             this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(96, 255);
+            this.lblComplemento.Location = new System.Drawing.Point(205, 320);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(74, 13);
             this.lblComplemento.TabIndex = 74;
@@ -368,7 +351,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(6, 255);
+            this.lblNumero.Location = new System.Drawing.Point(115, 317);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(47, 13);
             this.lblNumero.TabIndex = 73;
@@ -377,7 +360,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblLogradouro
             // 
             this.lblLogradouro.AutoSize = true;
-            this.lblLogradouro.Location = new System.Drawing.Point(98, 213);
+            this.lblLogradouro.Location = new System.Drawing.Point(207, 278);
             this.lblLogradouro.Name = "lblLogradouro";
             this.lblLogradouro.Size = new System.Drawing.Size(64, 13);
             this.lblLogradouro.TabIndex = 72;
@@ -386,7 +369,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblCEP
             // 
             this.lblCEP.AutoSize = true;
-            this.lblCEP.Location = new System.Drawing.Point(6, 213);
+            this.lblCEP.Location = new System.Drawing.Point(118, 278);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(31, 13);
             this.lblCEP.TabIndex = 71;
@@ -394,15 +377,16 @@ namespace GerenciamentoDeClinica.telapaciente
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(192, 274);
+            this.txtBairro.Location = new System.Drawing.Point(301, 339);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 13;
             // 
             // dateTimeDtNasc
             // 
-            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeDtNasc.Location = new System.Drawing.Point(12, 136);
+            this.dateTimeDtNasc.CustomFormat = "dd/MM/yyyy";
+            this.dateTimeDtNasc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeDtNasc.Location = new System.Drawing.Point(121, 139);
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
             this.dateTimeDtNasc.TabIndex = 4;
@@ -410,7 +394,7 @@ namespace GerenciamentoDeClinica.telapaciente
             // pictureUser
             // 
             this.pictureUser.Image = ((System.Drawing.Image)(resources.GetObject("pictureUser.Image")));
-            this.pictureUser.Location = new System.Drawing.Point(358, 40);
+            this.pictureUser.Location = new System.Drawing.Point(9, 32);
             this.pictureUser.Name = "pictureUser";
             this.pictureUser.Size = new System.Drawing.Size(100, 116);
             this.pictureUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -420,17 +404,34 @@ namespace GerenciamentoDeClinica.telapaciente
             // lblDataNascimento
             // 
             this.lblDataNascimento.AutoSize = true;
-            this.lblDataNascimento.Location = new System.Drawing.Point(8, 120);
+            this.lblDataNascimento.Location = new System.Drawing.Point(117, 123);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(107, 13);
             this.lblDataNascimento.TabIndex = 53;
             this.lblDataNascimento.Text = "Data de Nascimento:";
             // 
+            // comboConvenio
+            // 
+            this.comboConvenio.FormattingEnabled = true;
+            this.comboConvenio.Location = new System.Drawing.Point(121, 188);
+            this.comboConvenio.Name = "comboConvenio";
+            this.comboConvenio.Size = new System.Drawing.Size(257, 21);
+            this.comboConvenio.TabIndex = 81;
+            // 
+            // lblConvenio
+            // 
+            this.lblConvenio.AutoSize = true;
+            this.lblConvenio.Location = new System.Drawing.Point(118, 172);
+            this.lblConvenio.Name = "lblConvenio";
+            this.lblConvenio.Size = new System.Drawing.Size(55, 13);
+            this.lblConvenio.TabIndex = 82;
+            this.lblConvenio.Text = "Convenio:";
+            // 
             // TelaCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 352);
+            this.ClientSize = new System.Drawing.Size(481, 464);
             this.Controls.Add(this.GroupBox);
             this.Name = "TelaCadastroPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -481,7 +482,7 @@ namespace GerenciamentoDeClinica.telapaciente
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtPais;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboConvenio;
+        private System.Windows.Forms.Label lblConvenio;
     }
 }

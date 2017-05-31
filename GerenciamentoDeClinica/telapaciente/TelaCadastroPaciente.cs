@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,8 @@ namespace GerenciamentoDeClinica.telapaciente
 {
     public partial class TelaCadastroPaciente : Form
     {
+        private const string ERROR_WEBSERVICE = "Erro de conexão o servidor.";
+
         public TelaCadastroPaciente()
         {
             InitializeComponent();
@@ -42,7 +45,10 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
         {
-            //comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
+            ClinicaService service = new ClinicaService();
+            comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
+            comboConvenio.DisplayMember = "Descricao";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,15 +57,13 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 Paciente paciente = new Paciente();
 
-                paciente.ID_Paciente = Convert.ToInt32(textBox1.Text);
-                paciente.Convenio = new Convenio { ID_Convenio = 1 };
-
                 paciente.Nome = txtNome.Text;
                 paciente.CPF = maskedCPF.Text;
                 paciente.RG = txtRG.Text;
                 paciente.Contato = maskedCell.Text;
                 paciente.Dt_Nascimento = dateTimeDtNasc.Value;
                 paciente.Email = txtEmail.Text;
+                paciente.Endereco = new Endereco();
                 paciente.Endereco.CEP = maskedCEP.Text;
                 paciente.Endereco.Logradouro = txtLogradouro.Text;
                 paciente.Endereco.Complemento = txtComplemento.Text;
@@ -69,11 +73,11 @@ namespace GerenciamentoDeClinica.telapaciente
                 paciente.Endereco.UF = comboUF.SelectedItem.ToString();
                 paciente.Endereco.Pais = txtPais.Text;
                 RadioButton radio = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                if (radio.Name == rbSolteiro.Name)
+                if (rbSolteiro.Checked)
                 {
                     paciente.Estado_Civil = rbSolteiro.Text;
                 }
-                else if (radio.Name == rbCasado.Name)
+                else if (rbCasado.Checked)
                 {
                     paciente.Estado_Civil = rbCasado.Text;
                 }
@@ -82,10 +86,15 @@ namespace GerenciamentoDeClinica.telapaciente
                     paciente.Estado_Civil = rbViuvo.Text;
                 }
 
-                //new NegocioPaciente().Cadastrar(paciente);
+                new ClinicaService().CadastrarPaciente(paciente);
                 MessageBox.Show("Paciente cadastrado com sucesso.");
                 CleanForm();
                 txtNome.Focus();
+
+            }
+            catch (WebException)
+            {
+                MessageBox.Show(ERROR_WEBSERVICE);
 
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@ namespace ClinicaServiceLibrary.paciente
     [DataContract]
     public class Paciente : Pessoa
     {
-        [DataMember]
+        [DataMember (IsRequired=true)]
         public int      ID_Paciente  { get; set; }
         [DataMember]
         public Convenio Convenio     { get; set; }
