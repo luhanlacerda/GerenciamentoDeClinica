@@ -1,5 +1,4 @@
-﻿using ClinicaServiceLibrary.secretaria;
-using ClinicaServiceLibrary.wcf;
+﻿using GerenciamentoDeClinica.localhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +25,7 @@ namespace GerenciamentoDeClinica.telasecretaria
             listViewSecretarias.Items.Clear();
             try
             {
-                List<Secretaria> secretarias = clinicaService.ListarSecretaria(new Secretaria
+                Secretaria[] secretarias = clinicaService.ListarSecretaria(new Secretaria
                 {
                     ID_Secretaria = 0,
                     Nome = txtNomePesq.Text,
