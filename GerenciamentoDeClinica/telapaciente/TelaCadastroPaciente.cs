@@ -42,7 +42,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
         {
-            comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            //comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
         }
 
         private void button1_Click(object sender, EventArgs e)

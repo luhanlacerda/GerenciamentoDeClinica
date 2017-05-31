@@ -50,7 +50,7 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(11, 51);
+            this.txtDescricao.Location = new System.Drawing.Point(22, 72);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(155, 20);
             this.txtDescricao.TabIndex = 1;
@@ -58,7 +58,7 @@
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(8, 35);
+            this.lblDescricao.Location = new System.Drawing.Point(19, 56);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(58, 13);
             this.lblDescricao.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(198, 116);
+            this.btnCadastro.Location = new System.Drawing.Point(208, 72);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(75, 23);
             this.btnCadastro.TabIndex = 2;

@@ -328,12 +328,6 @@
   <ItemGroup>
     <None Include="Web References\localhost\ClinicaService.disco" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClinicaServiceLibrary\ClinicaServiceLibrary.csproj">
-      <Project>{B68B7F6A-504C-4E0B-B105-44968C701EB6}</Project>
-      <Name>ClinicaServiceLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

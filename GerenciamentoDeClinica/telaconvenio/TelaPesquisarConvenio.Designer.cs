@@ -33,13 +33,11 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDescricaoFiltro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.listViewConvenios = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -54,7 +52,6 @@
             this.groupBox3.Controls.Add(this.txtID);
             this.groupBox3.Controls.Add(this.btnAtualizar);
             this.groupBox3.Controls.Add(this.btnRemover);
-            this.groupBox3.Controls.Add(this.btnEditar);
             this.groupBox3.Controls.Add(this.txtDescricao);
             this.groupBox3.Controls.Add(this.lblDescricao);
             this.groupBox3.Location = new System.Drawing.Point(1, 280);
@@ -84,7 +81,7 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(261, 22);
+            this.btnAtualizar.Location = new System.Drawing.Point(275, 38);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 6;
@@ -95,24 +92,13 @@
             // btnRemover
             // 
             this.btnRemover.Enabled = false;
-            this.btnRemover.Location = new System.Drawing.Point(261, 80);
+            this.btnRemover.Location = new System.Drawing.Point(275, 67);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
             this.btnRemover.TabIndex = 8;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(261, 51);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 7;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // txtDescricao
             // 
@@ -135,7 +121,6 @@
             // 
             this.groupBox2.Controls.Add(this.txtDescricaoFiltro);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btnBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Location = new System.Drawing.Point(1, 0);
             this.groupBox2.Name = "groupBox2";
@@ -148,7 +133,7 @@
             // 
             this.txtDescricaoFiltro.Location = new System.Drawing.Point(14, 42);
             this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
-            this.txtDescricaoFiltro.Size = new System.Drawing.Size(159, 20);
+            this.txtDescricaoFiltro.Size = new System.Drawing.Size(233, 20);
             this.txtDescricaoFiltro.TabIndex = 1;
             // 
             // label2
@@ -160,19 +145,9 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Descrição:";
             // 
-            // btnBusca
-            // 
-            this.btnBusca.Location = new System.Drawing.Point(260, 39);
-            this.btnBusca.Name = "btnBusca";
-            this.btnBusca.Size = new System.Drawing.Size(75, 23);
-            this.btnBusca.TabIndex = 3;
-            this.btnBusca.Text = "Nova Busca";
-            this.btnBusca.UseVisualStyleBackColor = true;
-            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
-            // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(179, 39);
+            this.btnPesquisar.Location = new System.Drawing.Point(266, 39);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
@@ -224,13 +199,11 @@
         #endregion
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.ListView listViewConvenios;

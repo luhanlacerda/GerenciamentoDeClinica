@@ -49,8 +49,8 @@ namespace ClinicaServiceLibrary.convenio
             {
                 //Abrindo Conexão
                 this.abrirConexao();
-                
-                string sql = "UPDATE Convenio SET ID_Convenio = @ID_Convenio, Descricao = @Descricao WHERE ID_Convenio = @ID_Convenio";
+
+                string sql = "UPDATE Convenio SET Descricao = @Descricao WHERE ID_Convenio = @ID_Convenio";
                 //instrução a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 //Recebendo os valores
@@ -83,7 +83,7 @@ namespace ClinicaServiceLibrary.convenio
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrucao a ser executada
-                string sql = "Delete Convenio where ID_Convenio = @ID_Convenio";
+                string sql = "Delete From Convenio where ID_Convenio = @ID_Convenio";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -108,6 +108,7 @@ namespace ClinicaServiceLibrary.convenio
         {
             
             List<Convenio> retorno = new List<Convenio>();
+
             try
             {
                 //Abrindo conexao
@@ -115,24 +116,32 @@ namespace ClinicaServiceLibrary.convenio
                 //Instrução a ser executada
                 string sql = "SELECT ID_Convenio,Descricao FROM Convenio where 1=1";
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+                
 
                 //Se foi passado uma descrição válida,  o mesmo entrará como critério de filtro
-                if (filtro.Descricao != null && filtro.Descricao.Trim().Equals("") == false)
+                if (filtro.ID_Convenio > 0)
                 {
                     sql += " AND ID_Convenio = @ID_Convenio";
+                }
 
+                //Se foi passado uma descricao válido, o mesmo entrará como critério de filtro
+                if(!string.IsNullOrWhiteSpace(filtro.Descricao))
+                {
+                    sql += " AND Descricao LIKE @Descricao";
+                }
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                if (filtro.ID_Convenio > 0)
+                {
                     cmd.Parameters.Add("@ID_Convenio", SqlDbType.Int);
                     cmd.Parameters["@ID_Convenio"].Value = filtro.ID_Convenio;
                 }
 
-                //Se foi passado uma descricao válido, o mesmo entrará como critério de filtro
-                if(string.IsNullOrWhiteSpace(filtro.Descricao))
+                if (!string.IsNullOrWhiteSpace(filtro.Descricao))
                 {
-                    sql += " AND Descricao LIKE '%@Descricao%'";
-
                     cmd.Parameters.Add("@Descricao", SqlDbType.VarChar);
-                    cmd.Parameters["@Descricao"].Value = filtro.Descricao;
+                    cmd.Parameters["@Descricao"].Value = "%" + filtro.Descricao + "%";
                 }
                 //Executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
@@ -152,9 +161,9 @@ namespace ClinicaServiceLibrary.convenio
                 //Fechando a conexão
                 this.fecharConexao();
             }
-            catch (FaultException ex)
+            catch (FaultException e)
             {
-                throw new FaultException("Erro ao conectar e selecionar." + ex.Message);
+                throw new FaultException("Erro ao conectar e selecionar." + e.Message);
             }
             return retorno;
             
@@ -169,8 +178,7 @@ namespace ClinicaServiceLibrary.convenio
                 //Conectar ao banco
                 this.abrirConexao();
                 //instrução a ser executada
-                string sql = "Select ID_Convenio, Descricao FROM Convenio Where ID_Convenio = " +
-                    "@ID_Convenio";
+                string sql = "Select ID_Convenio, Descricao FROM Convenio Where ID_Convenio = @ID_Convenio";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
                 cmd.Parameters.Add("ID_Convenio", SqlDbType.Int);
@@ -199,10 +207,6 @@ namespace ClinicaServiceLibrary.convenio
             return retorno;
         }
 
-        public bool VerificaExistencia(Convenio convenio)
-        {
-            throw new FaultException();
-        }
         #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GerenciamentoDeClinica.telapaciente
+﻿using GerenciamentoDeClinica.utils;
+
+namespace GerenciamentoDeClinica.telapaciente
 {
     partial class TelaCadastroPaciente
     {
@@ -285,6 +287,7 @@
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
             this.comboUF.TabIndex = 15;
+            this.comboUF.DataSource = ClinicaUtils.UF_LIST;
             // 
             // txtNumero
             // 
