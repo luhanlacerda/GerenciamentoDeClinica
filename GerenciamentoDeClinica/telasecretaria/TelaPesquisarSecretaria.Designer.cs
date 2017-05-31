@@ -54,7 +54,6 @@
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
@@ -67,12 +66,16 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnNovaBusca = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedPesqCPF = new System.Windows.Forms.MaskedTextBox();
+            this.maskedCPFPesq = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomePesq = new System.Windows.Forms.TextBox();
+            this.listViewSecretarias = new System.Windows.Forms.ListView();
+            this.ID_Secretaria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -102,7 +105,6 @@
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
             this.GroupBox.Controls.Add(this.pictureUser);
             this.GroupBox.Controls.Add(this.btnRemover);
-            this.GroupBox.Controls.Add(this.btnEditar);
             this.GroupBox.Controls.Add(this.btnAtualizar);
             this.GroupBox.Controls.Add(this.lblDataNascimento);
             this.GroupBox.Controls.Add(this.lblNome);
@@ -114,13 +116,12 @@
             this.GroupBox.Controls.Add(this.lblContato);
             this.GroupBox.Controls.Add(this.txtEmail);
             this.GroupBox.Controls.Add(this.lblEmail);
-            this.GroupBox.Location = new System.Drawing.Point(2, 107);
+            this.GroupBox.Location = new System.Drawing.Point(12, 216);
             this.GroupBox.Name = "GroupBox";
             this.GroupBox.Size = new System.Drawing.Size(464, 360);
             this.GroupBox.TabIndex = 1;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Editar Campos";
-            this.GroupBox.Enter += new System.EventHandler(this.GroupBox_Enter);
             // 
             // groupBox1
             // 
@@ -316,7 +317,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(324, 20);
             this.txtNome.TabIndex = 4;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // dateTimeDtNasc
             // 
@@ -326,7 +326,6 @@
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
             this.dateTimeDtNasc.TabIndex = 8;
-            this.dateTimeDtNasc.ValueChanged += new System.EventHandler(this.dateTimeDtNasc_ValueChanged);
             // 
             // pictureUser
             // 
@@ -347,29 +346,16 @@
             this.btnRemover.TabIndex = 23;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(378, 293);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 22;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(378, 264);
+            this.btnAtualizar.Location = new System.Drawing.Point(378, 293);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 21;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // lblDataNascimento
             // 
@@ -415,7 +401,6 @@
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
             this.maskedCell.TabIndex = 7;
-            this.maskedCell.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedCell_MaskInputRejected);
             // 
             // txtRG
             // 
@@ -424,7 +409,6 @@
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
             this.txtRG.TabIndex = 6;
-            this.txtRG.TextChanged += new System.EventHandler(this.txtRG_TextChanged);
             // 
             // maskedCPF
             // 
@@ -434,7 +418,6 @@
             this.maskedCPF.Name = "maskedCPF";
             this.maskedCPF.Size = new System.Drawing.Size(100, 20);
             this.maskedCPF.TabIndex = 5;
-            this.maskedCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedCPF_MaskInputRejected);
             // 
             // lblContato
             // 
@@ -452,7 +435,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
             this.txtEmail.TabIndex = 9;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblEmail
             // 
@@ -465,34 +447,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.maskedPesqCPF);
+            this.groupBox2.Controls.Add(this.maskedCPFPesq);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtNomePesq);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(2, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 107);
+            this.groupBox2.Size = new System.Drawing.Size(474, 99);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtro da Pesquisa";
             // 
-            // btnNovaBusca
-            // 
-            this.btnNovaBusca.Location = new System.Drawing.Point(319, 35);
-            this.btnNovaBusca.Name = "btnNovaBusca";
-            this.btnNovaBusca.Size = new System.Drawing.Size(75, 23);
-            this.btnNovaBusca.TabIndex = 3;
-            this.btnNovaBusca.Text = "Nova Busca";
-            this.btnNovaBusca.UseVisualStyleBackColor = true;
-            this.btnNovaBusca.Click += new System.EventHandler(this.btnNovaBusca_Click);
-            // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(238, 35);
+            this.btnPesquisar.Location = new System.Drawing.Point(388, 35);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
@@ -509,13 +480,13 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "CPF:";
             // 
-            // maskedPesqCPF
+            // maskedCPFPesq
             // 
-            this.maskedPesqCPF.Location = new System.Drawing.Point(51, 61);
-            this.maskedPesqCPF.Mask = "000.000.000-00";
-            this.maskedPesqCPF.Name = "maskedPesqCPF";
-            this.maskedPesqCPF.Size = new System.Drawing.Size(100, 20);
-            this.maskedPesqCPF.TabIndex = 1;
+            this.maskedCPFPesq.Location = new System.Drawing.Point(51, 61);
+            this.maskedCPFPesq.Mask = "000.000.000-00";
+            this.maskedCPFPesq.Name = "maskedCPFPesq";
+            this.maskedCPFPesq.Size = new System.Drawing.Size(100, 20);
+            this.maskedCPFPesq.TabIndex = 1;
             // 
             // label1
             // 
@@ -530,14 +501,48 @@
             // 
             this.txtNomePesq.Location = new System.Drawing.Point(50, 35);
             this.txtNomePesq.Name = "txtNomePesq";
-            this.txtNomePesq.Size = new System.Drawing.Size(168, 20);
+            this.txtNomePesq.Size = new System.Drawing.Size(229, 20);
             this.txtNomePesq.TabIndex = 0;
+            // 
+            // listViewSecretarias
+            // 
+            this.listViewSecretarias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID_Secretaria,
+            this.Nome,
+            this.CPF,
+            this.Contato});
+            this.listViewSecretarias.FullRowSelect = true;
+            this.listViewSecretarias.Location = new System.Drawing.Point(2, 107);
+            this.listViewSecretarias.Name = "listViewSecretarias";
+            this.listViewSecretarias.Size = new System.Drawing.Size(474, 97);
+            this.listViewSecretarias.TabIndex = 2;
+            this.listViewSecretarias.UseCompatibleStateImageBehavior = false;
+            this.listViewSecretarias.View = System.Windows.Forms.View.Details;
+            // 
+            // ID_Secretaria
+            // 
+            this.ID_Secretaria.Text = "ID";
+            // 
+            // Nome
+            // 
+            this.Nome.Text = "Nome";
+            // 
+            // Contato
+            // 
+            this.Contato.DisplayIndex = 2;
+            this.Contato.Text = "Contato";
+            // 
+            // CPF
+            // 
+            this.CPF.DisplayIndex = 3;
+            this.CPF.Text = "CPF";
             // 
             // TelaPesquisarSecretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 468);
+            this.ClientSize = new System.Drawing.Size(491, 588);
+            this.Controls.Add(this.listViewSecretarias);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox);
             this.Name = "TelaPesquisarSecretaria";
@@ -559,7 +564,6 @@
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Label lblDataNascimento;
         private System.Windows.Forms.Label lblNome;
@@ -572,10 +576,9 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedPesqCPF;
+        private System.Windows.Forms.MaskedTextBox maskedCPFPesq;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNomePesq;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
@@ -600,5 +603,10 @@
         private System.Windows.Forms.RadioButton rbSolteiro;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.RadioButton rbViuvo;
+        private System.Windows.Forms.ListView listViewSecretarias;
+        private System.Windows.Forms.ColumnHeader ID_Secretaria;
+        private System.Windows.Forms.ColumnHeader Nome;
+        private System.Windows.Forms.ColumnHeader CPF;
+        private System.Windows.Forms.ColumnHeader Contato;
     }
 }
