@@ -12,7 +12,6 @@ namespace ClinicaServiceLibrary.secretaria
     {
         public void Atualizar(Secretaria secretaria)
         {
-            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
             ClinicaUtils.ValidarPessoa(secretaria);
 
             new SecretariaBD().Cadastrar(secretaria);
@@ -20,7 +19,6 @@ namespace ClinicaServiceLibrary.secretaria
 
         public void Cadastrar(Secretaria secretaria)
         {
-            ClinicaUtils.ValidarCodigo(secretaria.ID_Secretaria);
             ClinicaUtils.ValidarPessoa(secretaria);
 
             new SecretariaBD().Cadastrar(secretaria);

@@ -23,7 +23,7 @@ namespace ClinicaServiceLibrary.utils
         public const int UF_SIZE = 2;
         public const int CEP_SIZE = 9;
         public const int PAIS_SIZE = 30;
-        public const int CONTATO_SIZE = 14;
+        public const int CONTATO_SIZE = 16;
         public const int ESTADO_CIVIL_SIZE = 10;
         #endregion
 
