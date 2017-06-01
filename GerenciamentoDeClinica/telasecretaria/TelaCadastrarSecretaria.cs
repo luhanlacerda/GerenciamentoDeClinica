@@ -38,11 +38,11 @@ namespace GerenciamentoDeClinica.telasecretaria
                 secretaria.Endereco.Cidade = txtCidade.Text;
                 secretaria.Endereco.UF = comboUF.Text;
                 secretaria.Endereco.Pais = txtPais.Text;
-                if (rbCasado.CanSelect == true)
+                if (rbCasado.Checked == true)
                 {
                     secretaria.Estado_Civil = rbCasado.Text;
                 }
-                else if (rbViuvo.CanSelect == true)
+                else if (rbViuvo.Checked == true)
                 {
                     secretaria.Estado_Civil = rbViuvo.Text;
                 }
@@ -51,11 +51,12 @@ namespace GerenciamentoDeClinica.telasecretaria
                     secretaria.Estado_Civil = rbSolteiro.Text;
                 }
                 secretaria.Contato = maskedCell.Text;
-                secretaria.Dt_Nascimento = dateTimeDtNasc.Value.Date;
+                secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
 
-                new ClinicaService().CadastrarSecretaria(secretaria);
-
+                ClinicaService service = new ClinicaService();
+                service.CadastrarSecretaria(secretaria);
                 MessageBox.Show("Secretária cadastrada com sucesso!");
+
                 txtNome.Clear();
                 txtRG.Clear();
                 maskedCPF.Clear();
@@ -68,6 +69,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 txtCidade.Clear();
                 txtPais.Clear();
                 maskedCell.Clear();
+
             }
             catch (Exception ex)
             {

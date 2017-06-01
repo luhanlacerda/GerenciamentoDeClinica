@@ -103,8 +103,8 @@ namespace GerenciamentoDeClinica.telamedico
                 ClinicaService service = new ClinicaService();
                 medicos = new List<Medico>(service.ListarMedico(new Medico
                 {
-                    Nome = txtPesqNome.Text.Trim(),
-                    CRM = txtPesqCRM.Text.Trim()
+                    Nome = txtPesqNome.Text,
+                    CRM = txtPesqCRM.Text
                 }));
                 foreach (Medico medico in medicos)
                 {
