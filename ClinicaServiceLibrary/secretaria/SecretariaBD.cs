@@ -1,4 +1,5 @@
-﻿using ClinicaServiceLibrary.utils;
+﻿using ClinicaServiceLibrary.classesbasicas;
+using ClinicaServiceLibrary.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -200,38 +201,38 @@ namespace ClinicaServiceLibrary.secretaria
                 this.abrirConexao();
                 //Instrução a ser executada
                 string sql = "SELECT ID_Secretaria, CPF, RG, Nome, Email, Logradouro, Numero, Complemento, Bairro, CEP, Cidade, UF, Pais," +
-                    "Estado_Civil, Contato, Dt_Nascimento FROM Secretaria WHERE TRUE";
+                    "Estado_Civil, Contato, Dt_Nascimento FROM Secretaria WHERE 1=1";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
                 //Se foi passado um id_secretaria válido, o mesmo entrará como critério de filtro
                 #region Modos de Pesquisa
                 if (filtro.ID_Secretaria > 0)
                 {
-                    sql += " AND ID_Secretaria = @ID_Secretaria";
+                    cmd.CommandText += " AND ID_Secretaria = @ID_Secretaria";
 
                     cmd.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
                     cmd.Parameters["@ID_Secretaria"].Value = filtro.ID_Secretaria;
                 }
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
-                if (string.IsNullOrWhiteSpace(filtro.CPF.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.CPF))
                   /*"  Matheus Vasconcelos  " = por isso o trim. Não precisando de IsNullOrWhiteSpace,
                    /apenas de IsNullOrEmpty, mas por precaução houve a utilização*/
                 {
-                    sql += " AND CPF LIKE @CPF";
+                    cmd.CommandText += " AND CPF = @CPF";
 
                     cmd.Parameters.Add("@CPF", SqlDbType.Char);
-                    cmd.Parameters["@CPF"].Value = "%" + filtro.CPF.Trim() + "%";
+                    cmd.Parameters["@CPF"].Value = Convert.ToUInt64(filtro.CPF.Trim()).ToString(@"000\.000\.000\-00");
                 }
-                if (string.IsNullOrWhiteSpace(filtro.RG.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.RG))
                 {
-                    sql += " AND RG LIKE @RG";
+                    cmd.CommandText += " AND RG = @RG";
 
                     cmd.Parameters.Add("@RG", SqlDbType.VarChar);
-                    cmd.Parameters["@RG"].Value = "%" + filtro.CPF.Trim() + "%";
+                    cmd.Parameters["@RG"].Value = filtro.CPF.Trim();
                 }
-                if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.Nome))
                 {
-                    sql += " AND Nome LIKE @Nome";
+                    cmd.CommandText += " AND Nome LIKE @Nome";
 
                     cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
                     cmd.Parameters["@Nome"].Value = "%" + filtro.Nome.Trim() + "%";
@@ -251,6 +252,7 @@ namespace ClinicaServiceLibrary.secretaria
                     secretaria.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     secretaria.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     secretaria.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
+                    secretaria.Endereco = new Endereco();
                     secretaria.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
                     secretaria.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
                     secretaria.Endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("Complemento"));
@@ -262,6 +264,7 @@ namespace ClinicaServiceLibrary.secretaria
                     secretaria.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
                     secretaria.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
                     secretaria.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
+                    secretaria.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento"));
                     #endregion
                     retorno.Add(secretaria);
                 }

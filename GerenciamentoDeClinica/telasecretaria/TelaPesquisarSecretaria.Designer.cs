@@ -34,7 +34,6 @@
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -59,7 +58,7 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblRG = new System.Windows.Forms.Label();
             this.lblCPF = new System.Windows.Forms.Label();
-            this.maskedCell = new System.Windows.Forms.MaskedTextBox();
+            this.maskedContato = new System.Windows.Forms.MaskedTextBox();
             this.txtRG = new System.Windows.Forms.TextBox();
             this.maskedCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblContato = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -84,8 +84,8 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.txtPais);
             this.GroupBox.Controls.Add(this.groupBox1);
-            this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -110,7 +110,7 @@
             this.GroupBox.Controls.Add(this.lblNome);
             this.GroupBox.Controls.Add(this.lblRG);
             this.GroupBox.Controls.Add(this.lblCPF);
-            this.GroupBox.Controls.Add(this.maskedCell);
+            this.GroupBox.Controls.Add(this.maskedContato);
             this.GroupBox.Controls.Add(this.txtRG);
             this.GroupBox.Controls.Add(this.maskedCPF);
             this.GroupBox.Controls.Add(this.lblContato);
@@ -170,15 +170,6 @@
             this.rbViuvo.TabStop = true;
             this.rbViuvo.Text = "Viúvo(a)";
             this.rbViuvo.UseVisualStyleBackColor = true;
-            // 
-            // comboPais
-            // 
-            this.comboPais.Enabled = false;
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(198, 325);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 20;
             // 
             // txtCidade
             // 
@@ -357,6 +348,7 @@
             this.btnAtualizar.TabIndex = 21;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // lblDataNascimento
             // 
@@ -394,14 +386,14 @@
             this.lblCPF.TabIndex = 21;
             this.lblCPF.Text = "CPF:";
             // 
-            // maskedCell
+            // maskedContato
             // 
-            this.maskedCell.Enabled = false;
-            this.maskedCell.Location = new System.Drawing.Point(246, 83);
-            this.maskedCell.Mask = "(##) #.####-####";
-            this.maskedCell.Name = "maskedCell";
-            this.maskedCell.Size = new System.Drawing.Size(89, 20);
-            this.maskedCell.TabIndex = 7;
+            this.maskedContato.Enabled = false;
+            this.maskedContato.Location = new System.Drawing.Point(246, 83);
+            this.maskedContato.Mask = "(##) #.####-####";
+            this.maskedContato.Name = "maskedContato";
+            this.maskedContato.Size = new System.Drawing.Size(89, 20);
+            this.maskedContato.TabIndex = 7;
             // 
             // txtRG
             // 
@@ -455,16 +447,16 @@
             this.groupBox2.Controls.Add(this.txtNomePesq);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(2, 1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(474, 99);
+            this.groupBox2.Size = new System.Drawing.Size(464, 99);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtro da Pesquisa";
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(388, 35);
+            this.btnPesquisar.Location = new System.Drawing.Point(388, 28);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
@@ -488,6 +480,7 @@
             this.maskedCPFPesq.Name = "maskedCPFPesq";
             this.maskedCPFPesq.Size = new System.Drawing.Size(100, 20);
             this.maskedCPFPesq.TabIndex = 1;
+            this.maskedCPFPesq.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label1
             // 
@@ -513,12 +506,13 @@
             this.CPF,
             this.Contato});
             this.listViewSecretarias.FullRowSelect = true;
-            this.listViewSecretarias.Location = new System.Drawing.Point(2, 107);
+            this.listViewSecretarias.Location = new System.Drawing.Point(12, 113);
             this.listViewSecretarias.Name = "listViewSecretarias";
-            this.listViewSecretarias.Size = new System.Drawing.Size(474, 97);
+            this.listViewSecretarias.Size = new System.Drawing.Size(464, 97);
             this.listViewSecretarias.TabIndex = 2;
             this.listViewSecretarias.UseCompatibleStateImageBehavior = false;
             this.listViewSecretarias.View = System.Windows.Forms.View.Details;
+            this.listViewSecretarias.SelectedIndexChanged += new System.EventHandler(this.listViewSecretarias_SelectedIndexChanged);
             // 
             // ID_Secretaria
             // 
@@ -538,11 +532,18 @@
             this.Contato.DisplayIndex = 2;
             this.Contato.Text = "Contato";
             // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(199, 326);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(100, 20);
+            this.txtPais.TabIndex = 97;
+            // 
             // TelaPesquisarSecretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 588);
+            this.ClientSize = new System.Drawing.Size(494, 588);
             this.Controls.Add(this.listViewSecretarias);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox);
@@ -570,7 +571,7 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblRG;
         private System.Windows.Forms.Label lblCPF;
-        private System.Windows.Forms.MaskedTextBox maskedCell;
+        private System.Windows.Forms.MaskedTextBox maskedContato;
         private System.Windows.Forms.TextBox txtRG;
         private System.Windows.Forms.MaskedTextBox maskedCPF;
         private System.Windows.Forms.Label lblContato;
@@ -579,12 +580,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedCPFPesq;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNomePesq;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -609,5 +608,7 @@
         private System.Windows.Forms.ColumnHeader Nome;
         private System.Windows.Forms.ColumnHeader CPF;
         private System.Windows.Forms.ColumnHeader Contato;
+        private System.Windows.Forms.MaskedTextBox maskedCPFPesq;
+        private System.Windows.Forms.TextBox txtPais;
     }
 }
