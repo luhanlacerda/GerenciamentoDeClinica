@@ -1,4 +1,6 @@
-﻿using ClinicaServiceLibrary.utils;
+﻿using ClinicaServiceLibrary.classesbasicas;
+using ClinicaServiceLibrary.convenio;
+using ClinicaServiceLibrary.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -98,12 +100,11 @@ namespace ClinicaServiceLibrary.paciente
                 //Abri Conexao
                 this.abrirConexao();
 
-                string sql = "UPDATE Paciente SET Nome = @Nome, CPF = @CPF, Contato = @Contato, CEP = @CEP," +
-                    "RG = @RG, Email = @Email, Logradouro = @Logradouro, Numero = @Numero," +
-                    "Complemento = @Complemento, Bairro = @Bairro, Cidade = @Cidade, UF = @UF" +
-                    "Pais = @Pais, ID_Paciente = @ID_Paciente, Estado_Civil = @Estado_Civil," +
-                    "Dt_Nascimento = @Dt_Nascimento, ID_Convenio = @ID_Convenio" +
-                    "WHERE ID_Paciente = @ID_Paciente;";
+                string sql = "UPDATE Paciente SET Nome = @Nome, CPF = @CPF, Contato = @Contato, CEP = @CEP, " +
+                    "RG = @RG, Email = @Email, Logradouro = @Logradouro, Numero = @Numero, " +
+                    "Complemento = @Complemento, Bairro = @Bairro, Cidade = @Cidade, UF = @UF, " +
+                    "Pais = @Pais, Estado_Civil = @Estado_Civil, Dt_Nascimento = @Dt_Nascimento, " +
+                    "ID_Convenio = @ID_Convenio WHERE ID_Paciente = @ID_Paciente;";
 
                 //Instrução a ser executada
                 SqlCommand scm = new SqlCommand(sql, this.sqlConn);
@@ -258,6 +259,7 @@ namespace ClinicaServiceLibrary.paciente
                     paciente.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
                     paciente.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
+                    paciente.Endereco = new Endereco();
                     paciente.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
                     paciente.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
@@ -271,6 +273,7 @@ namespace ClinicaServiceLibrary.paciente
                     paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
                     paciente.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     paciente.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento"));
+                    paciente.Convenio = new Convenio();
                     paciente.Convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
 
                     #endregion

@@ -67,7 +67,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(this, ex.Message);
             }
 
         }
@@ -120,7 +120,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(this, ex.Message);
                 }
             }
 
@@ -154,7 +154,7 @@ namespace GerenciamentoDeClinica.telaconvenio
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(this, ex.Message);
                 }
 
             }

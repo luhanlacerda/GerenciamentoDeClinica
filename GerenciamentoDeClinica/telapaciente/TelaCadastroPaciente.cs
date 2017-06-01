@@ -22,26 +22,23 @@ namespace GerenciamentoDeClinica.telapaciente
             InitializeComponent();
         }
 
-        public  void CleanForm()
+        #region clearFomr
+        void ClearTextBoxs()
         {
-            foreach (var control in this.Controls)
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
             {
-                if (control is TextBox)
-                {
-                    ((TextBox)control).Clear();
-                }
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
 
-                if (control is RadioButton)
-                {
-                    ((RadioButton)control).Checked = false;
-                }
-
-                if (control is MaskedTextBox)
-                {
-                    ((MaskedTextBox)control).Clear();
-                }
-            }
+            func(Controls);
         }
+        #endregion
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
         {
@@ -49,6 +46,8 @@ namespace GerenciamentoDeClinica.telapaciente
             ClinicaService service = new ClinicaService();
             comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
             comboConvenio.DisplayMember = "Descricao";
+            txtPais.Text = "Brasil";
+            txtPais.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,6 +56,7 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 Paciente paciente = new Paciente();
 
+                
                 paciente.Nome = txtNome.Text;
                 paciente.CPF = maskedCPF.Text;
                 paciente.RG = txtRG.Text;
@@ -72,30 +72,28 @@ namespace GerenciamentoDeClinica.telapaciente
                 paciente.Endereco.Cidade = txtCidade.Text;
                 paciente.Endereco.UF = comboUF.SelectedItem.ToString();
                 paciente.Endereco.Pais = txtPais.Text;
-                RadioButton radio = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                if (rbSolteiro.Checked)
-                {
-                    paciente.Estado_Civil = rbSolteiro.Text;
-                }
-                else if (rbCasado.Checked)
+                if (rbCasado.Checked == true)
                 {
                     paciente.Estado_Civil = rbCasado.Text;
                 }
-                else
+                else if (rbViuvo.Checked == true)
                 {
                     paciente.Estado_Civil = rbViuvo.Text;
                 }
+                else
+                {
+                    paciente.Estado_Civil = rbSolteiro.Text;
+                }
 
-                new ClinicaService().CadastrarPaciente(paciente);
-                MessageBox.Show("Paciente cadastrado com sucesso.");
-                CleanForm();
+                ClinicaService service = new ClinicaService();
+                service.CadastrarPaciente(paciente);
+                MessageBox.Show("Paciente cadastrado com sucesso!");
+                ClearTextBoxs();
                 txtNome.Focus();
-
             }
             catch (WebException)
             {
                 MessageBox.Show(ERROR_WEBSERVICE);
-
             }
             catch (Exception ex)
             {
