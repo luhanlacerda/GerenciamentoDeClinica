@@ -1474,8 +1474,6 @@ namespace GerenciamentoDeClinica.localhost {
         
         private int iD_PacienteField;
         
-        private bool iD_PacienteFieldSpecified;
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public Convenio Convenio {
@@ -1494,17 +1492,6 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_PacienteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ID_PacienteSpecified {
-            get {
-                return this.iD_PacienteFieldSpecified;
-            }
-            set {
-                this.iD_PacienteFieldSpecified = value;
             }
         }
     }

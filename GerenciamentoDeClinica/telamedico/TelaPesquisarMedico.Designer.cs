@@ -30,21 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPesquisarMedico));
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnNovaBusca = new System.Windows.Forms.Button();
             this.txtPesqNome = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.lblPesqNome = new System.Windows.Forms.Label();
             this.txtPesqCRM = new System.Windows.Forms.TextBox();
             this.lblPesqCRM = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -98,21 +96,10 @@
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
-            // btnEditar
-            // 
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(383, 323);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 24;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(383, 294);
+            this.btnAtualizar.Location = new System.Drawing.Point(383, 323);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 23;
@@ -122,7 +109,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnNovaBusca);
             this.groupBox2.Controls.Add(this.txtPesqNome);
             this.groupBox2.Controls.Add(this.btnPesquisar);
             this.groupBox2.Controls.Add(this.lblPesqNome);
@@ -135,16 +121,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtro de pesquisa";
             // 
-            // btnNovaBusca
-            // 
-            this.btnNovaBusca.Location = new System.Drawing.Point(270, 56);
-            this.btnNovaBusca.Name = "btnNovaBusca";
-            this.btnNovaBusca.Size = new System.Drawing.Size(75, 23);
-            this.btnNovaBusca.TabIndex = 3;
-            this.btnNovaBusca.Text = "Nova Busca";
-            this.btnNovaBusca.UseVisualStyleBackColor = true;
-            this.btnNovaBusca.Click += new System.EventHandler(this.btnNovaBusca_Click);
-            // 
             // txtPesqNome
             // 
             this.txtPesqNome.Location = new System.Drawing.Point(53, 19);
@@ -154,13 +130,13 @@
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(190, 56);
+            this.btnPesquisar.Location = new System.Drawing.Point(270, 59);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.button1_Click);
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // lblPesqNome
             // 
@@ -189,8 +165,8 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.txtPais);
             this.GroupBox.Controls.Add(this.groupBox1);
-            this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -210,7 +186,6 @@
             this.GroupBox.Controls.Add(this.lblEspecialidade);
             this.GroupBox.Controls.Add(this.btnRemover);
             this.GroupBox.Controls.Add(this.txtCRM);
-            this.GroupBox.Controls.Add(this.btnEditar);
             this.GroupBox.Controls.Add(this.lblCRM);
             this.GroupBox.Controls.Add(this.btnAtualizar);
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
@@ -231,7 +206,15 @@
             this.GroupBox.Size = new System.Drawing.Size(465, 384);
             this.GroupBox.TabIndex = 45;
             this.GroupBox.TabStop = false;
-            this.GroupBox.Text = "Cadastrar";
+            this.GroupBox.Text = "Dados";
+            // 
+            // txtPais
+            // 
+            this.txtPais.Enabled = false;
+            this.txtPais.Location = new System.Drawing.Point(198, 356);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(137, 20);
+            this.txtPais.TabIndex = 84;
             // 
             // groupBox1
             // 
@@ -280,15 +263,6 @@
             this.rbViuvo.TabStop = true;
             this.rbViuvo.Text = "Viúvo(a)";
             this.rbViuvo.UseVisualStyleBackColor = true;
-            // 
-            // comboPais
-            // 
-            this.comboPais.Enabled = false;
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(197, 355);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 22;
             // 
             // txtCidade
             // 
@@ -522,7 +496,7 @@
             // 
             this.maskedCell.Enabled = false;
             this.maskedCell.Location = new System.Drawing.Point(246, 83);
-            this.maskedCell.Mask = "(##) #.####-####";
+            this.maskedCell.Mask = "(##)#####-####";
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
             this.maskedCell.TabIndex = 7;
@@ -583,6 +557,7 @@
             this.listMedicos.TabIndex = 46;
             this.listMedicos.UseCompatibleStateImageBehavior = false;
             this.listMedicos.View = System.Windows.Forms.View.Details;
+            this.listMedicos.SelectedIndexChanged += new System.EventHandler(this.listMedicos_SelectedIndexChanged);
             // 
             // ID
             // 
@@ -628,9 +603,7 @@
         private System.Windows.Forms.Label lblPesqCRM;
         private System.Windows.Forms.TextBox txtPesqNome;
         private System.Windows.Forms.Label lblPesqNome;
-        private System.Windows.Forms.Button btnNovaBusca;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.ComboBox comboEspecialidade;
@@ -650,7 +623,6 @@
         private System.Windows.Forms.Label lblContato;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -674,5 +646,6 @@
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Nome;
         private System.Windows.Forms.ColumnHeader CRM;
+        private System.Windows.Forms.TextBox txtPais;
     }
 }

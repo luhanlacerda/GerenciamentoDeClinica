@@ -90,7 +90,6 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 txtDescricao.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnRemover.Enabled = true;
-
             }
         }
 

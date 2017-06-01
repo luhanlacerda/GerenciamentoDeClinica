@@ -1,4 +1,6 @@
-﻿using ClinicaServiceLibrary.utils;
+﻿using ClinicaServiceLibrary.classesbasicas;
+using ClinicaServiceLibrary.especialidade;
+using ClinicaServiceLibrary.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,8 +24,8 @@ namespace ClinicaServiceLibrary.medico
                 string sql = "INSERT INTO Medico (CRM, CPF, RG, Nome, Logradouro, Numero, " +
                     "Complemento, Bairro, CEP, Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento, " +
                     "ID_Especialidade) " +
-                    "VALUES (@CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento, "+
-                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento, " + 
+                    "VALUES (@CRM, @CPF, @RG, @Nome, @Logradouro, @Numero, @Complemento, " +
+                    "@Bairro, @CEP, @Cidade, @UF, @Pais, @Email, @Contato, @Estado_Civil, @Dt_Nascimento, " +
                     "@ID_Especialidade);";
 
                 //Instrução a ser excecutada
@@ -103,7 +105,7 @@ namespace ClinicaServiceLibrary.medico
                 //Abrindo conexão
                 this.abrirConexao();
 
-                string sql = "UPDATE Medico SET ID_Medico = @ID_Medico, CPF = @CPF, RG = @RG, Nome = @Nome, " +
+                string sql = "UPDATE Medico SET CPF = @CPF, RG = @RG, Nome = @Nome, " +
                     "Logradouro = @Logradouro, Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, " +
                     "CEP = @CEP, Cidade = @Cidade, UF = @UF, Pais = @Pais, Email = @Email, Contato = @Contato, " +
                     "Estado_Civil = @Estado_Civil, Dt_Nascimento = @Dt_Nascimento, ID_Especialidade = @ID_Especialidade WHERE ID_Medico = @ID_Medico;";
@@ -214,41 +216,42 @@ namespace ClinicaServiceLibrary.medico
                 this.abrirConexao();
                 //Instrução a ser executada
                 string sql = "SELECT ID_Medico, CRM, CPF, RG, Nome, Logradouro, Numero, Complemento, Bairro, CEP, " +
-                    "Cidade, UF, Pais, Email, Celular, Estado_Civil, Dt_Nascimento, ID_Especialidade FROM Medico WHERE TRUE"; //Por que TRUE?
+                    "Cidade, UF, Pais, Email, Contato, Estado_Civil, Dt_Nascimento, ID_Especialidade FROM Medico WHERE 1=1"; //Por que TRUE?
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
                 //Se foi passado um ID_Medico válido, o mesmo entrará como critério de filtro
                 #region Modos de Pesquisa
                 if (filtro.ID_Medico > 0)
                 {
-                    sql += " AND ID_Medico = @ID_Medico";
+                    cmd.CommandText += " AND ID_Medico = @ID_Medico";
 
                     cmd.Parameters.Add("@ID_Medico", SqlDbType.Int);
                     cmd.Parameters["@ID_Medico"].Value = filtro.ID_Medico;
                 }
-                if (string.IsNullOrWhiteSpace(filtro.CRM.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.CRM))
                 {
-                    sql += " AND CRM = @CRM";
+                    cmd.CommandText += " AND CRM = @CRM";
 
                     cmd.Parameters.Add("@CRM", SqlDbType.VarChar);
-                    cmd.Parameters["@CRM"].Value = filtro.CRM;
+                    cmd.Parameters["@CRM"].Value = filtro.CRM.Trim();
                 }
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
-                if (string.IsNullOrWhiteSpace(filtro.CPF.Trim()))
-                /*"  Matheus Vasconcelos  " = por isso o trim. Não precisando de IsNullOrWhiteSpace,
+                if (!string.IsNullOrWhiteSpace(filtro.CPF))
+                /*"  Matheus Braz  " = por isso o trim. Não precisando de IsNullOrWhiteSpace,
                    /apenas de IsNullOrEmpty, mas por precaução houve a utilização*/
                 {
-                    sql += " AND CPF = @CPF";
+                    cmd.CommandText += " AND CPF = @CPF";
 
                     cmd.Parameters.Add("@CPF", SqlDbType.VarChar);
-                    cmd.Parameters["@CPF"].Value = filtro.CPF;
+                    cmd.Parameters["@CPF"].Value = filtro.CPF.Trim();
                 }
-                if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.Nome))
                 {
-                    sql += " AND Nome = @Nome";
+                    cmd.CommandText += " AND Nome LIKE @Nome";
 
                     cmd.Parameters.Add("@Nome", SqlDbType.VarChar);
-                    cmd.Parameters["@Nome"].Value = filtro.Nome;
+                    cmd.Parameters["@Nome"].Value = "%" + filtro.Nome.Trim() + "%";
                 }
                 #endregion
 
@@ -268,18 +271,20 @@ namespace ClinicaServiceLibrary.medico
                     medico.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     medico.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
                     medico.CRM = DbReader.GetString(DbReader.GetOrdinal("CRM"));
+                    medico.Endereco = new Endereco();
                     medico.Endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("Complemento"));
                     medico.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
                     medico.Endereco.Cidade = DbReader.GetString(DbReader.GetOrdinal("Cidade"));
                     medico.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     medico.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
-                    medico.Contato = DbReader.GetString(DbReader.GetOrdinal("Celular"));
+                    medico.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
                     medico.Endereco.Logradouro = DbReader.GetString(DbReader.GetOrdinal("Logradouro"));
                     medico.Endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("Numero"));
                     medico.Endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("Bairro"));
                     medico.Endereco.UF = DbReader.GetString(DbReader.GetOrdinal("UF"));
                     medico.Endereco.Pais = DbReader.GetString(DbReader.GetOrdinal("Pais"));
-                    medico.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento")); 
+                    medico.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento"));
+                    medico.Especialidade = new Especialidade();
                     medico.Especialidade.ID_Especialidade = DbReader.GetInt32(DbReader.GetOrdinal("ID_Especialidade"));
                     #endregion
 

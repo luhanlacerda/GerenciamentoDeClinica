@@ -7,7 +7,7 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" base="q1:Pessoa">
         <xs:sequence>
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" minOccurs="0" name="Convenio" nillable="true" type="q2:Convenio" />
-          <xs:element minOccurs="0" name="ID_Paciente" type="xs:int" />
+          <xs:element name="ID_Paciente" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
