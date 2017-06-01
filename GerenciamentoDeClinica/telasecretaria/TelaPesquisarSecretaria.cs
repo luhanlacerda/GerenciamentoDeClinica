@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeClinica.localhost;
+using GerenciamentoDeClinica.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,71 @@ namespace GerenciamentoDeClinica.telasecretaria
     public partial class TelaPesquisarSecretaria : Form
     {
 
-        private Secretaria[] secretarias;
-        ClinicaService service = new ClinicaService();
+        private List<Secretaria> secretarias;
+        //? = podendo ser nulo ou não
+        private int? selectedRow;
 
         public TelaPesquisarSecretaria()
         {
             InitializeComponent();
+        }
+
+        private void enableEditar()
+        {
+            btnAtualizar.Enabled = true;
+            btnRemover.Enabled = true;
+
+            maskedContato.Enabled = true;
+            txtEmail.Enabled = true;
+            rbSolteiro.Enabled = true;
+            rbCasado.Enabled = true;
+            rbViuvo.Enabled = true;
+            txtBairro.Enabled = true;
+            maskedCEP.Enabled = true;
+            txtLogradouro.Enabled = true;
+            txtComplemento.Enabled = true;
+            txtNumero.Enabled = true;
+            txtPais.Enabled = true;
+            txtCidade.Enabled = true;
+            comboUF.Enabled = true;
+        }
+
+        private void disableEditar()
+        {
+            btnAtualizar.Enabled = false;
+            btnRemover.Enabled = false;
+
+            maskedContato.Enabled = false;
+            txtEmail.Enabled = false;
+            rbSolteiro.Enabled = false;
+            rbCasado.Enabled = false;
+            rbViuvo.Enabled = false;
+            txtBairro.Enabled = false;
+            maskedCEP.Enabled = false;
+            txtLogradouro.Enabled = false;
+            txtComplemento.Enabled = false;
+            txtNumero.Enabled = false;
+            txtPais.Enabled = false;
+            txtCidade.Enabled = false;
+            comboUF.Enabled = false;
+            txtNome.Clear();
+            maskedCPF.Clear();
+            txtRG.Clear();
+            maskedContato.Clear();
+            dateTimeDtNasc.Value = DateTime.Now;
+            txtEmail.Clear();
+            rbSolteiro.Checked = false;
+            rbCasado.Checked = false;
+            rbViuvo.Checked = false;
+            maskedCEP.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            comboUF.SelectedIndex = 0;
+            txtPais.Clear();
+            listViewSecretarias.SelectedItems.Clear();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -27,13 +87,13 @@ namespace GerenciamentoDeClinica.telasecretaria
             listViewSecretarias.Items.Clear();
             try
             {
-
-                secretarias = service.ListarSecretaria(new Secretaria
+                ClinicaService service = new ClinicaService();
+                secretarias = new List<Secretaria>(service.ListarSecretaria(new Secretaria
                 {
                     ID_Secretaria = 0,
                     Nome = txtNomePesq.Text,
                     CPF = maskedCPFPesq.Text
-                });
+                }));
 
                 foreach (Secretaria secretaria in secretarias)
                 {
@@ -53,15 +113,16 @@ namespace GerenciamentoDeClinica.telasecretaria
         {
             if (listViewSecretarias.SelectedItems.Count > 0)
             {
-                int selected = listViewSecretarias.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                selectedRow = listViewSecretarias.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
 
-                txtNome.Text = secretarias[selected].Nome;
-                maskedCPF.Text = secretarias[selected].CPF;
-                txtRG.Text = secretarias[selected].RG;
-                maskedContato.Text = secretarias[selected].Contato;
-                dateTimeDtNasc.Value = secretarias[selected].Dt_Nascimento;
-                txtEmail.Text = secretarias[selected].Email;
-                switch (secretarias[selected].Estado_Civil)
+                #region Colocando Dados na Tela
+                txtNome.Text = secretarias[selectedRow.Value].Nome;
+                maskedCPF.Text = secretarias[selectedRow.Value].CPF;
+                txtRG.Text = secretarias[selectedRow.Value].RG;
+                maskedContato.Text = secretarias[selectedRow.Value].Contato;
+                dateTimeDtNasc.Value = secretarias[selectedRow.Value].Dt_Nascimento;
+                txtEmail.Text = secretarias[selectedRow.Value].Email;
+                switch (secretarias[selectedRow.Value].Estado_Civil)
                 {
                     case "Solteiro(a)":
                         rbSolteiro.Checked = true;
@@ -69,69 +130,74 @@ namespace GerenciamentoDeClinica.telasecretaria
                     case "Casado(a)":
                         rbCasado.Checked = true;
                         break;
-                    case "Viuvo(a)":
+                    case "Viúvo(a)":
                         rbViuvo.Checked = true;
                         break;
                 }
-                maskedCEP.Text = secretarias[selected].Endereco.CEP;
-                txtLogradouro.Text = secretarias[selected].Endereco.Logradouro;
-                txtNumero.Text = secretarias[selected].Endereco.Numero;
-                txtComplemento.Text = secretarias[selected].Endereco.Complemento;
-                txtBairro.Text = secretarias[selected].Endereco.Bairro;
-                txtCidade.Text = secretarias[selected].Endereco.Cidade;
-                comboUF.Text = secretarias[selected].Endereco.UF;
-                txtPais.Text = secretarias[selected].Endereco.Pais;
+                maskedCEP.Text = secretarias[selectedRow.Value].Endereco.CEP;
+                txtLogradouro.Text = secretarias[selectedRow.Value].Endereco.Logradouro;
+                txtNumero.Text = secretarias[selectedRow.Value].Endereco.Numero;
+                txtComplemento.Text = secretarias[selectedRow.Value].Endereco.Complemento;
+                txtBairro.Text = secretarias[selectedRow.Value].Endereco.Bairro;
+                txtCidade.Text = secretarias[selectedRow.Value].Endereco.Cidade;
+                comboUF.Text = secretarias[selectedRow.Value].Endereco.UF;
+                txtPais.Text = secretarias[selectedRow.Value].Endereco.Pais;
+                #endregion
 
-                btnAtualizar.Enabled = true;
-                btnRemover.Enabled = true;
+                enableEditar();
+            }
+            else
+            {
+                selectedRow = null;
+                disableEditar();
             }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (listViewSecretarias.SelectedItems.Count > 0)
+            if (selectedRow.HasValue)
             {
-                int selected = listViewSecretarias.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
-
-                secretarias[selected].Nome = txtNome.Text;
-                secretarias[selected].CPF = maskedCPF.Text;
-                secretarias[selected].RG = txtRG.Text;
-                secretarias[selected].Contato = maskedContato.Text;
-                secretarias[selected].Dt_Nascimento = dateTimeDtNasc.Value;
-                secretarias[selected].Email = txtEmail.Text;
-                switch (secretarias[selected].Estado_Civil)
-                {
-                    case "Solteiro(a)":
-                        rbSolteiro.Checked = true;
-                        break;
-                    case "Casado(a)":
-                        rbCasado.Checked = true;
-                        break;
-                    case "Viuvo(a)":
-                        rbViuvo.Checked = true;
-                        break;
-                }
-                secretarias[selected].Endereco.CEP = maskedCEP.Text;
-                secretarias[selected].Endereco.Logradouro = txtLogradouro.Text;
-                secretarias[selected].Endereco.Numero = txtNumero.Text;
-                secretarias[selected].Endereco.Complemento = txtComplemento.Text;
-                secretarias[selected].Endereco.Bairro = txtBairro.Text;
-                secretarias[selected].Endereco.Cidade = txtCidade.Text;
-                secretarias[selected].Endereco.UF = comboUF.Text;
-                secretarias[selected].Endereco.Pais = txtPais.Text;
-
                 try
                 {
-                    service.AtualizarSecretaria(secretarias[selected]);
+
+                    secretarias[selectedRow.Value].Nome = txtNome.Text;
+                    secretarias[selectedRow.Value].CPF = maskedCPF.Text;
+                    secretarias[selectedRow.Value].RG = txtRG.Text;
+                    secretarias[selectedRow.Value].Contato = maskedContato.Text;
+                    secretarias[selectedRow.Value].Dt_Nascimento = dateTimeDtNasc.Value;
+                    secretarias[selectedRow.Value].Email = txtEmail.Text;
+                    if (rbSolteiro.Checked)
+                    {
+                        secretarias[selectedRow.Value].Estado_Civil = rbSolteiro.Text;
+                    }
+                    else if (rbCasado.Checked)
+                    {
+                        secretarias[selectedRow.Value].Estado_Civil = rbCasado.Text;
+                    }
+                    else
+                    {
+                        secretarias[selectedRow.Value].Estado_Civil = rbViuvo.Text;
+                    }
+                    secretarias[selectedRow.Value].Endereco.CEP = maskedCEP.Text;
+                    secretarias[selectedRow.Value].Endereco.Logradouro = txtLogradouro.Text;
+                    secretarias[selectedRow.Value].Endereco.Numero = txtNumero.Text;
+                    secretarias[selectedRow.Value].Endereco.Complemento = txtComplemento.Text;
+                    secretarias[selectedRow.Value].Endereco.Bairro = txtBairro.Text;
+                    secretarias[selectedRow.Value].Endereco.Cidade = txtCidade.Text;
+                    secretarias[selectedRow.Value].Endereco.UF = comboUF.Text;
+                    secretarias[selectedRow.Value].Endereco.Pais = txtPais.Text;
+
+                    ClinicaService service = new ClinicaService();
+                    service.AtualizarSecretaria(secretarias[selectedRow.Value]);
                     MessageBox.Show("Secretária atualizada com sucesso!");
 
                     listViewSecretarias.Items.Clear();
-                    secretarias = service.ListarSecretaria(new Secretaria
+                    secretarias = new List<Secretaria>(service.ListarSecretaria(new Secretaria
                     {
                         ID_Secretaria = 0,
                         Nome = txtNomePesq.Text,
                         CPF = maskedCPFPesq.Text
-                    });
+                    }));
 
                     foreach (Secretaria listaSecretarias in secretarias)
                     {
@@ -140,41 +206,40 @@ namespace GerenciamentoDeClinica.telasecretaria
                         linha.SubItems.Add(listaSecretarias.CPF);
                         linha.SubItems.Add(listaSecretarias.Contato);
                     }
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message);
+                }
+
+            }
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (selectedRow.HasValue)
+            {
+                try
+                {
+                    ClinicaService service = new ClinicaService();
+                    service.RemoverSecretaria(secretarias[selectedRow.Value]);
+                    MessageBox.Show("Secretária removida com sucesso!");
+                    secretarias.RemoveAt(selectedRow.Value);
+                    listViewSecretarias.Items.RemoveAt(selectedRow.Value);
+                    disableEditar();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
 
-            /*
-            btnPesquisar.Enabled = false;
-            txtNomePesq.Enabled = false;
-            maskedPesqCPF.Enabled = false;
-            */
-
-            /*
-            btnPesquisar.Enabled = true;
-            txtNomePesq.Enabled = true;
-            maskedPesqCPF.Enabled = true;
-            btnRemover.Enabled = false;
-            btnAtualizar.Enabled = false;
-
-            maskedCell.Enabled = false;
-            txtEmail.Enabled = false;
-            rbSolteiro.Enabled = false;
-            rbCasado.Enabled = false;
-            rbViuvo.Enabled = false;
-            txtBairro.Enabled = false;
-            maskedCEP.Enabled = false;
-            txtLogradouro.Enabled = false;
-            txtComplemento.Enabled = false;
-            txtNumero.Enabled = false;
-            comboPais.Enabled = false;
-            txtCidade.Enabled = false;
-            comboUF.Enabled = false;
-            */
-
+        private void TelaPesquisarSecretaria_Load(object sender, EventArgs e)
+        {
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
         }
     }
 }
