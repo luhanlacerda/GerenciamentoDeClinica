@@ -95,7 +95,7 @@ namespace ClinicaServiceLibrary.secretaria
                 //Abrindo Conexão
                 this.abrirConexao();
 
-                string sql = "UPDATE Secretaria CPF = @CPF, RG = @RG, Nome = @Nome, Email = @Email, Logradourod = @Logradouro," +
+                string sql = "UPDATE Secretaria SET CPF = @CPF, RG = @RG, Nome = @Nome, Email = @Email, Logradouro = @Logradouro," +
                     "Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, CEP = @CEP, Cidade = @Cidade, UF = @UF," +
                     "Pais = @Pais, Estado_Civil = @Estado_Civil, Contato = @Contato, Dt_Nascimento = @Dt_Nascimento WHERE ID_Secretaria = @ID_Secretaria;";
 

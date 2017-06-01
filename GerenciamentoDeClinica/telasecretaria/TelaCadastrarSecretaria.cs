@@ -80,6 +80,8 @@ namespace GerenciamentoDeClinica.telasecretaria
         private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
         {
             comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            txtPais.Text = "Brasil";
+            txtPais.Enabled = false;
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)

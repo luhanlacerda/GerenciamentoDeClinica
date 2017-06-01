@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPesquisarSecretaria));
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
@@ -75,7 +76,6 @@
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtPais = new System.Windows.Forms.TextBox();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -122,6 +122,14 @@
             this.GroupBox.TabIndex = 1;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Editar Campos";
+            // 
+            // txtPais
+            // 
+            this.txtPais.Enabled = false;
+            this.txtPais.Location = new System.Drawing.Point(199, 326);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(100, 20);
+            this.txtPais.TabIndex = 97;
             // 
             // groupBox1
             // 
@@ -338,6 +346,7 @@
             this.btnRemover.TabIndex = 23;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnAtualizar
             // 
@@ -532,13 +541,6 @@
             this.Contato.DisplayIndex = 2;
             this.Contato.Text = "Contato";
             // 
-            // txtPais
-            // 
-            this.txtPais.Location = new System.Drawing.Point(199, 326);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(100, 20);
-            this.txtPais.TabIndex = 97;
-            // 
             // TelaPesquisarSecretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +552,7 @@
             this.Name = "TelaPesquisarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.Load += new System.EventHandler(this.TelaPesquisarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
