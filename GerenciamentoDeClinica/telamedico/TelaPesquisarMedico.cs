@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace GerenciamentoDeClinica.telamedico
 {
     public partial class TelaPesquisarMedico : Form
     {
+        private Thread threadSalvarDados;
+        private Medico savedMedico;
         private List<Medico> medicos;
         private int? selectedRow;
 
@@ -29,6 +32,10 @@ namespace GerenciamentoDeClinica.telamedico
             ClinicaService service = new ClinicaService();
             comboEspecialidade.DataSource = new BindingList<Especialidade>(service.ListarEspecialidade(new Especialidade()));
             comboEspecialidade.DisplayMember = "Descricao";
+
+            savedMedico = new Medico();
+            threadSalvarDados = new Thread(new ThreadStart(SalvarDados));
+            threadSalvarDados.Start();
         }
 
         private void enableEditar()
@@ -232,6 +239,46 @@ namespace GerenciamentoDeClinica.telamedico
                 selectedRow = null;
                 disableEditar();
             }
+        }
+
+        private void SalvarDados()
+        {
+            //Executa enquanto o Form for executado
+            while (Visible)
+            {
+                ClinicaXMLUtils.Create();
+
+                Medico medico = new Medico
+                {
+                    Nome = txtNome.Text,
+                    CPF = maskedCPF.Text,
+                    RG = txtRG.Text,
+                    Contato = maskedCell.Text,
+                    CRM = txtCRM.Text,
+                    Dt_Nascimento = dateTimeDtNasc.Value,
+                    Email = txtEmail.Text
+                };
+
+                //Verificar se há alguma mudança
+                if (!savedMedico.Equals(medico))
+                {
+                    //altera o cliente para um novo
+                    savedMedico = medico;
+
+                    ClinicaXMLUtils.SetPesquisarMedico(savedMedico, txtPesqCRM.Text, txtPesqNome.Text);
+                }
+
+                //Salvar a cada 1.5s
+                Thread.Sleep(1500);
+            }
+
+            //Dados poderiam ser perdidos, caso o Form fosse fechado.
+            //SaveXML();
+        }
+
+        private void maskedCEP_Leave(object sender, EventArgs e)
+        {
+            MessageBox.Show(ClinicaXMLUtils.ToXml(medicos[selectedRow.Value]));
         }
     }
 }

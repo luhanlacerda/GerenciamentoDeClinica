@@ -313,6 +313,7 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 15;
+            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -517,6 +518,7 @@
             this.maskedCPF.Name = "maskedCPF";
             this.maskedCPF.Size = new System.Drawing.Size(100, 20);
             this.maskedCPF.TabIndex = 5;
+            this.maskedCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblContato
             // 

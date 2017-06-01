@@ -13,12 +13,18 @@ using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.utils
 {
-    public class ClinicaXMLUtils
+    public class ClinicaXMLUtils//ACCENTURE
     {
         private const string ROOT = "data";
         private const string ROOT_XPATH = "/" + ROOT;
         private const string CADASTRAR_MEDICO = "cadastrarmedico";
         private const string CADASTRAR_MEDICO_XPATH = "/" + CADASTRAR_MEDICO;
+        private const string PESQUISAR_MEDICO = "cadastrarmedico";
+        private const string PESQUISAR_MEDICO_XPATH = "/" + PESQUISAR_MEDICO;
+        private const string PESQUISAR_CRM_MEDICO = "pesquisarcrm";
+        private const string PESQUISAR_CRM_MEDICO_XPATH = "/" + PESQUISAR_CRM_MEDICO;
+        private const string PESQUISAR_NOME_MEDICO = "pesquisarnome";
+        private const string PESQUISAR_NOME_MEDICO_XPATH = "/" + PESQUISAR_NOME_MEDICO;
         private const string ID_MEDICO_XPATH = "/ID_Medico";
         private const string CRM_XPATH = "/CRM";
         private const string NOME_XPATH = "/Nome";
@@ -52,17 +58,16 @@ namespace GerenciamentoDeClinica.utils
             }
         }
 
-        private static void CheckXmlLoad()
+        private static XmlNode CheckXmlLoad()
         {
             if (document == null)
                 throw new FaultException("XML não carregado.");
+            return document.SelectSingleNode(ROOT);
         }
 
         public static void SetCadastrarMedico(Medico medico)
         {
-            CheckXmlLoad();
-
-            XmlNode rootNode = document.SelectSingleNode(ROOT);
+            XmlNode rootNode = CheckXmlLoad();
 
             XmlNode cadastrarMedico = rootNode.SelectSingleNode(CADASTRAR_MEDICO)
                 ?? document.CreateElement(CADASTRAR_MEDICO);
@@ -70,6 +75,32 @@ namespace GerenciamentoDeClinica.utils
 
             if (rootNode.SelectSingleNode(CADASTRAR_MEDICO) == null)
                 rootNode.AppendChild(cadastrarMedico);
+
+            document.Save(SAVELOCATION);
+        }
+
+        public static void SetPesquisarMedico(Medico medico, string pesquisarCRM, string pesquisarNome)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode pesqCRM = rootNode.SelectSingleNode(PESQUISAR_CRM_MEDICO)
+               ?? document.CreateElement(PESQUISAR_CRM_MEDICO);
+            pesqCRM.InnerText = pesquisarCRM;
+            if (rootNode.SelectSingleNode(PESQUISAR_CRM_MEDICO) == null)
+                rootNode.AppendChild(pesqCRM);
+
+            XmlNode pesqNome = rootNode.SelectSingleNode(PESQUISAR_NOME_MEDICO)
+               ?? document.CreateElement(PESQUISAR_NOME_MEDICO);
+            pesqNome.InnerText = pesquisarNome;
+            if (rootNode.SelectSingleNode(PESQUISAR_NOME_MEDICO) == null)
+                rootNode.AppendChild(pesqNome);
+
+            XmlNode pesquisarMedico = rootNode.SelectSingleNode(PESQUISAR_MEDICO)
+               ?? document.CreateElement(PESQUISAR_MEDICO);
+            pesquisarMedico.InnerXml = ToXml(medico);
+
+            if (rootNode.SelectSingleNode(PESQUISAR_MEDICO) == null)
+                rootNode.AppendChild(pesquisarMedico);
 
             document.Save(SAVELOCATION);
         }
@@ -96,7 +127,7 @@ namespace GerenciamentoDeClinica.utils
 
         //Converter medico para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter
-        private static string ToXml(object obj)
+        public static string ToXml(object obj)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(obj.GetType());
             StringWriter stringWriter = new StringWriter();
@@ -113,7 +144,7 @@ namespace GerenciamentoDeClinica.utils
                     Indent = false
                 }))
             {
-                xmlSerializer.Serialize(xmlWriter, obj.GetType());
+                xmlSerializer.Serialize(xmlWriter, obj);
             }
 
             return stringWriter.ToString();
