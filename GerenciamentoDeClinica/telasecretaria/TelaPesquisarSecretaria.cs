@@ -24,6 +24,13 @@ namespace GerenciamentoDeClinica.telasecretaria
             InitializeComponent();
         }
 
+        private void TelaPesquisarSecretaria_Load(object sender, EventArgs e)
+        {
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
+            //savedSecretaria = new Secretaria();
+
+        }
+
         private void enableEditar()
         {
             btnAtualizar.Enabled = true;
@@ -223,12 +230,22 @@ namespace GerenciamentoDeClinica.telasecretaria
             {
                 try
                 {
-                    ClinicaService service = new ClinicaService();
-                    service.RemoverSecretaria(secretarias[selectedRow.Value]);
-                    MessageBox.Show("Secretária removida com sucesso!");
-                    secretarias.RemoveAt(selectedRow.Value);
-                    listViewSecretarias.Items.RemoveAt(selectedRow.Value);
-                    disableEditar();
+                    var confirmarExclusao = MessageBox.Show("Deseja remover a secretária?", "Confirmação", MessageBoxButtons.YesNo);
+                    if (confirmarExclusao == DialogResult.Yes)
+                    {
+
+                        ClinicaService service = new ClinicaService();
+                        service.RemoverSecretaria(secretarias[selectedRow.Value]);
+                        MessageBox.Show("Secretária removida com sucesso!");
+                        secretarias.RemoveAt(selectedRow.Value);
+                        listViewSecretarias.Items.RemoveAt(selectedRow.Value);
+                        disableEditar();
+                    }
+                    else
+                    {
+                        txtNomePesq.Focus();
+                        disableEditar();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -237,9 +254,5 @@ namespace GerenciamentoDeClinica.telasecretaria
             }
         }
 
-        private void TelaPesquisarSecretaria_Load(object sender, EventArgs e)
-        {
-            comboUF.DataSource = ClinicaUtils.UF_LIST;
-        }
     }
 }
