@@ -22,8 +22,7 @@ namespace GerenciamentoDeClinica.telaconvenio
         {
             InitializeComponent();
         }
-
-        #region Clear filds
+        
 
         void ClearTextBoxs()
         {
@@ -40,7 +39,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 
             func(Controls);
         }
-        #endregion
+
 
         void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -62,12 +61,12 @@ namespace GerenciamentoDeClinica.telaconvenio
             }
             catch (WebException)
             {
-                MessageBox.Show(ERROR_WEBSERVICE);
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -108,26 +107,34 @@ namespace GerenciamentoDeClinica.telaconvenio
 
                 try
                 {
-                    clinicaService.RemoverConvenio(convenio);
-                    listViewConvenios.Items.Remove(selected);
-                    MessageBox.Show("Convênio excluido com sucesso!");
-                    ClearTextBoxs();
+                    var result = MessageBox.Show("Deseja remover convênio ?", "Confirmação", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        clinicaService.RemoverConvenio(convenio);
+                        listViewConvenios.Items.Remove(selected);
+                        MessageBox.Show(this,"Convênio excluido com sucesso!");
+                        ClearTextBoxs();
+                    }else
+                    {
+                        ClearTextBoxs();
+                        txtDescricaoFiltro.Focus();
+                    }
                 }
                 //Caso haja um erro no WebService irá mostrar uma mensagem de erro
                 catch (WebException)
                 {
-                    MessageBox.Show(ERROR_WEBSERVICE);
+                    MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
-        {            
+        {
             if (listViewConvenios.SelectedItems.Count > 0)
             {
                 ListViewItem selected = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
@@ -141,20 +148,20 @@ namespace GerenciamentoDeClinica.telaconvenio
                 try
                 {
                     clinicaService.AtualizarConvenio(convenio);
-                    MessageBox.Show("Convênio atualizado com sucesso!");
+                    MessageBox.Show(this,"Convênio atualizado com sucesso!");
 
                     selected.SubItems[1].Text = txtDescricao.Text;
 
                     ClearTextBoxs();
-                        
+
                 }
                 catch (WebException)
                 {
-                    MessageBox.Show(ERROR_WEBSERVICE);
+                    MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

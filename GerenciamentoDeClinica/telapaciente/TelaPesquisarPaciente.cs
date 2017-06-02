@@ -46,26 +46,29 @@ namespace GerenciamentoDeClinica.telapaciente
             txtCidade.Enabled = false;
             comboUF.Enabled = false;
 
-            txtNome.Clear();
-            maskedCPF.Clear();
-            txtRG.Clear();
-            maskedCell.Clear();
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is MaskedTextBox)
+                        (control as MaskedTextBox).Clear();
+
+                    else if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+
             comboConvenio.SelectedIndex = 0;
             dateTimeDtNasc.Value = DateTime.Now;
-            txtEmail.Clear();
             rbSolteiro.Checked = false;
             rbCasado.Checked = false;
             rbViuvo.Checked = false;
-            maskedCEP.Clear();
-            txtLogradouro.Clear();
-            txtNumero.Clear();
-            txtComplemento.Clear();
-            txtBairro.Clear();
-            txtCidade.Clear();
-            comboUF.SelectedIndex = 0;
-            txtPais.Clear();
-            listViewPacientes.SelectedItems.Clear();
             txtFiltroNome.Focus();
+
         }
 
         private void enableEditar()
@@ -95,12 +98,22 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 try
                 {
-                    ClinicaService service = new ClinicaService();
-                    service.RemoverPaciente(pacientes[selectedRow.Value]);
-                    MessageBox.Show(this, "Paciente removido com sucesso.");
-                    pacientes.RemoveAt(selectedRow.Value);
-                    listViewPacientes.Items.RemoveAt(selectedRow.Value);
-                    disableEditar();
+                    var repost = MessageBox.Show("Deseja remover o paciente?", "Confirmação", MessageBoxButtons.YesNo);
+
+                    if (repost == DialogResult.Yes)
+                    {
+                        ClinicaService service = new ClinicaService();
+                        service.RemoverPaciente(pacientes[selectedRow.Value]);
+                        MessageBox.Show(this, "Paciente removido com sucesso.");
+                        pacientes.RemoveAt(selectedRow.Value);
+                        listViewPacientes.Items.RemoveAt(selectedRow.Value);
+                        disableEditar();
+                    }
+                    else
+                    {
+                        disableEditar();
+                        txtFiltroNome.Focus();
+                    }
                 }
                 catch (WebException)
                 {
@@ -108,7 +121,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -126,14 +139,6 @@ namespace GerenciamentoDeClinica.telapaciente
                     pacientes[selectedRow.Value].Contato = maskedCell.Text;
                     pacientes[selectedRow.Value].Dt_Nascimento = dateTimeDtNasc.Value;
                     pacientes[selectedRow.Value].Email = txtEmail.Text;
-                    pacientes[selectedRow.Value].Endereco.CEP = maskedCEP.Text;
-                    pacientes[selectedRow.Value].Endereco.Logradouro = txtLogradouro.Text;
-                    pacientes[selectedRow.Value].Endereco.Complemento = txtComplemento.Text;
-                    pacientes[selectedRow.Value].Endereco.Numero = txtNumero.Text;
-                    pacientes[selectedRow.Value].Endereco.Bairro = txtBairro.Text;
-                    pacientes[selectedRow.Value].Endereco.Cidade = txtCidade.Text;
-                    pacientes[selectedRow.Value].Endereco.UF = comboUF.SelectedItem.ToString();
-                    pacientes[selectedRow.Value].Endereco.Pais = txtPais.Text;
                     if (rbSolteiro.Checked)
                     {
                         pacientes[selectedRow.Value].Estado_Civil = rbSolteiro.Text;
@@ -146,11 +151,37 @@ namespace GerenciamentoDeClinica.telapaciente
                     {
                         pacientes[selectedRow.Value].Estado_Civil = rbViuvo.Text;
                     }
+                    pacientes[selectedRow.Value].Endereco.CEP = maskedCEP.Text;
+                    pacientes[selectedRow.Value].Endereco.Logradouro = txtLogradouro.Text;
+                    pacientes[selectedRow.Value].Endereco.Numero = txtNumero.Text;
+                    pacientes[selectedRow.Value].Endereco.Complemento = txtComplemento.Text;
+                    pacientes[selectedRow.Value].Endereco.Bairro = txtBairro.Text;
+                    pacientes[selectedRow.Value].Endereco.Cidade = txtCidade.Text;
+                    pacientes[selectedRow.Value].Endereco.UF = comboUF.Text;
+                    pacientes[selectedRow.Value].Endereco.Pais = txtPais.Text;
 
                     ClinicaService service = new ClinicaService();
                     service.AtualizarPaciente(pacientes[selectedRow.Value]);
                     MessageBox.Show("Paciente atualizado com sucesso!");
                     disableEditar();
+
+                    listViewPacientes.Items.Clear();
+                    pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
+                    {
+                        ID_Paciente = 0,
+                        Nome = txtFiltroNome.Text,
+                        CPF = maskedFiltroCPF.Text
+                    }));
+
+                    foreach (Paciente listaPacientes in pacientes)
+                    {
+                        ListViewItem linha = listViewPacientes.Items.Add(listaPacientes.ID_Paciente.ToString());
+                        linha.SubItems.Add(listaPacientes.Nome);
+                        linha.SubItems.Add(listaPacientes.CPF);
+                        linha.SubItems.Add(listaPacientes.Convenio.Descricao);
+                        linha.SubItems.Add(listaPacientes.Contato);
+
+                    }
 
                 }
 
@@ -160,7 +191,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -168,34 +199,33 @@ namespace GerenciamentoDeClinica.telapaciente
         private void btnPesquisar_Click_1(object sender, EventArgs e)
         {
 
+            listViewPacientes.Items.Clear();
             try
             {
-                listViewPacientes.Items.Clear();
                 ClinicaService service = new ClinicaService();
-
                 pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
                 {
+                    ID_Paciente = 0,
                     Nome = txtFiltroNome.Text,
                     CPF = maskedFiltroCPF.Text
                 }));
-
 
                 foreach (Paciente paciente in pacientes)
                 {
                     ListViewItem linha = listViewPacientes.Items.Add(paciente.ID_Paciente.ToString());
                     linha.SubItems.Add(paciente.Nome);
+                    linha.SubItems.Add(paciente.CPF);
                     linha.SubItems.Add(paciente.Convenio.Descricao);
                     linha.SubItems.Add(paciente.Contato);
                 }
-
             }
             catch (WebException)
             {
-                MessageBox.Show(ERROR_WEBSERVICE);
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

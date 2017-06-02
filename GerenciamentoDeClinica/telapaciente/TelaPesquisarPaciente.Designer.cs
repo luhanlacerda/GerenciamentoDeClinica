@@ -74,10 +74,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.maskedFiltroCPF = new System.Windows.Forms.MaskedTextBox();
             this.listViewPacientes = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Convenio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -496,7 +497,7 @@
             this.txtFiltroNome.Location = new System.Drawing.Point(51, 19);
             this.txtFiltroNome.Name = "txtFiltroNome";
             this.txtFiltroNome.Size = new System.Drawing.Size(223, 20);
-            this.txtFiltroNome.TabIndex = 26;
+            this.txtFiltroNome.TabIndex = 0;
             // 
             // btnPesquisar
             // 
@@ -528,10 +529,11 @@
             // listViewPacientes
             // 
             this.listViewPacientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.ID,
+            this.Nome,
+            this.CPF,
+            this.Convenio,
+            this.Contato});
             this.listViewPacientes.FullRowSelect = true;
             this.listViewPacientes.Location = new System.Drawing.Point(1, 102);
             this.listViewPacientes.Name = "listViewPacientes";
@@ -541,21 +543,28 @@
             this.listViewPacientes.View = System.Windows.Forms.View.Details;
             this.listViewPacientes.SelectedIndexChanged += new System.EventHandler(this.listViewPacientes_SelectedIndexChanged);
             // 
-            // columnHeader1
+            // ID
             // 
-            this.columnHeader1.Text = "ID";
+            this.ID.Text = "ID";
             // 
-            // columnHeader2
+            // Nome
             // 
-            this.columnHeader2.Text = "Nome";
+            this.Nome.Text = "Nome";
             // 
-            // columnHeader3
+            // Convenio
             // 
-            this.columnHeader3.Text = "Convenio";
+            this.Convenio.DisplayIndex = 2;
+            this.Convenio.Text = "Convenio";
             // 
-            // columnHeader4
+            // Contato
             // 
-            this.columnHeader4.Text = "Contato";
+            this.Contato.DisplayIndex = 3;
+            this.Contato.Text = "Contato";
+            // 
+            // CPF
+            // 
+            this.CPF.DisplayIndex = 4;
+            this.CPF.Text = "CPF";
             // 
             // TelaPesquisarPaciente
             // 
@@ -621,14 +630,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox maskedFiltroCPF;
         private System.Windows.Forms.ListView listViewPacientes;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Nome;
+        private System.Windows.Forms.ColumnHeader Convenio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroNome;
         private System.Windows.Forms.Label lblConvenio;
         private System.Windows.Forms.ComboBox comboConvenio;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader Contato;
         private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.ColumnHeader CPF;
     }
 }

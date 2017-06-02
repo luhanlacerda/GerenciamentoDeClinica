@@ -30,13 +30,22 @@ namespace GerenciamentoDeClinica.telapaciente
             func = (controls) =>
             {
                 foreach (Control control in controls)
-                    if (control is TextBox)
+                    if (control is MaskedTextBox)
+                        (control as MaskedTextBox).Clear();
+
+                   else if (control is TextBox)
                         (control as TextBox).Clear();
-                    else
-                        func(control.Controls);
+                else
+                    func(control.Controls);
             };
 
             func(Controls);
+
+            comboConvenio.SelectedIndex = 0;
+            dateTimeDtNasc.Value = DateTime.Now;
+            rbSolteiro.Checked = false;
+            rbCasado.Checked = false;
+            rbViuvo.Checked = false;
         }
         #endregion
 
@@ -56,7 +65,7 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 Paciente paciente = new Paciente();
 
-                
+                paciente.Convenio = ((BindingList<Convenio>)comboConvenio.DataSource).ElementAt(comboConvenio.SelectedIndex);
                 paciente.Nome = txtNome.Text;
                 paciente.CPF = maskedCPF.Text;
                 paciente.RG = txtRG.Text;
@@ -93,11 +102,11 @@ namespace GerenciamentoDeClinica.telapaciente
             }
             catch (WebException)
             {
-                MessageBox.Show(ERROR_WEBSERVICE);
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

@@ -118,7 +118,7 @@ namespace ClinicaServiceLibrary.paciente
                 scm.Parameters["@CPF"].Value = paciente.CPF;
 
                 scm.Parameters.Add("@Contato", SqlDbType.VarChar);
-                scm.Parameters["@Contato"].Value = paciente.Nome;
+                scm.Parameters["@Contato"].Value = paciente.Contato;
 
                 scm.Parameters.Add("@CEP", SqlDbType.Char);
                 scm.Parameters["@CEP"].Value = paciente.Endereco.CEP;
@@ -214,8 +214,8 @@ namespace ClinicaServiceLibrary.paciente
                 //Abrindo conexão
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero," +
-                    "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento," +
+                string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero, " +
+                    "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento, " +
                     "ID_Convenio FROM Paciente WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
@@ -223,26 +223,26 @@ namespace ClinicaServiceLibrary.paciente
                 #region Modos de Pesquisa
                 if (filtro.ID_Paciente > 0)
                 {
-                    sql += " AND ID_Paciente = @ID_Paciente";
+                    scm.CommandText += " AND ID_Paciente = @ID_Paciente";
 
                     scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
                     scm.Parameters["@ID_Paciente"].Value = filtro.ID_Paciente;
                 }
 
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
-                if (string.IsNullOrWhiteSpace(filtro.CPF.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.CPF))
                 {
-                    sql += " AND CPF = @CPF";
+                    scm.CommandText += " AND CPF = @CPF";
 
                     scm.Parameters.Add("@CPF", SqlDbType.VarChar);
-                    scm.Parameters["@CPF"].Value = filtro.CPF;
+                    scm.Parameters["@CPF"].Value = filtro.CPF.Trim();
                 }
-                if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.Nome))
                 {
-                    sql += " AND Nome LIKE %@Nome%";
+                    scm.CommandText += " AND Nome LIKE @Nome";
 
                     scm.Parameters.Add("@Nome", SqlDbType.VarChar);
-                    scm.Parameters["@Nome"].Value = filtro.Nome;
+                    scm.Parameters["@Nome"].Value = "%" + filtro.Nome.Trim() + "%";
                 }
                 #endregion
 
