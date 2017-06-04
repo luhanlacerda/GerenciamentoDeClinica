@@ -5,5 +5,38 @@
     <Setting Name="GerenciamentoDeClinica_localhost_ClinicaService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:55868/ClinicaService.svc</Value>
     </Setting>
+    <Setting Name="SaveLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data.xml</Value>
+    </Setting>
+    <Setting Name="Root" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data</Value>
+    </Setting>
+    <Setting Name="Root_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Medico" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_medico</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Medico_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_medico</Value>
+    </Setting>
+    <Setting Name="Pesquisar_CRM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_crm</Value>
+    </Setting>
+    <Setting Name="Pesquisar_CRM_Nome" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_medico/pesquisar_crm</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Medicos_Salvos" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">medicos_salvos</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Medicos_Salvos_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_medico/medicos_salvos</Value>
+    </Setting>
+    <Setting Name="Medico" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Medico</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Alterar_Medico" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/data/pesquisar_medico/Medico</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

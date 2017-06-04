@@ -10,15 +10,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telamedico
 {
     public partial class TelaPesquisarMedico : Form
     {
-        private Thread threadSalvarDados;
-        private Medico savedMedico;
-        private List<Medico> medicos;
-        private int? selectedRow;
+        private Thread _threadSalvarDados;
+        private string _savedPesquisar;
+        private List<Medico> _medicos;
+        private int? _selectedRow;
 
         public TelaPesquisarMedico()
         {
@@ -27,18 +28,39 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void TelaPesquisarMedico_Load(object sender, EventArgs e)
         {
+            // Create settings
+            //string a = Properties.Settings.Default.local;
+
             comboUF.DataSource = ClinicaUtils.UF_LIST;
 
             ClinicaService service = new ClinicaService();
             comboEspecialidade.DataSource = new BindingList<Especialidade>(service.ListarEspecialidade(new Especialidade()));
             comboEspecialidade.DisplayMember = "Descricao";
 
-            savedMedico = new Medico();
-            threadSalvarDados = new Thread(new ThreadStart(SalvarDados));
-            threadSalvarDados.Start();
+            //Carregamento dos dados
+            ClinicaXmlUtils.Create();
+            PesquisarMedico saved = ClinicaXmlUtils.GetPesquisarMedico();
+            if (saved != null)
+            {
+                txtPesqNome.Text = saved.PesquisarNome;
+                txtPesqCRM.Text = saved.PesquisarCRM;
+                _medicos = saved.MedicosSalvos;
+                _selectedRow = saved.LinhaSelecionada;
+
+                CarregarListView();
+                //Informando a linha selecionada da ListView
+                if (_selectedRow.HasValue)
+                    listMedicos.Items[_selectedRow.Value].Selected = true;
+
+                CarregarEditar(saved.Medico);
+            }
+
+            _savedPesquisar = "";
+            _threadSalvarDados = new Thread(new ThreadStart(SalvarDados));
+            _threadSalvarDados.Start();
         }
 
-        private void enableEditar()
+        private void EnableEditar()
         {
             btnAtualizar.Enabled = true;
             btnRemover.Enabled = true;
@@ -59,7 +81,7 @@ namespace GerenciamentoDeClinica.telamedico
             comboUF.Enabled = true;
         }
 
-        private void disableEditar()
+        private void DisableEditar()
         {
             btnAtualizar.Enabled = false;
             btnRemover.Enabled = false;
@@ -108,19 +130,14 @@ namespace GerenciamentoDeClinica.telamedico
                 listMedicos.Items.Clear();
 
                 ClinicaService service = new ClinicaService();
-                medicos = new List<Medico>(service.ListarMedico(new Medico
+                _medicos = new List<Medico>(service.ListarMedico(new Medico
                 {
                     Nome = txtPesqNome.Text,
                     CRM = txtPesqCRM.Text
                 }));
-                foreach (Medico medico in medicos)
-                {
-                    ListViewItem linha = listMedicos.Items.Add(medico.ID_Medico.ToString());
-                    linha.SubItems.Add(medico.Nome);
-                    linha.SubItems.Add(medico.CRM);
-                }
+                CarregarListView();
 
-                disableEditar();
+                DisableEditar();
             }
             catch (Exception ex)
             {
@@ -130,43 +147,19 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (selectedRow.HasValue)
+            if (_selectedRow.HasValue)
             {
                 try
                 {
-                    medicos[selectedRow.Value].Especialidade = ((BindingList<Especialidade>)comboEspecialidade.DataSource).ElementAt(comboEspecialidade.SelectedIndex);
-                    medicos[selectedRow.Value].Nome = txtNome.Text;
-                    medicos[selectedRow.Value].CPF = maskedCPF.Text;
-                    medicos[selectedRow.Value].RG = txtRG.Text;
-                    medicos[selectedRow.Value].Contato = maskedCell.Text;
-                    medicos[selectedRow.Value].CRM = txtCRM.Text;
-                    medicos[selectedRow.Value].Dt_Nascimento = dateTimeDtNasc.Value;
-                    medicos[selectedRow.Value].Email = txtEmail.Text;
-                    medicos[selectedRow.Value].Endereco.CEP = maskedCEP.Text;
-                    medicos[selectedRow.Value].Endereco.Logradouro = txtLogradouro.Text;
-                    medicos[selectedRow.Value].Endereco.Complemento = txtComplemento.Text;
-                    medicos[selectedRow.Value].Endereco.Numero = txtNumero.Text;
-                    medicos[selectedRow.Value].Endereco.Bairro = txtBairro.Text;
-                    medicos[selectedRow.Value].Endereco.Cidade = txtCidade.Text;
-                    medicos[selectedRow.Value].Endereco.UF = comboUF.SelectedItem.ToString();
-                    medicos[selectedRow.Value].Endereco.Pais = txtPais.Text;
-                    if (rbSolteiro.Checked)
-                    {
-                        medicos[selectedRow.Value].Estado_Civil = rbSolteiro.Text;
-                    }
-                    else if (rbCasado.Checked)
-                    {
-                        medicos[selectedRow.Value].Estado_Civil = rbCasado.Text;
-                    }
-                    else
-                    {
-                        medicos[selectedRow.Value].Estado_Civil = rbViuvo.Text;
-                    }
+                    Medico medico = GetMedico();
+                    medico.ID_Medico = _medicos[_selectedRow.Value].ID_Medico;
+
+                    _medicos[_selectedRow.Value] = medico;
 
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarMedico(medicos[selectedRow.Value]);
-                    MessageBox.Show("Médico atualizado com sucesso!");
-                    disableEditar();
+                    service.AtualizarMedico(_medicos[_selectedRow.Value]);
+                    MessageBox.Show(@"Médico atualizado com sucesso!");
+                    DisableEditar();
                 }
                 catch (Exception ex)
                 {
@@ -177,16 +170,16 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (selectedRow.HasValue)
+            if (_selectedRow.HasValue)
             {
                 try
                 {
                     ClinicaService service = new ClinicaService();
-                    service.RemoverMedico(medicos[selectedRow.Value]);
-                    MessageBox.Show("Médico removido com sucesso!");
-                    medicos.RemoveAt(selectedRow.Value);
-                    listMedicos.Items.RemoveAt(selectedRow.Value);
-                    disableEditar();
+                    service.RemoverMedico(_medicos[_selectedRow.Value]);
+                    MessageBox.Show(@"Médico atualizado com sucesso!");
+                    _medicos.RemoveAt(_selectedRow.Value);
+                    listMedicos.Items.RemoveAt(_selectedRow.Value);
+                    DisableEditar();
                 }
                 catch (Exception ex)
                 {
@@ -199,45 +192,16 @@ namespace GerenciamentoDeClinica.telamedico
         {
             if (listMedicos.SelectedItems.Count > 0)
             {
-                selectedRow = listMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                _selectedRow = listMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
 
-                #region Colocar dados
-                txtNome.Text = medicos[selectedRow.Value].Nome;
-                maskedCPF.Text = medicos[selectedRow.Value].CPF;
-                txtRG.Text = medicos[selectedRow.Value].RG;
-                maskedCell.Text = medicos[selectedRow.Value].Contato;
-                txtCRM.Text = medicos[selectedRow.Value].CRM;
-                comboEspecialidade.SelectedIndex = medicos[selectedRow.Value].Especialidade.ID_Especialidade - 1;
-                dateTimeDtNasc.Value = medicos[selectedRow.Value].Dt_Nascimento;
-                txtEmail.Text = medicos[selectedRow.Value].Email;
-                switch (medicos[selectedRow.Value].Estado_Civil)
-                {
-                    case "Solteiro(a)":
-                        rbSolteiro.Checked = true;
-                        break;
-                    case "Casado(a)":
-                        rbCasado.Checked = true;
-                        break;
-                    case "Viúvo(a)":
-                        rbViuvo.Checked = true;
-                        break;
-                }
-                maskedCEP.Text = medicos[selectedRow.Value].Endereco.CEP;
-                txtLogradouro.Text = medicos[selectedRow.Value].Endereco.Logradouro;
-                txtNumero.Text = medicos[selectedRow.Value].Endereco.Numero;
-                txtComplemento.Text = medicos[selectedRow.Value].Endereco.Complemento;
-                txtBairro.Text = medicos[selectedRow.Value].Endereco.Bairro;
-                txtCidade.Text = medicos[selectedRow.Value].Endereco.Cidade;
-                comboUF.SelectedItem = medicos[selectedRow.Value].Endereco.UF;
-                txtPais.Text = medicos[selectedRow.Value].Endereco.Pais;
-                #endregion
+                CarregarEditar(_medicos[_selectedRow.Value]);
 
-                enableEditar();
+                EnableEditar();
             }
             else
             {
-                selectedRow = null;
-                disableEditar();
+                _selectedRow = null;
+                DisableEditar();
             }
         }
 
@@ -246,26 +210,21 @@ namespace GerenciamentoDeClinica.telamedico
             //Executa enquanto o Form for executado
             while (Visible)
             {
-                ClinicaXMLUtils.Create();
-
-                Medico medico = new Medico
+                PesquisarMedico pesquisarMedico = new PesquisarMedico
                 {
-                    Nome = txtNome.Text,
-                    CPF = maskedCPF.Text,
-                    RG = txtRG.Text,
-                    Contato = maskedCell.Text,
-                    CRM = txtCRM.Text,
-                    Dt_Nascimento = dateTimeDtNasc.Value,
-                    Email = txtEmail.Text
+                    PesquisarNome = txtPesqNome.Text,
+                    PesquisarCRM = txtPesqCRM.Text,
+                    LinhaSelecionada = _selectedRow,
+                    Medico = GetMedico(),
+                    MedicosSalvos = _medicos
                 };
 
-                //Verificar se há alguma mudança
-                if (!savedMedico.Equals(medico))
+                if (!_savedPesquisar.Equals(ClinicaXmlUtils.ToXml(pesquisarMedico)))
                 {
                     //altera o cliente para um novo
-                    savedMedico = medico;
+                    _savedPesquisar = ClinicaXmlUtils.ToXml(pesquisarMedico);
 
-                    ClinicaXMLUtils.SetPesquisarMedico(savedMedico, txtPesqCRM.Text, txtPesqNome.Text);
+                    ClinicaXmlUtils.SetPesquisarMedico(pesquisarMedico);
                 }
 
                 //Salvar a cada 1.5s
@@ -276,9 +235,107 @@ namespace GerenciamentoDeClinica.telamedico
             //SaveXML();
         }
 
-        private void maskedCEP_Leave(object sender, EventArgs e)
+        private void CarregarListView()
         {
-            MessageBox.Show(ClinicaXMLUtils.ToXml(medicos[selectedRow.Value]));
+            foreach (Medico medico in _medicos)
+            {
+                ListViewItem linha = listMedicos.Items.Add(medico.ID_Medico.ToString());
+                linha.SubItems.Add(medico.Nome);
+                linha.SubItems.Add(medico.CRM);
+            }
         }
+
+        private void CarregarEditar(Medico medico)
+        {
+            txtNome.Text = medico.Nome;
+            maskedCPF.Text = medico.CPF;
+            txtRG.Text = medico.RG;
+            maskedCell.Text = medico.Contato;
+            txtCRM.Text = medico.CRM;
+            comboEspecialidade.SelectedIndex = medico.Especialidade.ID_Especialidade - 1;
+            dateTimeDtNasc.Value = medico.Dt_Nascimento;
+            txtEmail.Text = medico.Email;
+            RadioButton radioButton = groupBox1.Controls.OfType<RadioButton>()
+                .FirstOrDefault(r => r.Text == medico.Estado_Civil);
+            if (radioButton != null)
+                radioButton.Checked = true;
+            maskedCEP.Text = medico.Endereco.CEP;
+            txtLogradouro.Text = medico.Endereco.Logradouro;
+            txtNumero.Text = medico.Endereco.Numero;
+            txtComplemento.Text = medico.Endereco.Complemento;
+            txtBairro.Text = medico.Endereco.Bairro;
+            txtCidade.Text = medico.Endereco.Cidade;
+            comboUF.SelectedItem = medico.Endereco.UF;
+            txtPais.Text = medico.Endereco.Pais;
+        }
+
+        private string GetEstadoCivil()
+        {
+            //Caso não seja nulo retornará o Text do RadioButton selecionado ou nulo (? = informa)
+            return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
+        }
+
+        //Adquirir valor do combobox UF da thread principal
+        private string GetUF()
+        {
+            string text = null;
+
+            Invoke(new MethodInvoker(delegate () { text = comboUF.SelectedItem.ToString(); }));
+            return text;
+        }
+
+        //Adquirir valor do combobox Especialidade da thread principal
+        private Especialidade GetEspecialidade()
+        {
+            Especialidade especialidade = null;
+
+            Invoke(new MethodInvoker(delegate ()
+            {
+                especialidade = ((BindingList<Especialidade>) comboEspecialidade.DataSource)
+                    .ElementAt(comboEspecialidade.SelectedIndex);
+            }));
+            return especialidade;
+        }
+
+        private Medico GetMedico()
+        {
+            return new Medico
+            {
+                CRM = txtCRM.Text,
+                Especialidade = GetEspecialidade(),
+                Nome = txtNome.Text,
+                RG = txtRG.Text,
+                CPF = maskedCPF.Text,
+                Endereco = new Endereco
+                {
+                    Logradouro = txtLogradouro.Text,
+                    Numero = txtNumero.Text,
+                    Complemento = txtComplemento.Text,
+                    Bairro = txtBairro.Text,
+                    Cidade = txtCidade.Text,
+                    UF = GetUF(),
+                    CEP = maskedCEP.Text,
+                    Pais = txtPais.Text
+                },
+                Contato = maskedCell.Text,
+                Dt_Nascimento = dateTimeDtNasc.Value,
+                Email = lblEmail.Text,
+                Estado_Civil = GetEstadoCivil()
+            };
+        }
+    }
+
+    [XmlRoot(ElementName = "pesquisar_medico")]
+    public sealed class PesquisarMedico
+    {
+        [XmlElement(ElementName = "pesquisar_nome")]
+        public string PesquisarNome { get; set; }
+        [XmlElement(ElementName = "pesquisar_crm")]
+        public string PesquisarCRM { get; set; }
+        [XmlElement(ElementName = "linha_selecionada")]
+        public int? LinhaSelecionada { get; set; }
+        [XmlElement(ElementName = "medicos_salvos")]
+        public List<Medico> MedicosSalvos { get; set; }
+        public Medico Medico { get; set; }
     }
 }

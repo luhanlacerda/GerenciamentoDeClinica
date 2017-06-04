@@ -313,7 +313,6 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 15;
-            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -553,6 +552,7 @@
             this.Nome,
             this.CRM});
             this.listMedicos.FullRowSelect = true;
+            this.listMedicos.HideSelection = false;
             this.listMedicos.Location = new System.Drawing.Point(472, 9);
             this.listMedicos.Name = "listMedicos";
             this.listMedicos.Size = new System.Drawing.Size(214, 504);

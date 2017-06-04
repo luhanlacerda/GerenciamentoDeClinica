@@ -86,7 +86,7 @@ namespace GerenciamentoDeClinica.telamedico
 
                 ClinicaService service = new ClinicaService();
                 service.CadastrarMedico(medico);
-                MessageBox.Show("Médico cadastrado com sucesso!");                
+                MessageBox.Show(@"Médico atualizado com sucesso!");                
             }
             catch (Exception ex)
             {
@@ -100,8 +100,8 @@ namespace GerenciamentoDeClinica.telamedico
             Medico medico = new Medico();
             medico.Nome = txtNome.Text;
 
-            ClinicaXMLUtils.Create();
-            ClinicaXMLUtils.SetCadastrarMedico(medico);
+            ClinicaXmlUtils.Create();
+            ClinicaXmlUtils.SetCadastrarMedico(medico);
         }*/
     }
 }

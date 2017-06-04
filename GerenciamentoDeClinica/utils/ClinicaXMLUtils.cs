@@ -10,126 +10,101 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using GerenciamentoDeClinica.Properties;
+using GerenciamentoDeClinica.telamedico;
 
 namespace GerenciamentoDeClinica.utils
 {
-    public class ClinicaXMLUtils//ACCENTURE
+    public class ClinicaXmlUtils
     {
-        private const string ROOT = "data";
-        private const string ROOT_XPATH = "/" + ROOT;
-        private const string CADASTRAR_MEDICO = "cadastrarmedico";
-        private const string CADASTRAR_MEDICO_XPATH = "/" + CADASTRAR_MEDICO;
-        private const string PESQUISAR_MEDICO = "cadastrarmedico";
-        private const string PESQUISAR_MEDICO_XPATH = "/" + PESQUISAR_MEDICO;
-        private const string PESQUISAR_CRM_MEDICO = "pesquisarcrm";
-        private const string PESQUISAR_CRM_MEDICO_XPATH = "/" + PESQUISAR_CRM_MEDICO;
-        private const string PESQUISAR_NOME_MEDICO = "pesquisarnome";
-        private const string PESQUISAR_NOME_MEDICO_XPATH = "/" + PESQUISAR_NOME_MEDICO;
-        private const string ID_MEDICO_XPATH = "/ID_Medico";
-        private const string CRM_XPATH = "/CRM";
-        private const string NOME_XPATH = "/Nome";
-        private const string RG_XPATH = "/RG";
-        private const string CPF_XPATH = "/CPF";
-        private const string CONTATO_XPATH = "/Contato";
-        private const string EMAIL_XPATH = "/Email";
-        private const string ESTADO_CIVIL_XPATH = "/Estado_Civil";
-        private const string SAVELOCATION = "data.xml";
-        private static XmlDocument document;
+        private static XmlDocument _document;
 
-        private ClinicaXMLUtils()
+        private ClinicaXmlUtils()
         {
 
         }
 
         public static void Create()
         {
-            document = new XmlDocument();
+            _document = new XmlDocument();
             CheckExists();
-            document.Load(SAVELOCATION);
+            _document.Load(Properties.Settings.Default.SaveLocation);
         }
 
         private static void CheckExists()
         {
-            if (!File.Exists(SAVELOCATION))
+            if (!File.Exists(Properties.Settings.Default.SaveLocation))
             {
-                XmlNode rootNode = document.CreateElement(ROOT);
-                document.AppendChild(rootNode);
-                document.Save(SAVELOCATION);
+                XmlNode rootNode = _document.CreateElement(Properties.Settings.Default.Root);
+                _document.AppendChild(rootNode);
+                _document.Save(Properties.Settings.Default.SaveLocation);
             }
         }
 
         private static XmlNode CheckXmlLoad()
         {
-            if (document == null)
+            if (_document == null)
                 throw new FaultException("XML não carregado.");
-            return document.SelectSingleNode(ROOT);
+            return _document.SelectSingleNode(Properties.Settings.Default.Root);
         }
 
-        public static void SetCadastrarMedico(Medico medico)
+        public static void SetPesquisarMedico(PesquisarMedico pesquisarMedico)
         {
             XmlNode rootNode = CheckXmlLoad();
 
-            XmlNode cadastrarMedico = rootNode.SelectSingleNode(CADASTRAR_MEDICO)
-                ?? document.CreateElement(CADASTRAR_MEDICO);
-            cadastrarMedico.InnerXml = ToXml(medico);
+            XmlNode pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (pesquisarMedicoNode != null)
+                rootNode.RemoveChild(pesquisarMedicoNode);
+            rootNode.InnerXml += ToXml(pesquisarMedico);
 
-            if (rootNode.SelectSingleNode(CADASTRAR_MEDICO) == null)
-                rootNode.AppendChild(cadastrarMedico);
+            //Recarregar pesquisarMedicoNode
+            pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            if (pesquisarMedicoNode != null)
+            {
+                //Pega os nós filhos de medicos salvos, transforma em XmlNode, seleciona apenas os que tem Name "medicos_salvos" e transforma em List
+                List<XmlNode> medicosSalvos = pesquisarMedicoNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Medicos_Salvos).ToList();
+                //Início da correção do Xml, onde cada médico salvo estará dentro de "medicos_salvos"
+                XmlNode medicosSalvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
+                foreach (XmlNode node in medicosSalvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    pesquisarMedicoNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Medico);
+                    newNode.InnerXml = node.InnerXml;
+                    medicosSalvosNode.AppendChild(newNode);
+                }
 
-            document.Save(SAVELOCATION);
+                pesquisarMedicoNode.AppendChild(medicosSalvosNode);
+            }
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
         }
 
-        public static void SetPesquisarMedico(Medico medico, string pesquisarCRM, string pesquisarNome)
+        public static PesquisarMedico GetPesquisarMedico()
         {
-            XmlNode rootNode = CheckXmlLoad();
+            XmlNode pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            if (pesquisarMedicoNode == null)
+                return null;
 
-            XmlNode pesqCRM = rootNode.SelectSingleNode(PESQUISAR_CRM_MEDICO)
-               ?? document.CreateElement(PESQUISAR_CRM_MEDICO);
-            pesqCRM.InnerText = pesquisarCRM;
-            if (rootNode.SelectSingleNode(PESQUISAR_CRM_MEDICO) == null)
-                rootNode.AppendChild(pesqCRM);
+            //Retornar para Classe PesquisarMedico, vai haver um erro nos medicos_salvos
+            PesquisarMedico pesquisarMedico = FromXml<PesquisarMedico>(pesquisarMedicoNode.OuterXml);
+            //Início da correção dos médicos salvos
+            XmlNode medicosSalvosNode = pesquisarMedicoNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
+            if (medicosSalvosNode != null)
+                //Pega os nós filhos de medicos salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
+                pesquisarMedico.MedicosSalvos = medicosSalvosNode.ChildNodes.Cast<XmlNode>()
+                    .Select(n => FromXml<Medico>(n.OuterXml)).ToList();
 
-            XmlNode pesqNome = rootNode.SelectSingleNode(PESQUISAR_NOME_MEDICO)
-               ?? document.CreateElement(PESQUISAR_NOME_MEDICO);
-            pesqNome.InnerText = pesquisarNome;
-            if (rootNode.SelectSingleNode(PESQUISAR_NOME_MEDICO) == null)
-                rootNode.AppendChild(pesqNome);
-
-            XmlNode pesquisarMedico = rootNode.SelectSingleNode(PESQUISAR_MEDICO)
-               ?? document.CreateElement(PESQUISAR_MEDICO);
-            pesquisarMedico.InnerXml = ToXml(medico);
-
-            if (rootNode.SelectSingleNode(PESQUISAR_MEDICO) == null)
-                rootNode.AppendChild(pesquisarMedico);
-
-            document.Save(SAVELOCATION);
-        }
-
-        public static void GetCadastrarMedico()
-        {
-            CheckXmlLoad();
-
-            Medico medico = new Medico();
-            medico.ID_Medico = Convert.ToInt32(document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + ID_MEDICO_XPATH).Value);
-            medico.CRM = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + CRM_XPATH).Value;
-            medico.Nome = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + NOME_XPATH).Value;
-            medico.RG = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + RG_XPATH).Value;
-            medico.CPF = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + CPF_XPATH).Value;
-            medico.Contato = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + CONTATO_XPATH).Value;
-            medico.Email = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + EMAIL_XPATH).Value;
-            medico.Estado_Civil = document.SelectSingleNode(ROOT_XPATH + CADASTRAR_MEDICO_XPATH + ESTADO_CIVIL_XPATH).Value;
-        }
-
-        private static string GetXPath(string screen, string element)
-        {
-            return ROOT_XPATH + screen + element;
+            return pesquisarMedico;
         }
 
         //Converter medico para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter
-        public static string ToXml(object obj)
+        public static string ToXml<T>(T obj)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(obj.GetType());
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
             StringWriter stringWriter = new StringWriter();
 
             /*
@@ -150,5 +125,13 @@ namespace GerenciamentoDeClinica.utils
             return stringWriter.ToString();
         }
 
+        //Transforma um Xml em uma classe tradicional, exemplo de utilização: FromXml<Medico>(variavel);
+        public static T FromXml<T>(string xml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            StringReader stringReader = new StringReader(xml);
+
+            return (T)xmlSerializer.Deserialize(stringReader);
+        }
     }
 }
