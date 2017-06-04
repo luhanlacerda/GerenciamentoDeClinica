@@ -30,13 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPesquisarPaciente));
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnNovaBusca = new System.Windows.Forms.Button();
-            this.btnPesquisar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.maskedFiltroCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblContato = new System.Windows.Forms.Label();
@@ -50,11 +44,13 @@
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.lblConvenio = new System.Windows.Forms.Label();
+            this.comboConvenio = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
             this.rbCasado = new System.Windows.Forms.RadioButton();
             this.rbViuvo = new System.Windows.Forms.RadioButton();
-            this.comboPais = new System.Windows.Forms.ComboBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.comboUF = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -71,16 +67,28 @@
             this.lblCEP = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
-            this.groupBox2.SuspendLayout();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFiltroNome = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.maskedFiltroCPF = new System.Windows.Forms.MaskedTextBox();
+            this.listViewPacientes = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Convenio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRemover
             // 
             this.btnRemover.Enabled = false;
-            this.btnRemover.Location = new System.Drawing.Point(379, 307);
+            this.btnRemover.Location = new System.Drawing.Point(383, 340);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
             this.btnRemover.TabIndex = 23;
@@ -88,77 +96,16 @@
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
-            // btnEditar
-            // 
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(379, 278);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 22;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(379, 249);
+            this.btnAtualizar.Location = new System.Drawing.Point(383, 311);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
             this.btnAtualizar.TabIndex = 21;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnNovaBusca);
-            this.groupBox2.Controls.Add(this.btnPesquisar);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.maskedFiltroCPF);
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 100);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtro da Pesquisa";
-            // 
-            // btnNovaBusca
-            // 
-            this.btnNovaBusca.Location = new System.Drawing.Point(319, 35);
-            this.btnNovaBusca.Name = "btnNovaBusca";
-            this.btnNovaBusca.Size = new System.Drawing.Size(75, 23);
-            this.btnNovaBusca.TabIndex = 3;
-            this.btnNovaBusca.Text = "Nova Busca";
-            this.btnNovaBusca.UseVisualStyleBackColor = true;
-            this.btnNovaBusca.Click += new System.EventHandler(this.btnNovaBusca_Click);
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(238, 35);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 2;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "CPF:";
-            // 
-            // maskedFiltroCPF
-            // 
-            this.maskedFiltroCPF.Location = new System.Drawing.Point(51, 38);
-            this.maskedFiltroCPF.Mask = "000.000.000-00";
-            this.maskedFiltroCPF.Name = "maskedFiltroCPF";
-            this.maskedFiltroCPF.Size = new System.Drawing.Size(100, 20);
-            this.maskedFiltroCPF.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -207,7 +154,7 @@
             // 
             this.maskedCell.Enabled = false;
             this.maskedCell.Location = new System.Drawing.Point(246, 83);
-            this.maskedCell.Mask = "(##) #.####-####";
+            this.maskedCell.Mask = "(##) #####-####";
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
             this.maskedCell.TabIndex = 7;
@@ -268,8 +215,10 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.Controls.Add(this.txtPais);
+            this.GroupBox.Controls.Add(this.lblConvenio);
+            this.GroupBox.Controls.Add(this.comboConvenio);
             this.GroupBox.Controls.Add(this.groupBox1);
-            this.GroupBox.Controls.Add(this.comboPais);
             this.GroupBox.Controls.Add(this.txtCidade);
             this.GroupBox.Controls.Add(this.comboUF);
             this.GroupBox.Controls.Add(this.txtNumero);
@@ -288,7 +237,6 @@
             this.GroupBox.Controls.Add(this.dateTimeDtNasc);
             this.GroupBox.Controls.Add(this.pictureUser);
             this.GroupBox.Controls.Add(this.btnRemover);
-            this.GroupBox.Controls.Add(this.btnEditar);
             this.GroupBox.Controls.Add(this.btnAtualizar);
             this.GroupBox.Controls.Add(this.lblDataNascimento);
             this.GroupBox.Controls.Add(this.lblNome);
@@ -301,19 +249,45 @@
             this.GroupBox.Controls.Add(this.lblContato);
             this.GroupBox.Controls.Add(this.txtEmail);
             this.GroupBox.Controls.Add(this.lblEmail);
-            this.GroupBox.Location = new System.Drawing.Point(3, 109);
+            this.GroupBox.Location = new System.Drawing.Point(1, 185);
             this.GroupBox.Name = "GroupBox";
-            this.GroupBox.Size = new System.Drawing.Size(464, 339);
+            this.GroupBox.Size = new System.Drawing.Size(471, 378);
             this.GroupBox.TabIndex = 44;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Editar Campos";
+            // 
+            // txtPais
+            // 
+            this.txtPais.Enabled = false;
+            this.txtPais.Location = new System.Drawing.Point(192, 348);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(143, 20);
+            this.txtPais.TabIndex = 98;
+            // 
+            // lblConvenio
+            // 
+            this.lblConvenio.AutoSize = true;
+            this.lblConvenio.Location = new System.Drawing.Point(6, 159);
+            this.lblConvenio.Name = "lblConvenio";
+            this.lblConvenio.Size = new System.Drawing.Size(55, 13);
+            this.lblConvenio.TabIndex = 97;
+            this.lblConvenio.Text = "Convenio:";
+            // 
+            // comboConvenio
+            // 
+            this.comboConvenio.Enabled = false;
+            this.comboConvenio.FormattingEnabled = true;
+            this.comboConvenio.Location = new System.Drawing.Point(9, 175);
+            this.comboConvenio.Name = "comboConvenio";
+            this.comboConvenio.Size = new System.Drawing.Size(257, 21);
+            this.comboConvenio.TabIndex = 96;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbSolteiro);
             this.groupBox1.Controls.Add(this.rbCasado);
             this.groupBox1.Controls.Add(this.rbViuvo);
-            this.groupBox1.Location = new System.Drawing.Point(11, 162);
+            this.groupBox1.Location = new System.Drawing.Point(9, 202);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
             this.groupBox1.TabIndex = 95;
@@ -356,19 +330,10 @@
             this.rbViuvo.Text = "Viúvo(a)";
             this.rbViuvo.UseVisualStyleBackColor = true;
             // 
-            // comboPais
-            // 
-            this.comboPais.Enabled = false;
-            this.comboPais.FormattingEnabled = true;
-            this.comboPais.Location = new System.Drawing.Point(198, 310);
-            this.comboPais.Name = "comboPais";
-            this.comboPais.Size = new System.Drawing.Size(136, 21);
-            this.comboPais.TabIndex = 20;
-            // 
             // txtCidade
             // 
             this.txtCidade.Enabled = false;
-            this.txtCidade.Location = new System.Drawing.Point(9, 310);
+            this.txtCidade.Location = new System.Drawing.Point(7, 350);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 18;
@@ -377,7 +342,7 @@
             // 
             this.comboUF.Enabled = false;
             this.comboUF.FormattingEnabled = true;
-            this.comboUF.Location = new System.Drawing.Point(140, 310);
+            this.comboUF.Location = new System.Drawing.Point(138, 350);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
             this.comboUF.TabIndex = 19;
@@ -385,7 +350,7 @@
             // txtNumero
             // 
             this.txtNumero.Enabled = false;
-            this.txtNumero.Location = new System.Drawing.Point(9, 271);
+            this.txtNumero.Location = new System.Drawing.Point(7, 311);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 15;
@@ -393,7 +358,7 @@
             // txtComplemento
             // 
             this.txtComplemento.Enabled = false;
-            this.txtComplemento.Location = new System.Drawing.Point(101, 271);
+            this.txtComplemento.Location = new System.Drawing.Point(99, 311);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 16;
@@ -401,7 +366,7 @@
             // txtLogradouro
             // 
             this.txtLogradouro.Enabled = false;
-            this.txtLogradouro.Location = new System.Drawing.Point(101, 229);
+            this.txtLogradouro.Location = new System.Drawing.Point(99, 269);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
             this.txtLogradouro.TabIndex = 14;
@@ -409,7 +374,7 @@
             // maskedCEP
             // 
             this.maskedCEP.Enabled = false;
-            this.maskedCEP.Location = new System.Drawing.Point(10, 229);
+            this.maskedCEP.Location = new System.Drawing.Point(8, 269);
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
@@ -418,7 +383,7 @@
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(196, 294);
+            this.lblPais.Location = new System.Drawing.Point(189, 334);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(32, 13);
             this.lblPais.TabIndex = 94;
@@ -427,7 +392,7 @@
             // lblUF
             // 
             this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(137, 294);
+            this.lblUF.Location = new System.Drawing.Point(135, 334);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(24, 13);
             this.lblUF.TabIndex = 93;
@@ -436,7 +401,7 @@
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(7, 294);
+            this.lblCidade.Location = new System.Drawing.Point(5, 334);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 92;
@@ -445,7 +410,7 @@
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(191, 252);
+            this.lblBairro.Location = new System.Drawing.Point(189, 292);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(37, 13);
             this.lblBairro.TabIndex = 91;
@@ -454,7 +419,7 @@
             // lblComplemento
             // 
             this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(99, 252);
+            this.lblComplemento.Location = new System.Drawing.Point(97, 292);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(74, 13);
             this.lblComplemento.TabIndex = 90;
@@ -463,7 +428,7 @@
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(6, 252);
+            this.lblNumero.Location = new System.Drawing.Point(4, 292);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(47, 13);
             this.lblNumero.TabIndex = 89;
@@ -472,7 +437,7 @@
             // lblLogradouro
             // 
             this.lblLogradouro.AutoSize = true;
-            this.lblLogradouro.Location = new System.Drawing.Point(100, 213);
+            this.lblLogradouro.Location = new System.Drawing.Point(98, 253);
             this.lblLogradouro.Name = "lblLogradouro";
             this.lblLogradouro.Size = new System.Drawing.Size(64, 13);
             this.lblLogradouro.TabIndex = 88;
@@ -481,7 +446,7 @@
             // lblCEP
             // 
             this.lblCEP.AutoSize = true;
-            this.lblCEP.Location = new System.Drawing.Point(7, 213);
+            this.lblCEP.Location = new System.Drawing.Point(5, 253);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(31, 13);
             this.lblCEP.TabIndex = 87;
@@ -490,7 +455,7 @@
             // txtBairro
             // 
             this.txtBairro.Enabled = false;
-            this.txtBairro.Location = new System.Drawing.Point(194, 271);
+            this.txtBairro.Location = new System.Drawing.Point(192, 311);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 17;
@@ -504,35 +469,128 @@
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
             this.dateTimeDtNasc.TabIndex = 8;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtFiltroNome);
+            this.groupBox2.Controls.Add(this.btnPesquisar);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.maskedFiltroCPF);
+            this.groupBox2.Location = new System.Drawing.Point(1, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(471, 93);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtro da Pesquisa";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Nome:";
+            // 
+            // txtFiltroNome
+            // 
+            this.txtFiltroNome.Location = new System.Drawing.Point(51, 19);
+            this.txtFiltroNome.Name = "txtFiltroNome";
+            this.txtFiltroNome.Size = new System.Drawing.Size(223, 20);
+            this.txtFiltroNome.TabIndex = 0;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(199, 52);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 2;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 62);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "CPF:";
+            // 
+            // maskedFiltroCPF
+            // 
+            this.maskedFiltroCPF.Location = new System.Drawing.Point(51, 55);
+            this.maskedFiltroCPF.Mask = "000.000.000-00";
+            this.maskedFiltroCPF.Name = "maskedFiltroCPF";
+            this.maskedFiltroCPF.Size = new System.Drawing.Size(90, 20);
+            this.maskedFiltroCPF.TabIndex = 1;
+            // 
+            // listViewPacientes
+            // 
+            this.listViewPacientes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Nome,
+            this.CPF,
+            this.Convenio,
+            this.Contato});
+            this.listViewPacientes.FullRowSelect = true;
+            this.listViewPacientes.Location = new System.Drawing.Point(1, 102);
+            this.listViewPacientes.Name = "listViewPacientes";
+            this.listViewPacientes.Size = new System.Drawing.Size(471, 77);
+            this.listViewPacientes.TabIndex = 45;
+            this.listViewPacientes.UseCompatibleStateImageBehavior = false;
+            this.listViewPacientes.View = System.Windows.Forms.View.Details;
+            this.listViewPacientes.SelectedIndexChanged += new System.EventHandler(this.listViewPacientes_SelectedIndexChanged);
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // Nome
+            // 
+            this.Nome.Text = "Nome";
+            // 
+            // Convenio
+            // 
+            this.Convenio.DisplayIndex = 2;
+            this.Convenio.Text = "Convenio";
+            // 
+            // Contato
+            // 
+            this.Contato.DisplayIndex = 3;
+            this.Contato.Text = "Contato";
+            // 
+            // CPF
+            // 
+            this.CPF.DisplayIndex = 4;
+            this.CPF.Text = "CPF";
+            // 
             // TelaPesquisarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 449);
+            this.ClientSize = new System.Drawing.Size(474, 565);
+            this.Controls.Add(this.listViewPacientes);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GroupBox);
             this.Name = "TelaPesquisarPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paciente";
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Load += new System.EventHandler(this.TelaPesquisarPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedFiltroCPF;
-        private System.Windows.Forms.Button btnNovaBusca;
-        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.PictureBox pictureUser;
@@ -548,7 +606,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.DateTimePicker dateTimeDtNasc;
-        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.ComboBox comboUF;
         private System.Windows.Forms.TextBox txtNumero;
@@ -568,5 +625,20 @@
         private System.Windows.Forms.RadioButton rbSolteiro;
         private System.Windows.Forms.RadioButton rbCasado;
         private System.Windows.Forms.RadioButton rbViuvo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox maskedFiltroCPF;
+        private System.Windows.Forms.ListView listViewPacientes;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Nome;
+        private System.Windows.Forms.ColumnHeader Convenio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFiltroNome;
+        private System.Windows.Forms.Label lblConvenio;
+        private System.Windows.Forms.ComboBox comboConvenio;
+        private System.Windows.Forms.ColumnHeader Contato;
+        private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.ColumnHeader CPF;
     }
 }

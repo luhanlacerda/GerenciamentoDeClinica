@@ -1,4 +1,6 @@
-﻿using ClinicaServiceLibrary.utils;
+﻿using ClinicaServiceLibrary.classesbasicas;
+using ClinicaServiceLibrary.convenio;
+using ClinicaServiceLibrary.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -98,12 +100,11 @@ namespace ClinicaServiceLibrary.paciente
                 //Abri Conexao
                 this.abrirConexao();
 
-                string sql = "UPDATE Paciente SET Nome = @Nome, CPF = @CPF, Contato = @Contato, CEP = @CEP," +
-                    "RG = @RG, Email = @Email, Logradouro = @Logradouro, Numero = @Numero," +
-                    "Complemento = @Complemento, Bairro = @Bairro, Cidade = @Cidade, UF = @UF" +
-                    "Pais = @Pais, ID_Paciente = @ID_Paciente, Estado_Civil = @Estado_Civil," +
-                    "Dt_Nascimento = @Dt_Nascimento, ID_Convenio = @ID_Convenio" +
-                    "WHERE ID_Paciente = @ID_Paciente;";
+                string sql = "UPDATE Paciente SET Nome = @Nome, CPF = @CPF, Contato = @Contato, CEP = @CEP, " +
+                    "RG = @RG, Email = @Email, Logradouro = @Logradouro, Numero = @Numero, " +
+                    "Complemento = @Complemento, Bairro = @Bairro, Cidade = @Cidade, UF = @UF, " +
+                    "Pais = @Pais, Estado_Civil = @Estado_Civil, Dt_Nascimento = @Dt_Nascimento, " +
+                    "ID_Convenio = @ID_Convenio WHERE ID_Paciente = @ID_Paciente;";
 
                 //Instrução a ser executada
                 SqlCommand scm = new SqlCommand(sql, this.sqlConn);
@@ -117,7 +118,7 @@ namespace ClinicaServiceLibrary.paciente
                 scm.Parameters["@CPF"].Value = paciente.CPF;
 
                 scm.Parameters.Add("@Contato", SqlDbType.VarChar);
-                scm.Parameters["@Contato"].Value = paciente.Nome;
+                scm.Parameters["@Contato"].Value = paciente.Contato;
 
                 scm.Parameters.Add("@CEP", SqlDbType.Char);
                 scm.Parameters["@CEP"].Value = paciente.Endereco.CEP;
@@ -213,8 +214,8 @@ namespace ClinicaServiceLibrary.paciente
                 //Abrindo conexão
                 this.abrirConexao();
                 //Instrução a ser executada
-                string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero," +
-                    "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento," +
+                string sql = "SELECT Nome, CPF, Contato, CEP, RG, Email, Logradouro, Numero, " +
+                    "Complemento, Bairro, Cidade, UF, Pais, ID_Paciente, Estado_Civil, Dt_Nascimento, " +
                     "ID_Convenio FROM Paciente WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
@@ -222,26 +223,26 @@ namespace ClinicaServiceLibrary.paciente
                 #region Modos de Pesquisa
                 if (filtro.ID_Paciente > 0)
                 {
-                    sql += " AND ID_Paciente = @ID_Paciente";
+                    scm.CommandText += " AND ID_Paciente = @ID_Paciente";
 
                     scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
                     scm.Parameters["@ID_Paciente"].Value = filtro.ID_Paciente;
                 }
 
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
-                if (string.IsNullOrWhiteSpace(filtro.CPF.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.CPF))
                 {
-                    sql += " AND CPF = @CPF";
+                    scm.CommandText += " AND CPF = @CPF";
 
                     scm.Parameters.Add("@CPF", SqlDbType.VarChar);
-                    scm.Parameters["@CPF"].Value = filtro.CPF;
+                    scm.Parameters["@CPF"].Value = filtro.CPF.Trim();
                 }
-                if (string.IsNullOrWhiteSpace(filtro.Nome.Trim()))
+                if (!string.IsNullOrWhiteSpace(filtro.Nome))
                 {
-                    sql += " AND Nome LIKE %@Nome%";
+                    scm.CommandText += " AND Nome LIKE @Nome";
 
                     scm.Parameters.Add("@Nome", SqlDbType.VarChar);
-                    scm.Parameters["@Nome"].Value = filtro.Nome;
+                    scm.Parameters["@Nome"].Value = "%" + filtro.Nome.Trim() + "%";
                 }
                 #endregion
 
@@ -258,6 +259,7 @@ namespace ClinicaServiceLibrary.paciente
                     paciente.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
                     paciente.CPF = DbReader.GetString(DbReader.GetOrdinal("CPF"));
                     paciente.Contato = DbReader.GetString(DbReader.GetOrdinal("Contato"));
+                    paciente.Endereco = new Endereco();
                     paciente.Endereco.CEP = DbReader.GetString(DbReader.GetOrdinal("CEP"));
                     paciente.RG = DbReader.GetString(DbReader.GetOrdinal("RG"));
                     paciente.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
@@ -271,6 +273,7 @@ namespace ClinicaServiceLibrary.paciente
                     paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
                     paciente.Estado_Civil = DbReader.GetString(DbReader.GetOrdinal("Estado_Civil"));
                     paciente.Dt_Nascimento = DbReader.GetDateTime(DbReader.GetOrdinal("Dt_Nascimento"));
+                    paciente.Convenio = new Convenio();
                     paciente.Convenio.ID_Convenio = DbReader.GetInt32(DbReader.GetOrdinal("ID_Convenio"));
 
                     #endregion
