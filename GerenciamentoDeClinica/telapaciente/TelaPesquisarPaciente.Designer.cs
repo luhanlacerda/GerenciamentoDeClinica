@@ -77,7 +77,6 @@
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Convenio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
@@ -532,7 +531,6 @@
             this.ID,
             this.Nome,
             this.CPF,
-            this.Convenio,
             this.Contato});
             this.listViewPacientes.FullRowSelect = true;
             this.listViewPacientes.Location = new System.Drawing.Point(1, 102);
@@ -553,17 +551,12 @@
             // 
             // CPF
             // 
-            this.CPF.DisplayIndex = 4;
+            this.CPF.DisplayIndex = 3;
             this.CPF.Text = "CPF";
-            // 
-            // Convenio
-            // 
-            this.Convenio.DisplayIndex = 2;
-            this.Convenio.Text = "Convenio";
             // 
             // Contato
             // 
-            this.Contato.DisplayIndex = 3;
+            this.Contato.DisplayIndex = 2;
             this.Contato.Text = "Contato";
             // 
             // TelaPesquisarPaciente
@@ -633,7 +626,6 @@
         private System.Windows.Forms.ListView listViewPacientes;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Nome;
-        private System.Windows.Forms.ColumnHeader Convenio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroNome;
         private System.Windows.Forms.Label lblConvenio;

@@ -175,14 +175,8 @@ namespace GerenciamentoDeClinica.telapaciente
                     CPF = maskedFiltroCPF.Text
                 }));
 
-                foreach (Paciente paciente in pacientes)
-                {
-                    ListViewItem linha = listViewPacientes.Items.Add(paciente.ID_Paciente.ToString());
-                    linha.SubItems.Add(paciente.Nome);
-                    linha.SubItems.Add(paciente.CPF);
-                    linha.SubItems.Add(paciente.Convenio.Descricao);
-                    linha.SubItems.Add(paciente.Contato);
-                }
+                CarregarListView();
+
             }
             catch (WebException)
             {
@@ -272,6 +266,7 @@ namespace GerenciamentoDeClinica.telapaciente
             comboUF.SelectedItem = paciente.Endereco.UF;
             txtPais.Text = paciente.Endereco.Pais;
         }
+
         private void CarregarListView()
         {
             foreach (Paciente paciente in _pesquisarPaciente.PacientesSalvos)
@@ -279,6 +274,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 ListViewItem linha = listViewPacientes.Items.Add(paciente.ID_Paciente.ToString());
                 linha.SubItems.Add(paciente.Nome);
                 linha.SubItems.Add(paciente.CPF);
+                linha.SubItems.Add(paciente.Contato);
             }
         }
 
@@ -310,7 +306,6 @@ namespace GerenciamentoDeClinica.telapaciente
             }));
             return convenio;
         }
-
 
         private Paciente GetPaciente()
         {
