@@ -95,5 +95,35 @@
     <Setting Name="Pesquisar_Pacientes_Salvos_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/data/pesquisar_paciente/paciente_salvos</Value>
     </Setting>
+    <Setting Name="Secretaria" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Secretaria</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Alterar_Secretaria" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_secretaria/Secretaria</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Secretaria" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_secretaria</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Secretaria_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/cadastrar_secretaria</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretaria" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_secretaria</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretaria_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_secretaria</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretaria_CPF" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_cpf</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretaria_CPF_Nome" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_secretaria/pesquisar_cpf</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretarias_Salvas" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">secretarias_salvas</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Secretarias_Salvas_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_secretarias/secretarias_salvas</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

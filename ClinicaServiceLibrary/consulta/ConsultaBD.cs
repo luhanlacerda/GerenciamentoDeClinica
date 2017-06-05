@@ -7,6 +7,10 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using ClinicaServiceLibrary.estado;
+using ClinicaServiceLibrary.medico;
+using ClinicaServiceLibrary.paciente;
+using ClinicaServiceLibrary.secretaria;
 
 namespace ClinicaServiceLibrary.consulta
 {
@@ -113,7 +117,6 @@ namespace ClinicaServiceLibrary.consulta
             }
         }
 
-
         public void Remover(Consulta consulta)
         {
             try
@@ -140,7 +143,6 @@ namespace ClinicaServiceLibrary.consulta
                 throw new FaultException("Erro ao remover consulta." + e);
             }
         }
-
 
         public List<Consulta> Listar(Consulta filtro)
         {
@@ -202,9 +204,13 @@ namespace ClinicaServiceLibrary.consulta
                     consulta.Observacoes = DbReader.GetString(DbReader.GetOrdinal("Observacoes"));
                     consulta.Receita = DbReader.GetString(DbReader.GetOrdinal("Receita"));
                     consulta.ID_Consulta = DbReader.GetInt32(DbReader.GetOrdinal("ID_Consulta"));
+                    consulta.Medico = new Medico();
                     consulta.Medico.ID_Medico = DbReader.GetInt32(DbReader.GetOrdinal("ID_Medico"));
+                    consulta.Paciente = new Paciente();
                     consulta.Paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
+                    consulta.Secretaria = new Secretaria();
                     consulta.Secretaria.ID_Secretaria = DbReader.GetInt32(DbReader.GetOrdinal("ID_Secretaria"));
+                    consulta.Estado = new Estado();
                     consulta.Estado.ID_Estado = DbReader.GetInt32(DbReader.GetOrdinal("ID_Estado"));
 
                     retorno.Add(consulta);
@@ -225,8 +231,6 @@ namespace ClinicaServiceLibrary.consulta
 
             return retorno;
         }
-
-
 
         public bool VerificarExistencia(Consulta consulta)
         {

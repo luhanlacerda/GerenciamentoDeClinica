@@ -29,157 +29,217 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPesqCRM = new System.Windows.Forms.TextBox();
-            this.lblPesqCRM = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.maskedPesqCPF = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePickerDia = new System.Windows.Forms.DateTimePicker();
-            this.lblDia = new System.Windows.Forms.Label();
+            this.listViewConsultas = new System.Windows.Forms.ListView();
+            this.IDConsulta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Paciente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Medico = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Horario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtPesqPacienteID = new System.Windows.Forms.TextBox();
+            this.txtPesqMedicoID = new System.Windows.Forms.TextBox();
+            this.lblPesqMedID = new System.Windows.Forms.Label();
+            this.lblPesqPacienteID = new System.Windows.Forms.Label();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
-            this.lblDescricao = new System.Windows.Forms.Label();
-            this.lblObservacoes = new System.Windows.Forms.Label();
+            this.txtReceita = new System.Windows.Forms.TextBox();
+            this.lblObservacao = new System.Windows.Forms.Label();
+            this.lblReceita = new System.Windows.Forms.Label();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtPesqCRM);
-            this.groupBox1.Controls.Add(this.lblPesqCRM);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.maskedPesqCPF);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dateTimePickerDia);
-            this.groupBox1.Controls.Add(this.lblDia);
+            this.groupBox1.Controls.Add(this.listViewConsultas);
+            this.groupBox1.Controls.Add(this.txtPesqPacienteID);
+            this.groupBox1.Controls.Add(this.txtPesqMedicoID);
+            this.groupBox1.Controls.Add(this.lblPesqMedID);
+            this.groupBox1.Controls.Add(this.lblPesqPacienteID);
+            this.groupBox1.Controls.Add(this.btnPesquisar);
             this.groupBox1.Location = new System.Drawing.Point(0, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(418, 123);
+            this.groupBox1.Size = new System.Drawing.Size(527, 189);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro da Pesquisa";
             // 
-            // txtPesqCRM
+            // listViewConsultas
             // 
-            this.txtPesqCRM.Location = new System.Drawing.Point(52, 24);
-            this.txtPesqCRM.Name = "txtPesqCRM";
-            this.txtPesqCRM.Size = new System.Drawing.Size(100, 20);
-            this.txtPesqCRM.TabIndex = 0;
+            this.listViewConsultas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IDConsulta,
+            this.Paciente,
+            this.Medico,
+            this.Horario});
+            this.listViewConsultas.Location = new System.Drawing.Point(15, 69);
+            this.listViewConsultas.Name = "listViewConsultas";
+            this.listViewConsultas.Size = new System.Drawing.Size(394, 97);
+            this.listViewConsultas.TabIndex = 29;
+            this.listViewConsultas.UseCompatibleStateImageBehavior = false;
+            this.listViewConsultas.View = System.Windows.Forms.View.Details;
+            this.listViewConsultas.SelectedIndexChanged += new System.EventHandler(this.listViewConsultas_SelectedIndexChanged);
             // 
-            // lblPesqCRM
+            // IDConsulta
             // 
-            this.lblPesqCRM.AutoSize = true;
-            this.lblPesqCRM.Location = new System.Drawing.Point(12, 27);
-            this.lblPesqCRM.Name = "lblPesqCRM";
-            this.lblPesqCRM.Size = new System.Drawing.Size(34, 13);
-            this.lblPesqCRM.TabIndex = 27;
-            this.lblPesqCRM.Text = "CRM:";
+            this.IDConsulta.Text = "ID";
             // 
-            // label6
+            // Paciente
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "CPF:";
+            this.Paciente.Text = "Paciente";
             // 
-            // maskedPesqCPF
+            // Medico
             // 
-            this.maskedPesqCPF.Location = new System.Drawing.Point(52, 50);
-            this.maskedPesqCPF.Mask = "000.000.000-00";
-            this.maskedPesqCPF.Name = "maskedPesqCPF";
-            this.maskedPesqCPF.Size = new System.Drawing.Size(100, 20);
-            this.maskedPesqCPF.TabIndex = 1;
+            this.Medico.Text = "Médico";
             // 
-            // button1
+            // Horario
             // 
-            this.button1.Location = new System.Drawing.Point(213, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Pesquisar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Horario.Text = "Horario";
             // 
-            // dateTimePickerDia
+            // txtPesqPacienteID
             // 
-            this.dateTimePickerDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDia.Location = new System.Drawing.Point(52, 83);
-            this.dateTimePickerDia.Name = "dateTimePickerDia";
-            this.dateTimePickerDia.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePickerDia.TabIndex = 2;
+            this.txtPesqPacienteID.Location = new System.Drawing.Point(229, 24);
+            this.txtPesqPacienteID.Name = "txtPesqPacienteID";
+            this.txtPesqPacienteID.Size = new System.Drawing.Size(66, 20);
+            this.txtPesqPacienteID.TabIndex = 28;
             // 
-            // lblDia
+            // txtPesqMedicoID
             // 
-            this.lblDia.AutoSize = true;
-            this.lblDia.Location = new System.Drawing.Point(8, 89);
-            this.lblDia.Name = "lblDia";
-            this.lblDia.Size = new System.Drawing.Size(26, 13);
-            this.lblDia.TabIndex = 10;
-            this.lblDia.Text = "Dia:";
+            this.txtPesqMedicoID.Location = new System.Drawing.Point(77, 24);
+            this.txtPesqMedicoID.Name = "txtPesqMedicoID";
+            this.txtPesqMedicoID.Size = new System.Drawing.Size(66, 20);
+            this.txtPesqMedicoID.TabIndex = 0;
+            // 
+            // lblPesqMedID
+            // 
+            this.lblPesqMedID.AutoSize = true;
+            this.lblPesqMedID.Location = new System.Drawing.Point(12, 27);
+            this.lblPesqMedID.Name = "lblPesqMedID";
+            this.lblPesqMedID.Size = new System.Drawing.Size(59, 13);
+            this.lblPesqMedID.TabIndex = 27;
+            this.lblPesqMedID.Text = "ID Medico:";
+            // 
+            // lblPesqPacienteID
+            // 
+            this.lblPesqPacienteID.AutoSize = true;
+            this.lblPesqPacienteID.Location = new System.Drawing.Point(157, 27);
+            this.lblPesqPacienteID.Name = "lblPesqPacienteID";
+            this.lblPesqPacienteID.Size = new System.Drawing.Size(66, 13);
+            this.lblPesqPacienteID.TabIndex = 25;
+            this.lblPesqPacienteID.Text = "ID Paciente:";
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(334, 24);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 3;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtDescricao);
+            this.groupBox2.Controls.Add(this.lblEstado);
+            this.groupBox2.Controls.Add(this.comboEstado);
+            this.groupBox2.Controls.Add(this.btnRemover);
+            this.groupBox2.Controls.Add(this.btnAtualizar);
             this.groupBox2.Controls.Add(this.txtObservacoes);
-            this.groupBox2.Controls.Add(this.lblDescricao);
-            this.groupBox2.Controls.Add(this.lblObservacoes);
-            this.groupBox2.Location = new System.Drawing.Point(0, 120);
+            this.groupBox2.Controls.Add(this.txtReceita);
+            this.groupBox2.Controls.Add(this.lblObservacao);
+            this.groupBox2.Controls.Add(this.lblReceita);
+            this.groupBox2.Location = new System.Drawing.Point(0, 196);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(418, 261);
+            this.groupBox2.Size = new System.Drawing.Size(527, 321);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Editar Campos";
             // 
-            // txtDescricao
+            // btnRemover
             // 
-            this.txtDescricao.Enabled = false;
-            this.txtDescricao.Location = new System.Drawing.Point(6, 38);
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(403, 79);
-            this.txtDescricao.TabIndex = 5;
+            this.btnRemover.Location = new System.Drawing.Point(441, 292);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(75, 23);
+            this.btnRemover.TabIndex = 12;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(441, 247);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnAtualizar.TabIndex = 11;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // txtObservacoes
             // 
             this.txtObservacoes.Enabled = false;
-            this.txtObservacoes.Location = new System.Drawing.Point(6, 155);
+            this.txtObservacoes.Location = new System.Drawing.Point(6, 38);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(403, 79);
-            this.txtObservacoes.TabIndex = 6;
+            this.txtObservacoes.TabIndex = 5;
             // 
-            // lblDescricao
+            // txtReceita
             // 
-            this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(3, 22);
-            this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(58, 13);
-            this.lblDescricao.TabIndex = 10;
-            this.lblDescricao.Text = "Descrição:";
+            this.txtReceita.Enabled = false;
+            this.txtReceita.Location = new System.Drawing.Point(6, 155);
+            this.txtReceita.Multiline = true;
+            this.txtReceita.Name = "txtReceita";
+            this.txtReceita.Size = new System.Drawing.Size(403, 79);
+            this.txtReceita.TabIndex = 6;
             // 
-            // lblObservacoes
+            // lblObservacao
             // 
-            this.lblObservacoes.AutoSize = true;
-            this.lblObservacoes.Location = new System.Drawing.Point(3, 129);
-            this.lblObservacoes.Name = "lblObservacoes";
-            this.lblObservacoes.Size = new System.Drawing.Size(73, 13);
-            this.lblObservacoes.TabIndex = 9;
-            this.lblObservacoes.Text = "Observações:";
+            this.lblObservacao.AutoSize = true;
+            this.lblObservacao.Location = new System.Drawing.Point(3, 22);
+            this.lblObservacao.Name = "lblObservacao";
+            this.lblObservacao.Size = new System.Drawing.Size(73, 13);
+            this.lblObservacao.TabIndex = 10;
+            this.lblObservacao.Text = "Observações:";
+            // 
+            // lblReceita
+            // 
+            this.lblReceita.AutoSize = true;
+            this.lblReceita.Location = new System.Drawing.Point(3, 129);
+            this.lblReceita.Name = "lblReceita";
+            this.lblReceita.Size = new System.Drawing.Size(47, 13);
+            this.lblReceita.TabIndex = 9;
+            this.lblReceita.Text = "Receita:";
+            // 
+            // comboEstado
+            // 
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(52, 274);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(121, 21);
+            this.comboEstado.TabIndex = 13;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(3, 277);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(43, 13);
+            this.lblEstado.TabIndex = 14;
+            this.lblEstado.Text = "Estado:";
             // 
             // TelaPesquisarConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 382);
+            this.ClientSize = new System.Drawing.Size(534, 524);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TelaPesquisarConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
+            this.Load += new System.EventHandler(this.TelaPesquisarConsulta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -191,17 +251,24 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDia;
-        private System.Windows.Forms.Label lblDia;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TextBox txtObservacoes;
-        private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.Label lblObservacoes;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedPesqCPF;
-        private System.Windows.Forms.TextBox txtPesqCRM;
-        private System.Windows.Forms.Label lblPesqCRM;
+        private System.Windows.Forms.TextBox txtReceita;
+        private System.Windows.Forms.Label lblObservacao;
+        private System.Windows.Forms.Label lblReceita;
+        private System.Windows.Forms.Label lblPesqPacienteID;
+        private System.Windows.Forms.TextBox txtPesqMedicoID;
+        private System.Windows.Forms.Label lblPesqMedID;
+        private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.ListView listViewConsultas;
+        private System.Windows.Forms.TextBox txtPesqPacienteID;
+        private System.Windows.Forms.ColumnHeader IDConsulta;
+        private System.Windows.Forms.ColumnHeader Paciente;
+        private System.Windows.Forms.ColumnHeader Medico;
+        private System.Windows.Forms.ColumnHeader Horario;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.ComboBox comboEstado;
     }
 }

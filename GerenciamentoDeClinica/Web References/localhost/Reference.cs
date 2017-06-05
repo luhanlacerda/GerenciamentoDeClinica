@@ -1385,8 +1385,8 @@ namespace GerenciamentoDeClinica.localhost {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Paciente))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Medico))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1537,27 +1537,6 @@ namespace GerenciamentoDeClinica.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria")]
-    public partial class Secretaria : Pessoa {
-        
-        private int iD_SecretariaField;
-        
-        /// <remarks/>
-        public int ID_Secretaria {
-            get {
-                return this.iD_SecretariaField;
-            }
-            set {
-                this.iD_SecretariaField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico")]
     public partial class Medico : Pessoa {
         
@@ -1596,6 +1575,27 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_MedicoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria")]
+    public partial class Secretaria : Pessoa {
+        
+        private int iD_SecretariaField;
+        
+        /// <remarks/>
+        public int ID_Secretaria {
+            get {
+                return this.iD_SecretariaField;
+            }
+            set {
+                this.iD_SecretariaField = value;
             }
         }
     }

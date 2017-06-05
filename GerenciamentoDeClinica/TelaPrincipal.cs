@@ -108,7 +108,7 @@ namespace GerenciamentoDeClinica
 
         private void cadastrarToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            TelaCadastrarSecretaria cadSecretaria = new TelaCadastrarSecretaria();
+            TelaCadastroSecretaria cadSecretaria = new TelaCadastroSecretaria();
             AddOwnedForm(cadSecretaria);
             cadSecretaria.Show();
         }
