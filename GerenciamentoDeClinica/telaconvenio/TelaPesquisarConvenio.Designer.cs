@@ -161,6 +161,7 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listViewConvenios.FullRowSelect = true;
+            this.listViewConvenios.HideSelection = false;
             this.listViewConvenios.Location = new System.Drawing.Point(1, 113);
             this.listViewConvenios.Name = "listViewConvenios";
             this.listViewConvenios.Size = new System.Drawing.Size(356, 161);
@@ -188,6 +189,8 @@
             this.Name = "TelaPesquisarConvenio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Convenio";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarConvenio_FormClosing);
+            this.Load += new System.EventHandler(this.TelaPesquisarConvenio_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

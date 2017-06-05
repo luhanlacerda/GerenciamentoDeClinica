@@ -7,57 +7,71 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using GerenciamentoDeClinica.utils;
 
 namespace GerenciamentoDeClinica.telaconvenio
 {
-    public partial class TelaPesquisarConvenio : Form
+    public partial class TelaPesquisarConvenio : Form, IConsistenciaDados
     {
+        private Thread _threadSalvarDados;
+        private string _savedPesquisar = "";
+        private PesquisarConvenio _pesquisarConvenio;
+
         private const string ERROR_WEBSERVICE = "Erro de conexão o servidor.";
 
-        ClinicaService clinicaService = new ClinicaService();
+        private readonly ClinicaService clinicaService = new ClinicaService();
 
         public TelaPesquisarConvenio()
         {
             InitializeComponent();
         }
-        
 
-        void ClearTextBoxs()
+        private void TelaPesquisarConvenio_Load(object sender, EventArgs e)
         {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
+            //Carregamento dos dados
+            ClinicaXmlUtils.Create();
+            _pesquisarConvenio = ClinicaXmlUtils.GetPesquisarConvenio();
+            if (_pesquisarConvenio != null)
             {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                        (control as TextBox).Clear();
-                    else
-                        func(control.Controls);
-            };
+                txtDescricaoFiltro.Text = _pesquisarConvenio.PesquisarDescricao;
 
-            func(Controls);
+                CarregarListView();
+                //Informando a linha selecionada da ListView
+                if (_pesquisarConvenio.LinhaSelecionada.HasValue)
+                    listViewConvenios.Items[_pesquisarConvenio.LinhaSelecionada.Value].Selected = true;
+
+                txtID.Text = _pesquisarConvenio.Convenio.ID_Convenio.ToString();
+                txtDescricao.Text = _pesquisarConvenio.Convenio.Descricao;
+            }
+            else
+            {
+                _pesquisarConvenio = new PesquisarConvenio { Convenio = new Convenio() };
+            }
+
+            _threadSalvarDados = new Thread(SalvarDados);
+            _threadSalvarDados.Start();
         }
 
+        private void ClearTextBoxs()
+        {
+            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+        }
 
-        void btnPesquisar_Click(object sender, EventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
         {
             listViewConvenios.Items.Clear();
             try
             {
-                Convenio[] convenios = clinicaService.ListarConvenio(new Convenio
+                _pesquisarConvenio.ConveniosSalvos = clinicaService.ListarConvenio(new Convenio
                 {
-                    ID_Convenio = 0,
                     Descricao = txtDescricaoFiltro.Text
-                });
+                }).ToList();
 
-                foreach (Convenio convenio in convenios)
-                {
-                    ListViewItem linha = listViewConvenios.Items.Add(convenio.ID_Convenio.ToString());
-                    linha.SubItems.Add(convenio.Descricao);
-                }
-
+                CarregarListView();
             }
             catch (WebException)
             {
@@ -75,46 +89,50 @@ namespace GerenciamentoDeClinica.telaconvenio
         {
 
             #region click in list
+
             if (listViewConvenios.SelectedItems.Count > 0)
             {
-                ListViewItem selected = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
+                _pesquisarConvenio.LinhaSelecionada = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+
                 Convenio convenio = new Convenio()
                 {
-                    ID_Convenio = Convert.ToInt32(selected.Text),
-                    Descricao = selected.SubItems[1].Text
+                    ID_Convenio = _pesquisarConvenio.ConveniosSalvos[_pesquisarConvenio.LinhaSelecionada.Value].ID_Convenio,
+                    Descricao = _pesquisarConvenio.ConveniosSalvos[_pesquisarConvenio.LinhaSelecionada.Value].Descricao
                 };
 
-                txtID.Text = Convert.ToString(convenio.ID_Convenio);
+                txtID.Text = convenio.ID_Convenio.ToString();
                 txtDescricao.Text = convenio.Descricao;
                 txtDescricao.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnRemover.Enabled = true;
+            }
+            else
+            {
+                _pesquisarConvenio.LinhaSelecionada = null;
+                txtID.Clear();
+                txtDescricao.Clear();
+                txtDescricao.Enabled = false;
+                btnAtualizar.Enabled = false;
+                btnRemover.Enabled = false;
             }
             #endregion
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (listViewConvenios.SelectedItems.Count > 0)
+            if (_pesquisarConvenio.LinhaSelecionada.HasValue)
             {
-                ListViewItem selected = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
-                Convenio convenio = new Convenio()
-                {
-                    ID_Convenio = Convert.ToInt32(selected.Text),
-                    ID_ConvenioSpecified = true
-
-                };
-
                 try
                 {
                     var result = MessageBox.Show("Deseja remover convênio ?", "Confirmação", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        clinicaService.RemoverConvenio(convenio);
-                        listViewConvenios.Items.Remove(selected);
-                        MessageBox.Show(this,"Convênio excluido com sucesso!");
+                        clinicaService.RemoverConvenio(_pesquisarConvenio.ConveniosSalvos[_pesquisarConvenio.LinhaSelecionada.Value]);
+                        listViewConvenios.Items.RemoveAt(_pesquisarConvenio.LinhaSelecionada.Value);
+                        MessageBox.Show(this, "Convênio excluido com sucesso!");
                         ClearTextBoxs();
-                    }else
+                    }
+                    else
                     {
                         ClearTextBoxs();
                         txtDescricaoFiltro.Focus();
@@ -135,22 +153,21 @@ namespace GerenciamentoDeClinica.telaconvenio
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (listViewConvenios.SelectedItems.Count > 0)
+            if (_pesquisarConvenio.LinhaSelecionada.HasValue)
             {
-                ListViewItem selected = listViewConvenios.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0);
-                Convenio convenio = new Convenio()
-                {
-                    ID_Convenio = Convert.ToInt32(selected.Text),
-                    ID_ConvenioSpecified = true,
-                    Descricao = txtDescricao.Text
-                };
-
                 try
                 {
-                    clinicaService.AtualizarConvenio(convenio);
-                    MessageBox.Show(this,"Convênio atualizado com sucesso!");
+                    Convenio convenio = new Convenio()
+                    {
+                        ID_Convenio = Convert.ToInt32(_pesquisarConvenio.ConveniosSalvos[_pesquisarConvenio.LinhaSelecionada.Value].ID_Convenio),
+                        Descricao = txtDescricao.Text
+                    };
 
-                    selected.SubItems[1].Text = txtDescricao.Text;
+                    clinicaService.AtualizarConvenio(convenio);
+                    MessageBox.Show(this, "Convênio atualizado com sucesso!");
+
+                    _pesquisarConvenio.ConveniosSalvos[_pesquisarConvenio.LinhaSelecionada.Value] = convenio;
+                    listViewConvenios.Items[_pesquisarConvenio.LinhaSelecionada.Value].SubItems[1].Text = convenio.Descricao;
 
                     ClearTextBoxs();
 
@@ -167,6 +184,64 @@ namespace GerenciamentoDeClinica.telaconvenio
             }
         }
 
+        private void CarregarListView()
+        {
+            foreach (Convenio convenio in _pesquisarConvenio.ConveniosSalvos)
+            {
+                ListViewItem linha = listViewConvenios.Items.Add(convenio.ID_Convenio.ToString());
+                linha.SubItems.Add(convenio.Descricao);
+            }
+        }
+
+        public void SalvarDados()
+        {
+            //Executa enquanto o Form for executado
+            while (Visible)
+            {
+                SaveXml();
+
+                //Salvar a cada 1.5s
+                Thread.Sleep(1500);
+            }
+        }
+
+        public void SaveXml()
+        {
+            if (!IsDisposed)
+            {
+                _pesquisarConvenio.PesquisarDescricao = txtDescricaoFiltro.Text;
+                _pesquisarConvenio.Convenio.Descricao = txtDescricao.Text;
+
+                int result;
+                if (Int32.TryParse(txtID.Text, out result))
+                    _pesquisarConvenio.Convenio.ID_Convenio = result;
+
+                if (!_savedPesquisar.Equals(ClinicaXmlUtils.ToXml(_pesquisarConvenio)))
+                {
+                    //altera o cliente para um novo
+                    _savedPesquisar = ClinicaXmlUtils.ToXml(_pesquisarConvenio);
+
+                    ClinicaXmlUtils.SetPesquisarConvenio(_pesquisarConvenio);
+                }
+            }
+        }
+
+        private void TelaPesquisarConvenio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveXml();
+        }
+    }
+
+    [XmlRoot(ElementName = "pesquisar_convenio")]
+    public sealed class PesquisarConvenio
+    {
+        [XmlElement(ElementName = "pesquisar_descricao")]
+        public string PesquisarDescricao { get; set; }
+        [XmlElement(ElementName = "linha_selecionada")]
+        public int? LinhaSelecionada { get; set; }
+        [XmlElement(ElementName = "convenios_salvos")]
+        public List<Convenio> ConveniosSalvos { get; set; }
+        public Convenio Convenio { get; set; }
     }
 }
 

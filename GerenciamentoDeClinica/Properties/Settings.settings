@@ -35,8 +35,35 @@
     <Setting Name="Medico" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Medico</Value>
     </Setting>
-    <Setting Name="Pesquisar_Alterar_Medico" Type="System.String" Scope="User">
+    <Setting Name="Pesquisar_Alterar_Medico" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/data/pesquisar_medico/Medico</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Medico" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_medico</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Medico_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/cadastrar_medico</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Convenio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_convenio</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Convenio_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/cadastrar_convenio</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Convenio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_convenio</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Convenio_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_convenio</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Convenios_Salvos" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">convenios_salvos</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Convenios_Salvos_XPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/data/pesquisar_convenio/convenios_salvos</Value>
+    </Setting>
+    <Setting Name="Convenio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Convenio</Value>
     </Setting>
   </Settings>
 </SettingsFile>

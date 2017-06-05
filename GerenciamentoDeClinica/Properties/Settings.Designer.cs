@@ -123,15 +123,96 @@ namespace GerenciamentoDeClinica.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_medico/Medico")]
         public string Pesquisar_Alterar_Medico {
             get {
                 return ((string)(this["Pesquisar_Alterar_Medico"]));
             }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cadastrar_medico")]
+        public string Cadastrar_Medico {
+            get {
+                return ((string)(this["Cadastrar_Medico"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/cadastrar_medico")]
+        public string Cadastrar_Medico_XPath {
+            get {
+                return ((string)(this["Cadastrar_Medico_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cadastrar_convenio")]
+        public string Cadastrar_Convenio {
+            get {
+                return ((string)(this["Cadastrar_Convenio"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/cadastrar_convenio")]
+        public string Cadastrar_Convenio_XPath {
+            get {
+                return ((string)(this["Cadastrar_Convenio_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pesquisar_convenio")]
+        public string Pesquisar_Convenio {
+            get {
+                return ((string)(this["Pesquisar_Convenio"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_convenio")]
+        public string Pesquisar_Convenio_XPath {
+            get {
+                return ((string)(this["Pesquisar_Convenio_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("convenios_salvos")]
+        public string Pesquisar_Convenios_Salvos {
+            get {
+                return ((string)(this["Pesquisar_Convenios_Salvos"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_convenio/convenios_salvos")]
+        public string Pesquisar_Convenios_Salvos_XPath {
+            get {
+                return ((string)(this["Pesquisar_Convenios_Salvos_XPath"]));
+            }
             set {
-                this["Pesquisar_Alterar_Medico"] = value;
+                this["Pesquisar_Convenios_Salvos_XPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Convenio")]
+        public string Convenio {
+            get {
+                return ((string)(this["Convenio"]));
             }
         }
     }

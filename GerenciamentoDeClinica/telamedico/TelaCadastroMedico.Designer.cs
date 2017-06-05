@@ -460,6 +460,7 @@ namespace GerenciamentoDeClinica.telamedico
             this.Name = "TelaCadastroMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Médico";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastroMedico_FormClosing);
             this.Load += new System.EventHandler(this.TelaCadastroMedico_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();

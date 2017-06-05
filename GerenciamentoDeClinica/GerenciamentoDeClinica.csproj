@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="utils\ClinicaUtils.cs" />
     <Compile Include="utils\ClinicaXMLUtils.cs" />
+    <Compile Include="utils\IConsistenciaDados.cs" />
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

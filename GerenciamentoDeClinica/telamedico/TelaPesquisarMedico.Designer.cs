@@ -586,6 +586,7 @@
             this.Name = "TelaPesquisarMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Médico";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarMedico_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarMedico_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -10,7 +10,7 @@ namespace ClinicaServiceLibrary.convenio
     [DataContract]
     public class Convenio
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int ID_Convenio  { get; set; }
         [DataMember]
         public string Descricao { get; set; }

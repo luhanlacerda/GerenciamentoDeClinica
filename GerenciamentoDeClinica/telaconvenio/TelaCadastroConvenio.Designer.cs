@@ -83,6 +83,8 @@
             this.Name = "TelaCadastroConvenio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Convenio";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastroConvenio_FormClosing);
+            this.Load += new System.EventHandler(this.TelaCadastroConvenio_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

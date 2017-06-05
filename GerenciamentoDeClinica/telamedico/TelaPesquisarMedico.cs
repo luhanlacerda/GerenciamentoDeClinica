@@ -14,12 +14,11 @@ using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telamedico
 {
-    public partial class TelaPesquisarMedico : Form
+    public partial class TelaPesquisarMedico : Form, IConsistenciaDados
     {
         private Thread _threadSalvarDados;
-        private string _savedPesquisar;
-        private List<Medico> _medicos;
-        private int? _selectedRow;
+        private string _savedPesquisar = "";
+        private PesquisarMedico _pesquisarMedico;
 
         public TelaPesquisarMedico()
         {
@@ -39,24 +38,21 @@ namespace GerenciamentoDeClinica.telamedico
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
-            PesquisarMedico saved = ClinicaXmlUtils.GetPesquisarMedico();
-            if (saved != null)
+            _pesquisarMedico = ClinicaXmlUtils.GetPesquisarMedico();
+            if (_pesquisarMedico != null)
             {
-                txtPesqNome.Text = saved.PesquisarNome;
-                txtPesqCRM.Text = saved.PesquisarCRM;
-                _medicos = saved.MedicosSalvos;
-                _selectedRow = saved.LinhaSelecionada;
+                txtPesqNome.Text = _pesquisarMedico.PesquisarNome;
+                txtPesqCRM.Text = _pesquisarMedico.PesquisarCRM;
 
                 CarregarListView();
                 //Informando a linha selecionada da ListView
-                if (_selectedRow.HasValue)
-                    listMedicos.Items[_selectedRow.Value].Selected = true;
+                if (_pesquisarMedico.LinhaSelecionada.HasValue)
+                    listMedicos.Items[_pesquisarMedico.LinhaSelecionada.Value].Selected = true;
 
-                CarregarEditar(saved.Medico);
+                CarregarEditar(_pesquisarMedico.Medico);
             }
-
-            _savedPesquisar = "";
-            _threadSalvarDados = new Thread(new ThreadStart(SalvarDados));
+            
+            _threadSalvarDados = new Thread(SalvarDados);
             _threadSalvarDados.Start();
         }
 
@@ -130,7 +126,7 @@ namespace GerenciamentoDeClinica.telamedico
                 listMedicos.Items.Clear();
 
                 ClinicaService service = new ClinicaService();
-                _medicos = new List<Medico>(service.ListarMedico(new Medico
+                _pesquisarMedico.MedicosSalvos = new List<Medico>(service.ListarMedico(new Medico
                 {
                     Nome = txtPesqNome.Text,
                     CRM = txtPesqCRM.Text
@@ -147,18 +143,19 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (_selectedRow.HasValue)
+            if (_pesquisarMedico.LinhaSelecionada.HasValue)
             {
                 try
                 {
                     Medico medico = GetMedico();
-                    medico.ID_Medico = _medicos[_selectedRow.Value].ID_Medico;
-
-                    _medicos[_selectedRow.Value] = medico;
+                    medico.ID_Medico = _pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value].ID_Medico;
 
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarMedico(_medicos[_selectedRow.Value]);
+                    service.AtualizarMedico(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
                     MessageBox.Show(@"Médico atualizado com sucesso!");
+
+                    _pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value] = medico;
+
                     DisableEditar();
                 }
                 catch (Exception ex)
@@ -170,15 +167,15 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (_selectedRow.HasValue)
+            if (_pesquisarMedico.LinhaSelecionada.HasValue)
             {
                 try
                 {
                     ClinicaService service = new ClinicaService();
-                    service.RemoverMedico(_medicos[_selectedRow.Value]);
+                    service.RemoverMedico(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
                     MessageBox.Show(@"Médico atualizado com sucesso!");
-                    _medicos.RemoveAt(_selectedRow.Value);
-                    listMedicos.Items.RemoveAt(_selectedRow.Value);
+                    _pesquisarMedico.MedicosSalvos.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
+                    listMedicos.Items.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
                     DisableEditar();
                 }
                 catch (Exception ex)
@@ -192,52 +189,49 @@ namespace GerenciamentoDeClinica.telamedico
         {
             if (listMedicos.SelectedItems.Count > 0)
             {
-                _selectedRow = listMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                _pesquisarMedico.LinhaSelecionada = listMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
 
-                CarregarEditar(_medicos[_selectedRow.Value]);
+                CarregarEditar(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
 
                 EnableEditar();
             }
             else
             {
-                _selectedRow = null;
+                _pesquisarMedico.LinhaSelecionada = null;
                 DisableEditar();
             }
         }
 
-        private void SalvarDados()
+        public void SalvarDados()
         {
             //Executa enquanto o Form for executado
             while (Visible)
             {
-                PesquisarMedico pesquisarMedico = new PesquisarMedico
-                {
-                    PesquisarNome = txtPesqNome.Text,
-                    PesquisarCRM = txtPesqCRM.Text,
-                    LinhaSelecionada = _selectedRow,
-                    Medico = GetMedico(),
-                    MedicosSalvos = _medicos
-                };
-
-                if (!_savedPesquisar.Equals(ClinicaXmlUtils.ToXml(pesquisarMedico)))
-                {
-                    //altera o cliente para um novo
-                    _savedPesquisar = ClinicaXmlUtils.ToXml(pesquisarMedico);
-
-                    ClinicaXmlUtils.SetPesquisarMedico(pesquisarMedico);
-                }
+                SaveXml();
 
                 //Salvar a cada 1.5s
                 Thread.Sleep(1500);
             }
+        }
 
-            //Dados poderiam ser perdidos, caso o Form fosse fechado.
-            //SaveXML();
+        public void SaveXml()
+        {
+            _pesquisarMedico.PesquisarNome = txtPesqNome.Text;
+            _pesquisarMedico.PesquisarCRM = txtPesqCRM.Text;
+            _pesquisarMedico.Medico = GetMedico();
+
+            if (!_savedPesquisar.Equals(ClinicaXmlUtils.ToXml(_pesquisarMedico)))
+            {
+                //altera o cliente para um novo
+                _savedPesquisar = ClinicaXmlUtils.ToXml(_pesquisarMedico);
+
+                ClinicaXmlUtils.SetPesquisarMedico(_pesquisarMedico);
+            }
         }
 
         private void CarregarListView()
         {
-            foreach (Medico medico in _medicos)
+            foreach (Medico medico in _pesquisarMedico.MedicosSalvos)
             {
                 ListViewItem linha = listMedicos.Items.Add(medico.ID_Medico.ToString());
                 linha.SubItems.Add(medico.Nome);
@@ -280,7 +274,7 @@ namespace GerenciamentoDeClinica.telamedico
         {
             string text = null;
 
-            Invoke(new MethodInvoker(delegate () { text = comboUF.SelectedItem.ToString(); }));
+            Invoke(new MethodInvoker(delegate () { if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString(); }));
             return text;
         }
 
@@ -291,7 +285,8 @@ namespace GerenciamentoDeClinica.telamedico
 
             Invoke(new MethodInvoker(delegate ()
             {
-                especialidade = ((BindingList<Especialidade>) comboEspecialidade.DataSource)
+                if (!comboEspecialidade.IsDisposed)
+                    especialidade = ((BindingList<Especialidade>)comboEspecialidade.DataSource)
                     .ElementAt(comboEspecialidade.SelectedIndex);
             }));
             return especialidade;
@@ -322,6 +317,12 @@ namespace GerenciamentoDeClinica.telamedico
                 Email = lblEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
+        }
+
+        private void TelaPesquisarMedico_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Dados poderiam ser perdidos, caso o Form fosse fechado.
+            SaveXml();
         }
     }
 

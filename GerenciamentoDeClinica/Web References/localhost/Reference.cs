@@ -1165,8 +1165,6 @@ namespace GerenciamentoDeClinica.localhost {
         
         private int iD_ConvenioField;
         
-        private bool iD_ConvenioFieldSpecified;
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string Descricao {
@@ -1185,17 +1183,6 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_ConvenioField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ID_ConvenioSpecified {
-            get {
-                return this.iD_ConvenioFieldSpecified;
-            }
-            set {
-                this.iD_ConvenioFieldSpecified = value;
             }
         }
     }
@@ -1314,9 +1301,9 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Medico))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Paciente))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1433,40 +1420,6 @@ namespace GerenciamentoDeClinica.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente")]
-    public partial class Paciente : Pessoa {
-        
-        private Convenio convenioField;
-        
-        private int iD_PacienteField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public Convenio Convenio {
-            get {
-                return this.convenioField;
-            }
-            set {
-                this.convenioField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ID_Paciente {
-            get {
-                return this.iD_PacienteField;
-            }
-            set {
-                this.iD_PacienteField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria")]
     public partial class Secretaria : Pessoa {
         
@@ -1492,6 +1445,40 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_SecretariaFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente")]
+    public partial class Paciente : Pessoa {
+        
+        private Convenio convenioField;
+        
+        private int iD_PacienteField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Convenio Convenio {
+            get {
+                return this.convenioField;
+            }
+            set {
+                this.convenioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Paciente {
+            get {
+                return this.iD_PacienteField;
+            }
+            set {
+                this.iD_PacienteField = value;
             }
         }
     }

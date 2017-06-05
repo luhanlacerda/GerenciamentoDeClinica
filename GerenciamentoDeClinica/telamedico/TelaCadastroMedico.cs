@@ -11,11 +11,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telamedico
 {
-    public partial class TelaCadastroMedico : Form
+    public partial class TelaCadastroMedico : Form, IConsistenciaDados
     {
+        private Thread _threadSalvarDados;
+        private string _savedCadastrar = "";
+        private CadastrarMedico _cadastrarMedico;
+
         public TelaCadastroMedico()
         {
             InitializeComponent();
@@ -29,6 +34,17 @@ namespace GerenciamentoDeClinica.telamedico
             ClinicaService service = new ClinicaService();
             comboBox1.DataSource = new BindingList<Especialidade>(service.ListarEspecialidade(new Especialidade()));
             comboBox1.DisplayMember = "Descricao";
+
+            //Carregamento dos dados
+            ClinicaXmlUtils.Create();
+            _cadastrarMedico = ClinicaXmlUtils.GetCadastrarMedico();
+            if (_cadastrarMedico != null)
+                CarregarEditar(_cadastrarMedico.Medico);
+            else
+                _cadastrarMedico = new CadastrarMedico { Medico = new Medico() };
+
+            _threadSalvarDados = new Thread(SalvarDados);
+            _threadSalvarDados.Start();
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)
@@ -51,42 +67,11 @@ namespace GerenciamentoDeClinica.telamedico
         {
             try
             {
-                Medico medico = new Medico();
-
-                medico.Especialidade = ((BindingList<Especialidade>)comboBox1.DataSource).ElementAt(comboBox1.SelectedIndex);
-
-                medico.Nome = txtNome.Text;
-                medico.CPF = maskedCPF.Text;
-                medico.RG = txtRG.Text;
-                medico.Contato = maskedCell.Text;
-                medico.CRM = txtCRM.Text;
-                medico.Dt_Nascimento = dateTimeDtNasc.Value;
-                medico.Email = txtEmail.Text;
-                medico.Endereco = new Endereco();
-                medico.Endereco.CEP = maskedCEP.Text;
-                medico.Endereco.Logradouro = txtLogradouro.Text;
-                medico.Endereco.Complemento = txtComplemento.Text;
-                medico.Endereco.Numero = txtNumero.Text;
-                medico.Endereco.Bairro = txtBairro.Text;
-                medico.Endereco.Cidade = txtCidade.Text;
-                medico.Endereco.UF = comboUF.SelectedItem.ToString();
-                medico.Endereco.Pais = txtPais.Text;
-                if (rbSolteiro.Checked)
-                {
-                    medico.Estado_Civil = rbSolteiro.Text;
-                }
-                else if (rbCasado.Checked)
-                {
-                    medico.Estado_Civil = rbCasado.Text;
-                }
-                else
-                {
-                    medico.Estado_Civil = rbViuvo.Text;
-                }
+                _cadastrarMedico.Medico = GetMedico();
 
                 ClinicaService service = new ClinicaService();
-                service.CadastrarMedico(medico);
-                MessageBox.Show(@"Médico atualizado com sucesso!");                
+                service.CadastrarMedico(_cadastrarMedico.Medico);
+                MessageBox.Show(@"Médico atualizado com sucesso!");
             }
             catch (Exception ex)
             {
@@ -95,13 +80,121 @@ namespace GerenciamentoDeClinica.telamedico
 
         }
 
-        /*private void txtNome_Leave(object sender, EventArgs e)
+        public void SalvarDados()
         {
-            Medico medico = new Medico();
-            medico.Nome = txtNome.Text;
+            //Executa enquanto o Form for executado
+            while (Visible)
+            {
+                SaveXml();
 
-            ClinicaXmlUtils.Create();
-            ClinicaXmlUtils.SetCadastrarMedico(medico);
-        }*/
+                //Salvar a cada 1.5s
+                Thread.Sleep(1500);
+            }
+        }
+
+        public void SaveXml()
+        {
+            _cadastrarMedico.Medico = GetMedico();
+
+            if (!_savedCadastrar.Equals(ClinicaXmlUtils.ToXml(_cadastrarMedico)))
+            {
+                //altera o cliente para um novo
+                _savedCadastrar = ClinicaXmlUtils.ToXml(_cadastrarMedico);
+
+                ClinicaXmlUtils.SetCadastrarMedico(_cadastrarMedico);
+            }
+        }
+
+        private void CarregarEditar(Medico medico)
+        {
+            txtNome.Text = medico.Nome;
+            maskedCPF.Text = medico.CPF;
+            txtRG.Text = medico.RG;
+            maskedCell.Text = medico.Contato;
+            txtCRM.Text = medico.CRM;
+            comboBox1.SelectedIndex = medico.Especialidade.ID_Especialidade - 1;
+            dateTimeDtNasc.Value = medico.Dt_Nascimento;
+            txtEmail.Text = medico.Email;
+            RadioButton radioButton = groupBox1.Controls.OfType<RadioButton>()
+                .FirstOrDefault(r => r.Text == medico.Estado_Civil);
+            if (radioButton != null)
+                radioButton.Checked = true;
+            maskedCEP.Text = medico.Endereco.CEP;
+            txtLogradouro.Text = medico.Endereco.Logradouro;
+            txtNumero.Text = medico.Endereco.Numero;
+            txtComplemento.Text = medico.Endereco.Complemento;
+            txtBairro.Text = medico.Endereco.Bairro;
+            txtCidade.Text = medico.Endereco.Cidade;
+            comboUF.SelectedItem = medico.Endereco.UF;
+            txtPais.Text = medico.Endereco.Pais;
+        }
+
+        //Adquirir valor do combobox Especialidade da thread principal
+        private Especialidade GetEspecialidade()
+        {
+            Especialidade especialidade = null;
+
+            Invoke(new MethodInvoker(delegate ()
+            {
+                if (!comboBox1.IsDisposed)
+                    especialidade = ((BindingList<Especialidade>)comboBox1.DataSource)
+                        .ElementAt(comboBox1.SelectedIndex);
+            }));
+            return especialidade;
+        }
+
+        private string GetEstadoCivil()
+        {
+            //Caso não seja nulo retornará o Text do RadioButton selecionado ou nulo (? = informa)
+            return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
+        }
+
+        //Adquirir valor do combobox UF da thread principal
+        private string GetUF()
+        {
+            string text = null;
+
+            Invoke(new MethodInvoker(delegate () { if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString(); }));
+            return text;
+        }
+
+        private Medico GetMedico()
+        {
+            return new Medico
+            {
+                CRM = txtCRM.Text,
+                Especialidade = GetEspecialidade(),
+                Nome = txtNome.Text,
+                RG = txtRG.Text,
+                CPF = maskedCPF.Text,
+                Endereco = new Endereco
+                {
+                    Logradouro = txtLogradouro.Text,
+                    Numero = txtNumero.Text,
+                    Complemento = txtComplemento.Text,
+                    Bairro = txtBairro.Text,
+                    Cidade = txtCidade.Text,
+                    UF = GetUF(),
+                    CEP = maskedCEP.Text,
+                    Pais = txtPais.Text
+                },
+                Contato = maskedCell.Text,
+                Dt_Nascimento = dateTimeDtNasc.Value,
+                Email = lblEmail.Text,
+                Estado_Civil = GetEstadoCivil()
+            };
+        }
+
+        private void TelaCadastroMedico_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Dados poderiam ser perdidos, caso o Form fosse fechado.
+            SaveXml();
+        }
+    }
+
+    [XmlRoot(ElementName = "cadastrar_medico")]
+    public sealed class CadastrarMedico
+    {
+        public Medico Medico { get; set; }
     }
 }

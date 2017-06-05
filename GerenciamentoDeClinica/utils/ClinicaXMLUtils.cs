@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using GerenciamentoDeClinica.Properties;
 using GerenciamentoDeClinica.telamedico;
+using GerenciamentoDeClinica.telaconvenio;
 
 namespace GerenciamentoDeClinica.utils
 {
@@ -48,56 +49,152 @@ namespace GerenciamentoDeClinica.utils
             return _document.SelectSingleNode(Properties.Settings.Default.Root);
         }
 
-        public static void SetPesquisarMedico(PesquisarMedico pesquisarMedico)
+        public static void SetCadastrarMedico(CadastrarMedico cadastrarMedico)
         {
             XmlNode rootNode = CheckXmlLoad();
 
-            XmlNode pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            XmlNode cadastrarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Medico_XPath);
             //Se existir, remover para a inserção do novo Xml
-            if (pesquisarMedicoNode != null)
-                rootNode.RemoveChild(pesquisarMedicoNode);
-            rootNode.InnerXml += ToXml(pesquisarMedico);
+            if (cadastrarMedicoNode != null)
+                rootNode.RemoveChild(cadastrarMedicoNode);
+            rootNode.InnerXml += ToXml(cadastrarMedico);
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static void SetPesquisarMedico(PesquisarMedico pesquisar)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (pesquisarNode != null)
+                rootNode.RemoveChild(pesquisarNode);
+            rootNode.InnerXml += ToXml(pesquisar);
 
             //Recarregar pesquisarMedicoNode
-            pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
-            if (pesquisarMedicoNode != null)
+            pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            if (pesquisarNode != null)
             {
                 //Pega os nós filhos de medicos salvos, transforma em XmlNode, seleciona apenas os que tem Name "medicos_salvos" e transforma em List
-                List<XmlNode> medicosSalvos = pesquisarMedicoNode.ChildNodes.Cast<XmlNode>()
+                List<XmlNode> salvos = pesquisarNode.ChildNodes.Cast<XmlNode>()
                     .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Medicos_Salvos).ToList();
                 //Início da correção do Xml, onde cada médico salvo estará dentro de "medicos_salvos"
-                XmlNode medicosSalvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
-                foreach (XmlNode node in medicosSalvos)
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
+                foreach (XmlNode node in salvos)
                 {
                     //Remove o antigo nó, para haver a troca de nome do nó filho
-                    pesquisarMedicoNode.RemoveChild(node);
+                    pesquisarNode.RemoveChild(node);
                     XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Medico);
                     newNode.InnerXml = node.InnerXml;
-                    medicosSalvosNode.AppendChild(newNode);
+                    salvosNode.AppendChild(newNode);
                 }
 
-                pesquisarMedicoNode.AppendChild(medicosSalvosNode);
+                pesquisarNode.AppendChild(salvosNode);
             }
 
             _document.Save(Properties.Settings.Default.SaveLocation);
         }
 
+        public static void SetCadastrarConvenio(CadastrarConvenio cadastrarConvenio)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode cadastrarConvenioNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Convenio_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (cadastrarConvenioNode != null)
+                rootNode.RemoveChild(cadastrarConvenioNode);
+            rootNode.InnerXml += ToXml(cadastrarConvenio);
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static void SetPesquisarConvenio(PesquisarConvenio pesquisar)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Convenio_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (pesquisarNode != null)
+                rootNode.RemoveChild(pesquisarNode);
+            rootNode.InnerXml += ToXml(pesquisar);
+
+            //Recarregar pesquisarMedicoNode
+            pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Convenio_XPath);
+            if (pesquisarNode != null)
+            {
+                //Pega os nós filhos de medicos salvos, transforma em XmlNode, seleciona apenas os que tem Name "medicos_salvos" e transforma em List
+                List<XmlNode> salvos = pesquisarNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Convenios_Salvos).ToList();
+                //Início da correção do Xml, onde cada médico salvo estará dentro de "medicos_salvos"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Convenios_Salvos);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    pesquisarNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Convenio);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                pesquisarNode.AppendChild(salvosNode);
+            }
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static CadastrarMedico GetCadastrarMedico()
+        {
+            XmlNode cadastrarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Medico_XPath);
+            if (cadastrarMedicoNode == null)
+                return null;
+
+            return FromXml<CadastrarMedico>(cadastrarMedicoNode.OuterXml);
+        }
+
         public static PesquisarMedico GetPesquisarMedico()
         {
-            XmlNode pesquisarMedicoNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
-            if (pesquisarMedicoNode == null)
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medico_XPath);
+            if (pesquisarNode == null)
                 return null;
 
             //Retornar para Classe PesquisarMedico, vai haver um erro nos medicos_salvos
-            PesquisarMedico pesquisarMedico = FromXml<PesquisarMedico>(pesquisarMedicoNode.OuterXml);
+            PesquisarMedico pesquisar = FromXml<PesquisarMedico>(pesquisarNode.OuterXml);
             //Início da correção dos médicos salvos
-            XmlNode medicosSalvosNode = pesquisarMedicoNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
-            if (medicosSalvosNode != null)
+            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
+            if (salvosNode != null)
                 //Pega os nós filhos de medicos salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
-                pesquisarMedico.MedicosSalvos = medicosSalvosNode.ChildNodes.Cast<XmlNode>()
+                pesquisar.MedicosSalvos = salvosNode.ChildNodes.Cast<XmlNode>()
                     .Select(n => FromXml<Medico>(n.OuterXml)).ToList();
 
-            return pesquisarMedico;
+            return pesquisar;
+        }
+
+        public static CadastrarConvenio GetCadastrarConvenio()
+        {
+            XmlNode cadastrarConvenioNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Convenio_XPath);
+            if (cadastrarConvenioNode == null)
+                return null;
+
+            return FromXml<CadastrarConvenio>(cadastrarConvenioNode.OuterXml);
+        }
+
+        public static PesquisarConvenio GetPesquisarConvenio()
+        {
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Convenio_XPath);
+            if (pesquisarNode == null)
+                return null;
+
+            //Retornar para Classe PesquisarMedico, vai haver um erro nos medicos_salvos
+            PesquisarConvenio pesquisar = FromXml<PesquisarConvenio>(pesquisarNode.OuterXml);
+            //Início da correção dos médicos salvos
+            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Convenios_Salvos);
+            if (salvosNode != null)
+                //Pega os nós filhos de medicos salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
+                pesquisar.ConveniosSalvos = salvosNode.ChildNodes.Cast<XmlNode>()
+                    .Select(n => FromXml<Convenio>(n.OuterXml)).ToList();
+
+            return pesquisar;
         }
 
         //Converter medico para xml
