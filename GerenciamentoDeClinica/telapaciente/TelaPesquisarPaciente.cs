@@ -103,15 +103,15 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 try
                 {
-                    var repost = MessageBox.Show(@"Deseja remover o paciente?", "Confirmação", MessageBoxButtons.YesNo);
+                    var repost = MessageBox.Show(@"Deseja remover o paciente?", @"Confirmação", MessageBoxButtons.YesNo);
 
                     if (repost == DialogResult.Yes)
                     {
                         ClinicaService service = new ClinicaService();
-                        service.RemoverPaciente(pacientes[selectedRow.Value]);
+                        service.RemoverPaciente(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
                         MessageBox.Show(this, @"Paciente removido com sucesso.");
-                        pacientes.RemoveAt(selectedRow.Value);
-                        listViewPacientes.Items.RemoveAt(selectedRow.Value);
+                        _pesquisarPaciente.PacientesSalvos.RemoveAt(_pesquisarPaciente.LinhaSelecionada.Value);
+                        listViewPacientes.Items.RemoveAt(_pesquisarPaciente.LinhaSelecionada.Value);
                         disableEditar();
                     }
                     else
@@ -133,70 +133,30 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (selectedRow.HasValue)
+            if (_pesquisarPaciente.LinhaSelecionada.HasValue)
             {
                 try
                 {
-                    pacientes[selectedRow.Value].Convenio = ((BindingList<Convenio>)comboConvenio.DataSource).ElementAt(comboConvenio.SelectedIndex);
-                    pacientes[selectedRow.Value].Nome = txtNome.Text;
-                    pacientes[selectedRow.Value].CPF = maskedCPF.Text;
-                    pacientes[selectedRow.Value].RG = txtRG.Text;
-                    pacientes[selectedRow.Value].Contato = maskedCell.Text;
-                    pacientes[selectedRow.Value].Dt_Nascimento = dateTimeDtNasc.Value;
-                    pacientes[selectedRow.Value].Email = txtEmail.Text;
-                    if (rbSolteiro.Checked)
-                    {
-                        pacientes[selectedRow.Value].Estado_Civil = rbSolteiro.Text;
-                    }
-                    else if (rbCasado.Checked)
-                    {
-                        pacientes[selectedRow.Value].Estado_Civil = rbCasado.Text;
-                    }
-                    else
-                    {
-                        pacientes[selectedRow.Value].Estado_Civil = rbViuvo.Text;
-                    }
-                    pacientes[selectedRow.Value].Endereco.CEP = maskedCEP.Text;
-                    pacientes[selectedRow.Value].Endereco.Logradouro = txtLogradouro.Text;
-                    pacientes[selectedRow.Value].Endereco.Numero = txtNumero.Text;
-                    pacientes[selectedRow.Value].Endereco.Complemento = txtComplemento.Text;
-                    pacientes[selectedRow.Value].Endereco.Bairro = txtBairro.Text;
-                    pacientes[selectedRow.Value].Endereco.Cidade = txtCidade.Text;
-                    pacientes[selectedRow.Value].Endereco.UF = comboUF.Text;
-                    pacientes[selectedRow.Value].Endereco.Pais = txtPais.Text;
+                    Paciente paciente = GetPaciente();
+                    paciente.ID_Paciente = _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value].ID_Paciente;
 
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarPaciente(pacientes[selectedRow.Value]);
+                    service.AtualizarPaciente(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
                     MessageBox.Show(@"Paciente atualizado com sucesso!");
+
+                    _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value] = paciente;
+
                     disableEditar();
-
-                    listViewPacientes.Items.Clear();
-                    pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
-                    {
-                        ID_Paciente = 0,
-                        Nome = txtFiltroNome.Text,
-                        CPF = maskedFiltroCPF.Text
-                    }));
-
-                    foreach (Paciente listaPacientes in pacientes)
-                    {
-                        ListViewItem linha = listViewPacientes.Items.Add(listaPacientes.ID_Paciente.ToString());
-                        linha.SubItems.Add(listaPacientes.Nome);
-                        linha.SubItems.Add(listaPacientes.CPF);
-                        linha.SubItems.Add(listaPacientes.Convenio.Descricao);
-                        linha.SubItems.Add(listaPacientes.Contato);
-
-                    }
-
                 }
 
                 catch (WebException)
                 {
-                    MessageBox.Show(ERROR_WEBSERVICE);
+                    MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
@@ -208,7 +168,7 @@ namespace GerenciamentoDeClinica.telapaciente
             try
             {
                 ClinicaService service = new ClinicaService();
-                pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
+                _pesquisarPaciente.PacientesSalvos = new List<Paciente>(service.ListarPaciente(new Paciente
                 {
                     ID_Paciente = 0,
                     Nome = txtFiltroNome.Text,
@@ -250,43 +210,15 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             if (listViewPacientes.SelectedItems.Count > 0)
             {
-                selectedRow = listViewPacientes.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                _pesquisarPaciente.LinhaSelecionada = listViewPacientes.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
 
-                #region Dados
-                txtNome.Text = pacientes[selectedRow.Value].Nome;
-                maskedCPF.Text = pacientes[selectedRow.Value].CPF;
-                txtRG.Text = pacientes[selectedRow.Value].RG;
-                maskedCell.Text = pacientes[selectedRow.Value].Contato;
-                comboConvenio.SelectedIndex = pacientes[selectedRow.Value].Convenio.ID_Convenio - 1;
-                dateTimeDtNasc.Value = pacientes[selectedRow.Value].Dt_Nascimento;
-                txtEmail.Text = pacientes[selectedRow.Value].Email;
-                switch (pacientes[selectedRow.Value].Estado_Civil)
-                {
-                    case "Solteiro(a)":
-                        rbSolteiro.Checked = true;
-                        break;
-                    case "Casado(a)":
-                        rbCasado.Checked = true;
-                        break;
-                    case "Viúvo(a)":
-                        rbViuvo.Checked = true;
-                        break;
-                }
-                maskedCEP.Text = pacientes[selectedRow.Value].Endereco.CEP;
-                txtLogradouro.Text = pacientes[selectedRow.Value].Endereco.Logradouro;
-                txtNumero.Text = pacientes[selectedRow.Value].Endereco.Numero;
-                txtComplemento.Text = pacientes[selectedRow.Value].Endereco.Complemento;
-                txtBairro.Text = pacientes[selectedRow.Value].Endereco.Bairro;
-                txtCidade.Text = pacientes[selectedRow.Value].Endereco.Cidade;
-                comboUF.SelectedItem = pacientes[selectedRow.Value].Endereco.UF;
-                txtPais.Text = pacientes[selectedRow.Value].Endereco.Pais;
-                #endregion
+                CarregarEditar(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
 
                 enableEditar();
             }
             else
             {
-                selectedRow = null;
+                _pesquisarPaciente.LinhaSelecionada = null;
                 disableEditar();
             }
         }
@@ -302,7 +234,51 @@ namespace GerenciamentoDeClinica.telapaciente
                 //altera o cliente para um novo
                 _savedPesquisar = ClinicaXmlUtils.ToXml(_pesquisarPaciente);
 
-                ClinicaXmlUtils.SetPesquisarMedico(_pesquisarPaciente);
+                ClinicaXmlUtils.SetPesquisarPaciente(_pesquisarPaciente);
+            }
+        }
+
+        public void SalvarDados()
+        {
+            //Executa enquanto o Form for executado
+            while (Visible)
+            {
+                SaveXml();
+
+                //Salvar a cada 1.5s
+                Thread.Sleep(1500);
+            }
+        }
+
+        private void CarregarEditar(Paciente paciente)
+        {
+            txtNome.Text = paciente.Nome;
+            maskedCPF.Text = paciente.CPF;
+            txtRG.Text = paciente.RG;
+            maskedCell.Text = paciente.Contato;
+            comboConvenio.SelectedIndex = paciente.Convenio.ID_Convenio - 1;
+            dateTimeDtNasc.Value = paciente.Dt_Nascimento;
+            txtEmail.Text = paciente.Email;
+            RadioButton radioButton = groupBox1.Controls.OfType<RadioButton>()
+                .FirstOrDefault(r => r.Text == paciente.Estado_Civil);
+            if (radioButton != null)
+                radioButton.Checked = true;
+            maskedCEP.Text = paciente.Endereco.CEP;
+            txtLogradouro.Text = paciente.Endereco.Logradouro;
+            txtNumero.Text = paciente.Endereco.Numero;
+            txtComplemento.Text = paciente.Endereco.Complemento;
+            txtBairro.Text = paciente.Endereco.Bairro;
+            txtCidade.Text = paciente.Endereco.Cidade;
+            comboUF.SelectedItem = paciente.Endereco.UF;
+            txtPais.Text = paciente.Endereco.Pais;
+        }
+        private void CarregarListView()
+        {
+            foreach (Paciente paciente in _pesquisarPaciente.PacientesSalvos)
+            {
+                ListViewItem linha = listViewPacientes.Items.Add(paciente.ID_Paciente.ToString());
+                linha.SubItems.Add(paciente.Nome);
+                linha.SubItems.Add(paciente.CPF);
             }
         }
 
@@ -311,7 +287,6 @@ namespace GerenciamentoDeClinica.telapaciente
             //Caso não seja nulo retornará o Text do RadioButton selecionado ou nulo (? = informa)
             return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
         }
-
 
         //Adquirir valor do combobox UF da thread principal
         private string GetUF()
@@ -322,15 +297,29 @@ namespace GerenciamentoDeClinica.telapaciente
             return text;
         }
 
+        //Adquirir valor do combobox Convenio da thread principal
+        private Convenio GetConvenio()
+        {
+            Convenio convenio = null;
+
+            Invoke(new MethodInvoker(delegate ()
+            {
+                if (!comboConvenio.IsDisposed)
+                    convenio = ((BindingList<Convenio>)comboConvenio.DataSource)
+                        .ElementAt(comboConvenio.SelectedIndex);
+            }));
+            return convenio;
+        }
+
+
         private Paciente GetPaciente()
         {
             return new Paciente
             {
                 CPF = maskedFiltroCPF.Text,
-                Especialidade = GetEspecialidade(),
+                Convenio = GetConvenio(),
                 Nome = txtNome.Text,
                 RG = txtRG.Text,
-                CPF = maskedCPF.Text,
                 Endereco = new Endereco
                 {
                     Logradouro = txtLogradouro.Text,
@@ -349,6 +338,11 @@ namespace GerenciamentoDeClinica.telapaciente
             };
         }
 
+        private void TelaPesquisarPaciente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Dados poderiam ser perdidos, caso o Form fosse fechado.
+            SaveXml();
+        }
     }
 
 
