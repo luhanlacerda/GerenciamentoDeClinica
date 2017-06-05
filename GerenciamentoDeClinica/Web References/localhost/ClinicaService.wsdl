@@ -5,12 +5,13 @@
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" />
-      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.estado" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IClinicaService_CadastrarConsulta_InputMessage">
@@ -157,6 +158,30 @@
   <wsdl:message name="IClinicaService_ListarSecretaria_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarSecretariaResponse" />
   </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEstadoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IClinicaService">
     <wsdl:operation name="CadastrarConsulta">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConsulta" message="tns:IClinicaService_CadastrarConsulta_InputMessage" />
@@ -253,6 +278,22 @@
     <wsdl:operation name="ListarSecretaria">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarSecretaria" message="tns:IClinicaService_ListarSecretaria_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarSecretariaResponse" message="tns:IClinicaService_ListarSecretaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEstado" message="tns:IClinicaService_CadastrarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEstadoResponse" message="tns:IClinicaService_CadastrarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEstado" message="tns:IClinicaService_AtualizarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEstadoResponse" message="tns:IClinicaService_AtualizarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverEstado" message="tns:IClinicaService_RemoverEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverEstadoResponse" message="tns:IClinicaService_RemoverEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarEstado" message="tns:IClinicaService_ListarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarEstadoResponse" message="tns:IClinicaService_ListarEstado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClinicaService" type="tns:IClinicaService">
@@ -466,6 +507,42 @@
     </wsdl:operation>
     <wsdl:operation name="ListarSecretaria">
       <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarSecretaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

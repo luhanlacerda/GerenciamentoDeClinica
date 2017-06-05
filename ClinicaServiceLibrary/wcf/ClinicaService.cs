@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using ClinicaServiceLibrary.estado;
 
 
 namespace ClinicaServiceLibrary.wcf
@@ -124,6 +125,30 @@ namespace ClinicaServiceLibrary.wcf
         {
             NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
             return negocioSecretaria.Listar(filtro);
+        }
+
+        public void CadastrarEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public void AtualizarEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public void RemoverEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public List<Estado> ListarEstado(Estado filtro)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            return negocioEstado.Listar(filtro);
         }
 
         public void RemoverConsulta(Consulta consulta)

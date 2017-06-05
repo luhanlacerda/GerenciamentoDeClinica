@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using ClinicaServiceLibrary.estado;
 
 namespace ClinicaServiceLibrary.wcf
 {
@@ -90,5 +91,17 @@ namespace ClinicaServiceLibrary.wcf
 
         [OperationContract]
         List<Secretaria> ListarSecretaria(Secretaria filtro);
+
+        [OperationContract]
+        void CadastrarEstado(Estado estado);
+
+        [OperationContract]
+        void AtualizarEstado(Estado estado);
+
+        [OperationContract]
+        void RemoverEstado(Estado estado);
+
+        [OperationContract]
+        List<Estado> ListarEstado(Estado filtro);
     }
 }

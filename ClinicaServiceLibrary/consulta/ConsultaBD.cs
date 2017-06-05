@@ -21,10 +21,8 @@ namespace ClinicaServiceLibrary.consulta
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrucao a ser executanda
-                string sql = "INSERT INTO Consulta (Horario, Duracao, Observacoes, Descricao_Receita, ID_Receita" +
-                                                    "ID_Medico, ID_Paciente, ID_Secretaria)" +
-                    "VALUES (@Horario, @Duracao, @Observacao, @Descricao_Receita, @ID_Receita, @ID_Medico," +
-                    "@ID_Paciente, @ID_Secretaria)";
+                string sql = "INSERT INTO Consulta (Horario, Duracao, ID_Medico, ID_Paciente, ID_Secretaria, ID_Estado)" +
+                    "VALUES (@Horario, @Duracao, @ID_Medico, @ID_Paciente, @ID_Secretaria, @ID_Estado)";
 
                 SqlCommand scm = new SqlCommand (sql, sqlConn);
 
@@ -36,15 +34,6 @@ namespace ClinicaServiceLibrary.consulta
                 scm.Parameters.Add("@Duracao", SqlDbType.Int);
                 scm.Parameters["@Duracao"].Value = consulta.Duracao;
 
-                scm.Parameters.Add("@Observacoes", SqlDbType.VarChar);
-                scm.Parameters["@Observacoes"].Value = consulta.Observacoes;
-
-                scm.Parameters.Add("@Descricao_Receita", SqlDbType.VarChar);
-                scm.Parameters["@Descricao_Receita"].Value = consulta.Descricao;
-
-                scm.Parameters.Add("@ID_Receita", SqlDbType.Int);
-                scm.Parameters["@ID_Receita"].Value = consulta.ID_Consulta;
-
                 scm.Parameters.Add("@ID_Medico", SqlDbType.Int);
                 scm.Parameters["@ID_Medico"].Value = consulta.Medico.ID_Medico;
 
@@ -53,6 +42,9 @@ namespace ClinicaServiceLibrary.consulta
 
                 scm.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
                 scm.Parameters["@ID_Secretaria"].Value = consulta.Secretaria.ID_Secretaria;
+
+                scm.Parameters.Add("@ID_Estado", SqlDbType.Int);
+                scm.Parameters["@ID_Estado"].Value = consulta.Estado.ID_Estado;
                 #endregion
                 //Executando instrucao
                 scm.ExecuteNonQuery();
@@ -74,16 +66,40 @@ namespace ClinicaServiceLibrary.consulta
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrucao a ser executada
-                string sql = "UPDATE Consulta SET Horario = @Horaria, Duracao = @Duracao," +
-                "Observacao = @Observacao,  Descricao =@Descricao, ID_Receita = @ID_Receita," +
-                "ID_Medico = @ID_Medico, ID_Paciente = @ID_Paciente, ID_Secretaria = @ID_Secretaria"+
-                "WHERE ID_Consulta = @ID_Consulta";
+                string sql = "UPDATE Consulta SET Horario = @Horario, Duracao = @Duracao, Observações = @Observações, Receita = @Receita, " +
+                    " ID_Medico = @ID_Medico, ID_Paciente = @ID_Paciente, ID_Secretaria = @ID_Secretaria, ID_Estado = @ID_Estado WHERE ID_Consulta = @ID_Consulta)";
 
                 SqlCommand scm = new SqlCommand (sql, sqlConn);
 
-                scm.Parameters.Add("@ID_Consulta", SqlDbType.Int);
-                scm.Parameters["@ID_Consulta"].Value = consulta.ID_Consulta;
+                #region  Parâmetros 
 
+                scm.Parameters.Add("@ID_Consulta", SqlDbType.Int);
+                scm.Parameters["@ID_Consulta"].Value = consulta.Estado.ID_Estado;
+
+                scm.Parameters.Add("@Horario", SqlDbType.DateTime);
+                scm.Parameters["@Horario"].Value = consulta.Horario;
+
+                scm.Parameters.Add("@Duracao", SqlDbType.Int);
+                scm.Parameters["@Duracao"].Value = consulta.Duracao;
+
+                scm.Parameters.Add("@Observacoes", SqlDbType.VarChar);
+                scm.Parameters["@Observacoes"].Value = consulta.Observacoes;
+
+                scm.Parameters.Add("@Receita", SqlDbType.VarChar);
+                scm.Parameters["@Receita"].Value = consulta.Receita;
+
+                scm.Parameters.Add("@ID_Medico", SqlDbType.Int);
+                scm.Parameters["@ID_Medico"].Value = consulta.Medico.ID_Medico;
+
+                scm.Parameters.Add("@ID_Paciente", SqlDbType.Int);
+                scm.Parameters["@ID_Paciente"].Value = consulta.Paciente.ID_Paciente;
+
+                scm.Parameters.Add("@ID_Secretaria", SqlDbType.Int);
+                scm.Parameters["@ID_Secretaria"].Value = consulta.Secretaria.ID_Secretaria;
+
+                scm.Parameters.Add("@ID_Estado", SqlDbType.Int);
+                scm.Parameters["@ID_Estado"].Value = consulta.Estado.ID_Estado;
+                #endregion
                 //Executando instruçao
                 scm.ExecuteNonQuery();
                 //Liberando memoria
@@ -136,8 +152,8 @@ namespace ClinicaServiceLibrary.consulta
                 //Conectar ao banco
                 this.abrirConexao();
                 //Instruçao a ser executada
-                string sql = "SELECT Horario, Duracao, Observacoes, Descricao, ID_Receita, ID_Medico," +
-                    "ID_Paciente, ID_Secretaria FROM Consulta_Receita WHERE 1=1";
+                string sql = "SELECT Horario, Duracao, Observações, Receita, ID_Consulta, ID_Medico, ID_Paciente, " +
+                    " ID_Secretaria, ID_Estado WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
                 //Se foi passado um ID valido, o mesmo entrara como criterio de filtro.
@@ -184,11 +200,12 @@ namespace ClinicaServiceLibrary.consulta
                     consulta.Horario = DbReader.GetDateTime(DbReader.GetOrdinal("Horario"));
                     consulta.Duracao = DbReader.GetInt32(DbReader.GetOrdinal("Duracao"));
                     consulta.Observacoes = DbReader.GetString(DbReader.GetOrdinal("Observacoes"));
-                    consulta.Descricao = DbReader.GetString(DbReader.GetOrdinal("Descricao"));
-                    consulta.ID_Consulta = DbReader.GetInt32(DbReader.GetOrdinal("ID_Receita"));
+                    consulta.Receita = DbReader.GetString(DbReader.GetOrdinal("Receita"));
+                    consulta.ID_Consulta = DbReader.GetInt32(DbReader.GetOrdinal("ID_Consulta"));
                     consulta.Medico.ID_Medico = DbReader.GetInt32(DbReader.GetOrdinal("ID_Medico"));
                     consulta.Paciente.ID_Paciente = DbReader.GetInt32(DbReader.GetOrdinal("ID_Paciente"));
                     consulta.Secretaria.ID_Secretaria = DbReader.GetInt32(DbReader.GetOrdinal("ID_Secretaria"));
+                    consulta.Estado.ID_Estado = DbReader.GetInt32(DbReader.GetOrdinal("ID_Estado"));
 
                     retorno.Add(consulta);
 

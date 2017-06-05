@@ -60,6 +60,10 @@
     <Compile Include="especialidade\EspecialidadeBD.cs" />
     <Compile Include="especialidade\IEspecialidade.cs" />
     <Compile Include="especialidade\NegocioEspecialidade.cs" />
+    <Compile Include="estado\Estado.cs" />
+    <Compile Include="estado\EstadoBD.cs" />
+    <Compile Include="estado\IEstado.cs" />
+    <Compile Include="estado\NegocioEstado.cs" />
     <Compile Include="wcf\IClinicaService.cs" />
     <Compile Include="medico\IMedico.cs" />
     <Compile Include="medico\Medico.cs" />
@@ -81,6 +85,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

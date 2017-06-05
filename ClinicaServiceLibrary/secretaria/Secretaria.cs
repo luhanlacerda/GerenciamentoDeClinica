@@ -11,7 +11,7 @@ namespace ClinicaServiceLibrary.secretaria
     [DataContract, KnownType(typeof(Pessoa))]
     public class Secretaria : Pessoa
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int ID_Secretaria { get; set; }
     }
 }
