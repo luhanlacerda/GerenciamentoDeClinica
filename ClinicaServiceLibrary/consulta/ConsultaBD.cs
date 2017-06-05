@@ -7,6 +7,10 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using ClinicaServiceLibrary.estado;
+using ClinicaServiceLibrary.medico;
+using ClinicaServiceLibrary.paciente;
+using ClinicaServiceLibrary.secretaria;
 
 namespace ClinicaServiceLibrary.consulta
 {

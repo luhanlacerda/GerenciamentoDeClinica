@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.listViewSecretarias = new System.Windows.Forms.ListView();
             this.SecretariaNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SecretariaCPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,8 +64,6 @@
             this.lblDuracao = new System.Windows.Forms.Label();
             this.labelDia = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,14 +104,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastrar Consulta";
             // 
+            // comboEstado
+            // 
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(327, 477);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(93, 21);
+            this.comboEstado.TabIndex = 28;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(278, 481);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(43, 13);
+            this.lblEstado.TabIndex = 27;
+            this.lblEstado.Text = "Estado:";
+            // 
             // listViewSecretarias
             // 
             this.listViewSecretarias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SecretariaNome,
             this.SecretariaCPF});
+            this.listViewSecretarias.FullRowSelect = true;
             this.listViewSecretarias.Location = new System.Drawing.Point(26, 378);
             this.listViewSecretarias.Name = "listViewSecretarias";
-            this.listViewSecretarias.Size = new System.Drawing.Size(394, 65);
+            this.listViewSecretarias.Size = new System.Drawing.Size(394, 79);
             this.listViewSecretarias.TabIndex = 26;
             this.listViewSecretarias.UseCompatibleStateImageBehavior = false;
             this.listViewSecretarias.View = System.Windows.Forms.View.Details;
@@ -240,7 +258,7 @@
             this.listViewMedicos.FullRowSelect = true;
             this.listViewMedicos.Location = new System.Drawing.Point(26, 212);
             this.listViewMedicos.Name = "listViewMedicos";
-            this.listViewMedicos.Size = new System.Drawing.Size(395, 73);
+            this.listViewMedicos.Size = new System.Drawing.Size(395, 83);
             this.listViewMedicos.TabIndex = 13;
             this.listViewMedicos.UseCompatibleStateImageBehavior = false;
             this.listViewMedicos.View = System.Windows.Forms.View.Details;
@@ -291,7 +309,7 @@
             this.listViewPacientes.FullRowSelect = true;
             this.listViewPacientes.Location = new System.Drawing.Point(26, 79);
             this.listViewPacientes.Name = "listViewPacientes";
-            this.listViewPacientes.Size = new System.Drawing.Size(395, 67);
+            this.listViewPacientes.Size = new System.Drawing.Size(395, 77);
             this.listViewPacientes.TabIndex = 9;
             this.listViewPacientes.UseCompatibleStateImageBehavior = false;
             this.listViewPacientes.View = System.Windows.Forms.View.Details;
@@ -372,23 +390,6 @@
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(278, 481);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(43, 13);
-            this.lblEstado.TabIndex = 27;
-            this.lblEstado.Text = "Estado:";
-            // 
-            // comboEstado
-            // 
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(327, 477);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(93, 21);
-            this.comboEstado.TabIndex = 28;
             // 
             // TelaCadastrarConsulta
             // 
