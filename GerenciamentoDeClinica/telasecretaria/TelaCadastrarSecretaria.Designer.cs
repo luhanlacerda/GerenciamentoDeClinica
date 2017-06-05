@@ -1,6 +1,6 @@
 ﻿namespace GerenciamentoDeClinica.telasecretaria
 {
-    partial class TelaCadastroSecretaria
+    partial class TelaCadastrarSecretaria
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroSecretaria));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastrarSecretaria));
             this.GroupBox = new System.Windows.Forms.GroupBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();

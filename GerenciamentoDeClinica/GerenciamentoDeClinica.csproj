@@ -105,11 +105,11 @@
     <Compile Include="TelaLogin.Designer.cs">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="telasecretaria\TelaCadastroSecretaria.cs">
+    <Compile Include="telasecretaria\TelaCadastrarSecretaria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="telasecretaria\TelaCadastroSecretaria.Designer.cs">
-      <DependentUpon>TelaCadastroSecretaria.cs</DependentUpon>
+    <Compile Include="telasecretaria\TelaCadastrarSecretaria.Designer.cs">
+      <DependentUpon>TelaCadastrarSecretaria.cs</DependentUpon>
     </Compile>
     <Compile Include="telaconvenio\TelaCadastroConvenio.cs">
       <SubType>Form</SubType>
@@ -196,8 +196,8 @@
     <EmbeddedResource Include="TelaLogin.resx">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="telasecretaria\TelaCadastroSecretaria.resx">
-      <DependentUpon>TelaCadastroSecretaria.cs</DependentUpon>
+    <EmbeddedResource Include="telasecretaria\TelaCadastrarSecretaria.resx">
+      <DependentUpon>TelaCadastrarSecretaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="telaconvenio\TelaCadastroConvenio.resx">
       <DependentUpon>TelaCadastroConvenio.cs</DependentUpon>

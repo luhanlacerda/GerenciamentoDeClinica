@@ -7,20 +7,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telasecretaria
 {
-    public partial class TelaCadastroSecretaria : Form
+    public partial class TelaCadastrarSecretaria : Form
     {
-        //private Thread _threadSalvarDados;
-        //private string _savedCadastrar = "";
-        //private CadastrarSecretaria _cadastrarSecretaria;
-
-        public TelaCadastroSecretaria()
+        public TelaCadastrarSecretaria()
         {
             InitializeComponent();
         }
@@ -88,19 +82,6 @@ namespace GerenciamentoDeClinica.telasecretaria
             comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
             txtPais.Text = "Brasil";
             txtPais.Enabled = false;
-
-            /*
-            //Carregamento dos dados
-            ClinicaXmlUtils.Create();
-            _cadastrarSecretaria = ClinicaXmlUtils.GetCadastrarSecretaria();
-            if (_cadastrarSecretaria != null)
-                CarregarEditar(_cadastrarSecretaria.Secretaria);
-            else
-                _cadastrarSecretaria = new CadastrarSecretaria() { Secretaria = new Secretaria() };
-
-            _threadSalvarDados = new Thread(SalvarDados);
-            _threadSalvarDados.Start();
-            */
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)
@@ -120,37 +101,5 @@ namespace GerenciamentoDeClinica.telasecretaria
 
 
         }
-
-        /*
-        public void SalvarDados()
-        {
-            //Executa enquanto o Form for executado
-            while (Visible)
-            {
-                SaveXml();
-
-                //Salvar a cada 1.5s
-                Thread.Sleep(1500);
-            }
-        }
-             public void SaveXml()
-             {
-                 _cadastrarSecretaria.Secretaria = GetSecretaria();
-
-                 if (!_savedCadastrar.Equals(ClinicaXmlUtils.ToXml(_cadastrarSecretaria)))
-                 {
-                     //altera o cliente para um novo
-                     _savedCadastrar = ClinicaXmlUtils.ToXml(_cadastrarSecretaria);
-
-                     ClinicaXmlUtils.SetCadastrarSecretaria(_cadastrarSecretaria);
-                 }
-             }
-             */
-        [XmlRoot(ElementName = "cadastrar_secretaria")]
-        public sealed class CadastrarSecretaria
-        {
-            public Secretaria Secretaria { get; set; }
-        }
-        
     }
 }

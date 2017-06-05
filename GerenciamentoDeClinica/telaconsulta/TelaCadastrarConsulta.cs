@@ -13,10 +13,10 @@ namespace GerenciamentoDeClinica.telaconsulta
 {
     public partial class TelaCadastrarConsulta : Form
     {
-        private List<Medico> _medicos;
-        private List<Paciente> _pacientes;
-        private List<Secretaria> _secretarias;
-        private int? _selectedRowPaciente, _selectedRowMedico, _selectedRowSecretaria;
+        private List<Medico> medicos;
+        private List<Paciente> pacientes;
+        private List<Secretaria> secretarias;
+        private int? selectedRowPaciente, selectedRowMedico, selectedRowSecretaria;
 
         public TelaCadastrarConsulta()
         {
@@ -63,11 +63,11 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 listViewPacientes.Items.Clear();
                 ClinicaService service = new ClinicaService();
-                _pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
+                pacientes = new List<Paciente>(service.ListarPaciente(new Paciente
                 {
                     Nome = txtNomePaciente.Text
                 }));
-                foreach (Paciente paciente in _pacientes)
+                foreach (Paciente paciente in pacientes)
                 {
                     ListViewItem linha = listViewPacientes.Items.Add(paciente.Nome);
                     linha.SubItems.Add(paciente.CPF);
@@ -85,11 +85,11 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 listViewMedicos.Items.Clear();
                 ClinicaService service = new ClinicaService();
-                _medicos = new List<Medico>(service.ListarMedico(new Medico
+                medicos = new List<Medico>(service.ListarMedico(new Medico
                 {
                     Nome = txtNomeMedico.Text
                 }));
-                foreach (Medico medico in _medicos)
+                foreach (Medico medico in medicos)
                 {
                     ListViewItem linha = listViewMedicos.Items.Add(medico.Nome);
                     linha.SubItems.Add(medico.CRM);
@@ -106,12 +106,8 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             if (listViewMedicos.SelectedItems.Count > 0)
             {
-                _selectedRowMedico = listViewMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
-                txtIDMedico.Text = _medicos[_selectedRowMedico.Value].ID_Medico.ToString();
-            }
-            else
-            {
-                _selectedRowMedico = null;
+                selectedRowMedico = listViewMedicos.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                txtIDMedico.Text = medicos[selectedRowMedico.Value].ID_Medico.ToString();
             }
         }
 
@@ -128,11 +124,11 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 listViewSecretarias.Items.Clear();
                 ClinicaService service = new ClinicaService();
-                _secretarias = new List<Secretaria>(service.ListarSecretaria(new Secretaria
+                secretarias = new List<Secretaria>(service.ListarSecretaria(new Secretaria
                 {
                     Nome = txtNomeSecretaria.Text
                 }));
-                foreach (Secretaria secretaria in _secretarias)
+                foreach (Secretaria secretaria in secretarias)
                 {
                     ListViewItem linha = listViewSecretarias.Items.Add(secretaria.Nome);
                     linha.SubItems.Add(secretaria.CPF);
@@ -148,12 +144,8 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             if (listViewSecretarias.SelectedItems.Count > 0)
             {
-                _selectedRowSecretaria = listViewSecretarias.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
-                txtIDSecretaria.Text = _secretarias[_selectedRowSecretaria.Value].ID_Secretaria.ToString();
-            }
-            else
-            {
-                _selectedRowSecretaria = null;
+                selectedRowSecretaria = listViewSecretarias.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                txtIDSecretaria.Text = secretarias[selectedRowSecretaria.Value].ID_Secretaria.ToString();
             }
         }
 
@@ -161,12 +153,8 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             if (listViewPacientes.SelectedItems.Count > 0)
             {
-                _selectedRowPaciente = listViewPacientes.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
-                txtIDPaciente.Text = _pacientes[_selectedRowPaciente.Value].ID_Paciente.ToString();
-            }
-            else
-            {
-                _selectedRowPaciente = null;
+                selectedRowPaciente = listViewPacientes.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
+                txtIDPaciente.Text = pacientes[selectedRowPaciente.Value].ID_Paciente.ToString();
             }
         }
     }
