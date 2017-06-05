@@ -59,11 +59,41 @@
     <Setting Name="Pesquisar_Convenios_Salvos" Type="System.String" Scope="Application">
       <Value Profile="(Default)">convenios_salvos</Value>
     </Setting>
-    <Setting Name="Pesquisar_Convenios_Salvos_XPath" Type="System.String" Scope="User">
+    <Setting Name="Pesquisar_Convenios_Salvos_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/data/pesquisar_convenio/convenios_salvos</Value>
     </Setting>
     <Setting Name="Convenio" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Convenio</Value>
+    </Setting>
+    <Setting Name="Paciente" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Paciente</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Alterar_Paciente" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_paciente/Paciente</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Paciente" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_paciente</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Paciente_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/cadastrar_paciente</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Paciente" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_paciente</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Paciente_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_paciente</Value>
+    </Setting>
+    <Setting Name="Pesquisar_CPF" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_cpf</Value>
+    </Setting>
+    <Setting Name="Pesquisar_CPF_Nome" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_paciente/pesquisar_cpf</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Pacientes_Salvos" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">paciente_salvos</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Pacientes_Salvos_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_paciente/paciente_salvos</Value>
     </Setting>
   </Settings>
 </SettingsFile>

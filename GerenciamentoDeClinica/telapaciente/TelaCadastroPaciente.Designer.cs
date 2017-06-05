@@ -43,6 +43,8 @@ namespace GerenciamentoDeClinica.telapaciente
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.GroupBox = new System.Windows.Forms.GroupBox();
+            this.lblConvenio = new System.Windows.Forms.Label();
+            this.comboConvenio = new System.Windows.Forms.ComboBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbSolteiro = new System.Windows.Forms.RadioButton();
@@ -66,8 +68,6 @@ namespace GerenciamentoDeClinica.telapaciente
             this.dateTimeDtNasc = new System.Windows.Forms.DateTimePicker();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
-            this.comboConvenio = new System.Windows.Forms.ComboBox();
-            this.lblConvenio = new System.Windows.Forms.Label();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -206,6 +206,23 @@ namespace GerenciamentoDeClinica.telapaciente
             this.GroupBox.TabIndex = 43;
             this.GroupBox.TabStop = false;
             this.GroupBox.Text = "Cadastrar";
+            // 
+            // lblConvenio
+            // 
+            this.lblConvenio.AutoSize = true;
+            this.lblConvenio.Location = new System.Drawing.Point(118, 172);
+            this.lblConvenio.Name = "lblConvenio";
+            this.lblConvenio.Size = new System.Drawing.Size(55, 13);
+            this.lblConvenio.TabIndex = 82;
+            this.lblConvenio.Text = "Convenio:";
+            // 
+            // comboConvenio
+            // 
+            this.comboConvenio.FormattingEnabled = true;
+            this.comboConvenio.Location = new System.Drawing.Point(121, 188);
+            this.comboConvenio.Name = "comboConvenio";
+            this.comboConvenio.Size = new System.Drawing.Size(257, 21);
+            this.comboConvenio.TabIndex = 81;
             // 
             // txtPais
             // 
@@ -410,23 +427,6 @@ namespace GerenciamentoDeClinica.telapaciente
             this.lblDataNascimento.TabIndex = 53;
             this.lblDataNascimento.Text = "Data de Nascimento:";
             // 
-            // comboConvenio
-            // 
-            this.comboConvenio.FormattingEnabled = true;
-            this.comboConvenio.Location = new System.Drawing.Point(121, 188);
-            this.comboConvenio.Name = "comboConvenio";
-            this.comboConvenio.Size = new System.Drawing.Size(257, 21);
-            this.comboConvenio.TabIndex = 81;
-            // 
-            // lblConvenio
-            // 
-            this.lblConvenio.AutoSize = true;
-            this.lblConvenio.Location = new System.Drawing.Point(118, 172);
-            this.lblConvenio.Name = "lblConvenio";
-            this.lblConvenio.Size = new System.Drawing.Size(55, 13);
-            this.lblConvenio.TabIndex = 82;
-            this.lblConvenio.Text = "Convenio:";
-            // 
             // TelaCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +436,7 @@ namespace GerenciamentoDeClinica.telapaciente
             this.Name = "TelaCadastroPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paciente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastroPaciente_FormClosing);
             this.Load += new System.EventHandler(this.TelaCadastroPaciente_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();

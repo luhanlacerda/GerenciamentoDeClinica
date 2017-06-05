@@ -8,13 +8,18 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telapaciente
 {
     public partial class TelaPesquisarPaciente : Form
     {
+        private Thread _threadSalvarDados;
+        private string _savedPesquisar = "";
+        private PesquisarPaciente _pesquisarPaciente;
         private List<Paciente> pacientes;
         //? = Can be null or not
         private int? selectedRow;
@@ -98,13 +103,13 @@ namespace GerenciamentoDeClinica.telapaciente
             {
                 try
                 {
-                    var repost = MessageBox.Show("Deseja remover o paciente?", "Confirmação", MessageBoxButtons.YesNo);
+                    var repost = MessageBox.Show(@"Deseja remover o paciente?", "Confirmação", MessageBoxButtons.YesNo);
 
                     if (repost == DialogResult.Yes)
                     {
                         ClinicaService service = new ClinicaService();
                         service.RemoverPaciente(pacientes[selectedRow.Value]);
-                        MessageBox.Show(this, "Paciente removido com sucesso.");
+                        MessageBox.Show(this, @"Paciente removido com sucesso.");
                         pacientes.RemoveAt(selectedRow.Value);
                         listViewPacientes.Items.RemoveAt(selectedRow.Value);
                         disableEditar();
@@ -162,7 +167,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
                     ClinicaService service = new ClinicaService();
                     service.AtualizarPaciente(pacientes[selectedRow.Value]);
-                    MessageBox.Show("Paciente atualizado com sucesso!");
+                    MessageBox.Show(@"Paciente atualizado com sucesso!");
                     disableEditar();
 
                     listViewPacientes.Items.Clear();
@@ -285,7 +290,80 @@ namespace GerenciamentoDeClinica.telapaciente
                 disableEditar();
             }
         }
+
+        public void SaveXml()
+        {
+            _pesquisarPaciente.PesquisarNome = txtFiltroNome.Text;
+            _pesquisarPaciente.PesquisarCPF = maskedFiltroCPF.Text;
+            _pesquisarPaciente.Paciente = GetPaciente();
+
+            if (!_savedPesquisar.Equals(ClinicaXmlUtils.ToXml(_pesquisarPaciente)))
+            {
+                //altera o cliente para um novo
+                _savedPesquisar = ClinicaXmlUtils.ToXml(_pesquisarPaciente);
+
+                ClinicaXmlUtils.SetPesquisarMedico(_pesquisarPaciente);
+            }
+        }
+
+        private string GetEstadoCivil()
+        {
+            //Caso não seja nulo retornará o Text do RadioButton selecionado ou nulo (? = informa)
+            return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
+        }
+
+
+        //Adquirir valor do combobox UF da thread principal
+        private string GetUF()
+        {
+            string text = null;
+
+            Invoke(new MethodInvoker(delegate () { if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString(); }));
+            return text;
+        }
+
+        private Paciente GetPaciente()
+        {
+            return new Paciente
+            {
+                CPF = maskedFiltroCPF.Text,
+                Especialidade = GetEspecialidade(),
+                Nome = txtNome.Text,
+                RG = txtRG.Text,
+                CPF = maskedCPF.Text,
+                Endereco = new Endereco
+                {
+                    Logradouro = txtLogradouro.Text,
+                    Numero = txtNumero.Text,
+                    Complemento = txtComplemento.Text,
+                    Bairro = txtBairro.Text,
+                    Cidade = txtCidade.Text,
+                    UF = GetUF(),
+                    CEP = maskedCEP.Text,
+                    Pais = txtPais.Text
+                },
+                Contato = maskedCell.Text,
+                Dt_Nascimento = dateTimeDtNasc.Value,
+                Email = lblEmail.Text,
+                Estado_Civil = GetEstadoCivil()
+            };
+        }
+
     }
 
+
+    [XmlRoot(ElementName = "pesquisar_pacietne")]
+    public sealed class PesquisarPaciente
+    {
+        [XmlElement(ElementName = "pesquisar_nome")]
+        public string PesquisarNome { get; set; }
+        [XmlElement(ElementName = "pesquisar_cpf")]
+        public string PesquisarCPF { get; set; }
+        [XmlElement(ElementName = "linha_selecionada")]
+        public int? LinhaSelecionada { get; set; }
+        [XmlElement(ElementName = "pacientes_salvos")]
+        public List<Paciente> PacientesSalvos { get; set; }
+        public Paciente Paciente { get; set; }
+    }
 }
 

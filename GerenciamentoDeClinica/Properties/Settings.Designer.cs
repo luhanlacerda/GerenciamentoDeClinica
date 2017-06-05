@@ -195,15 +195,12 @@ namespace GerenciamentoDeClinica.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_convenio/convenios_salvos")]
         public string Pesquisar_Convenios_Salvos_XPath {
             get {
                 return ((string)(this["Pesquisar_Convenios_Salvos_XPath"]));
-            }
-            set {
-                this["Pesquisar_Convenios_Salvos_XPath"] = value;
             }
         }
         
@@ -213,6 +210,96 @@ namespace GerenciamentoDeClinica.Properties {
         public string Convenio {
             get {
                 return ((string)(this["Convenio"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Paciente")]
+        public string Paciente {
+            get {
+                return ((string)(this["Paciente"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente/Paciente")]
+        public string Pesquisar_Alterar_Paciente {
+            get {
+                return ((string)(this["Pesquisar_Alterar_Paciente"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cadastrar_paciente")]
+        public string Cadastrar_Paciente {
+            get {
+                return ((string)(this["Cadastrar_Paciente"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/cadastrar_paciente")]
+        public string Cadastrar_Paciente_XPath {
+            get {
+                return ((string)(this["Cadastrar_Paciente_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pesquisar_paciente")]
+        public string Pesquisar_Paciente {
+            get {
+                return ((string)(this["Pesquisar_Paciente"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente")]
+        public string Pesquisar_Paciente_XPath {
+            get {
+                return ((string)(this["Pesquisar_Paciente_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pesquisar_cpf")]
+        public string Pesquisar_CPF {
+            get {
+                return ((string)(this["Pesquisar_CPF"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente/pesquisar_cpf")]
+        public string Pesquisar_CPF_Nome {
+            get {
+                return ((string)(this["Pesquisar_CPF_Nome"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("paciente_salvos")]
+        public string Pesquisar_Pacientes_Salvos {
+            get {
+                return ((string)(this["Pesquisar_Pacientes_Salvos"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente/paciente_salvos")]
+        public string Pesquisar_Pacientes_Salvos_XPath {
+            get {
+                return ((string)(this["Pesquisar_Pacientes_Salvos_XPath"]));
             }
         }
     }
