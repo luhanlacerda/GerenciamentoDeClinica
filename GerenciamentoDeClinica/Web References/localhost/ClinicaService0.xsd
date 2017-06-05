@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
   <xs:complexType name="Secretaria">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" base="q1:Pessoa">
         <xs:sequence>
-          <xs:element minOccurs="0" name="ID_Secretaria" type="xs:int" />
+          <xs:element name="ID_Secretaria" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

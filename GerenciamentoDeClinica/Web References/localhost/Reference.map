@@ -2,15 +2,16 @@
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd7" filename="ClinicaService.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd8" filename="ClinicaService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd9" filename="ClinicaService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd8" filename="ClinicaService1.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:55868/ClinicaService.svc?disco" filename="ClinicaService.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd5" filename="ClinicaService1.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd4" filename="ClinicaService2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd5" filename="ClinicaService2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd4" filename="ClinicaService3.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:55868/ClinicaService.svc?wsdl" filename="ClinicaService.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd6" filename="ClinicaService3.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd1" filename="ClinicaService4.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd0" filename="ClinicaService5.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd3" filename="ClinicaService6.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd2" filename="ClinicaService7.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd6" filename="ClinicaService4.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd1" filename="ClinicaService5.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd0" filename="ClinicaService6.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd3" filename="ClinicaService7.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:55868/ClinicaService.svc?xsd=xsd2" filename="ClinicaService8.xsd" />
   </Results>
 </DiscoveryClientResultsFile>

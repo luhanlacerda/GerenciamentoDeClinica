@@ -266,6 +266,9 @@
     <None Include="Web References\localhost\ClinicaService7.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\localhost\ClinicaService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\localhost\Consulta.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -273,6 +276,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Especialidade.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Estado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Medico.datasource">
