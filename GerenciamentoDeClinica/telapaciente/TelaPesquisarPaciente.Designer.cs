@@ -76,9 +76,9 @@
             this.listViewPacientes = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Convenio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -551,6 +551,11 @@
             // 
             this.Nome.Text = "Nome";
             // 
+            // CPF
+            // 
+            this.CPF.DisplayIndex = 4;
+            this.CPF.Text = "CPF";
+            // 
             // Convenio
             // 
             this.Convenio.DisplayIndex = 2;
@@ -560,11 +565,6 @@
             // 
             this.Contato.DisplayIndex = 3;
             this.Contato.Text = "Contato";
-            // 
-            // CPF
-            // 
-            this.CPF.DisplayIndex = 4;
-            this.CPF.Text = "CPF";
             // 
             // TelaPesquisarPaciente
             // 
@@ -577,6 +577,7 @@
             this.Name = "TelaPesquisarPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paciente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarPaciente_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.GroupBox.ResumeLayout(false);

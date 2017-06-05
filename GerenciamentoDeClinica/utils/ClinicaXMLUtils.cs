@@ -15,6 +15,7 @@ using GerenciamentoDeClinica.telamedico;
 using GerenciamentoDeClinica.telaconvenio;
 using GerenciamentoDeClinica.telapaciente;
 
+
 namespace GerenciamentoDeClinica.utils
 {
     public class ClinicaXmlUtils
@@ -275,6 +276,7 @@ namespace GerenciamentoDeClinica.utils
 
             return pesquisar;
         }
+
 
         //Converter medico para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter
