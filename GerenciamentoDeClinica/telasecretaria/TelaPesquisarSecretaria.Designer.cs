@@ -563,6 +563,7 @@
             this.Name = "TelaPesquisarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarSecretaria_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();

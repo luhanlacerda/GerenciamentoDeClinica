@@ -7,13 +7,19 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace GerenciamentoDeClinica.telasecretaria
 {
-    public partial class TelaCadastrarSecretaria : Form
+    public partial class TelaCadastrarSecretaria : Form, IConsistenciaDados
     {
+        private Thread _threadSalvarDados;
+        private string _savedCadastrar = "";
+        private CadastrarSecretaria _cadastrarSecretaria;
+
         public TelaCadastrarSecretaria()
         {
             InitializeComponent();
@@ -24,52 +30,13 @@ namespace GerenciamentoDeClinica.telasecretaria
             try
             {
                 ValidarCamposString();
-                Secretaria secretaria = new Secretaria();
-
-                secretaria.Nome = txtNome.Text;
-                secretaria.RG = txtRG.Text;
-                secretaria.CPF = maskedCPF.Text;
-                secretaria.Email = txtEmail.Text;
-                secretaria.Endereco = new Endereco();
-                secretaria.Endereco.Logradouro = txtLogradouro.Text;
-                secretaria.Endereco.Numero = txtNumero.Text;
-                secretaria.Endereco.Complemento = txtComplemento.Text;
-                secretaria.Endereco.Bairro = txtBairro.Text;
-                secretaria.Endereco.CEP = maskedCEP.Text;
-                secretaria.Endereco.Cidade = txtCidade.Text;
-                secretaria.Endereco.UF = comboUF.Text;
-                secretaria.Endereco.Pais = txtPais.Text;
-                if (rbCasado.Checked == true)
-                {
-                    secretaria.Estado_Civil = rbCasado.Text;
-                }
-                else if (rbViuvo.Checked == true)
-                {
-                    secretaria.Estado_Civil = rbViuvo.Text;
-                }
-                else
-                {
-                    secretaria.Estado_Civil = rbSolteiro.Text;
-                }
-                secretaria.Contato = maskedContato.Text;
-                secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
+                _cadastrarSecretaria.Secretaria = GetSecretaria();
 
                 ClinicaService service = new ClinicaService();
-                service.CadastrarSecretaria(secretaria);
-                MessageBox.Show("Secretária cadastrada com sucesso!");
+                service.CadastrarSecretaria(_cadastrarSecretaria.Secretaria);
+                MessageBox.Show(@"Secretária cadastrada com sucesso!");
 
-                txtNome.Clear();
-                txtRG.Clear();
-                maskedCPF.Clear();
-                txtEmail.Clear();
-                txtLogradouro.Clear();
-                txtNumero.Clear();
-                txtComplemento.Clear();
-                txtBairro.Clear();
-                maskedCEP.Clear();
-                txtCidade.Clear();
-                txtPais.Clear();
-                maskedContato.Clear();
+                LimparCampos();
 
             }
             catch (Exception ex)
@@ -80,9 +47,20 @@ namespace GerenciamentoDeClinica.telasecretaria
 
         private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
         {
-            comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+            comboUF.DataSource = ClinicaUtils.UF_LIST;
             txtPais.Text = "Brasil";
             txtPais.Enabled = false;
+
+            //Carregamento dos dados
+            ClinicaXmlUtils.Create();
+            _cadastrarSecretaria = ClinicaXmlUtils.GetCadastrarSecretaria();
+            if (_cadastrarSecretaria != null)
+                CarregarEditar(_cadastrarSecretaria.Secretaria);
+            else
+                _cadastrarSecretaria = new CadastrarSecretaria { Secretaria = new Secretaria() };
+
+            _threadSalvarDados = new Thread(SalvarDados);
+            _threadSalvarDados.Start();
         }
 
         private void maskedCEP_Leave(object sender, EventArgs e)
@@ -101,7 +79,7 @@ namespace GerenciamentoDeClinica.telasecretaria
             }
         }
 
-        void ValidarCamposString()
+        private void ValidarCamposString()
         {
             //Nome
             if (string.IsNullOrEmpty(txtNome.Text))
@@ -175,5 +153,120 @@ namespace GerenciamentoDeClinica.telasecretaria
                 MessageBox.Show(this, @"Informe o país da secretária");
             }
         }
+
+        private void LimparCampos()
+        {
+            txtNome.Clear();
+            txtRG.Clear();
+            maskedCPF.Clear();
+            txtEmail.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtBairro.Clear();
+            maskedCEP.Clear();
+            txtCidade.Clear();
+            txtPais.Clear();
+            maskedContato.Clear();
+        }
+
+        public void SalvarDados()
+        {
+            //Executa enquanto o Form for executado
+            while (Visible)
+            {
+                SaveXml();
+
+                //Salvar a cada 1.5s
+                Thread.Sleep(1500);
+            }
+        }
+
+        public void SaveXml()
+        {
+            _cadastrarSecretaria.Secretaria = GetSecretaria();
+
+            if (!_savedCadastrar.Equals(ClinicaXmlUtils.ToXml(_cadastrarSecretaria)))
+            {
+                //altera a secretaria para uma nova
+                _savedCadastrar = ClinicaXmlUtils.ToXml(_cadastrarSecretaria);
+
+                ClinicaXmlUtils.SetCadastrarSecretaria(_cadastrarSecretaria);
+            }
+        }
+
+        private Secretaria GetSecretaria()
+        {
+            return new Secretaria
+            {
+                Nome = txtNome.Text,
+                RG = txtRG.Text,
+                CPF = maskedCPF.Text,
+                Endereco = new Endereco
+                {
+                    Logradouro = txtLogradouro.Text,
+                    Numero = txtNumero.Text,
+                    Complemento = txtComplemento.Text,
+                    Bairro = txtBairro.Text,
+                    Cidade = txtCidade.Text,
+                    UF = GetUF(),
+                    CEP = maskedCEP.Text,
+                    Pais = txtPais.Text
+                },
+                Contato = maskedContato.Text,
+                Dt_Nascimento = dateTimeDtNasc.Value,
+                Email = txtEmail.Text,
+                Estado_Civil = GetEstadoCivil()
+            };
+        }
+
+        private void CarregarEditar(Secretaria secretaria)
+        {
+            txtNome.Text = secretaria.Nome;
+            maskedCPF.Text = secretaria.CPF;
+            txtRG.Text = secretaria.RG;
+            maskedContato.Text = secretaria.Contato;
+            dateTimeDtNasc.Value = secretaria.Dt_Nascimento;
+            txtEmail.Text = secretaria.Email;
+            RadioButton radioButton = groupBox1.Controls.OfType<RadioButton>()
+                .FirstOrDefault(r => r.Text == secretaria.Estado_Civil);
+            if (radioButton != null)
+                radioButton.Checked = true;
+            maskedCEP.Text = secretaria.Endereco.CEP;
+            txtLogradouro.Text = secretaria.Endereco.Logradouro;
+            txtNumero.Text = secretaria.Endereco.Numero;
+            txtComplemento.Text = secretaria.Endereco.Complemento;
+            txtBairro.Text = secretaria.Endereco.Bairro;
+            txtCidade.Text = secretaria.Endereco.Cidade;
+            comboUF.SelectedItem = secretaria.Endereco.UF;
+            txtPais.Text = secretaria.Endereco.Pais;
+        }
+
+        //Adquirir valor do combobox UF da thread principal
+        private string GetUF()
+        {
+            string text = null;
+
+            Invoke(new MethodInvoker(delegate () { if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString(); }));
+            return text;
+        }
+
+        private string GetEstadoCivil()
+        {
+            //Caso não seja nulo retornará o Text do RadioButton selecionado ou nulo (? = informa)
+            return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
+        }
+
+        private void TelaCadastrarSecretaria_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Dados poderiam ser perdidos, caso o Form fosse fechado.
+            SaveXml();
+        }
+    }
+
+    [XmlRoot(ElementName = "cadastrar_secretaria")]
+    public sealed class CadastrarSecretaria
+    {
+        public Secretaria Secretaria { get; set; }
     }
 }

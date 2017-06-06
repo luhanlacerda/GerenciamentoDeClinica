@@ -377,7 +377,7 @@ namespace GerenciamentoDeClinica.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("secretarias_salvas")]
+        [global::System.Configuration.DefaultSettingValueAttribute("secretaria_salvas")]
         public string Pesquisar_Secretaria_Salvas {
             get {
                 return ((string)(this["Pesquisar_Secretaria_Salvas"]));

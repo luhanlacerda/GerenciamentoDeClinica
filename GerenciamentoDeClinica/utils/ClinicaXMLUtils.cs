@@ -14,7 +14,7 @@ using GerenciamentoDeClinica.Properties;
 using GerenciamentoDeClinica.telamedico;
 using GerenciamentoDeClinica.telaconvenio;
 using GerenciamentoDeClinica.telapaciente;
-
+using GerenciamentoDeClinica.telasecretaria;
 
 namespace GerenciamentoDeClinica.utils
 {
@@ -277,6 +277,81 @@ namespace GerenciamentoDeClinica.utils
             return pesquisar;
         }
 
+        //Secretária
+        public static CadastrarSecretaria GetCadastrarSecretaria()
+        {
+            XmlNode cadastrarSecretariaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Secretaria_XPath);
+            if (cadastrarSecretariaNode == null)
+                return null;
+
+            return FromXml<CadastrarSecretaria>(cadastrarSecretariaNode.OuterXml);
+        }
+
+        public static void SetCadastrarSecretaria(CadastrarSecretaria cadastrarSecretaria)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode cadastrarSecretariaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Secretaria_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (cadastrarSecretariaNode != null)
+                rootNode.RemoveChild(cadastrarSecretariaNode);
+            rootNode.InnerXml += ToXml(cadastrarSecretaria);
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static void SetPesquisarSecretaria(PesquisarSecretaria pesquisar)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Secretaria_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (pesquisarNode != null)
+                rootNode.RemoveChild(pesquisarNode);
+            rootNode.InnerXml += ToXml(pesquisar);
+
+            //Recarregar pesquisarPacienteNode
+            pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Secretaria_XPath);
+            if (pesquisarNode != null)
+            {
+                /*Pega os nós filhos de secretarias salvas, transforma em XmlNode, seleciona apenas
+                os que tem Name "secretaria_salvas" e transforma em List*/
+                List<XmlNode> salvos = pesquisarNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Secretaria_Salvas).ToList();
+                //Início da correção do Xml, onde cada secretária salva estará dentro de "secretarias_salvas"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Secretaria_Salvas);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    pesquisarNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Secretaria);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                pesquisarNode.AppendChild(salvosNode);
+            }
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static PesquisarSecretaria GetPesquisarSecretaria()
+        {
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Secretaria_XPath);
+            if (pesquisarNode == null)
+                return null;
+
+            //Retornar para Classe PesquisarSecretarias, vai haver um erro nos secretarias_salvas
+            PesquisarSecretaria pesquisar = FromXml<PesquisarSecretaria>(pesquisarNode.OuterXml);
+            //Início da correção dos pacientes salvos
+            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Secretaria_Salvas);
+            if (salvosNode != null)
+                //Pega os nós filhos de secretarias salvas, transforma em XmlNode, faz a serialização com cada membro e transforma em List
+                pesquisar.SecretariasSalvas = salvosNode.ChildNodes.Cast<XmlNode>()
+                    .Select(n => FromXml<Secretaria>(n.OuterXml)).ToList();
+
+            return pesquisar;
+        }
 
         //Converter medico para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter

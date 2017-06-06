@@ -423,6 +423,7 @@
             this.Name = "TelaCadastrarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastrarSecretaria_FormClosing);
             this.Load += new System.EventHandler(this.TelaCadastrarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
