@@ -42,15 +42,17 @@ namespace GerenciamentoDeClinica.telaconsulta
                 {
 
                     #region Dados
+
                     _consultas[_selectedRowConsulta.Value].Observacoes = txtObservacoes.Text;
                     _consultas[_selectedRowConsulta.Value].Receita = txtReceita.Text;
-                    _consultas[_selectedRowConsulta.Value].Estado = ((BindingList<Estado>)comboEstado.DataSource).ElementAt(comboEstado.SelectedIndex);
+                    _consultas[_selectedRowConsulta.Value].Estado =
+                        ((BindingList<Estado>)comboEstado.DataSource).ElementAt(comboEstado.SelectedIndex);
 
                     #endregion
 
                     ClinicaService service = new ClinicaService();
                     service.AtualizarConsulta(_consultas[_selectedRowConsulta.Value]);
-                    MessageBox.Show("Consulta atualizada com sucesso!");
+                    MessageBox.Show(@"Consulta atualizada com sucesso!");
 
                     listViewConsultas.Items.Clear();
                     _consultas = new List<Consulta>(service.ListarConsulta(new Consulta
@@ -69,10 +71,13 @@ namespace GerenciamentoDeClinica.telaconsulta
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
+
         }
+
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -117,5 +122,6 @@ namespace GerenciamentoDeClinica.telaconsulta
                 _selectedRowConsulta = null;
             }
         }
+
     }
 }

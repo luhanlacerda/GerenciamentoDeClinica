@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPesqMedicoID = new System.Windows.Forms.TextBox();
-            this.lblMedicoID = new System.Windows.Forms.Label();
-            this.lblPacienteID = new System.Windows.Forms.Label();
-            this.btnPesquisar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtObservacoes = new System.Windows.Forms.TextBox();
-            this.txtReceita = new System.Windows.Forms.TextBox();
-            this.lblObservacoes = new System.Windows.Forms.Label();
-            this.lblReceita = new System.Windows.Forms.Label();
-            this.txtPesqPacienteID = new System.Windows.Forms.TextBox();
             this.listViewConsultas = new System.Windows.Forms.ListView();
             this.IDConsulta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PacienteNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MedicoNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HorarioConsulta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.txtPesqPacienteID = new System.Windows.Forms.TextBox();
+            this.txtPesqMedicoID = new System.Windows.Forms.TextBox();
+            this.lblMedicoID = new System.Windows.Forms.Label();
+            this.lblPacienteID = new System.Windows.Forms.Label();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemover = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
+            this.txtReceita = new System.Windows.Forms.TextBox();
+            this.lblObservacoes = new System.Windows.Forms.Label();
+            this.lblReceita = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,45 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro da Pesquisa";
+            // 
+            // listViewConsultas
+            // 
+            this.listViewConsultas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IDConsulta,
+            this.PacienteNome,
+            this.MedicoNome,
+            this.HorarioConsulta});
+            this.listViewConsultas.FullRowSelect = true;
+            this.listViewConsultas.Location = new System.Drawing.Point(6, 51);
+            this.listViewConsultas.Name = "listViewConsultas";
+            this.listViewConsultas.Size = new System.Drawing.Size(403, 97);
+            this.listViewConsultas.TabIndex = 29;
+            this.listViewConsultas.UseCompatibleStateImageBehavior = false;
+            this.listViewConsultas.View = System.Windows.Forms.View.Details;
+            this.listViewConsultas.SelectedIndexChanged += new System.EventHandler(this.listViewConsultas_SelectedIndexChanged);
+            // 
+            // IDConsulta
+            // 
+            this.IDConsulta.Text = "ID";
+            // 
+            // PacienteNome
+            // 
+            this.PacienteNome.Text = "Paciente";
+            // 
+            // MedicoNome
+            // 
+            this.MedicoNome.Text = "Medico";
+            // 
+            // HorarioConsulta
+            // 
+            this.HorarioConsulta.Text = "Horario";
+            // 
+            // txtPesqPacienteID
+            // 
+            this.txtPesqPacienteID.Location = new System.Drawing.Point(217, 23);
+            this.txtPesqPacienteID.Name = "txtPesqPacienteID";
+            this.txtPesqPacienteID.Size = new System.Drawing.Size(38, 20);
+            this.txtPesqPacienteID.TabIndex = 28;
             // 
             // txtPesqMedicoID
             // 
@@ -119,10 +158,47 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Editar Campos";
             // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(334, 258);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(75, 23);
+            this.btnRemover.TabIndex = 14;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(217, 258);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnAtualizar.TabIndex = 13;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
+            // comboEstado
+            // 
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(62, 260);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(121, 21);
+            this.comboEstado.TabIndex = 12;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(13, 263);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(43, 13);
+            this.lblEstado.TabIndex = 11;
+            this.lblEstado.Text = "Estado:";
+            // 
             // txtObservacoes
             // 
             this.txtObservacoes.Enabled = false;
             this.txtObservacoes.Location = new System.Drawing.Point(6, 38);
+            this.txtObservacoes.MaxLength = 500;
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(403, 79);
@@ -132,6 +208,7 @@
             // 
             this.txtReceita.Enabled = false;
             this.txtReceita.Location = new System.Drawing.Point(6, 155);
+            this.txtReceita.MaxLength = 500;
             this.txtReceita.Multiline = true;
             this.txtReceita.Name = "txtReceita";
             this.txtReceita.Size = new System.Drawing.Size(403, 79);
@@ -154,81 +231,6 @@
             this.lblReceita.Size = new System.Drawing.Size(47, 13);
             this.lblReceita.TabIndex = 9;
             this.lblReceita.Text = "Receita:";
-            // 
-            // txtPesqPacienteID
-            // 
-            this.txtPesqPacienteID.Location = new System.Drawing.Point(217, 23);
-            this.txtPesqPacienteID.Name = "txtPesqPacienteID";
-            this.txtPesqPacienteID.Size = new System.Drawing.Size(38, 20);
-            this.txtPesqPacienteID.TabIndex = 28;
-            // 
-            // listViewConsultas
-            // 
-            this.listViewConsultas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.IDConsulta,
-            this.PacienteNome,
-            this.MedicoNome,
-            this.HorarioConsulta});
-            this.listViewConsultas.FullRowSelect = true;
-            this.listViewConsultas.Location = new System.Drawing.Point(6, 51);
-            this.listViewConsultas.Name = "listViewConsultas";
-            this.listViewConsultas.Size = new System.Drawing.Size(403, 97);
-            this.listViewConsultas.TabIndex = 29;
-            this.listViewConsultas.UseCompatibleStateImageBehavior = false;
-            this.listViewConsultas.View = System.Windows.Forms.View.Details;
-            this.listViewConsultas.SelectedIndexChanged += new System.EventHandler(this.listViewConsultas_SelectedIndexChanged);
-            // 
-            // IDConsulta
-            // 
-            this.IDConsulta.Text = "ID";
-            // 
-            // PacienteNome
-            // 
-            this.PacienteNome.Text = "Paciente";
-            // 
-            // MedicoNome
-            // 
-            this.MedicoNome.Text = "Medico";
-            // 
-            // HorarioConsulta
-            // 
-            this.HorarioConsulta.Text = "Horario";
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(13, 263);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(43, 13);
-            this.lblEstado.TabIndex = 11;
-            this.lblEstado.Text = "Estado:";
-            // 
-            // comboEstado
-            // 
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(62, 260);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(121, 21);
-            this.comboEstado.TabIndex = 12;
-            // 
-            // btnAtualizar
-            // 
-            this.btnAtualizar.Location = new System.Drawing.Point(217, 258);
-            this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnAtualizar.TabIndex = 13;
-            this.btnAtualizar.Text = "Atualizar";
-            this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
-            // 
-            // btnRemover
-            // 
-            this.btnRemover.Location = new System.Drawing.Point(334, 258);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 14;
-            this.btnRemover.Text = "Remover";
-            this.btnRemover.UseVisualStyleBackColor = true;
             // 
             // TelaPesquisarConsulta
             // 

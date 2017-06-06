@@ -64,6 +64,10 @@
     <Compile Include="estado\EstadoBD.cs" />
     <Compile Include="estado\IEstado.cs" />
     <Compile Include="estado\NegocioEstado.cs" />
+    <Compile Include="usuario\IUsuario.cs" />
+    <Compile Include="usuario\NegocioUsuario.cs" />
+    <Compile Include="usuario\Usuario.cs" />
+    <Compile Include="usuario\UsuarioBD.cs" />
     <Compile Include="wcf\IClinicaService.cs" />
     <Compile Include="medico\IMedico.cs" />
     <Compile Include="medico\Medico.cs" />

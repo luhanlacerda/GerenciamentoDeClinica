@@ -167,6 +167,7 @@ namespace GerenciamentoDeClinica.telapaciente
             listViewPacientes.Items.Clear();
             try
             {
+                ValidarCamposString();
                 ClinicaService service = new ClinicaService();
                 _pesquisarPaciente.PacientesSalvos = new List<Paciente>(service.ListarPaciente(new Paciente
                 {
@@ -337,6 +338,99 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             //Dados poderiam ser perdidos, caso o Form fosse fechado.
             SaveXml();
+        }
+
+
+        void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome da paciente");
+            }
+
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF da paciente");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG da paciente");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedCell.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato da paciente");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email da paciente");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP da paciente");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro da paciente");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço da paciente");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento da paciente");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro da paciente");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade da paciente");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país da paciente");
+            }
+        }
+
+        private void maskedCEP_Leave(object sender, EventArgs e)
+        {
+            if (maskedCEP.MaskFull)
+            {
+                Endereco endereco = ClinicaUtils.PegarEndereco(maskedCEP.Text);
+                if (endereco != null)
+                {
+                    txtLogradouro.Text = endereco.Logradouro;
+                    txtComplemento.Text = endereco.Complemento;
+                    txtBairro.Text = endereco.Bairro;
+                    txtCidade.Text = endereco.Cidade;
+                    comboUF.SelectedItem = endereco.UF;
+
+                }
+            }
         }
     }
 

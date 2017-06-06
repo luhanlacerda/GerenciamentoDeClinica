@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ClinicaServiceLibrary.estado;
-
+using ClinicaServiceLibrary.usuario;
 
 namespace ClinicaServiceLibrary.wcf
 {
@@ -185,6 +185,30 @@ namespace ClinicaServiceLibrary.wcf
         {
             NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
             negocioSecretaria.Remover(secretaria);
+        }
+
+        public void CadastrarUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Cadastrar(usuario);
+        }
+
+        public void AtualizarUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Atualizar(usuario);
+        }
+
+        public void RemoverUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Remover(usuario);
+        }
+
+        public List<Usuario> ListarUsuario(Usuario filtro)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            return negocioUsuario.Listar(filtro);
         }
     }
 }

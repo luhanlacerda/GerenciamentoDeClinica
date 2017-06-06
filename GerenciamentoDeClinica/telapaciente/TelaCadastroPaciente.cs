@@ -23,6 +23,7 @@ namespace GerenciamentoDeClinica.telapaciente
         }
 
         #region clearFomr
+
         void ClearTextBoxs()
         {
             Action<Control.ControlCollection> func = null;
@@ -47,6 +48,7 @@ namespace GerenciamentoDeClinica.telapaciente
             rbCasado.Checked = false;
             rbViuvo.Checked = false;
         }
+
         #endregion
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace GerenciamentoDeClinica.telapaciente
             if (_cadastrarPaciente != null)
                 CarregarEditar(_cadastrarPaciente.Paciente);
             else
-                _cadastrarPaciente = new CadastrarPaciente() { Paciente = new Paciente() };
+                _cadastrarPaciente = new CadastrarPaciente() {Paciente = new Paciente()};
 
             _threadSalvarDados = new Thread(SalvarDados);
             _threadSalvarDados.Start();
@@ -72,9 +74,10 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             try
             {
-
+                ValidarCamposString();
                 _cadastrarPaciente.Paciente = GetPaciente();
 
                 ClinicaService service = new ClinicaService();
@@ -85,7 +88,8 @@ namespace GerenciamentoDeClinica.telapaciente
             }
             catch (WebException)
             {
-                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -166,10 +170,10 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             Convenio convenio = null;
 
-            Invoke(new MethodInvoker(delegate ()
+            Invoke(new MethodInvoker(delegate()
             {
                 if (!comboConvenio.IsDisposed)
-                    convenio = ((BindingList<Convenio>)comboConvenio.DataSource)
+                    convenio = ((BindingList<Convenio>) comboConvenio.DataSource)
                         .ElementAt(comboConvenio.SelectedIndex);
             }));
             return convenio;
@@ -186,7 +190,10 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             string text = null;
 
-            Invoke(new MethodInvoker(delegate () { if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString(); }));
+            Invoke(new MethodInvoker(delegate()
+            {
+                if (!comboUF.IsDisposed) text = comboUF.SelectedItem.ToString();
+            }));
             return text;
         }
 
@@ -221,7 +228,87 @@ namespace GerenciamentoDeClinica.telapaciente
             //Dados poderiam ser perdidos, caso o Form fosse fechado.
             SaveXml();
         }
+
+
+        void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome da paciente");
+            }
+
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF da paciente");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG da paciente");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedCell.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato da paciente");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email da paciente");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP da paciente");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro da paciente");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço da paciente");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento da paciente");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro da paciente");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade da paciente");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país da paciente");
+            }
+        }
+
+
+
     }
+
 
     [XmlRoot(ElementName = "cadastrar_paciente")]
     public sealed class CadastrarPaciente
@@ -229,3 +316,7 @@ namespace GerenciamentoDeClinica.telapaciente
         public Paciente Paciente { get; set; }
     }
 }
+
+
+
+

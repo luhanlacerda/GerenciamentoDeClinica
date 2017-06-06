@@ -269,6 +269,9 @@
     <None Include="Web References\localhost\ClinicaService8.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\localhost\ClinicaService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\localhost\Consulta.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -292,6 +295,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\Secretaria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Usuario.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>

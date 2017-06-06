@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ClinicaServiceLibrary.estado;
+using ClinicaServiceLibrary.usuario;
 
 namespace ClinicaServiceLibrary.wcf
 {
@@ -103,5 +104,17 @@ namespace ClinicaServiceLibrary.wcf
 
         [OperationContract]
         List<Estado> ListarEstado(Estado filtro);
+
+        [OperationContract]
+        void CadastrarUsuario(Usuario usuario);
+
+        [OperationContract]
+        void AtualizarUsuario(Usuario usuario);
+
+        [OperationContract]
+        void RemoverUsuario(Usuario usuario);
+
+        [OperationContract]
+        List<Usuario> ListarUsuario(Usuario filtro);
     }
 }

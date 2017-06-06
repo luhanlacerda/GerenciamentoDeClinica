@@ -12,6 +12,7 @@
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" />
       <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IClinicaService_CadastrarConsulta_InputMessage">
@@ -182,6 +183,30 @@
   <wsdl:message name="IClinicaService_ListarEstado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarEstadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IClinicaService">
     <wsdl:operation name="CadastrarConsulta">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConsulta" message="tns:IClinicaService_CadastrarConsulta_InputMessage" />
@@ -294,6 +319,22 @@
     <wsdl:operation name="ListarEstado">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarEstado" message="tns:IClinicaService_ListarEstado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarEstadoResponse" message="tns:IClinicaService_ListarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarUsuario" message="tns:IClinicaService_CadastrarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarUsuarioResponse" message="tns:IClinicaService_CadastrarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarUsuario" message="tns:IClinicaService_AtualizarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarUsuarioResponse" message="tns:IClinicaService_AtualizarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverUsuario" message="tns:IClinicaService_RemoverUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverUsuarioResponse" message="tns:IClinicaService_RemoverUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarUsuario" message="tns:IClinicaService_ListarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarUsuarioResponse" message="tns:IClinicaService_ListarUsuario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClinicaService" type="tns:IClinicaService">
@@ -543,6 +584,42 @@
     </wsdl:operation>
     <wsdl:operation name="ListarEstado">
       <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

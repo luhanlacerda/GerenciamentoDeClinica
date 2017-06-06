@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GerenciamentoDeClinica.localhost;
 
 namespace GerenciamentoDeClinica
 {
@@ -23,10 +24,7 @@ namespace GerenciamentoDeClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TelaPrincipal telaMain = new TelaPrincipal();
-            this.Hide();
-            telaMain.ShowDialog();
-            this.Close();
+            telaMain();
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -53,6 +51,15 @@ namespace GerenciamentoDeClinica
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
+        }
+
+
+        void telaMain()
+        {
+            TelaPrincipal telaMain = new TelaPrincipal();
+            this.Hide();
+            telaMain.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -86,6 +86,14 @@ namespace GerenciamentoDeClinica.localhost {
         
         private System.Threading.SendOrPostCallback ListarEstadoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CadastrarUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizarUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoverUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ListarUsuarioOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -207,6 +215,18 @@ namespace GerenciamentoDeClinica.localhost {
         
         /// <remarks/>
         public event ListarEstadoCompletedEventHandler ListarEstadoCompleted;
+        
+        /// <remarks/>
+        public event CadastrarUsuarioCompletedEventHandler CadastrarUsuarioCompleted;
+        
+        /// <remarks/>
+        public event AtualizarUsuarioCompletedEventHandler AtualizarUsuarioCompleted;
+        
+        /// <remarks/>
+        public event RemoverUsuarioCompletedEventHandler RemoverUsuarioCompleted;
+        
+        /// <remarks/>
+        public event ListarUsuarioCompletedEventHandler ListarUsuarioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/CadastrarConsulta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1014,6 +1034,121 @@ namespace GerenciamentoDeClinica.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/CadastrarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CadastrarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("CadastrarUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void CadastrarUsuarioAsync(Usuario usuario) {
+            this.CadastrarUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void CadastrarUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.CadastrarUsuarioOperationCompleted == null)) {
+                this.CadastrarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCadastrarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("CadastrarUsuario", new object[] {
+                        usuario}, this.CadastrarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnCadastrarUsuarioOperationCompleted(object arg) {
+            if ((this.CadastrarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CadastrarUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/AtualizarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AtualizarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("AtualizarUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void AtualizarUsuarioAsync(Usuario usuario) {
+            this.AtualizarUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizarUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.AtualizarUsuarioOperationCompleted == null)) {
+                this.AtualizarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("AtualizarUsuario", new object[] {
+                        usuario}, this.AtualizarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnAtualizarUsuarioOperationCompleted(object arg) {
+            if ((this.AtualizarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizarUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/RemoverUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoverUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("RemoverUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void RemoverUsuarioAsync(Usuario usuario) {
+            this.RemoverUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void RemoverUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.RemoverUsuarioOperationCompleted == null)) {
+                this.RemoverUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoverUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("RemoverUsuario", new object[] {
+                        usuario}, this.RemoverUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnRemoverUsuarioOperationCompleted(object arg) {
+            if ((this.RemoverUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoverUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/ListarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario")]
+        public Usuario[] ListarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario filtro) {
+            object[] results = this.Invoke("ListarUsuario", new object[] {
+                        filtro});
+            return ((Usuario[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ListarUsuarioAsync(Usuario filtro) {
+            this.ListarUsuarioAsync(filtro, null);
+        }
+        
+        /// <remarks/>
+        public void ListarUsuarioAsync(Usuario filtro, object userState) {
+            if ((this.ListarUsuarioOperationCompleted == null)) {
+                this.ListarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("ListarUsuario", new object[] {
+                        filtro}, this.ListarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnListarUsuarioOperationCompleted(object arg) {
+            if ((this.ListarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ListarUsuarioCompleted(this, new ListarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1194,40 +1329,6 @@ namespace GerenciamentoDeClinica.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio")]
-    public partial class Convenio {
-        
-        private string descricaoField;
-        
-        private int iD_ConvenioField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Descricao {
-            get {
-                return this.descricaoField;
-            }
-            set {
-                this.descricaoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ID_Convenio {
-            get {
-                return this.iD_ConvenioField;
-            }
-            set {
-                this.iD_ConvenioField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade")]
     public partial class Especialidade {
         
@@ -1266,6 +1367,40 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_EspecialidadeFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio")]
+    public partial class Convenio {
+        
+        private string descricaoField;
+        
+        private int iD_ConvenioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Descricao {
+            get {
+                return this.descricaoField;
+            }
+            set {
+                this.descricaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Convenio {
+            get {
+                return this.iD_ConvenioField;
+            }
+            set {
+                this.iD_ConvenioField = value;
             }
         }
     }
@@ -1384,9 +1519,10 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Paciente))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Medico))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Usuario))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Paciente))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1503,61 +1639,6 @@ namespace GerenciamentoDeClinica.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente")]
-    public partial class Paciente : Pessoa {
-        
-        private Convenio convenioField;
-        
-        private int iD_PacienteField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public Convenio Convenio {
-            get {
-                return this.convenioField;
-            }
-            set {
-                this.convenioField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ID_Paciente {
-            get {
-                return this.iD_PacienteField;
-            }
-            set {
-                this.iD_PacienteField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria")]
-    public partial class Secretaria : Pessoa {
-        
-        private int iD_SecretariaField;
-        
-        /// <remarks/>
-        public int ID_Secretaria {
-            get {
-                return this.iD_SecretariaField;
-            }
-            set {
-                this.iD_SecretariaField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico")]
     public partial class Medico : Pessoa {
         
@@ -1596,6 +1677,95 @@ namespace GerenciamentoDeClinica.localhost {
             }
             set {
                 this.iD_MedicoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario")]
+    public partial class Usuario : Pessoa {
+        
+        private int iD_UsuarioField;
+        
+        private string senhaField;
+        
+        /// <remarks/>
+        public int ID_Usuario {
+            get {
+                return this.iD_UsuarioField;
+            }
+            set {
+                this.iD_UsuarioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Senha {
+            get {
+                return this.senhaField;
+            }
+            set {
+                this.senhaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria")]
+    public partial class Secretaria : Pessoa {
+        
+        private int iD_SecretariaField;
+        
+        /// <remarks/>
+        public int ID_Secretaria {
+            get {
+                return this.iD_SecretariaField;
+            }
+            set {
+                this.iD_SecretariaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente")]
+    public partial class Paciente : Pessoa {
+        
+        private Convenio convenioField;
+        
+        private int iD_PacienteField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Convenio Convenio {
+            get {
+                return this.convenioField;
+            }
+            set {
+                this.convenioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Paciente {
+            get {
+                return this.iD_PacienteField;
+            }
+            set {
+                this.iD_PacienteField = value;
             }
         }
     }
@@ -1862,6 +2032,44 @@ namespace GerenciamentoDeClinica.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Estado[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void CadastrarUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void AtualizarUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void RemoverUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void ListarUsuarioCompletedEventHandler(object sender, ListarUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ListarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ListarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Usuario[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Usuario[])(this.results[0]));
             }
         }
     }
