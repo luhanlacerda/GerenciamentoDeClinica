@@ -166,7 +166,6 @@ namespace GerenciamentoDeClinica.telasecretaria
             {
                 try
                 {
-
                     secretarias[selectedRow.Value].Nome = txtNome.Text;
                     secretarias[selectedRow.Value].CPF = maskedCPF.Text;
                     secretarias[selectedRow.Value].RG = txtRG.Text;
@@ -194,9 +193,11 @@ namespace GerenciamentoDeClinica.telasecretaria
                     secretarias[selectedRow.Value].Endereco.UF = comboUF.Text;
                     secretarias[selectedRow.Value].Endereco.Pais = txtPais.Text;
 
+                    ValidarCamposString();
                     ClinicaService service = new ClinicaService();
                     service.AtualizarSecretaria(secretarias[selectedRow.Value]);
                     MessageBox.Show("Secretária atualizada com sucesso!");
+                    disableEditar();
 
                     listViewSecretarias.Items.Clear();
                     secretarias = new List<Secretaria>(service.ListarSecretaria(new Secretaria
@@ -254,5 +255,95 @@ namespace GerenciamentoDeClinica.telasecretaria
             }
         }
 
+        void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome da secretária");
+            }
+
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF da secretária");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG da secretária");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedContato.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato da secretária");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email da secretária");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP da secretária");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro da secretária");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço da secretária");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento da secretária");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro da secretária");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade da secretária");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país da secretária");
+            }
+        }
+
+        private void maskedCEP_Leave(object sender, EventArgs e)
+        {
+            if (maskedCEP.MaskFull)
+            {
+                Endereco endereco = ClinicaUtils.PegarEndereco(maskedCEP.Text);
+                if (endereco != null)
+                {
+                    txtLogradouro.Text = endereco.Logradouro;
+                    txtComplemento.Text = endereco.Complemento;
+                    txtBairro.Text = endereco.Bairro;
+                    txtCidade.Text = endereco.Cidade;
+                    comboUF.SelectedItem = endereco.UF;
+                }
+            }
+        }
     }
 }

@@ -104,6 +104,10 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
             try
             {
+                if (string.IsNullOrEmpty(txtDescricao.Text))
+                {
+                    MessageBox.Show(this, @"Informar descrição da especialidade");
+                }
                 clinicaService.AtualizarEspecialidade(especialidade);
                 MessageBox.Show("Especialidade atualizada com sucesso!");
                 txtID.Clear();
@@ -128,7 +132,6 @@ namespace GerenciamentoDeClinica.telaespecialidade
             }
 
         }
-
     }
 }
 

@@ -26,6 +26,10 @@ namespace GerenciamentoDeClinica.telaespecialidade
         {
             try
             {
+                if (string.IsNullOrEmpty(txtDescricao.Text))
+                {
+                    MessageBox.Show(this, @"Informar descrição da especialidade");
+                }
                 Especialidade especialidade = new Especialidade()
                 {
                     Descricao = txtDescricao.Text

@@ -173,6 +173,7 @@
             // txtNomeSecretaria
             // 
             this.txtNomeSecretaria.Location = new System.Drawing.Point(68, 334);
+            this.txtNomeSecretaria.MaxLength = 100;
             this.txtNomeSecretaria.Name = "txtNomeSecretaria";
             this.txtNomeSecretaria.Size = new System.Drawing.Size(124, 20);
             this.txtNomeSecretaria.TabIndex = 22;
@@ -279,6 +280,7 @@
             // txtNomeMedico
             // 
             this.txtNomeMedico.Location = new System.Drawing.Point(68, 186);
+            this.txtNomeMedico.MaxLength = 100;
             this.txtNomeMedico.Name = "txtNomeMedico";
             this.txtNomeMedico.Size = new System.Drawing.Size(124, 20);
             this.txtNomeMedico.TabIndex = 12;
@@ -326,6 +328,7 @@
             // txtNomePaciente
             // 
             this.txtNomePaciente.Location = new System.Drawing.Point(68, 53);
+            this.txtNomePaciente.MaxLength = 100;
             this.txtNomePaciente.Name = "txtNomePaciente";
             this.txtNomePaciente.Size = new System.Drawing.Size(124, 20);
             this.txtNomePaciente.TabIndex = 8;

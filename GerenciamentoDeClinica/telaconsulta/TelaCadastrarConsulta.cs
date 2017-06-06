@@ -28,6 +28,7 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             try
             {
+                ValidarCamposString();
                 Consulta consulta = new Consulta
                 {
                     Horario = dateTimePickerDia.Value,
@@ -37,7 +38,6 @@ namespace GerenciamentoDeClinica.telaconsulta
                     Secretaria = new Secretaria {ID_Secretaria = Convert.ToInt32(txtIDSecretaria.Text)},
                     Estado = ((BindingList<Estado>) comboEstado.DataSource).ElementAt(comboEstado.SelectedIndex)
                 };
-
 
                 ClinicaService service = new ClinicaService();
                 service.CadastrarConsulta(consulta);
@@ -155,6 +155,29 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 _selectedRowPaciente = listViewPacientes.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
                 txtIDPaciente.Text = _pacientes[_selectedRowPaciente.Value].ID_Paciente.ToString();
+            }
+        }
+
+        void ValidarCamposString()
+        {
+            if (string.IsNullOrEmpty(txtIDMedico.Text))
+            {
+                MessageBox.Show(this, @"Informar o ID do médico");
+            }
+
+            if (string.IsNullOrEmpty(txtIDPaciente.Text))
+            {
+                MessageBox.Show(this, @"Informar o ID do paciente");
+            }
+
+            if (string.IsNullOrEmpty(txtIDSecretaria.Text))
+            {
+                MessageBox.Show(this, @"Informar o ID da secretária");
+            }
+
+            if (string.IsNullOrEmpty(txtDuracao.Text))
+            {
+                MessageBox.Show(this, @"Informar a duração da consulta");
             }
         }
     }

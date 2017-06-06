@@ -23,6 +23,7 @@ namespace GerenciamentoDeClinica.telasecretaria
         {
             try
             {
+                ValidarCamposString();
                 Secretaria secretaria = new Secretaria();
 
                 secretaria.Nome = txtNome.Text;
@@ -50,7 +51,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 {
                     secretaria.Estado_Civil = rbSolteiro.Text;
                 }
-                secretaria.Contato = maskedCell.Text;
+                secretaria.Contato = maskedContato.Text;
                 secretaria.Dt_Nascimento = dateTimeDtNasc.Value;
 
                 ClinicaService service = new ClinicaService();
@@ -68,7 +69,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                 maskedCEP.Clear();
                 txtCidade.Clear();
                 txtPais.Clear();
-                maskedCell.Clear();
+                maskedContato.Clear();
 
             }
             catch (Exception ex)
@@ -98,8 +99,81 @@ namespace GerenciamentoDeClinica.telasecretaria
                     comboUF.SelectedItem = endereco.UF;
                 }
             }
+        }
 
+        void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome da secretária");
+            }
 
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF da secretária");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG da secretária");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedContato.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato da secretária");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email da secretária");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP da secretária");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro da secretária");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço da secretária");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento da secretária");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro da secretária");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade da secretária");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país da secretária");
+            }
         }
     }
 }
