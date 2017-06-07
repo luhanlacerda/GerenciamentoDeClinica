@@ -180,7 +180,7 @@ namespace GerenciamentoDeClinica.telamedico
                 },
                 Contato = maskedCell.Text,
                 Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = lblEmail.Text,
+                Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
         }

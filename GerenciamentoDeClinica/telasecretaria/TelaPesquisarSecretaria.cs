@@ -47,6 +47,10 @@ namespace GerenciamentoDeClinica.telasecretaria
 
                 CarregarEditar(_pesquisarSecretaria.Secretaria);
             }
+            else
+            {
+                _pesquisarSecretaria = new PesquisarSecretaria();
+            }
 
             _threadSalvarDados = new Thread(SalvarDados);
             _threadSalvarDados.Start();

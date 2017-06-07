@@ -50,6 +50,9 @@ namespace GerenciamentoDeClinica.telamedico
                     listMedicos.Items[_pesquisarMedico.LinhaSelecionada.Value].Selected = true;
 
                 CarregarEditar(_pesquisarMedico.Medico);
+            } else
+            {
+                _pesquisarMedico = new PesquisarMedico();
             }
             
             _threadSalvarDados = new Thread(SalvarDados);
@@ -314,7 +317,7 @@ namespace GerenciamentoDeClinica.telamedico
                 },
                 Contato = maskedCell.Text,
                 Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = lblEmail.Text,
+                Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
         }
