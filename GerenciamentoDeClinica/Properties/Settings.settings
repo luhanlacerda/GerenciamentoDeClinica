@@ -149,5 +149,29 @@
     <Setting Name="Pesquisar_Especialidades_Salvas_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">data/pesquisar_especialidade/especialidades_salvas</Value>
     </Setting>
+    <Setting Name="Consulta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Consulta</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Alterar_Consulta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_consulta/Consulta</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Consulta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_consulta</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Consulta_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/cadastrar_consulta</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Consulta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_consulta</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Consulta_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/pesquisar_consulta</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Consultas_Salvas" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">consultas_salvas</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Consultas_Salvas_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/pesquisar_consulta/consultas_salvas</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

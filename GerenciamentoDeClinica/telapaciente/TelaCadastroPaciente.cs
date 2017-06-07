@@ -26,21 +26,8 @@ namespace GerenciamentoDeClinica.telapaciente
 
         void ClearTextBoxs()
         {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is MaskedTextBox)
-                        (control as MaskedTextBox).Clear();
-
-                    else if (control is TextBox)
-                        (control as TextBox).Clear();
-                    else
-                        func(control.Controls);
-            };
-
-            func(Controls);
+            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
 
             comboConvenio.SelectedIndex = 0;
             dateTimeDtNasc.Value = DateTime.Now;
@@ -201,7 +188,7 @@ namespace GerenciamentoDeClinica.telapaciente
         {
             return new Paciente
             {
-                CPF = maskedCEP.Text,
+                CPF = maskedCPF.Text,
                 Convenio = GetConvenio(),
                 Nome = txtNome.Text,
                 RG = txtRG.Text,
@@ -218,7 +205,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 },
                 Contato = maskedCell.Text,
                 Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = lblEmail.Text,
+                Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
         }
@@ -304,7 +291,6 @@ namespace GerenciamentoDeClinica.telapaciente
                 MessageBox.Show(this, @"Informe o país da paciente");
             }
         }
-
 
 
     }

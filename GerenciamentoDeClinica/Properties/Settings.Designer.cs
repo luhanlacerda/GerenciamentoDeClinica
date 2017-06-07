@@ -464,5 +464,77 @@ namespace GerenciamentoDeClinica.Properties {
                 return ((string)(this["Pesquisar_Especialidades_Salvas_XPath"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Consulta")]
+        public string Consulta {
+            get {
+                return ((string)(this["Consulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_consulta/Consulta")]
+        public string Pesquisar_Alterar_Consulta {
+            get {
+                return ((string)(this["Pesquisar_Alterar_Consulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cadastrar_consulta")]
+        public string Cadastrar_Consulta {
+            get {
+                return ((string)(this["Cadastrar_Consulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data/cadastrar_consulta")]
+        public string Cadastrar_Consulta_XPath {
+            get {
+                return ((string)(this["Cadastrar_Consulta_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pesquisar_consulta")]
+        public string Pesquisar_Consulta {
+            get {
+                return ((string)(this["Pesquisar_Consulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data/pesquisar_consulta")]
+        public string Pesquisar_Consulta_XPath {
+            get {
+                return ((string)(this["Pesquisar_Consulta_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("consultas_salvas")]
+        public string Pesquisar_Consultas_Salvas {
+            get {
+                return ((string)(this["Pesquisar_Consultas_Salvas"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data/pesquisar_consulta/consultas_salvas")]
+        public string Pesquisar_Consultas_Salvas_XPath {
+            get {
+                return ((string)(this["Pesquisar_Consultas_Salvas_XPath"]));
+            }
+        }
     }
 }

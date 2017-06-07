@@ -3,13 +3,9 @@ using GerenciamentoDeClinica.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -20,9 +16,7 @@ namespace GerenciamentoDeClinica.telapaciente
         private Thread _threadSalvarDados;
         private string _savedPesquisar = "";
         private PesquisarPaciente _pesquisarPaciente;
-        private List<Paciente> pacientes;
-        //? = Can be null or not
-        private int? selectedRow;
+
 
         private const string ERROR_WEBSERVICE = "Erro de conexão o servidor.";
 
@@ -31,7 +25,7 @@ namespace GerenciamentoDeClinica.telapaciente
             InitializeComponent();
         }
 
-        private void disableEditar()
+        private void DisableEditar()
         {
             btnAtualizar.Enabled = false;
             btnRemover.Enabled = false;
@@ -76,7 +70,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
         }
 
-        private void enableEditar()
+        private void EnableEditar()
         {
             btnAtualizar.Enabled = true;
             btnRemover.Enabled = true;
@@ -99,7 +93,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (selectedRow.HasValue)
+            if (_pesquisarPaciente.LinhaSelecionada.HasValue)
             {
                 try
                 {
@@ -112,11 +106,11 @@ namespace GerenciamentoDeClinica.telapaciente
                         MessageBox.Show(this, @"Paciente removido com sucesso.");
                         _pesquisarPaciente.PacientesSalvos.RemoveAt(_pesquisarPaciente.LinhaSelecionada.Value);
                         listViewPacientes.Items.RemoveAt(_pesquisarPaciente.LinhaSelecionada.Value);
-                        disableEditar();
+                        DisableEditar();
                     }
                     else
                     {
-                        disableEditar();
+                        DisableEditar();
                         txtFiltroNome.Focus();
                     }
                 }
@@ -146,7 +140,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
                     _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value] = paciente;
 
-                    disableEditar();
+                    DisableEditar();
                 }
 
                 catch (WebException)
@@ -196,9 +190,32 @@ namespace GerenciamentoDeClinica.telapaciente
             ClinicaService service = new ClinicaService();
 
             comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
-            comboConvenio.DisplayMember = "Descricao";
-            txtPais.Text = "Brasil";
+            comboConvenio.DisplayMember = @"Descricao";
+            txtPais.Text = @"Brasil";
             txtPais.Enabled = false;
+
+            //Carregamento dos dados
+            ClinicaXmlUtils.Create();
+            _pesquisarPaciente = ClinicaXmlUtils.GetPesquisarPaciente();
+            if (_pesquisarPaciente != null)
+            {
+                txtFiltroNome.Text = _pesquisarPaciente.PesquisarNome;
+                maskedFiltroCPF.Text = _pesquisarPaciente.PesquisarCPF;
+
+                CarregarListView();
+                //Informando a linha selecionada da ListView
+                if (_pesquisarPaciente.LinhaSelecionada.HasValue)
+                    listViewPacientes.Items[_pesquisarPaciente.LinhaSelecionada.Value].Selected = true;
+
+                CarregarEditar(_pesquisarPaciente.Paciente);
+            }
+            else
+            {
+                _pesquisarPaciente = new PesquisarPaciente();
+            }
+
+            _threadSalvarDados = new Thread(SalvarDados);
+            _threadSalvarDados.Start();
         }
 
         private void listViewPacientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -209,12 +226,12 @@ namespace GerenciamentoDeClinica.telapaciente
 
                 CarregarEditar(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
 
-                enableEditar();
+                EnableEditar();
             }
             else
             {
                 _pesquisarPaciente.LinhaSelecionada = null;
-                disableEditar();
+                DisableEditar();
             }
         }
 
@@ -346,73 +363,73 @@ namespace GerenciamentoDeClinica.telapaciente
             //Nome
             if (string.IsNullOrEmpty(txtNome.Text))
             {
-                MessageBox.Show(this, @"Informe o nome da paciente");
+                MessageBox.Show(this, @"Informe o nome.");
             }
 
             //CPF
             if (string.IsNullOrEmpty(maskedCPF.Text))
             {
-                MessageBox.Show(this, @"Informe o CPF da paciente");
+                MessageBox.Show(this, @"Informe o CPF.");
             }
 
             //RG
             if (string.IsNullOrEmpty(txtRG.Text))
             {
-                MessageBox.Show(this, @"Informe o RG da paciente");
+                MessageBox.Show(this, @"Informe o RG.");
             }
 
             //Contato
             if (string.IsNullOrEmpty(maskedCell.Text))
             {
-                MessageBox.Show(this, @"Informe o número de contato da paciente");
+                MessageBox.Show(this, @"Informe o número de contato.");
             }
 
             //Email
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
-                MessageBox.Show(this, @"Informe o email da paciente");
+                MessageBox.Show(this, @"Informe o email.");
             }
 
             //CEP
             if (string.IsNullOrEmpty(maskedCEP.Text))
             {
-                MessageBox.Show(this, @"Informe o CEP da paciente");
+                MessageBox.Show(this, @"Informe o CEP.");
             }
 
             //Logradouro
             if (string.IsNullOrEmpty(txtLogradouro.Text))
             {
-                MessageBox.Show(this, @"Informe o logradouro da paciente");
+                MessageBox.Show(this, @"Informe o logradouro.");
             }
 
             //Numero
             if (string.IsNullOrEmpty(txtNumero.Text))
             {
-                MessageBox.Show(this, @"Informe o numero do endereço da paciente");
+                MessageBox.Show(this, @"Informe o numero do endereço.");
             }
 
             //Complemento
             if (string.IsNullOrEmpty(txtComplemento.Text))
             {
-                MessageBox.Show(this, @"Informe o complemento da paciente");
+                MessageBox.Show(this, @"Informe o complemento.");
             }
 
             //Bairro
             if (string.IsNullOrEmpty(txtBairro.Text))
             {
-                MessageBox.Show(this, @"Informe o bairro da paciente");
+                MessageBox.Show(this, @"Informe o bairro.");
             }
 
             //Cidade
             if (string.IsNullOrEmpty(txtCidade.Text))
             {
-                MessageBox.Show(this, @"Informe a cidade da paciente");
+                MessageBox.Show(this, @"Informe a cidade.");
             }
 
             //País
             if (string.IsNullOrEmpty(txtPais.Text))
             {
-                MessageBox.Show(this, @"Informe o país da paciente");
+                MessageBox.Show(this, @"Informe o país.");
             }
         }
 
@@ -435,7 +452,7 @@ namespace GerenciamentoDeClinica.telapaciente
     }
 
 
-    [XmlRoot(ElementName = "pesquisar_pacietne")]
+    [XmlRoot(ElementName = "pesquisar_paciente")]
     public sealed class PesquisarPaciente
     {
         [XmlElement(ElementName = "pesquisar_nome")]

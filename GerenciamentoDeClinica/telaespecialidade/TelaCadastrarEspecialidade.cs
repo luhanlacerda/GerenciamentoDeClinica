@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 {
     public partial class TelaCadastrarEspecialidade : Form
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
         private Thread _threadSalvarDados;
         private string _savedCadastrar = "";
         private CadastrarEspecialidade _cadastrarEspecialidade;
@@ -44,9 +46,13 @@ namespace GerenciamentoDeClinica.telaespecialidade
                 MessageBox.Show("Especialidade cadastrada com sucesso!");
                 txtDescricao.Clear();
             }
+            catch (WebException)
+            {
+                MessageBox.Show(ERROR_WEBSERVICE);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

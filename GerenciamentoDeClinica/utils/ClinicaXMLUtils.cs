@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using GerenciamentoDeClinica.Properties;
+using GerenciamentoDeClinica.telaconsulta;
 using GerenciamentoDeClinica.telamedico;
 using GerenciamentoDeClinica.telaconvenio;
 using GerenciamentoDeClinica.telaespecialidade;
@@ -260,7 +261,7 @@ namespace GerenciamentoDeClinica.utils
             _document.Save(Properties.Settings.Default.SaveLocation);
         }
 
-        public static PesquisarPaciente GetPesquisar()
+        public static PesquisarPaciente GetPesquisarPaciente()
         {
             XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Paciente_XPath);
             if (pesquisarNode == null)
@@ -355,6 +356,15 @@ namespace GerenciamentoDeClinica.utils
         }
 
         //Especialidade
+        public static CadastrarEspecialidade GetCadastrarEspecialidade()
+        {
+            XmlNode cadastrarEspecialidadeNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Especialidade_XPath);
+            if (cadastrarEspecialidadeNode == null)
+                return null;
+
+            return FromXml<CadastrarEspecialidade>(cadastrarEspecialidadeNode.OuterXml);
+        }
+
         public static void SetCadastrarEspecialidade(CadastrarEspecialidade cadastrarEspecialidade)
         {
             XmlNode rootNode = CheckXmlLoad();
@@ -402,15 +412,6 @@ namespace GerenciamentoDeClinica.utils
             _document.Save(Properties.Settings.Default.SaveLocation);
         }
 
-        public static CadastrarEspecialidade GetCadastrarEspecialidade()
-        {
-            XmlNode cadastrarEspecialidadeNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Especialidade_XPath);
-            if (cadastrarEspecialidadeNode == null)
-                return null;
-
-            return FromXml<CadastrarEspecialidade>(cadastrarEspecialidadeNode.OuterXml);
-        }
-
         public static PesquisarEspecialidade GetPesquisarEspecialidade()
         {
             XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Especialidade_XPath);
@@ -428,6 +429,82 @@ namespace GerenciamentoDeClinica.utils
 
             return pesquisar;
         }
+
+        //Consulta
+       public static CadastrarConsulta GetCadastrarConsulta()
+        {
+            XmlNode cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
+            if (cadastrarConsultaNode == null)
+                return null;
+
+            return FromXml<CadastrarConsulta>(cadastrarConsultaNode.OuterXml);
+        }
+
+        public static void SetCadastrarConsulta(CadastrarConsulta cadastrarConsulta)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (cadastrarConsultaNode != null)
+                rootNode.RemoveChild(cadastrarConsultaNode);
+            rootNode.InnerXml += ToXml(cadastrarConsulta);
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static void SetPesquisarConsulta(PesquisarConsulta pesquisar)
+        {
+            XmlNode rootNode = CheckXmlLoad();
+
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consulta_XPath);
+            //Se existir, remover para a inserção do novo Xml
+            if (pesquisarNode != null)
+                rootNode.RemoveChild(pesquisarNode);
+            rootNode.InnerXml += ToXml(pesquisar);
+
+            //Recarregar pesquisarConsultaNode
+            pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consulta_XPath);
+            if (pesquisarNode != null)
+            {
+                //Pega os nós filhos de consultas salvos, transforma em XmlNode, seleciona apenas os que tem Name "consultas_salvos" e transforma em List
+                List<XmlNode> salvos = pesquisarNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Consultas_Salvas).ToList();
+                //Início da correção do Xml, onde cada consulta salvo estará dentro de "consulta_salvos"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Consultas_Salvas);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    pesquisarNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Consulta);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                pesquisarNode.AppendChild(salvosNode);
+            }
+
+            _document.Save(Properties.Settings.Default.SaveLocation);
+        }
+
+        public static PesquisarConsulta GetPesquisarConsulta()
+        {
+            XmlNode pesquisarNode = _document.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consulta_XPath);
+            if (pesquisarNode == null)
+                return null;
+
+            //Retornar para Classe PesquisarConsulta, vai haver um erro nos consultas_salvos
+            PesquisarConsulta pesquisar = FromXml<PesquisarConsulta>(pesquisarNode.OuterXml);
+            //Início da correção dos consultas salvos
+            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consultas_Salvas);
+            if (salvosNode != null)
+                //Pega os nós filhos de consultas salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
+                pesquisar.ConsultasSalvos = salvosNode.ChildNodes.Cast<XmlNode>()
+                    .Select(n => FromXml<Consulta>(n.OuterXml)).ToList();
+
+            return pesquisar;
+        }
+
 
         //Converter medico para xml
         //Flow: XmlSerializer -> XmlWriter -> StringWriter

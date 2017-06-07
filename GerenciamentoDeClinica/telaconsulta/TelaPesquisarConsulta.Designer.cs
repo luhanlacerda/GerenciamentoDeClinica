@@ -166,6 +166,7 @@
             this.btnRemover.TabIndex = 14;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnAtualizar
             // 
@@ -242,6 +243,7 @@
             this.Name = "TelaPesquisarConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarConsulta_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarConsulta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

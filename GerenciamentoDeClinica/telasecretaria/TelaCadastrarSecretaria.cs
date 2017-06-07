@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace GerenciamentoDeClinica.telasecretaria
 {
     public partial class TelaCadastrarSecretaria : Form, IConsistenciaDados
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
         private Thread _threadSalvarDados;
         private string _savedCadastrar = "";
         private CadastrarSecretaria _cadastrarSecretaria;
@@ -39,9 +41,13 @@ namespace GerenciamentoDeClinica.telasecretaria
                 LimparCampos();
 
             }
+            catch (WebException)
+            {
+                MessageBox.Show(ERROR_WEBSERVICE);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

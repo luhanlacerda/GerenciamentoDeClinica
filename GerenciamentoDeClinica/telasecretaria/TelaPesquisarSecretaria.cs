@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,11 +17,11 @@ namespace GerenciamentoDeClinica.telasecretaria
 {
     public partial class TelaPesquisarSecretaria : Form
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
         private Thread _threadSalvarDados;
         private string _savedPesquisar = "";
         private PesquisarSecretaria _pesquisarSecretaria;
-        //? = podendo ser nulo ou não
-        //private int? selectedRow;
+    
 
         public TelaPesquisarSecretaria()
         {
@@ -129,9 +130,13 @@ namespace GerenciamentoDeClinica.telasecretaria
 
                 DisableEditar();
             }
+            catch (WebException)
+            {
+                MessageBox.Show(ERROR_WEBSERVICE);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -169,9 +174,13 @@ namespace GerenciamentoDeClinica.telasecretaria
 
                     DisableEditar();
                 }
+                catch (WebException)
+                {
+                    MessageBox.Show(ERROR_WEBSERVICE);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -189,9 +198,13 @@ namespace GerenciamentoDeClinica.telasecretaria
                     listViewSecretarias.Items.RemoveAt(_pesquisarSecretaria.LinhaSelecionada.Value);
                     DisableEditar();
                 }
+                catch (WebException)
+                {
+                    MessageBox.Show(ERROR_WEBSERVICE);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

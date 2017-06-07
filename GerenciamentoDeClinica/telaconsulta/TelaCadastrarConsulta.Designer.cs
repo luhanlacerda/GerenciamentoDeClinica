@@ -403,6 +403,7 @@
             this.Name = "TelaCadastrarConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastrarConsulta_FormClosing);
             this.Load += new System.EventHandler(this.TelaCadastrarConsulta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

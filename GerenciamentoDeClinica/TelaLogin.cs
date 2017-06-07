@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GerenciamentoDeClinica.localhost;
+using System.Net;
 
 namespace GerenciamentoDeClinica
 {
     public partial class TelaLogin : Form
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
+
+
         public TelaLogin()
         {
             InitializeComponent();
@@ -23,8 +27,56 @@ namespace GerenciamentoDeClinica
         bool mouseDown;
 
         private void button1_Click(object sender, EventArgs e)
+
         {
-            telaMain();
+            #region Validações dos campos
+            var username = txtUser.Text;
+            var password = txtPassword.Text;
+            /*if (string.IsNullOrEmpty(txtUser.Text))
+            {
+                MessageBox.Show(@"Por favor, digite seu nome de usuário.");
+                txtUser.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                MessageBox.Show(@"Por favor, digite sua senha.");
+                txtPassword.Focus();
+                return;
+            }*/
+            #endregion
+
+            try
+            {
+             /*if ( )
+               {
+
+                ClinicaService service = new ClinicaService();
+                Usuario usuario = new Usuario();
+                usuario.Nome = username;
+                usuario.Senha = password;
+                telaMain();
+
+                MessageBox.Show(@"Login efetuado com sucesso.");
+                   telaMain();
+               }
+               else
+               {
+                   MessageBox.Show(this, @"Dados de acesso inválidos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error)
+               }*/
+                telaMain();
+
+            }
+            catch (WebException)
+            {
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -53,6 +105,10 @@ namespace GerenciamentoDeClinica
             mouseDown = true;
         }
 
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
 
         void telaMain()
         {

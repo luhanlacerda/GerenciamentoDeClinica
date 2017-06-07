@@ -52,6 +52,7 @@
             // txtUser
             // 
             this.txtUser.Location = new System.Drawing.Point(153, 84);
+            this.txtUser.MaxLength = 50;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(165, 20);
             this.txtUser.TabIndex = 0;
@@ -60,9 +61,11 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(153, 124);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(165, 20);
             this.txtPassword.SkipLiterals = false;
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // lblPassword
             // 
