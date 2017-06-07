@@ -48,8 +48,8 @@ namespace GerenciamentoDeClinica.telasecretaria
         private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
         {
             comboUF.DataSource = ClinicaUtils.UF_LIST;
-            txtPais.Text = "Brasil";
-            txtPais.Enabled = false;
+            //txtPais.Text = "Brasil";
+            txtPais.Enabled = true;
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
@@ -84,73 +84,73 @@ namespace GerenciamentoDeClinica.telasecretaria
             //Nome
             if (string.IsNullOrEmpty(txtNome.Text))
             {
-                MessageBox.Show(this, @"Informe o nome da secretária");
+                MessageBox.Show(this, @"Informe o nome");
             }
 
             //CPF
             if (string.IsNullOrEmpty(maskedCPF.Text))
             {
-                MessageBox.Show(this, @"Informe o CPF da secretária");
+                MessageBox.Show(this, @"Informe o CPF");
             }
 
             //RG
             if (string.IsNullOrEmpty(txtRG.Text))
             {
-                MessageBox.Show(this, @"Informe o RG da secretária");
+                MessageBox.Show(this, @"Informe o RG");
             }
 
             //Contato
             if (string.IsNullOrEmpty(maskedContato.Text))
             {
-                MessageBox.Show(this, @"Informe o número de contato da secretária");
+                MessageBox.Show(this, @"Informe o número de contato");
             }
 
             //Email
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
-                MessageBox.Show(this, @"Informe o email da secretária");
+                MessageBox.Show(this, @"Informe o email");
             }
 
             //CEP
             if (string.IsNullOrEmpty(maskedCEP.Text))
             {
-                MessageBox.Show(this, @"Informe o CEP da secretária");
+                MessageBox.Show(this, @"Informe o CEP");
             }
 
             //Logradouro
             if (string.IsNullOrEmpty(txtLogradouro.Text))
             {
-                MessageBox.Show(this, @"Informe o logradouro da secretária");
+                MessageBox.Show(this, @"Informe o logradouro");
             }
 
             //Numero
             if (string.IsNullOrEmpty(txtNumero.Text))
             {
-                MessageBox.Show(this, @"Informe o numero do endereço da secretária");
+                MessageBox.Show(this, @"Informe o numero do endereço");
             }
 
             //Complemento
             if (string.IsNullOrEmpty(txtComplemento.Text))
             {
-                MessageBox.Show(this, @"Informe o complemento da secretária");
+                MessageBox.Show(this, @"Informe o complemento");
             }
 
             //Bairro
             if (string.IsNullOrEmpty(txtBairro.Text))
             {
-                MessageBox.Show(this, @"Informe o bairro da secretária");
+                MessageBox.Show(this, @"Informe o bairro");
             }
 
             //Cidade
             if (string.IsNullOrEmpty(txtCidade.Text))
             {
-                MessageBox.Show(this, @"Informe a cidade da secretária");
+                MessageBox.Show(this, @"Informe a cidade");
             }
 
             //País
             if (string.IsNullOrEmpty(txtPais.Text))
             {
-                MessageBox.Show(this, @"Informe o país da secretária");
+                MessageBox.Show(this, @"Informe o país");
             }
         }
 
@@ -168,6 +168,10 @@ namespace GerenciamentoDeClinica.telasecretaria
             txtCidade.Clear();
             txtPais.Clear();
             maskedContato.Clear();
+            rbSolteiro.Checked = false;
+            rbCasado.Checked = false;
+            rbViuvo.Checked = false;
+            dateTimeDtNasc.Value = DateTime.Now;
         }
 
         public void SalvarDados()

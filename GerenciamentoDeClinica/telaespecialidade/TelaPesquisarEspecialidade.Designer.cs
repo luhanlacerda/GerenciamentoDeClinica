@@ -191,6 +191,8 @@
             this.Name = "TelaPesquisarEspecialidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Especialidade";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarEspecialidade_FormClosing);
+            this.Load += new System.EventHandler(this.TelaPesquisarEspecialidade_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

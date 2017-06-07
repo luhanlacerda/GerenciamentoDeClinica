@@ -119,11 +119,35 @@
     <Setting Name="Pesquisar_Secretaria_CPF_Nome" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/data/pesquisar_secretaria/pesquisar_cpf</Value>
     </Setting>
-    <Setting Name="Pesquisar_Secretaria_Salvas" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">secretaria_salvas</Value>
+    <Setting Name="Pesquisar_Secretarias_Salvas" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">secretarias_salvas</Value>
     </Setting>
-    <Setting Name="Pesquistar_Secretaria_Salvas_XPath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/data/pesquisar_secretaria/secretaria_salvas</Value>
+    <Setting Name="Pesquistar_Secretarias_Salvas_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_secretaria/secretarias_salvas</Value>
+    </Setting>
+    <Setting Name="Especialidade" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Especialidade</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Alterar_Especialidade" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/data/pesquisar_especialidade/Especialidade</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Especialidade" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cadastrar_especialidade</Value>
+    </Setting>
+    <Setting Name="Cadastrar_Especialidade_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/cadastrar_especialidade</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Especialidade" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pesquisar_especialidade</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Especialidade_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/pesquisar_especialidade</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Especialidades_Salvas" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">especialidades_salvas</Value>
+    </Setting>
+    <Setting Name="Pesquisar_Especialidades_Salvas_XPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data/pesquisar_especialidade/especialidades_salvas</Value>
     </Setting>
   </Settings>
 </SettingsFile>

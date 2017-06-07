@@ -68,16 +68,41 @@ namespace GerenciamentoDeClinica.telamedico
             try
             {
                 _cadastrarMedico.Medico = GetMedico();
+                ValidarCamposString();
 
                 ClinicaService service = new ClinicaService();
                 service.CadastrarMedico(_cadastrarMedico.Medico);
-                MessageBox.Show(@"Médico atualizado com sucesso!");
+                MessageBox.Show(@"Médico cadastrado com sucesso!");
+
+                LimparCampos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message);
             }
 
+        }
+
+        private void LimparCampos()
+        {
+            txtNome.Clear();
+            txtRG.Clear();
+            maskedCPF.Clear();
+            txtEmail.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtBairro.Clear();
+            maskedCEP.Clear();
+            txtCidade.Clear();
+            txtPais.Clear();
+            maskedCell.Clear();
+            txtCRM.Clear();
+            rbSolteiro.Checked = false;
+            rbCasado.Checked = false;
+            rbViuvo.Checked = false;
+            comboBox1.SelectedIndex = 0;
+            dateTimeDtNasc.Value = DateTime.Now;
         }
 
         public void SalvarDados()
@@ -183,6 +208,87 @@ namespace GerenciamentoDeClinica.telamedico
                 Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
+        }
+
+        private void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome");
+            }
+
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG");
+            }
+
+            //CRM
+            if (string.IsNullOrEmpty(txtCRM.Text))
+            {
+                MessageBox.Show(this, @"Informe o CRM");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedCell.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país");
+            }
         }
 
         private void TelaCadastroMedico_FormClosing(object sender, FormClosingEventArgs e)
