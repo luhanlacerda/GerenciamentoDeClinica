@@ -499,7 +499,7 @@ namespace GerenciamentoDeClinica.utils
             XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consultas_Salvas);
             if (salvosNode != null)
                 //Pega os nós filhos de consultas salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
-                pesquisar.ConsultasSalvos = salvosNode.ChildNodes.Cast<XmlNode>()
+                pesquisar.ConsultasSalvas = salvosNode.ChildNodes.Cast<XmlNode>()
                     .Select(n => FromXml<Consulta>(n.OuterXml)).ToList();
 
             return pesquisar;

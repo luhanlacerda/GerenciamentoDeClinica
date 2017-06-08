@@ -59,7 +59,7 @@
             this.txtNomePaciente = new System.Windows.Forms.TextBox();
             this.labelNomePaciente = new System.Windows.Forms.Label();
             this.labelPaciente = new System.Windows.Forms.Label();
-            this.dateTimePickerDia = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeDia = new System.Windows.Forms.DateTimePicker();
             this.txtDuracao = new System.Windows.Forms.TextBox();
             this.lblDuracao = new System.Windows.Forms.Label();
             this.labelDia = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@
             this.groupBox1.Controls.Add(this.txtNomePaciente);
             this.groupBox1.Controls.Add(this.labelNomePaciente);
             this.groupBox1.Controls.Add(this.labelPaciente);
-            this.groupBox1.Controls.Add(this.dateTimePickerDia);
+            this.groupBox1.Controls.Add(this.dateTimeDia);
             this.groupBox1.Controls.Add(this.txtDuracao);
             this.groupBox1.Controls.Add(this.lblDuracao);
             this.groupBox1.Controls.Add(this.labelDia);
@@ -351,13 +351,13 @@
             this.labelPaciente.TabIndex = 6;
             this.labelPaciente.Text = "Paciente";
             // 
-            // dateTimePickerDia
+            // dateTimeDia
             // 
-            this.dateTimePickerDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDia.Location = new System.Drawing.Point(40, 478);
-            this.dateTimePickerDia.Name = "dateTimePickerDia";
-            this.dateTimePickerDia.Size = new System.Drawing.Size(87, 20);
-            this.dateTimePickerDia.TabIndex = 1;
+            this.dateTimeDia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeDia.Location = new System.Drawing.Point(40, 478);
+            this.dateTimeDia.Name = "dateTimeDia";
+            this.dateTimeDia.Size = new System.Drawing.Size(87, 20);
+            this.dateTimeDia.TabIndex = 1;
             // 
             // txtDuracao
             // 
@@ -418,7 +418,7 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Label lblDuracao;
         private System.Windows.Forms.TextBox txtDuracao;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDia;
+        private System.Windows.Forms.DateTimePicker dateTimeDia;
         private System.Windows.Forms.TextBox txtNomeMedico;
         private System.Windows.Forms.Label lblNomeMedico;
         private System.Windows.Forms.Label labelMedico;

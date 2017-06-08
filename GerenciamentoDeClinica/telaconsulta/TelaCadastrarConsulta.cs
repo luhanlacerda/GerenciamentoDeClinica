@@ -30,8 +30,7 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             InitializeComponent();
         }
-
-
+        
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             try
@@ -56,7 +55,6 @@ namespace GerenciamentoDeClinica.telaconsulta
             }
         }
 
-
         private void btnPesquisarPaciente_Click(object sender, EventArgs e)
         {
             try
@@ -78,8 +76,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 MessageBox.Show(this, ex.Message);
             }
         }
-
-
+        
         private void btnPesquisarMedico_Click(object sender, EventArgs e)
         {
             try
@@ -102,8 +99,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 MessageBox.Show(this, ex.Message);
             }
         }
-
-
+        
         private void btnPesquisarSecretaria_Click(object sender, EventArgs e)
         {
             try
@@ -125,8 +121,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 MessageBox.Show(this, ex.Message);
             }
         }
-
-
+        
         private void listViewMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewMedicos.SelectedItems.Count > 0)
@@ -135,8 +130,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 txtIDMedico.Text = _medicos[_selectedRowMedico.Value].ID_Medico.ToString();
             }
         }
-
-
+        
         private void listViewSecretarias_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewSecretarias.SelectedItems.Count > 0)
@@ -145,8 +139,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 txtIDSecretaria.Text = _secretarias[_selectedRowSecretaria.Value].ID_Secretaria.ToString();
             }
         }
-
-
+        
         private void listViewPacientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPacientes.SelectedItems.Count > 0)
@@ -155,7 +148,6 @@ namespace GerenciamentoDeClinica.telaconsulta
                 txtIDPaciente.Text = _pacientes[_selectedRowPaciente.Value].ID_Paciente.ToString();
             }
         }
-
 
         private void TelaCadastrarConsulta_Load(object sender, EventArgs e)
         {
@@ -187,7 +179,6 @@ namespace GerenciamentoDeClinica.telaconsulta
             }
         }
 
-
         public void SaveXml()
         {
             _cadastrarConsulta.Consulta = GetConsulta();
@@ -200,8 +191,7 @@ namespace GerenciamentoDeClinica.telaconsulta
                 ClinicaXmlUtils.SetCadastrarConsulta(_cadastrarConsulta);
             }
         }
-
-
+        
         private Estado GetEstado()
         {
             Estado estado = null;
@@ -215,18 +205,18 @@ namespace GerenciamentoDeClinica.telaconsulta
             return estado;
         }
 
-        void ClearTextBoxs()
+        private void ClearTextBoxs()
         {
             Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
             comboEstado.SelectedIndex = 0;
-            dateTimePickerDia.Value = DateTime.Now;
+            dateTimeDia.Value = DateTime.Now;
             
         }
 
         private void CarregarEditar(Consulta consulta)
         {
             txtDuracao.Text = Convert.ToString(consulta.Duracao);
-            dateTimePickerDia.Value= consulta.Horario;
+            dateTimeDia.Value= consulta.Horario;
             comboEstado.SelectedIndex = consulta.Estado.ID_Estado - 1;
             txtNomePaciente.Text = consulta.Paciente.Nome;
             txtIDPaciente.Text = Convert.ToString(consulta.Paciente.ID_Paciente);
@@ -247,29 +237,25 @@ namespace GerenciamentoDeClinica.telaconsulta
         {
             return new Consulta
             {
-                Horario = dateTimePickerDia.Value,
+                Horario = dateTimeDia.Value,
                 Duracao = Convert.ToInt32(txtDuracao.Text),
                 Estado = GetEstado(),
                 Paciente = new Paciente
                 {
-                   Nome = txtNomePaciente.Text,
                    ID_Paciente = Convert.ToInt32(txtIDPaciente.Text)
                 },
                 
                 Medico = new Medico
                 {
-                    Nome = txtNomeMedico.Text,
                     ID_Medico = Convert.ToInt32(txtIDMedico.Text)
                 },
 
                 Secretaria = new Secretaria
                 {
-                    Nome = txtNomeSecretaria.Text,
                     ID_Secretaria = Convert.ToInt32(txtIDSecretaria)
                 }
             };
         }
-
 
         void ValidarCamposString()
         {
