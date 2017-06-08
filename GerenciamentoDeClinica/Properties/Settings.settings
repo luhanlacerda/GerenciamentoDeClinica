@@ -167,10 +167,10 @@
     <Setting Name="Pesquisar_Consulta_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">data/pesquisar_consulta</Value>
     </Setting>
-    <Setting Name="Pesquisar_Consultas_Salvas" Type="System.String" Scope="Application">
+    <Setting Name="ConsultasSalvas_Salvas" Type="System.String" Scope="Application">
       <Value Profile="(Default)">consultas_salvas</Value>
     </Setting>
-    <Setting Name="Pesquisar_Consultas_Salvas_XPath" Type="System.String" Scope="Application">
+    <Setting Name="ConsultasSalvas_Salvas_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">data/pesquisar_consulta/consultas_salvas</Value>
     </Setting>
   </Settings>

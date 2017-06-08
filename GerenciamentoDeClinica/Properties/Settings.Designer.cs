@@ -522,18 +522,18 @@ namespace GerenciamentoDeClinica.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("consultas_salvas")]
-        public string Pesquisar_Consultas_Salvas {
+        public string ConsultasSalvas_Salvas {
             get {
-                return ((string)(this["Pesquisar_Consultas_Salvas"]));
+                return ((string)(this["ConsultasSalvas_Salvas"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("data/pesquisar_consulta/consultas_salvas")]
-        public string Pesquisar_Consultas_Salvas_XPath {
+        public string ConsultasSalvas_Salvas_XPath {
             get {
-                return ((string)(this["Pesquisar_Consultas_Salvas_XPath"]));
+                return ((string)(this["ConsultasSalvas_Salvas_XPath"]));
             }
         }
     }

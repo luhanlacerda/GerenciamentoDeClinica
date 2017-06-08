@@ -469,9 +469,9 @@ namespace GerenciamentoDeClinica.utils
             {
                 //Pega os nós filhos de consultas salvos, transforma em XmlNode, seleciona apenas os que tem Name "consultas_salvos" e transforma em List
                 List<XmlNode> salvos = pesquisarNode.ChildNodes.Cast<XmlNode>()
-                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Consultas_Salvas).ToList();
+                    .Where(n => n.Name == Properties.Settings.Default.ConsultasSalvas_Salvas).ToList();
                 //Início da correção do Xml, onde cada consulta salvo estará dentro de "consulta_salvos"
-                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Consultas_Salvas);
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.ConsultasSalvas_Salvas);
                 foreach (XmlNode node in salvos)
                 {
                     //Remove o antigo nó, para haver a troca de nome do nó filho
@@ -496,7 +496,7 @@ namespace GerenciamentoDeClinica.utils
             //Retornar para Classe PesquisarConsulta, vai haver um erro nos consultas_salvos
             PesquisarConsulta pesquisar = FromXml<PesquisarConsulta>(pesquisarNode.OuterXml);
             //Início da correção dos consultas salvos
-            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.Pesquisar_Consultas_Salvas);
+            XmlNode salvosNode = pesquisarNode.SelectSingleNode(Properties.Settings.Default.ConsultasSalvas_Salvas);
             if (salvosNode != null)
                 //Pega os nós filhos de consultas salvos, transforma em XmlNode, faz a serialização com cada membro e transforma em List
                 pesquisar.ConsultasSalvas = salvosNode.ChildNodes.Cast<XmlNode>()
