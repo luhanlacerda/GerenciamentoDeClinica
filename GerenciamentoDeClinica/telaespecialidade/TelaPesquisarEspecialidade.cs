@@ -179,6 +179,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
         private void CarregarListView()
         {
+            listViewEspecialidades.Items.Clear();
             foreach (Especialidade especialidade in _pesquisarEspecialidade.EspecialidadesSalvas)
             {
                 ListViewItem linha = listViewEspecialidades.Items.Add(especialidade.ID_Especialidade.ToString());
