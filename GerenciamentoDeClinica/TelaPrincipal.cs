@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GerenciamentoDeClinica.telaatendimento;
 
 namespace GerenciamentoDeClinica
 {
@@ -161,9 +162,11 @@ namespace GerenciamentoDeClinica
             telaTesteWebService.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void testarAtendimentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            TelaAtendimento telaAtendimento = new TelaAtendimento();
+            AddOwnedForm(telaAtendimento);
+            telaAtendimento.Show();
         }
     }
 }

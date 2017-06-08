@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicaService", "ClinicaSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicaServiceLibrary", "ClinicaServiceLibrary\ClinicaServiceLibrary.csproj", "{B68B7F6A-504C-4E0B-B105-44968C701EB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atendimento", "Atendimento\Atendimento.csproj", "{6D6B209D-282E-4F90-8774-FD6D31D87EF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B68B7F6A-504C-4E0B-B105-44968C701EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B68B7F6A-504C-4E0B-B105-44968C701EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B68B7F6A-504C-4E0B-B105-44968C701EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6B209D-282E-4F90-8774-FD6D31D87EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6B209D-282E-4F90-8774-FD6D31D87EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6B209D-282E-4F90-8774-FD6D31D87EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6B209D-282E-4F90-8774-FD6D31D87EF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
