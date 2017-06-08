@@ -157,7 +157,7 @@ namespace ClinicaServiceLibrary.consulta
                 this.abrirConexao();
                 //Instruçao a ser executada
                 string sql = "SELECT Horario, Duracao, Observações, Receita, ID_Consulta, ID_Medico, ID_Paciente, " +
-                    " ID_Secretaria, ID_Estado WHERE 1=1";
+                    " ID_Secretaria, ID_Estado FROM Consulta WHERE 1=1";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
                 //Se foi passado um ID valido, o mesmo entrara como criterio de filtro.

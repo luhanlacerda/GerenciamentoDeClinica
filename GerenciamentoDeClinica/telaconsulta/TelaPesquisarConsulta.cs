@@ -18,8 +18,6 @@ namespace GerenciamentoDeClinica.telaconsulta
     public partial class TelaPesquisarConsulta : Form, IConsistenciaDados
     {
         private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
-        private List<Consulta> _consultas;
-        private int? _selectedRowConsulta;
         private Thread _threadSalvarDados;
         private string _savedPesquisar = "";
         private PesquisarConsulta _pesquisarConsulta;
@@ -32,26 +30,26 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (_selectedRowConsulta.HasValue)
+            if (_pesquisarConsulta.LinhaSelecionada.HasValue)
             {
                 try
                 {
 
                     /*#region Dados
 
-                    _consultas[_selectedRowConsulta.Value].Observacoes = txtObservacoes.Text;
-                    _consultas[_selectedRowConsulta.Value].Receita = txtReceita.Text;
-                    _consultas[_selectedRowConsulta.Value].Estado =
+                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Observacoes = txtObservacoes.Text;
+                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Receita = txtReceita.Text;
+                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Estado =
                         ((BindingList<Estado>)comboEstado.DataSource).ElementAt(comboEstado.SelectedIndex);
 
                     #endregion
 
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarConsulta(_consultas[_selectedRowConsulta.Value]);
+                    service.AtualizarConsulta(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]);
                     MessageBox.Show(@"Consulta atualizada com sucesso!");
 
                     listViewConsultas.Items.Clear();
-                    _consultas = new List<Consulta>(service.ListarConsulta(new Consulta
+                    _pesquisarConsulta.ConsultasSalvas = new List<Consulta>(service.ListarConsulta(new Consulta
 
                     {
                         Medico = new Medico { ID_Medico = Convert.ToInt32(txtPesqMedicoID.Text) },
@@ -79,7 +77,6 @@ namespace GerenciamentoDeClinica.telaconsulta
                     MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
 
@@ -113,12 +110,23 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 listViewConsultas.Items.Clear();
                 ClinicaService service = new ClinicaService();
-                _consultas = new List<Consulta>(service.ListarConsulta(new Consulta
 
+                Consulta consulta = new Consulta
                 {
-                    Medico = new Medico { ID_Medico = Convert.ToInt32(txtPesqMedicoID.Text) },
-                    Paciente = new Paciente { ID_Paciente = Convert.ToInt32(txtPesqPacienteID.Text) }
-                }));
+                    Medico = new Medico(),
+                    Paciente = new Paciente(),
+                    Secretaria = new Secretaria()
+                };
+
+                int resultMedico, resultPaciente;
+                if (int.TryParse(txtPesqMedicoID.Text, out resultMedico))
+                    consulta.Medico.ID_Medico = resultMedico;
+                if (int.TryParse(txtPesqPacienteID.Text, out resultPaciente))
+                    consulta.Paciente.ID_Paciente = resultPaciente;
+
+
+
+                _pesquisarConsulta.ConsultasSalvas = new List<Consulta>(service.ListarConsulta(consulta));
 
                 CarregarListView();
                 ClearTextBoxs();
@@ -138,7 +146,6 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         private void listViewConsultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
             if (listViewConsultas.SelectedItems.Count > 0)
             {
                 _pesquisarConsulta.LinhaSelecionada = listViewConsultas.SelectedItems.Cast<ListViewItem>().ToList().ElementAt(0).Index;
@@ -170,7 +177,7 @@ namespace GerenciamentoDeClinica.telaconsulta
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
-            _pesquisarConsulta= ClinicaXmlUtils.GetPesquisarConsulta();
+            _pesquisarConsulta = ClinicaXmlUtils.GetPesquisarConsulta();
             if (_pesquisarConsulta != null)
             {
                 txtPesqMedicoID.Text = _pesquisarConsulta.PesquisarID_Medico;
@@ -195,9 +202,11 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         private void CarregarEditar(Consulta consulta)
         {
-            txtPesqMedicoID.Text = Convert.ToString(consulta.Duracao);
+            if (consulta.Medico.ID_Medico > 0)
+                txtPesqMedicoID.Text = consulta.Medico.ID_Medico.ToString();
+            if (consulta.Paciente.ID_Paciente > 0)
+                txtPesqPacienteID.Text = consulta.Paciente.ID_Paciente.ToString();
             comboEstado.SelectedIndex = consulta.Estado.ID_Estado - 1;
-            txtPesqPacienteID.Text = Convert.ToString(consulta.Paciente.ID_Paciente);
             txtObservacoes.Text = consulta.Observacoes;
             txtReceita.Text = consulta.Receita;
 
@@ -206,7 +215,7 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         private void CarregarListView()
         {
-            foreach (Consulta consulta in _consultas)
+            foreach (Consulta consulta in _pesquisarConsulta.ConsultasSalvas)
             {
                 ListViewItem linha = listViewConsultas.Items.Add(Convert.ToString(consulta.ID_Consulta));
                 linha.SubItems.Add(consulta.Paciente.Nome);
@@ -240,21 +249,21 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         private Consulta GetConsulta()
         {
-            return new Consulta
+            Consulta consulta = new Consulta
             {
-
                 Estado = GetEstado(),
-                Paciente = new Paciente
-                {
-                    ID_Paciente = Convert.ToInt32(txtPesqPacienteID.Text)
-                },
-
-                Medico = new Medico
-                {
-                    ID_Medico = Convert.ToInt32(txtPesqMedicoID.Text)
-                },
-
+                Paciente = new Paciente(),
+                Medico = new Medico()
             };
+
+            int resultPaciente, resultMedico;
+
+            if (int.TryParse(txtPesqPacienteID.Text, out resultPaciente))
+                consulta.Paciente.ID_Paciente = resultPaciente;
+            if (int.TryParse(txtPesqMedicoID.Text, out resultMedico))
+                consulta.Medico.ID_Medico = resultMedico;
+
+            return consulta;
         }
 
 
@@ -291,7 +300,7 @@ namespace GerenciamentoDeClinica.telaconsulta
             SaveXml();
         }
 
-       
+
     }
 
     [XmlRoot(ElementName = "pesquisar_consulta")]
