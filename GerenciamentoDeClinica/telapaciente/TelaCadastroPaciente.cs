@@ -22,21 +22,25 @@ namespace GerenciamentoDeClinica.telapaciente
             InitializeComponent();
         }
 
-        #region clearFomr
-
-        private void ClearTextBoxs()
+        private void LimparCampos()
         {
-            GroupBox.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-            GroupBox.Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
-
-            comboConvenio.SelectedIndex = 0;
-            dateTimeDtNasc.Value = DateTime.Now;
+            txtNome.Clear();
+            txtRG.Clear();
+            maskedCPF.Clear();
+            txtEmail.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtBairro.Clear();
+            maskedCEP.Clear();
+            txtCidade.Clear();
+            maskedCell.Clear();
             rbSolteiro.Checked = false;
             rbCasado.Checked = false;
             rbViuvo.Checked = false;
+            dateTimeDtNasc.Value = DateTime.Now;
+            comboConvenio.SelectedIndex = 0;
         }
-
-        #endregion
 
         private void TelaCadastroPaciente_Load(object sender, EventArgs e)
         {
@@ -44,7 +48,6 @@ namespace GerenciamentoDeClinica.telapaciente
             ClinicaService service = new ClinicaService();
             comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
             comboConvenio.DisplayMember = "Descricao";
-            
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
@@ -69,7 +72,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 ClinicaService service = new ClinicaService();
                 service.CadastrarPaciente(_cadastrarPaciente.Paciente);
                 MessageBox.Show(@"Paciente cadastrado com sucesso!");
-                ClearTextBoxs();
+                LimparCampos();
                 txtNome.Focus();
             }
             catch (WebException)
@@ -101,7 +104,6 @@ namespace GerenciamentoDeClinica.telapaciente
             }
         }
 
-
         private void CarregarEditar(Paciente paciente)
         {
             txtNome.Text = paciente.Nome;
@@ -124,7 +126,6 @@ namespace GerenciamentoDeClinica.telapaciente
             comboUF.SelectedItem = paciente.Endereco.UF;
             txtPais.Text = paciente.Endereco.Pais;
         }
-
 
         public void SalvarDados()
         {

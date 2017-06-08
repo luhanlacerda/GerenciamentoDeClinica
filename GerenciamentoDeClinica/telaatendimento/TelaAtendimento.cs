@@ -14,7 +14,7 @@ namespace GerenciamentoDeClinica.telaatendimento
 {
     public partial class TelaAtendimento : Form
     {
-        private const string IP = "192.168.25.117";
+        private const string IP = "192.168.1.108";
         private const int PORT = 6969;
 
         private TcpClient tcpClient;

@@ -133,7 +133,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 {
                     Paciente paciente = GetPaciente();
                     paciente.ID_Paciente = _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value].ID_Paciente;
-
+                    ValidarCamposString();
                     ClinicaService service = new ClinicaService();
                     service.AtualizarPaciente(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
                     MessageBox.Show(@"Paciente atualizado com sucesso!");
@@ -190,8 +190,6 @@ namespace GerenciamentoDeClinica.telapaciente
 
             comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
             comboConvenio.DisplayMember = @"Descricao";
-            txtPais.Text = @"Brasil";
-            txtPais.Enabled = false;
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
@@ -286,6 +284,7 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private void CarregarListView()
         {
+            listViewPacientes.Items.Clear();
             foreach (Paciente paciente in _pesquisarPaciente.PacientesSalvos)
             {
                 ListViewItem linha = listViewPacientes.Items.Add(paciente.ID_Paciente.ToString());

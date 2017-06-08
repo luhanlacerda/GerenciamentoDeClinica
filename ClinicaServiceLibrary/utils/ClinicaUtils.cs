@@ -24,7 +24,7 @@ namespace ClinicaServiceLibrary.utils
         public const int CEP_SIZE = 9;
         public const int PAIS_SIZE = 30;
         public const int CONTATO_SIZE = 16;
-        public const int ESTADO_CIVIL_SIZE = 10;
+        public const int ESTADO_CIVIL_SIZE = 11;
         #endregion
 
         #region Erros
