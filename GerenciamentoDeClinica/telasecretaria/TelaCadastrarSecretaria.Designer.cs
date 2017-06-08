@@ -58,7 +58,7 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblRG = new System.Windows.Forms.Label();
             this.lblCPF = new System.Windows.Forms.Label();
-            this.maskedCell = new System.Windows.Forms.MaskedTextBox();
+            this.maskedContato = new System.Windows.Forms.MaskedTextBox();
             this.txtRG = new System.Windows.Forms.TextBox();
             this.maskedCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblContato = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             this.GroupBox.Controls.Add(this.txtNome);
             this.GroupBox.Controls.Add(this.lblRG);
             this.GroupBox.Controls.Add(this.lblCPF);
-            this.GroupBox.Controls.Add(this.maskedCell);
+            this.GroupBox.Controls.Add(this.maskedContato);
             this.GroupBox.Controls.Add(this.txtRG);
             this.GroupBox.Controls.Add(this.maskedCPF);
             this.GroupBox.Controls.Add(this.lblContato);
@@ -112,6 +112,7 @@
             // txtPais
             // 
             this.txtPais.Location = new System.Drawing.Point(199, 325);
+            this.txtPais.MaxLength = 30;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(134, 20);
             this.txtPais.TabIndex = 96;
@@ -164,6 +165,7 @@
             // txtCidade
             // 
             this.txtCidade.Location = new System.Drawing.Point(9, 326);
+            this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 14;
@@ -179,6 +181,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(9, 277);
+            this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 11;
@@ -186,6 +189,7 @@
             // txtComplemento
             // 
             this.txtComplemento.Location = new System.Drawing.Point(99, 277);
+            this.txtComplemento.MaxLength = 10;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 12;
@@ -193,6 +197,7 @@
             // txtLogradouro
             // 
             this.txtLogradouro.Location = new System.Drawing.Point(99, 232);
+            this.txtLogradouro.MaxLength = 50;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
             this.txtLogradouro.TabIndex = 10;
@@ -281,6 +286,7 @@
             // txtBairro
             // 
             this.txtBairro.Location = new System.Drawing.Point(192, 277);
+            this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 13;
@@ -335,6 +341,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(10, 43);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 0;
@@ -357,17 +364,18 @@
             this.lblCPF.TabIndex = 21;
             this.lblCPF.Text = "CPF:";
             // 
-            // maskedCell
+            // maskedContato
             // 
-            this.maskedCell.Location = new System.Drawing.Point(246, 83);
-            this.maskedCell.Mask = "(##) #.####-####";
-            this.maskedCell.Name = "maskedCell";
-            this.maskedCell.Size = new System.Drawing.Size(89, 20);
-            this.maskedCell.TabIndex = 3;
+            this.maskedContato.Location = new System.Drawing.Point(246, 83);
+            this.maskedContato.Mask = "(##) #.####-####";
+            this.maskedContato.Name = "maskedContato";
+            this.maskedContato.Size = new System.Drawing.Size(89, 20);
+            this.maskedContato.TabIndex = 3;
             // 
             // txtRG
             // 
             this.txtRG.Location = new System.Drawing.Point(128, 83);
+            this.txtRG.MaxLength = 20;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
             this.txtRG.TabIndex = 2;
@@ -392,6 +400,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(128, 136);
+            this.txtEmail.MaxLength = 30;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
             this.txtEmail.TabIndex = 5;
@@ -414,6 +423,7 @@
             this.Name = "TelaCadastrarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastrarSecretaria_FormClosing);
             this.Load += new System.EventHandler(this.TelaCadastrarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();
@@ -434,7 +444,7 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblRG;
         private System.Windows.Forms.Label lblCPF;
-        private System.Windows.Forms.MaskedTextBox maskedCell;
+        private System.Windows.Forms.MaskedTextBox maskedContato;
         private System.Windows.Forms.TextBox txtRG;
         private System.Windows.Forms.MaskedTextBox maskedCPF;
         private System.Windows.Forms.Label lblContato;

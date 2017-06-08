@@ -127,6 +127,7 @@
             // 
             this.txtPais.Enabled = false;
             this.txtPais.Location = new System.Drawing.Point(199, 326);
+            this.txtPais.MaxLength = 30;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(100, 20);
             this.txtPais.TabIndex = 97;
@@ -183,6 +184,7 @@
             // 
             this.txtCidade.Enabled = false;
             this.txtCidade.Location = new System.Drawing.Point(9, 325);
+            this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 18;
@@ -200,6 +202,7 @@
             // 
             this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(9, 276);
+            this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 15;
@@ -208,6 +211,7 @@
             // 
             this.txtComplemento.Enabled = false;
             this.txtComplemento.Location = new System.Drawing.Point(99, 276);
+            this.txtComplemento.MaxLength = 10;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 16;
@@ -216,6 +220,7 @@
             // 
             this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Location = new System.Drawing.Point(99, 233);
+            this.txtLogradouro.MaxLength = 50;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
             this.txtLogradouro.TabIndex = 14;
@@ -228,6 +233,7 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 13;
+            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -305,6 +311,7 @@
             // 
             this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(192, 276);
+            this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 17;
@@ -313,6 +320,7 @@
             // 
             this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(11, 44);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(324, 20);
             this.txtNome.TabIndex = 4;
@@ -408,6 +416,7 @@
             // 
             this.txtRG.Enabled = false;
             this.txtRG.Location = new System.Drawing.Point(128, 83);
+            this.txtRG.MaxLength = 20;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
             this.txtRG.TabIndex = 6;
@@ -434,6 +443,7 @@
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(128, 136);
+            this.txtEmail.MaxLength = 30;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
             this.txtEmail.TabIndex = 9;
@@ -503,6 +513,7 @@
             // txtNomePesq
             // 
             this.txtNomePesq.Location = new System.Drawing.Point(50, 35);
+            this.txtNomePesq.MaxLength = 100;
             this.txtNomePesq.Name = "txtNomePesq";
             this.txtNomePesq.Size = new System.Drawing.Size(229, 20);
             this.txtNomePesq.TabIndex = 0;
@@ -552,6 +563,7 @@
             this.Name = "TelaPesquisarSecretaria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secretaria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarSecretaria_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarSecretaria_Load);
             this.GroupBox.ResumeLayout(false);
             this.GroupBox.PerformLayout();

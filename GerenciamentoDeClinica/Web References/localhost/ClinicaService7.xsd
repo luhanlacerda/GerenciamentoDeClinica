@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" />
-  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
-  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
-  <xs:complexType name="Consulta">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
+  <xs:complexType name="Secretaria">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" base="q1:Pessoa">
+        <xs:sequence>
+          <xs:element name="ID_Secretaria" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Secretaria" nillable="true" type="tns:Secretaria" />
+  <xs:complexType name="ArrayOfSecretaria">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Duracao" type="xs:int" />
-      <xs:element minOccurs="0" name="Horario" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="ID_Consulta" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" minOccurs="0" name="Medico" nillable="true" type="q1:Medico" />
-      <xs:element minOccurs="0" name="Observacoes" nillable="true" type="xs:string" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" minOccurs="0" name="Paciente" nillable="true" type="q2:Paciente" />
-      <xs:element minOccurs="0" name="Receita" nillable="true" type="xs:string" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" minOccurs="0" name="Secretaria" nillable="true" type="q3:Secretaria" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Secretaria" nillable="true" type="tns:Secretaria" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Consulta" nillable="true" type="tns:Consulta" />
-  <xs:complexType name="ArrayOfConsulta">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Consulta" nillable="true" type="tns:Consulta" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfConsulta" nillable="true" type="tns:ArrayOfConsulta" />
+  <xs:element name="ArrayOfSecretaria" nillable="true" type="tns:ArrayOfSecretaria" />
 </xs:schema>

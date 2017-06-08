@@ -76,9 +76,8 @@
             this.listViewPacientes = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Convenio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +119,7 @@
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(128, 136);
+            this.txtEmail.MaxLength = 30;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
             this.txtEmail.TabIndex = 9;
@@ -146,6 +146,7 @@
             // 
             this.txtRG.Enabled = false;
             this.txtRG.Location = new System.Drawing.Point(128, 83);
+            this.txtRG.MaxLength = 20;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
             this.txtRG.TabIndex = 6;
@@ -181,6 +182,7 @@
             // 
             this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(10, 43);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
             this.txtNome.TabIndex = 4;
@@ -260,6 +262,7 @@
             // 
             this.txtPais.Enabled = false;
             this.txtPais.Location = new System.Drawing.Point(192, 348);
+            this.txtPais.MaxLength = 30;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(143, 20);
             this.txtPais.TabIndex = 98;
@@ -334,6 +337,7 @@
             // 
             this.txtCidade.Enabled = false;
             this.txtCidade.Location = new System.Drawing.Point(7, 350);
+            this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
             this.txtCidade.TabIndex = 18;
@@ -351,6 +355,7 @@
             // 
             this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(7, 311);
+            this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
             this.txtNumero.TabIndex = 15;
@@ -359,6 +364,7 @@
             // 
             this.txtComplemento.Enabled = false;
             this.txtComplemento.Location = new System.Drawing.Point(99, 311);
+            this.txtComplemento.MaxLength = 10;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
             this.txtComplemento.TabIndex = 16;
@@ -367,6 +373,7 @@
             // 
             this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Location = new System.Drawing.Point(99, 269);
+            this.txtLogradouro.MaxLength = 50;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
             this.txtLogradouro.TabIndex = 14;
@@ -379,6 +386,7 @@
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
             this.maskedCEP.TabIndex = 13;
+            this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
             // 
@@ -456,6 +464,7 @@
             // 
             this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(192, 311);
+            this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
             this.txtBairro.TabIndex = 17;
@@ -495,6 +504,7 @@
             // txtFiltroNome
             // 
             this.txtFiltroNome.Location = new System.Drawing.Point(51, 19);
+            this.txtFiltroNome.MaxLength = 100;
             this.txtFiltroNome.Name = "txtFiltroNome";
             this.txtFiltroNome.Size = new System.Drawing.Size(223, 20);
             this.txtFiltroNome.TabIndex = 0;
@@ -532,7 +542,6 @@
             this.ID,
             this.Nome,
             this.CPF,
-            this.Convenio,
             this.Contato});
             this.listViewPacientes.FullRowSelect = true;
             this.listViewPacientes.Location = new System.Drawing.Point(1, 102);
@@ -551,20 +560,15 @@
             // 
             this.Nome.Text = "Nome";
             // 
-            // Convenio
+            // CPF
             // 
-            this.Convenio.DisplayIndex = 2;
-            this.Convenio.Text = "Convenio";
+            this.CPF.DisplayIndex = 3;
+            this.CPF.Text = "CPF";
             // 
             // Contato
             // 
-            this.Contato.DisplayIndex = 3;
+            this.Contato.DisplayIndex = 2;
             this.Contato.Text = "Contato";
-            // 
-            // CPF
-            // 
-            this.CPF.DisplayIndex = 4;
-            this.CPF.Text = "CPF";
             // 
             // TelaPesquisarPaciente
             // 
@@ -577,6 +581,7 @@
             this.Name = "TelaPesquisarPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paciente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarPaciente_FormClosing);
             this.Load += new System.EventHandler(this.TelaPesquisarPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.GroupBox.ResumeLayout(false);
@@ -632,7 +637,6 @@
         private System.Windows.Forms.ListView listViewPacientes;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Nome;
-        private System.Windows.Forms.ColumnHeader Convenio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroNome;
         private System.Windows.Forms.Label lblConvenio;

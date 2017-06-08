@@ -104,6 +104,7 @@
             // 
             this.txtDescricao.Enabled = false;
             this.txtDescricao.Location = new System.Drawing.Point(14, 83);
+            this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(159, 20);
             this.txtDescricao.TabIndex = 5;
@@ -132,6 +133,7 @@
             // txtDescricaoFiltro
             // 
             this.txtDescricaoFiltro.Location = new System.Drawing.Point(14, 42);
+            this.txtDescricaoFiltro.MaxLength = 20;
             this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
             this.txtDescricaoFiltro.Size = new System.Drawing.Size(233, 20);
             this.txtDescricaoFiltro.TabIndex = 1;

@@ -49,7 +49,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(185, 129);
+            this.btnCadastrar.Location = new System.Drawing.Point(155, 103);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 2;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 46);
+            this.label2.Location = new System.Drawing.Point(16, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 11;
@@ -68,7 +68,8 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(44, 69);
+            this.txtDescricao.Location = new System.Drawing.Point(80, 46);
+            this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(150, 20);
             this.txtDescricao.TabIndex = 1;
@@ -82,6 +83,8 @@
             this.Name = "TelaCadastrarEspecialidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Especialidade";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaCadastrarEspecialidade_FormClosing);
+            this.Load += new System.EventHandler(this.TelaCadastrarEspecialidade_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

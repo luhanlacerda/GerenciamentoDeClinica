@@ -23,7 +23,7 @@ namespace GerenciamentoDeClinica.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_IClinicaService", Namespace="http://tempuri.org/")]
@@ -77,6 +77,22 @@ namespace GerenciamentoDeClinica.localhost {
         private System.Threading.SendOrPostCallback RemoverSecretariaOperationCompleted;
         
         private System.Threading.SendOrPostCallback ListarSecretariaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CadastrarEstadoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizarEstadoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoverEstadoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ListarEstadoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CadastrarUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizarUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoverUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ListarUsuarioOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -187,6 +203,30 @@ namespace GerenciamentoDeClinica.localhost {
         
         /// <remarks/>
         public event ListarSecretariaCompletedEventHandler ListarSecretariaCompleted;
+        
+        /// <remarks/>
+        public event CadastrarEstadoCompletedEventHandler CadastrarEstadoCompleted;
+        
+        /// <remarks/>
+        public event AtualizarEstadoCompletedEventHandler AtualizarEstadoCompleted;
+        
+        /// <remarks/>
+        public event RemoverEstadoCompletedEventHandler RemoverEstadoCompleted;
+        
+        /// <remarks/>
+        public event ListarEstadoCompletedEventHandler ListarEstadoCompleted;
+        
+        /// <remarks/>
+        public event CadastrarUsuarioCompletedEventHandler CadastrarUsuarioCompleted;
+        
+        /// <remarks/>
+        public event AtualizarUsuarioCompletedEventHandler AtualizarUsuarioCompleted;
+        
+        /// <remarks/>
+        public event RemoverUsuarioCompletedEventHandler RemoverUsuarioCompleted;
+        
+        /// <remarks/>
+        public event ListarUsuarioCompletedEventHandler ListarUsuarioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/CadastrarConsulta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -879,6 +919,236 @@ namespace GerenciamentoDeClinica.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/CadastrarEstado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CadastrarEstado([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Estado estado) {
+            this.Invoke("CadastrarEstado", new object[] {
+                        estado});
+        }
+        
+        /// <remarks/>
+        public void CadastrarEstadoAsync(Estado estado) {
+            this.CadastrarEstadoAsync(estado, null);
+        }
+        
+        /// <remarks/>
+        public void CadastrarEstadoAsync(Estado estado, object userState) {
+            if ((this.CadastrarEstadoOperationCompleted == null)) {
+                this.CadastrarEstadoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCadastrarEstadoOperationCompleted);
+            }
+            this.InvokeAsync("CadastrarEstado", new object[] {
+                        estado}, this.CadastrarEstadoOperationCompleted, userState);
+        }
+        
+        private void OnCadastrarEstadoOperationCompleted(object arg) {
+            if ((this.CadastrarEstadoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CadastrarEstadoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/AtualizarEstado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AtualizarEstado([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Estado estado) {
+            this.Invoke("AtualizarEstado", new object[] {
+                        estado});
+        }
+        
+        /// <remarks/>
+        public void AtualizarEstadoAsync(Estado estado) {
+            this.AtualizarEstadoAsync(estado, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizarEstadoAsync(Estado estado, object userState) {
+            if ((this.AtualizarEstadoOperationCompleted == null)) {
+                this.AtualizarEstadoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizarEstadoOperationCompleted);
+            }
+            this.InvokeAsync("AtualizarEstado", new object[] {
+                        estado}, this.AtualizarEstadoOperationCompleted, userState);
+        }
+        
+        private void OnAtualizarEstadoOperationCompleted(object arg) {
+            if ((this.AtualizarEstadoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizarEstadoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/RemoverEstado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoverEstado([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Estado estado) {
+            this.Invoke("RemoverEstado", new object[] {
+                        estado});
+        }
+        
+        /// <remarks/>
+        public void RemoverEstadoAsync(Estado estado) {
+            this.RemoverEstadoAsync(estado, null);
+        }
+        
+        /// <remarks/>
+        public void RemoverEstadoAsync(Estado estado, object userState) {
+            if ((this.RemoverEstadoOperationCompleted == null)) {
+                this.RemoverEstadoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoverEstadoOperationCompleted);
+            }
+            this.InvokeAsync("RemoverEstado", new object[] {
+                        estado}, this.RemoverEstadoOperationCompleted, userState);
+        }
+        
+        private void OnRemoverEstadoOperationCompleted(object arg) {
+            if ((this.RemoverEstadoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoverEstadoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/ListarEstado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.estado")]
+        public Estado[] ListarEstado([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Estado filtro) {
+            object[] results = this.Invoke("ListarEstado", new object[] {
+                        filtro});
+            return ((Estado[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ListarEstadoAsync(Estado filtro) {
+            this.ListarEstadoAsync(filtro, null);
+        }
+        
+        /// <remarks/>
+        public void ListarEstadoAsync(Estado filtro, object userState) {
+            if ((this.ListarEstadoOperationCompleted == null)) {
+                this.ListarEstadoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListarEstadoOperationCompleted);
+            }
+            this.InvokeAsync("ListarEstado", new object[] {
+                        filtro}, this.ListarEstadoOperationCompleted, userState);
+        }
+        
+        private void OnListarEstadoOperationCompleted(object arg) {
+            if ((this.ListarEstadoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ListarEstadoCompleted(this, new ListarEstadoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/CadastrarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CadastrarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("CadastrarUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void CadastrarUsuarioAsync(Usuario usuario) {
+            this.CadastrarUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void CadastrarUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.CadastrarUsuarioOperationCompleted == null)) {
+                this.CadastrarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCadastrarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("CadastrarUsuario", new object[] {
+                        usuario}, this.CadastrarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnCadastrarUsuarioOperationCompleted(object arg) {
+            if ((this.CadastrarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CadastrarUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/AtualizarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AtualizarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("AtualizarUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void AtualizarUsuarioAsync(Usuario usuario) {
+            this.AtualizarUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizarUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.AtualizarUsuarioOperationCompleted == null)) {
+                this.AtualizarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("AtualizarUsuario", new object[] {
+                        usuario}, this.AtualizarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnAtualizarUsuarioOperationCompleted(object arg) {
+            if ((this.AtualizarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizarUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/RemoverUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoverUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario usuario) {
+            this.Invoke("RemoverUsuario", new object[] {
+                        usuario});
+        }
+        
+        /// <remarks/>
+        public void RemoverUsuarioAsync(Usuario usuario) {
+            this.RemoverUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void RemoverUsuarioAsync(Usuario usuario, object userState) {
+            if ((this.RemoverUsuarioOperationCompleted == null)) {
+                this.RemoverUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoverUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("RemoverUsuario", new object[] {
+                        usuario}, this.RemoverUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnRemoverUsuarioOperationCompleted(object arg) {
+            if ((this.RemoverUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoverUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClinicaService/ListarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario")]
+        public Usuario[] ListarUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Usuario filtro) {
+            object[] results = this.Invoke("ListarUsuario", new object[] {
+                        filtro});
+            return ((Usuario[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ListarUsuarioAsync(Usuario filtro) {
+            this.ListarUsuarioAsync(filtro, null);
+        }
+        
+        /// <remarks/>
+        public void ListarUsuarioAsync(Usuario filtro, object userState) {
+            if ((this.ListarUsuarioOperationCompleted == null)) {
+                this.ListarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("ListarUsuario", new object[] {
+                        filtro}, this.ListarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnListarUsuarioOperationCompleted(object arg) {
+            if ((this.ListarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ListarUsuarioCompleted(this, new ListarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -898,26 +1168,20 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta")]
     public partial class Consulta {
         
-        private string descricaoField;
-        
         private int duracaoField;
         
-        private bool duracaoFieldSpecified;
+        private Estado estadoField;
         
         private System.DateTime horarioField;
         
-        private bool horarioFieldSpecified;
-        
         private int iD_ConsultaField;
-        
-        private bool iD_ConsultaFieldSpecified;
         
         private Medico medicoField;
         
@@ -930,17 +1194,6 @@ namespace GerenciamentoDeClinica.localhost {
         private Secretaria secretariaField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Descricao {
-            get {
-                return this.descricaoField;
-            }
-            set {
-                this.descricaoField = value;
-            }
-        }
-        
-        /// <remarks/>
         public int Duracao {
             get {
                 return this.duracaoField;
@@ -951,13 +1204,13 @@ namespace GerenciamentoDeClinica.localhost {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DuracaoSpecified {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Estado Estado {
             get {
-                return this.duracaoFieldSpecified;
+                return this.estadoField;
             }
             set {
-                this.duracaoFieldSpecified = value;
+                this.estadoField = value;
             }
         }
         
@@ -972,34 +1225,12 @@ namespace GerenciamentoDeClinica.localhost {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool HorarioSpecified {
-            get {
-                return this.horarioFieldSpecified;
-            }
-            set {
-                this.horarioFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
         public int ID_Consulta {
             get {
                 return this.iD_ConsultaField;
             }
             set {
                 this.iD_ConsultaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ID_ConsultaSpecified {
-            get {
-                return this.iD_ConsultaFieldSpecified;
-            }
-            set {
-                this.iD_ConsultaFieldSpecified = value;
             }
         }
         
@@ -1060,54 +1291,41 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico")]
-    public partial class Medico : Pessoa {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.estado")]
+    public partial class Estado {
         
-        private string cRMField;
+        private string descricaoField;
         
-        private Especialidade especialidadeField;
-        
-        private int iD_MedicoField;
+        private int iD_EstadoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string CRM {
+        public string Descricao {
             get {
-                return this.cRMField;
+                return this.descricaoField;
             }
             set {
-                this.cRMField = value;
+                this.descricaoField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public Especialidade Especialidade {
+        public int ID_Estado {
             get {
-                return this.especialidadeField;
+                return this.iD_EstadoField;
             }
             set {
-                this.especialidadeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ID_Medico {
-            get {
-                return this.iD_MedicoField;
-            }
-            set {
-                this.iD_MedicoField = value;
+                this.iD_EstadoField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1154,7 +1372,7 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1188,7 +1406,7 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1301,10 +1519,11 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Usuario))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Medico))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Secretaria))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Paciente))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1416,7 +1635,88 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario")]
+    public partial class Usuario : Pessoa {
+        
+        private int iD_UsuarioField;
+        
+        private string senhaField;
+        
+        /// <remarks/>
+        public int ID_Usuario {
+            get {
+                return this.iD_UsuarioField;
+            }
+            set {
+                this.iD_UsuarioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Senha {
+            get {
+                return this.senhaField;
+            }
+            set {
+                this.senhaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico")]
+    public partial class Medico : Pessoa {
+        
+        private string cRMField;
+        
+        private Especialidade especialidadeField;
+        
+        private int iD_MedicoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string CRM {
+            get {
+                return this.cRMField;
+            }
+            set {
+                this.cRMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Especialidade Especialidade {
+            get {
+                return this.especialidadeField;
+            }
+            set {
+                this.especialidadeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ID_Medico {
+            get {
+                return this.iD_MedicoField;
+            }
+            set {
+                this.iD_MedicoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1424,8 +1724,6 @@ namespace GerenciamentoDeClinica.localhost {
     public partial class Secretaria : Pessoa {
         
         private int iD_SecretariaField;
-        
-        private bool iD_SecretariaFieldSpecified;
         
         /// <remarks/>
         public int ID_Secretaria {
@@ -1436,21 +1734,10 @@ namespace GerenciamentoDeClinica.localhost {
                 this.iD_SecretariaField = value;
             }
         }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ID_SecretariaSpecified {
-            get {
-                return this.iD_SecretariaFieldSpecified;
-            }
-            set {
-                this.iD_SecretariaFieldSpecified = value;
-            }
-        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1484,23 +1771,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarConsultaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarConsultaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverConsultaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarConsultaCompletedEventHandler(object sender, ListarConsultaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarConsultaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1522,23 +1809,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarConvenioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarConvenioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverConvenioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarConvenioCompletedEventHandler(object sender, ListarConvenioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarConvenioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1560,23 +1847,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarEspecialidadeCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarEspecialidadeCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverEspecialidadeCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarEspecialidadeCompletedEventHandler(object sender, ListarEspecialidadeCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarEspecialidadeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1598,23 +1885,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarMedicoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarMedicoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverMedicoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarMedicoCompletedEventHandler(object sender, ListarMedicoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarMedicoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1636,23 +1923,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarPacienteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarPacienteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverPacienteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarPacienteCompletedEventHandler(object sender, ListarPacienteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarPacienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1674,23 +1961,23 @@ namespace GerenciamentoDeClinica.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void CadastrarSecretariaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void AtualizarSecretariaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void RemoverSecretariaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void ListarSecretariaCompletedEventHandler(object sender, ListarSecretariaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ListarSecretariaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1707,6 +1994,82 @@ namespace GerenciamentoDeClinica.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Secretaria[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void CadastrarEstadoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void AtualizarEstadoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void RemoverEstadoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void ListarEstadoCompletedEventHandler(object sender, ListarEstadoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ListarEstadoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ListarEstadoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Estado[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Estado[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void CadastrarUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void AtualizarUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void RemoverUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void ListarUsuarioCompletedEventHandler(object sender, ListarUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ListarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ListarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Usuario[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Usuario[])(this.results[0]));
             }
         }
     }

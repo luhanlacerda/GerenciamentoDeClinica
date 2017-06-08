@@ -10,7 +10,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
+using ClinicaServiceLibrary.estado;
+using ClinicaServiceLibrary.usuario;
 
 namespace ClinicaServiceLibrary.wcf
 {
@@ -126,6 +127,30 @@ namespace ClinicaServiceLibrary.wcf
             return negocioSecretaria.Listar(filtro);
         }
 
+        public void CadastrarEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public void AtualizarEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public void RemoverEstado(Estado estado)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            negocioEstado.Cadastrar(estado);
+        }
+
+        public List<Estado> ListarEstado(Estado filtro)
+        {
+            NegocioEstado negocioEstado = new NegocioEstado();
+            return negocioEstado.Listar(filtro);
+        }
+
         public void RemoverConsulta(Consulta consulta)
         {
             NegocioConsulta negocioConsulta = new NegocioConsulta();
@@ -160,6 +185,30 @@ namespace ClinicaServiceLibrary.wcf
         {
             NegocioSecretaria negocioSecretaria = new NegocioSecretaria();
             negocioSecretaria.Remover(secretaria);
+        }
+
+        public void CadastrarUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Cadastrar(usuario);
+        }
+
+        public void AtualizarUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Atualizar(usuario);
+        }
+
+        public void RemoverUsuario(Usuario usuario)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            negocioUsuario.Remover(usuario);
+        }
+
+        public List<Usuario> ListarUsuario(Usuario filtro)
+        {
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            return negocioUsuario.Listar(filtro);
         }
     }
 }

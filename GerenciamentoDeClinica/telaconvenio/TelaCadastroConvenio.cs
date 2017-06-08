@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace GerenciamentoDeClinica.telaconvenio
 {
     public partial class TelaCadastroConvenio : Form, IConsistenciaDados
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
         private Thread _threadSalvarDados;
         private string _savedCadastrar = "";
         private CadastrarConvenio _cadastrarConvenio;
@@ -62,13 +64,17 @@ namespace GerenciamentoDeClinica.telaconvenio
                 _cadastrarConvenio.Convenio.Descricao = txtDescricao.Text;
 
                 new ClinicaService().CadastrarConvenio(_cadastrarConvenio.Convenio);
-                MessageBox.Show("Convenio cadastrado com sucesso.");
+                MessageBox.Show(@"Convenio cadastrado com sucesso.");
                 ClearTextBoxs();
                 txtDescricao.Focus();
             }
+            catch (WebException)
+            {
+                MessageBox.Show(ERROR_WEBSERVICE);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

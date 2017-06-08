@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace GerenciamentoDeClinica.telamedico
 {
     public partial class TelaPesquisarMedico : Form, IConsistenciaDados
     {
+        private const string ERROR_WEBSERVICE = @"Erro de conexão o servidor.";
         private Thread _threadSalvarDados;
         private string _savedPesquisar = "";
         private PesquisarMedico _pesquisarMedico;
@@ -51,7 +53,11 @@ namespace GerenciamentoDeClinica.telamedico
 
                 CarregarEditar(_pesquisarMedico.Medico);
             }
-            
+            else
+            {
+                _pesquisarMedico = new PesquisarMedico();
+            }
+
             _threadSalvarDados = new Thread(SalvarDados);
             _threadSalvarDados.Start();
         }
@@ -97,25 +103,13 @@ namespace GerenciamentoDeClinica.telamedico
             txtCidade.Enabled = false;
             comboUF.Enabled = false;
 
-            txtNome.Clear();
-            maskedCPF.Clear();
-            txtRG.Clear();
-            maskedCell.Clear();
-            txtCRM.Clear();
+            ClearTextBoxs();
             comboEspecialidade.SelectedIndex = 0;
             dateTimeDtNasc.Value = DateTime.Now;
-            txtEmail.Clear();
             rbSolteiro.Checked = false;
             rbCasado.Checked = false;
             rbViuvo.Checked = false;
-            maskedCEP.Clear();
-            txtLogradouro.Clear();
-            txtNumero.Clear();
-            txtComplemento.Clear();
-            txtBairro.Clear();
-            txtCidade.Clear();
             comboUF.SelectedIndex = 0;
-            txtPais.Clear();
             listMedicos.SelectedItems.Clear();
         }
 
@@ -135,10 +129,16 @@ namespace GerenciamentoDeClinica.telamedico
 
                 DisableEditar();
             }
+            catch (WebException)
+            {
+                MessageBox.Show(this, ERROR_WEBSERVICE, Application.ProductName, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -149,6 +149,7 @@ namespace GerenciamentoDeClinica.telamedico
                 {
                     Medico medico = GetMedico();
                     medico.ID_Medico = _pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value].ID_Medico;
+                    ValidarCamposString();
 
                     ClinicaService service = new ClinicaService();
                     service.AtualizarMedico(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
@@ -158,9 +159,13 @@ namespace GerenciamentoDeClinica.telamedico
 
                     DisableEditar();
                 }
+                catch (WebException)
+                {
+                    MessageBox.Show(ERROR_WEBSERVICE);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -171,16 +176,31 @@ namespace GerenciamentoDeClinica.telamedico
             {
                 try
                 {
-                    ClinicaService service = new ClinicaService();
-                    service.RemoverMedico(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
-                    MessageBox.Show(@"Médico atualizado com sucesso!");
-                    _pesquisarMedico.MedicosSalvos.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
-                    listMedicos.Items.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
-                    DisableEditar();
+
+                    var repost = MessageBox.Show(@"Deseja remover o paciente?", @"Confirmação", MessageBoxButtons.YesNo);
+
+                    if (repost == DialogResult.Yes)
+                    {
+                        ClinicaService service = new ClinicaService();
+                        service.RemoverMedico(_pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value]);
+                        MessageBox.Show(@"Médico removido com sucesso!");
+                        _pesquisarMedico.MedicosSalvos.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
+                        listMedicos.Items.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
+                        DisableEditar();
+                    }
+                    else
+                    {
+                        DisableEditar();
+                        txtPesqNome.Focus();
+                    }
+                }
+                catch (WebException)
+                {
+                    MessageBox.Show(ERROR_WEBSERVICE);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -269,6 +289,87 @@ namespace GerenciamentoDeClinica.telamedico
             return groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked)?.Text;
         }
 
+        private void ValidarCamposString()
+        {
+            //Nome
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show(this, @"Informe o nome");
+            }
+
+            //CPF
+            if (string.IsNullOrEmpty(maskedCPF.Text))
+            {
+                MessageBox.Show(this, @"Informe o CPF");
+            }
+
+            //RG
+            if (string.IsNullOrEmpty(txtRG.Text))
+            {
+                MessageBox.Show(this, @"Informe o RG");
+            }
+
+            //CRM
+            if (string.IsNullOrEmpty(txtCRM.Text))
+            {
+                MessageBox.Show(this, @"Informe o CRM");
+            }
+
+            //Contato
+            if (string.IsNullOrEmpty(maskedCell.Text))
+            {
+                MessageBox.Show(this, @"Informe o número de contato");
+            }
+
+            //Email
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show(this, @"Informe o email");
+            }
+
+            //CEP
+            if (string.IsNullOrEmpty(maskedCEP.Text))
+            {
+                MessageBox.Show(this, @"Informe o CEP");
+            }
+
+            //Logradouro
+            if (string.IsNullOrEmpty(txtLogradouro.Text))
+            {
+                MessageBox.Show(this, @"Informe o logradouro");
+            }
+
+            //Numero
+            if (string.IsNullOrEmpty(txtNumero.Text))
+            {
+                MessageBox.Show(this, @"Informe o numero do endereço");
+            }
+
+            //Complemento
+            if (string.IsNullOrEmpty(txtComplemento.Text))
+            {
+                MessageBox.Show(this, @"Informe o complemento");
+            }
+
+            //Bairro
+            if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                MessageBox.Show(this, @"Informe o bairro");
+            }
+
+            //Cidade
+            if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                MessageBox.Show(this, @"Informe a cidade");
+            }
+
+            //País
+            if (string.IsNullOrEmpty(txtPais.Text))
+            {
+                MessageBox.Show(this, @"Informe o país");
+            }
+        }
+
         //Adquirir valor do combobox UF da thread principal
         private string GetUF()
         {
@@ -314,9 +415,16 @@ namespace GerenciamentoDeClinica.telamedico
                 },
                 Contato = maskedCell.Text,
                 Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = lblEmail.Text,
+                Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
+        }
+
+        void ClearTextBoxs()
+        {
+            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
+
         }
 
         private void TelaPesquisarMedico_FormClosing(object sender, FormClosingEventArgs e)

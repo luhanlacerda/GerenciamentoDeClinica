@@ -36,12 +36,12 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtPesqDesc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listViewEspecialidades = new System.Windows.Forms.ListView();
             this.Codigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Descricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.txtPesqDesc = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +105,7 @@
             // 
             this.txtDescricao.Enabled = false;
             this.txtDescricao.Location = new System.Drawing.Point(9, 88);
+            this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(150, 20);
             this.txtDescricao.TabIndex = 4;
@@ -129,6 +130,14 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar por Filtro";
+            // 
+            // txtPesqDesc
+            // 
+            this.txtPesqDesc.Location = new System.Drawing.Point(74, 25);
+            this.txtPesqDesc.MaxLength = 20;
+            this.txtPesqDesc.Name = "txtPesqDesc";
+            this.txtPesqDesc.Size = new System.Drawing.Size(200, 20);
+            this.txtPesqDesc.TabIndex = 10;
             // 
             // label1
             // 
@@ -172,13 +181,6 @@
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // txtPesqDesc
-            // 
-            this.txtPesqDesc.Location = new System.Drawing.Point(74, 25);
-            this.txtPesqDesc.Name = "txtPesqDesc";
-            this.txtPesqDesc.Size = new System.Drawing.Size(200, 20);
-            this.txtPesqDesc.TabIndex = 10;
-            // 
             // TelaPesquisarEspecialidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +191,8 @@
             this.Name = "TelaPesquisarEspecialidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Especialidade";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaPesquisarEspecialidade_FormClosing);
+            this.Load += new System.EventHandler(this.TelaPesquisarEspecialidade_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
