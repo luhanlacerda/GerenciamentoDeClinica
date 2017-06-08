@@ -56,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.testarAtendimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testarWebServiceToolStripMenuItem,
+            this.testarAtendimentoToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -88,14 +90,14 @@
             // testarWebServiceToolStripMenuItem
             // 
             this.testarWebServiceToolStripMenuItem.Name = "testarWebServiceToolStripMenuItem";
-            this.testarWebServiceToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.testarWebServiceToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.testarWebServiceToolStripMenuItem.Text = "Testar WebService";
             this.testarWebServiceToolStripMenuItem.Click += new System.EventHandler(this.testarWebServiceToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -312,6 +314,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // testarAtendimentoToolStripMenuItem
+            // 
+            this.testarAtendimentoToolStripMenuItem.Name = "testarAtendimentoToolStripMenuItem";
+            this.testarAtendimentoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.testarAtendimentoToolStripMenuItem.Text = "Testar Atendimento";
+            this.testarAtendimentoToolStripMenuItem.Click += new System.EventHandler(this.testarAtendimentoToolStripMenuItem_Click);
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,5 +375,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem testarWebServiceToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem testarAtendimentoToolStripMenuItem;
     }
 }

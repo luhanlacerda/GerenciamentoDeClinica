@@ -87,6 +87,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="telaatendimento\TelaAtendimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="telaatendimento\TelaAtendimento.Designer.cs">
+      <DependentUpon>TelaAtendimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="telaconsulta\TelaCadastrarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="telaatendimento\TelaAtendimento.resx">
+      <DependentUpon>TelaAtendimento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="telaconsulta\TelaCadastrarConsulta.resx">
       <DependentUpon>TelaCadastrarConsulta.cs</DependentUpon>
     </EmbeddedResource>
