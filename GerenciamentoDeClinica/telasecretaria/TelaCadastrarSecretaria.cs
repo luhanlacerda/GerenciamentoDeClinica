@@ -54,8 +54,6 @@ namespace GerenciamentoDeClinica.telasecretaria
         private void TelaCadastrarSecretaria_Load(object sender, EventArgs e)
         {
             comboUF.DataSource = ClinicaUtils.UF_LIST;
-            //txtPais.Text = "Brasil";
-            txtPais.Enabled = true;
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
@@ -172,12 +170,12 @@ namespace GerenciamentoDeClinica.telasecretaria
             txtBairro.Clear();
             maskedCEP.Clear();
             txtCidade.Clear();
-            txtPais.Clear();
             maskedContato.Clear();
             rbSolteiro.Checked = false;
             rbCasado.Checked = false;
             rbViuvo.Checked = false;
             dateTimeDtNasc.Value = DateTime.Now;
+            txtPais.Clear();
         }
 
         public void SalvarDados()

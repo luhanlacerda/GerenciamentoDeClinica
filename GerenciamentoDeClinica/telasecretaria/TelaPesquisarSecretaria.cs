@@ -173,6 +173,7 @@ namespace GerenciamentoDeClinica.telasecretaria
                     _pesquisarSecretaria.SecretariasSalvas[_pesquisarSecretaria.LinhaSelecionada.Value] = secretaria;
 
                     DisableEditar();
+                    CarregarListView();
                 }
                 catch (WebException)
                 {
@@ -364,9 +365,11 @@ namespace GerenciamentoDeClinica.telasecretaria
 
         private void CarregarListView()
         {
+            listViewSecretarias.Items.Clear();
             foreach (Secretaria secretaria in _pesquisarSecretaria.SecretariasSalvas)
             {
-                ListViewItem linha = listViewSecretarias.Items.Add(secretaria.Nome);
+                ListViewItem linha = listViewSecretarias.Items.Add(secretaria.ID_Secretaria.ToString());
+                linha.SubItems.Add(secretaria.Nome);
                 linha.SubItems.Add(secretaria.CPF);
                 linha.SubItems.Add(secretaria.Contato);
             }
