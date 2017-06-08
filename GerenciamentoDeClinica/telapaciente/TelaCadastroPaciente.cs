@@ -24,10 +24,10 @@ namespace GerenciamentoDeClinica.telapaciente
 
         #region clearFomr
 
-        void ClearTextBoxs()
+        private void ClearTextBoxs()
         {
-            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-            Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
+            GroupBox.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            GroupBox.Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
 
             comboConvenio.SelectedIndex = 0;
             dateTimeDtNasc.Value = DateTime.Now;
@@ -44,8 +44,7 @@ namespace GerenciamentoDeClinica.telapaciente
             ClinicaService service = new ClinicaService();
             comboConvenio.DataSource = new BindingList<Convenio>(service.ListarConvenio(new Convenio()));
             comboConvenio.DisplayMember = "Descricao";
-            txtPais.Text = "Brasil";
-            txtPais.Enabled = false;
+            
 
             //Carregamento dos dados
             ClinicaXmlUtils.Create();
