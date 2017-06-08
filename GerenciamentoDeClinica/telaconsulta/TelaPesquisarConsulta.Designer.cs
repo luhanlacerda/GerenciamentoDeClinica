@@ -75,6 +75,7 @@
             this.MedicoNome,
             this.HorarioConsulta});
             this.listViewConsultas.FullRowSelect = true;
+            this.listViewConsultas.HideSelection = false;
             this.listViewConsultas.Location = new System.Drawing.Point(6, 51);
             this.listViewConsultas.Name = "listViewConsultas";
             this.listViewConsultas.Size = new System.Drawing.Size(403, 97);
@@ -160,6 +161,7 @@
             // 
             // btnRemover
             // 
+            this.btnRemover.Enabled = false;
             this.btnRemover.Location = new System.Drawing.Point(334, 258);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
@@ -170,6 +172,7 @@
             // 
             // btnAtualizar
             // 
+            this.btnAtualizar.Enabled = false;
             this.btnAtualizar.Location = new System.Drawing.Point(217, 258);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);

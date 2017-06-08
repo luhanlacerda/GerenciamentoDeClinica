@@ -230,7 +230,7 @@ namespace ClinicaServiceLibrary.paciente
                 }
 
                 //Se foi passado um CPF válido, o mesmo entrará como critério de filtro
-                if (!string.IsNullOrWhiteSpace(filtro.CPF))
+                if (!string.IsNullOrWhiteSpace(filtro.CPF) && filtro.CPF != "   .   .   -")
                 {
                     scm.CommandText += " AND CPF = @CPF";
 

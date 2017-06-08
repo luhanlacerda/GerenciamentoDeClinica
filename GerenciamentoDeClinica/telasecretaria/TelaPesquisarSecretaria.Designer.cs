@@ -526,6 +526,7 @@
             this.CPF,
             this.Contato});
             this.listViewSecretarias.FullRowSelect = true;
+            this.listViewSecretarias.HideSelection = false;
             this.listViewSecretarias.Location = new System.Drawing.Point(12, 113);
             this.listViewSecretarias.Name = "listViewSecretarias";
             this.listViewSecretarias.Size = new System.Drawing.Size(464, 97);

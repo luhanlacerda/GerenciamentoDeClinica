@@ -17,7 +17,6 @@ namespace GerenciamentoDeClinica.telapaciente
         private string _savedPesquisar = "";
         private PesquisarPaciente _pesquisarPaciente;
 
-
         private const string ERROR_WEBSERVICE = "Erro de conexão o servidor.";
 
         public TelaPesquisarPaciente()
@@ -133,9 +132,8 @@ namespace GerenciamentoDeClinica.telapaciente
                 {
                     Paciente paciente = GetPaciente();
                     paciente.ID_Paciente = _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value].ID_Paciente;
-                    ValidarCamposString();
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarPaciente(_pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value]);
+                    service.AtualizarPaciente(paciente);
                     MessageBox.Show(@"Paciente atualizado com sucesso!");
 
                     _pesquisarPaciente.PacientesSalvos[_pesquisarPaciente.LinhaSelecionada.Value] = paciente;
@@ -344,7 +342,7 @@ namespace GerenciamentoDeClinica.telapaciente
                 },
                 Contato = maskedCell.Text,
                 Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = lblEmail.Text,
+                Email = txtEmail.Text,
                 Estado_Civil = GetEstadoCivil()
             };
         }

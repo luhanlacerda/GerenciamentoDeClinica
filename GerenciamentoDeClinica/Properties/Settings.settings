@@ -90,10 +90,10 @@
       <Value Profile="(Default)">/data/pesquisar_paciente/pesquisar_cpf</Value>
     </Setting>
     <Setting Name="Pesquisar_Pacientes_Salvos" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">paciente_salvos</Value>
+      <Value Profile="(Default)">pacientes_salvos</Value>
     </Setting>
     <Setting Name="Pesquisar_Pacientes_Salvos_XPath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/data/pesquisar_paciente/paciente_salvos</Value>
+      <Value Profile="(Default)">/data/pesquisar_paciente/pacientes_salvos</Value>
     </Setting>
     <Setting Name="Secretaria" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Secretaria</Value>
@@ -172,6 +172,12 @@
     </Setting>
     <Setting Name="ConsultasSalvas_Salvas_XPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">data/pesquisar_consulta/consultas_salvas</Value>
+    </Setting>
+    <Setting Name="Pacientes_Salvos_Consulta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pacientes_salvos</Value>
+    </Setting>
+    <Setting Name="a" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

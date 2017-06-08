@@ -16,6 +16,7 @@ namespace GerenciamentoDeClinica.telapaciente
         private Thread _threadSalvarDados;
         private string _savedCadastrar = "";
         private CadastrarPaciente _cadastrarPaciente;
+        public bool pronto;
 
         public TelaCadastroPaciente()
         {
@@ -66,7 +67,6 @@ namespace GerenciamentoDeClinica.telapaciente
 
             try
             {
-                ValidarCamposString();
                 _cadastrarPaciente.Paciente = GetPaciente();
 
                 ClinicaService service = new ClinicaService();
@@ -186,28 +186,29 @@ namespace GerenciamentoDeClinica.telapaciente
 
         private Paciente GetPaciente()
         {
-            return new Paciente
-            {
-                CPF = maskedCPF.Text,
-                Convenio = GetConvenio(),
-                Nome = txtNome.Text,
-                RG = txtRG.Text,
-                Endereco = new Endereco
-                {
-                    Logradouro = txtLogradouro.Text,
-                    Numero = txtNumero.Text,
-                    Complemento = txtComplemento.Text,
-                    Bairro = txtBairro.Text,
-                    Cidade = txtCidade.Text,
-                    UF = GetUF(),
-                    CEP = maskedCEP.Text,
-                    Pais = txtPais.Text
-                },
-                Contato = maskedCell.Text,
-                Dt_Nascimento = dateTimeDtNasc.Value,
-                Email = txtEmail.Text,
-                Estado_Civil = GetEstadoCivil()
-            };
+            pronto = false;
+            Paciente paciente = new Paciente();
+            paciente.CPF = maskedCPF.Text;
+            paciente.Convenio = GetConvenio();
+            paciente.Nome = txtNome.Text;
+            paciente.RG = txtRG.Text;
+
+            paciente.Endereco = new Endereco();
+            paciente.Endereco.Logradouro = txtLogradouro.Text;
+            paciente.Endereco.Numero = txtNumero.Text;
+            paciente.Endereco.Complemento = txtComplemento.Text;
+            paciente.Endereco.Bairro = txtBairro.Text;
+            paciente.Endereco.Cidade = txtCidade.Text;
+            paciente.Endereco.UF = GetUF();
+            paciente.Endereco.CEP = maskedCEP.Text;
+            paciente.Endereco.Pais = txtPais.Text;
+
+            paciente.Contato = maskedCell.Text;
+            paciente.Dt_Nascimento = dateTimeDtNasc.Value;
+            paciente.Email = txtEmail.Text;
+            paciente.Estado_Civil = GetEstadoCivil();
+            pronto = true;
+            return paciente;
         }
 
         private void TelaCadastroPaciente_FormClosing(object sender, FormClosingEventArgs e)
@@ -215,82 +216,7 @@ namespace GerenciamentoDeClinica.telapaciente
             //Dados poderiam ser perdidos, caso o Form fosse fechado.
             SaveXml();
         }
-
-
-        void ValidarCamposString()
-        {
-            //Nome
-            if (string.IsNullOrEmpty(txtNome.Text))
-            {
-                MessageBox.Show(this, @"Informe o nome da paciente");
-            }
-
-            //CPF
-            if (string.IsNullOrEmpty(maskedCPF.Text))
-            {
-                MessageBox.Show(this, @"Informe o CPF da paciente");
-            }
-
-            //RG
-            if (string.IsNullOrEmpty(txtRG.Text))
-            {
-                MessageBox.Show(this, @"Informe o RG da paciente");
-            }
-
-            //Contato
-            if (string.IsNullOrEmpty(maskedCell.Text))
-            {
-                MessageBox.Show(this, @"Informe o número de contato da paciente");
-            }
-
-            //Email
-            if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                MessageBox.Show(this, @"Informe o email da paciente");
-            }
-
-            //CEP
-            if (string.IsNullOrEmpty(maskedCEP.Text))
-            {
-                MessageBox.Show(this, @"Informe o CEP da paciente");
-            }
-
-            //Logradouro
-            if (string.IsNullOrEmpty(txtLogradouro.Text))
-            {
-                MessageBox.Show(this, @"Informe o logradouro da paciente");
-            }
-
-            //Numero
-            if (string.IsNullOrEmpty(txtNumero.Text))
-            {
-                MessageBox.Show(this, @"Informe o numero do endereço da paciente");
-            }
-
-            //Complemento
-            if (string.IsNullOrEmpty(txtComplemento.Text))
-            {
-                MessageBox.Show(this, @"Informe o complemento da paciente");
-            }
-
-            //Bairro
-            if (string.IsNullOrEmpty(txtBairro.Text))
-            {
-                MessageBox.Show(this, @"Informe o bairro da paciente");
-            }
-
-            //Cidade
-            if (string.IsNullOrEmpty(txtCidade.Text))
-            {
-                MessageBox.Show(this, @"Informe a cidade da paciente");
-            }
-
-            //País
-            if (string.IsNullOrEmpty(txtPais.Text))
-            {
-                MessageBox.Show(this, @"Informe o país da paciente");
-            }
-        }
+        
 
 
     }

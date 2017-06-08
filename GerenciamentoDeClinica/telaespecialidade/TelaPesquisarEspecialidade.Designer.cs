@@ -154,6 +154,7 @@
             this.Codigo,
             this.Descricao});
             this.listViewEspecialidades.FullRowSelect = true;
+            this.listViewEspecialidades.HideSelection = false;
             this.listViewEspecialidades.Location = new System.Drawing.Point(9, 66);
             this.listViewEspecialidades.MultiSelect = false;
             this.listViewEspecialidades.Name = "listViewEspecialidades";

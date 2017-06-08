@@ -535,6 +535,7 @@
             this.maskedFiltroCPF.Name = "maskedFiltroCPF";
             this.maskedFiltroCPF.Size = new System.Drawing.Size(90, 20);
             this.maskedFiltroCPF.TabIndex = 1;
+            this.maskedFiltroCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // listViewPacientes
             // 
@@ -544,6 +545,7 @@
             this.CPF,
             this.Contato});
             this.listViewPacientes.FullRowSelect = true;
+            this.listViewPacientes.HideSelection = false;
             this.listViewPacientes.Location = new System.Drawing.Point(1, 102);
             this.listViewPacientes.Name = "listViewPacientes";
             this.listViewPacientes.Size = new System.Drawing.Size(471, 77);

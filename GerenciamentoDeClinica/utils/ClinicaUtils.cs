@@ -18,7 +18,7 @@ namespace GerenciamentoDeClinica.utils
         public static Endereco PegarEndereco(string cep)
         {
             //Endereço null = endereço não encontrado
-            Endereco endereco = null;
+            Endereco endereco;
 
             //Tentará pegar o endereço pelo CEP
             try
@@ -35,8 +35,9 @@ namespace GerenciamentoDeClinica.utils
                 endereco.Cidade = xml.DocumentElement.SelectSingleNode("/xmlcep/localidade").InnerText;
                 endereco.UF = xml.DocumentElement.SelectSingleNode("/xmlcep/uf").InnerText;
             }
-            catch (FaultException)
+            catch (Exception)
             {
+                return null;
             }
 
             return endereco;

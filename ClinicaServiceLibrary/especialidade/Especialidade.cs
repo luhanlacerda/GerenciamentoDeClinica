@@ -13,7 +13,7 @@ namespace ClinicaServiceLibrary.especialidade
     [DataContract]
     public class Especialidade
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int ID_Especialidade { get; set; }
         [DataMember]
         public String Descricao { get; set; }

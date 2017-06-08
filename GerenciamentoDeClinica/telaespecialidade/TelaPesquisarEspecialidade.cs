@@ -235,7 +235,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
         public string PesquisarDescricao { get; set; }
         [XmlElement(ElementName = "linha_selecionada")]
         public int? LinhaSelecionada { get; set; }
-        [XmlElement(ElementName = "convenios_salvos")]
+        [XmlElement(ElementName = "especialidades_salvas")]
         public List<Especialidade> EspecialidadesSalvas { get; set; }
         public Especialidade Especialidade { get; set; }
     }

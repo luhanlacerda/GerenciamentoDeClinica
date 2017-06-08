@@ -36,7 +36,6 @@ namespace GerenciamentoDeClinica.telaconsulta
             try
             {
                 _cadastrarConsulta.Consulta = GetConsulta();
-                ValidarCamposString();
 
                 ClinicaService service = new ClinicaService();
                 service.CadastrarConsulta(_cadastrarConsulta.Consulta);
@@ -256,29 +255,6 @@ namespace GerenciamentoDeClinica.telaconsulta
 
             return consulta;
         }
-
-        void ValidarCamposString()
-        {
-            if (string.IsNullOrEmpty(txtIDMedico.Text))
-            {
-                MessageBox.Show(this, @"Informar o ID do médico");
-            }
-
-            if (string.IsNullOrEmpty(txtIDPaciente.Text))
-            {
-                MessageBox.Show(this, @"Informar o ID do paciente");
-            }
-
-            if (string.IsNullOrEmpty(txtIDSecretaria.Text))
-            {
-                MessageBox.Show(this, @"Informar o ID da secretária");
-            }
-
-            if (string.IsNullOrEmpty(txtDuracao.Text))
-            {
-                MessageBox.Show(this, @"Informar a duração da consulta");
-            }
-        }
     }
 
 
@@ -286,5 +262,11 @@ namespace GerenciamentoDeClinica.telaconsulta
     public sealed class CadastrarConsulta
     {
         public Consulta Consulta { get; set; }
+        [XmlElement(ElementName = "pacientes_salvos")]
+        public List<Paciente> PacientesSalvos { get; set; }
+        [XmlElement(ElementName = "medicos_salvos")]
+        public List<Medico> MedicosSalvos { get; set; }
+        [XmlElement(ElementName = "secretarias_salvas")]
+        public List<Secretaria> SecretariasSalvas { get; set; }
     }
 }

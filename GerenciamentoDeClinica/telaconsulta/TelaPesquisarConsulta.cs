@@ -34,39 +34,29 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 try
                 {
-
-                    /*#region Dados
-
-                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Observacoes = txtObservacoes.Text;
-                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Receita = txtReceita.Text;
-                    _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].Estado =
-                        ((BindingList<Estado>)comboEstado.DataSource).ElementAt(comboEstado.SelectedIndex);
-
-                    #endregion
-
-                    ClinicaService service = new ClinicaService();
-                    service.AtualizarConsulta(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]);
-                    MessageBox.Show(@"Consulta atualizada com sucesso!");
-
-                    listViewConsultas.Items.Clear();
-                    _pesquisarConsulta.ConsultasSalvas = new List<Consulta>(service.ListarConsulta(new Consulta
-
-                    {
-                        Medico = new Medico { ID_Medico = Convert.ToInt32(txtPesqMedicoID.Text) },
-                        Paciente = new Paciente { ID_Paciente = Convert.ToInt32(txtPesqPacienteID.Text) }
-                    }));*/
+                    Consulta line = _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value];
 
                     Consulta consulta = GetConsulta();
-                    consulta.ID_Consulta = _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value].ID_Consulta;
+                    consulta.ID_Consulta = line.ID_Consulta;
+                    consulta.Duracao = line.Duracao;
+                    consulta.Horario = line.Horario;
+                    consulta.Medico.ID_Medico = line.Medico.ID_Medico;
+                    consulta.Medico.Nome = line.Medico.Nome;
+                    consulta.Paciente.ID_Paciente = line.Paciente.ID_Paciente;
+                    consulta.Paciente.Nome = line.Paciente.Nome;
+                    consulta.Secretaria.ID_Secretaria = line.Secretaria.ID_Secretaria;
 
                     ClinicaService service = new ClinicaService();
-                    service.AtualizarConsulta(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]);
+                    service.AtualizarConsulta(consulta);
                     MessageBox.Show(@"Consulta atualizada com sucesso!");
 
                     _pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value] = consulta;
 
                     ClearTextBoxs();
                     CarregarListView();
+                    txtPesqMedicoID.Focus();
+                    listViewConsultas.Items.Clear();
+                    DisableEditar();
                 }
                 catch (WebException)
                 {
@@ -124,13 +114,10 @@ namespace GerenciamentoDeClinica.telaconsulta
                 if (int.TryParse(txtPesqPacienteID.Text, out resultPaciente))
                     consulta.Paciente.ID_Paciente = resultPaciente;
 
-
-
                 _pesquisarConsulta.ConsultasSalvas = new List<Consulta>(service.ListarConsulta(consulta));
 
                 CarregarListView();
                 ClearTextBoxs();
-
             }
             catch (WebException)
             {
@@ -152,15 +139,35 @@ namespace GerenciamentoDeClinica.telaconsulta
 
                 CarregarEditar(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]);
 
-                txtObservacoes.Enabled = true;
-                txtReceita.Enabled = true;
-                comboEstado.Enabled = true;
+                EnableEditar();
             }
             else
             {
                 _pesquisarConsulta.LinhaSelecionada = null;
                 ClearTextBoxs();
+                DisableEditar();
             }
+        }
+
+        private void DisableEditar()
+        {
+            txtObservacoes.Enabled = false;
+            txtReceita.Enabled = false;
+            comboEstado.Enabled = false;
+            btnAtualizar.Enabled = false;
+            btnRemover.Enabled = false;
+
+            txtObservacoes.Clear();
+            txtReceita.Clear();
+        }
+
+        private void EnableEditar()
+        {
+            txtObservacoes.Enabled = true;
+            txtReceita.Enabled = true;
+            comboEstado.Enabled = true;
+            btnAtualizar.Enabled = true;
+            btnRemover.Enabled = true;
         }
 
 
@@ -253,7 +260,10 @@ namespace GerenciamentoDeClinica.telaconsulta
             {
                 Estado = GetEstado(),
                 Paciente = new Paciente(),
-                Medico = new Medico()
+                Medico = new Medico(),
+                Secretaria = new Secretaria(),
+                Observacoes = txtObservacoes.Text,
+                Receita = txtReceita.Text
             };
 
             int resultPaciente, resultMedico;
@@ -314,7 +324,7 @@ namespace GerenciamentoDeClinica.telaconsulta
 
         [XmlElement(ElementName = "linha_selecionada")]
         public int? LinhaSelecionada { get; set; }
-        [XmlElement(ElementName = "consultas_salvos")]
+        [XmlElement(ElementName = "consultas_salvas")]
         public List<Consulta> ConsultasSalvas { get; set; }
         public Consulta Consulta { get; set; }
     }

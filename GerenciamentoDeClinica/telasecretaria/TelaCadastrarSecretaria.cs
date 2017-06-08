@@ -31,7 +31,6 @@ namespace GerenciamentoDeClinica.telasecretaria
         {
             try
             {
-                ValidarCamposString();
                 _cadastrarSecretaria.Secretaria = GetSecretaria();
 
                 ClinicaService service = new ClinicaService();
@@ -80,81 +79,6 @@ namespace GerenciamentoDeClinica.telasecretaria
                     txtCidade.Text = endereco.Cidade;
                     comboUF.SelectedItem = endereco.UF;
                 }
-            }
-        }
-
-        private void ValidarCamposString()
-        {
-            //Nome
-            if (string.IsNullOrEmpty(txtNome.Text))
-            {
-                MessageBox.Show(this, @"Informe o nome");
-            }
-
-            //CPF
-            if (string.IsNullOrEmpty(maskedCPF.Text))
-            {
-                MessageBox.Show(this, @"Informe o CPF");
-            }
-
-            //RG
-            if (string.IsNullOrEmpty(txtRG.Text))
-            {
-                MessageBox.Show(this, @"Informe o RG");
-            }
-
-            //Contato
-            if (string.IsNullOrEmpty(maskedContato.Text))
-            {
-                MessageBox.Show(this, @"Informe o número de contato");
-            }
-
-            //Email
-            if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                MessageBox.Show(this, @"Informe o email");
-            }
-
-            //CEP
-            if (string.IsNullOrEmpty(maskedCEP.Text))
-            {
-                MessageBox.Show(this, @"Informe o CEP");
-            }
-
-            //Logradouro
-            if (string.IsNullOrEmpty(txtLogradouro.Text))
-            {
-                MessageBox.Show(this, @"Informe o logradouro");
-            }
-
-            //Numero
-            if (string.IsNullOrEmpty(txtNumero.Text))
-            {
-                MessageBox.Show(this, @"Informe o numero do endereço");
-            }
-
-            //Complemento
-            if (string.IsNullOrEmpty(txtComplemento.Text))
-            {
-                MessageBox.Show(this, @"Informe o complemento");
-            }
-
-            //Bairro
-            if (string.IsNullOrEmpty(txtBairro.Text))
-            {
-                MessageBox.Show(this, @"Informe o bairro");
-            }
-
-            //Cidade
-            if (string.IsNullOrEmpty(txtCidade.Text))
-            {
-                MessageBox.Show(this, @"Informe a cidade");
-            }
-
-            //País
-            if (string.IsNullOrEmpty(txtPais.Text))
-            {
-                MessageBox.Show(this, @"Informe o país");
             }
         }
 

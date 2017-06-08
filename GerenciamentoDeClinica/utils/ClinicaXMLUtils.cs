@@ -431,7 +431,7 @@ namespace GerenciamentoDeClinica.utils
         }
 
         //Consulta
-       public static CadastrarConsulta GetCadastrarConsulta()
+        public static CadastrarConsulta GetCadastrarConsulta()
         {
             XmlNode cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
             if (cadastrarConsultaNode == null)
@@ -449,6 +449,72 @@ namespace GerenciamentoDeClinica.utils
             if (cadastrarConsultaNode != null)
                 rootNode.RemoveChild(cadastrarConsultaNode);
             rootNode.InnerXml += ToXml(cadastrarConsulta);
+
+            #region carregar pacientes
+            cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
+            if (cadastrarConsultaNode != null)
+            {
+                //Pega os nós filhos de consultas salvos, transforma em XmlNode, seleciona apenas os que tem Name "consultas_salvos" e transforma em List
+                List<XmlNode> salvos = cadastrarConsultaNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Pacientes_Salvos).ToList();
+                //Início da correção do Xml, onde cada consulta salvo estará dentro de "consulta_salvos"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Pacientes_Salvos);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    cadastrarConsultaNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Paciente);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                cadastrarConsultaNode.AppendChild(salvosNode);
+            }
+            #endregion
+
+            #region carregar medicos
+            cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
+            if (cadastrarConsultaNode != null)
+            {
+                //Pega os nós filhos de consultas salvos, transforma em XmlNode, seleciona apenas os que tem Name "consultas_salvos" e transforma em List
+                List<XmlNode> salvos = cadastrarConsultaNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Medicos_Salvos).ToList();
+                //Início da correção do Xml, onde cada consulta salvo estará dentro de "consulta_salvos"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Medicos_Salvos);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    cadastrarConsultaNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Medico);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                cadastrarConsultaNode.AppendChild(salvosNode);
+            }
+            #endregion
+
+            #region carregar secretárias
+            cadastrarConsultaNode = _document.SelectSingleNode(Properties.Settings.Default.Cadastrar_Consulta_XPath);
+            if (cadastrarConsultaNode != null)
+            {
+                //Pega os nós filhos de consultas salvos, transforma em XmlNode, seleciona apenas os que tem Name "consultas_salvos" e transforma em List
+                List<XmlNode> salvos = cadastrarConsultaNode.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.Name == Properties.Settings.Default.Pesquisar_Secretarias_Salvas).ToList();
+                //Início da correção do Xml, onde cada consulta salvo estará dentro de "consulta_salvos"
+                XmlNode salvosNode = _document.CreateElement(Properties.Settings.Default.Pesquisar_Secretarias_Salvas);
+                foreach (XmlNode node in salvos)
+                {
+                    //Remove o antigo nó, para haver a troca de nome do nó filho
+                    cadastrarConsultaNode.RemoveChild(node);
+                    XmlNode newNode = _document.CreateElement(Properties.Settings.Default.Secretaria);
+                    newNode.InnerXml = node.InnerXml;
+                    salvosNode.AppendChild(newNode);
+                }
+
+                cadastrarConsultaNode.AppendChild(salvosNode);
+            }
+            #endregion
 
             _document.Save(Properties.Settings.Default.SaveLocation);
         }

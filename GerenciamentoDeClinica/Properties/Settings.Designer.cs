@@ -287,7 +287,7 @@ namespace GerenciamentoDeClinica.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("paciente_salvos")]
+        [global::System.Configuration.DefaultSettingValueAttribute("pacientes_salvos")]
         public string Pesquisar_Pacientes_Salvos {
             get {
                 return ((string)(this["Pesquisar_Pacientes_Salvos"]));
@@ -296,7 +296,7 @@ namespace GerenciamentoDeClinica.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente/paciente_salvos")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/data/pesquisar_paciente/pacientes_salvos")]
         public string Pesquisar_Pacientes_Salvos_XPath {
             get {
                 return ((string)(this["Pesquisar_Pacientes_Salvos_XPath"]));
@@ -534,6 +534,24 @@ namespace GerenciamentoDeClinica.Properties {
         public string ConsultasSalvas_Salvas_XPath {
             get {
                 return ((string)(this["ConsultasSalvas_Salvas_XPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pacientes_salvos")]
+        public string Pacientes_Salvos_Consulta {
+            get {
+                return ((string)(this["Pacientes_Salvos_Consulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string a {
+            get {
+                return ((string)(this["a"]));
             }
         }
     }

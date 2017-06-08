@@ -37,12 +37,7 @@ namespace ClinicaServiceLibrary.consulta
                 throw new FaultException(ERRO_DURACAO);
             }
 
-            if (string.IsNullOrWhiteSpace(consulta.Observacoes.Trim()))
-            {
-                throw new FaultException(ERRO_OBSERVACAO);
-            }
-
-            if (consulta.Observacoes.Trim().Length < 1 || consulta.Observacoes.Length > 500)
+            if (consulta.Observacoes.Trim().Length < 0 || consulta.Observacoes.Length > 500)
             {
                 throw new FaultException(ERRO_EXCEDER_OBSERVACAO);
             }
@@ -57,10 +52,6 @@ namespace ClinicaServiceLibrary.consulta
                 throw new FaultException(ERRO_PACIENTE);
             }
 
-            if (consulta.Secretaria.ID_Secretaria < 1)
-            {
-                throw new FaultException(ERRO_SECRETARIA);
-            }
             #endregion
             new ConsultaBD().Atualizar(consulta);
         }

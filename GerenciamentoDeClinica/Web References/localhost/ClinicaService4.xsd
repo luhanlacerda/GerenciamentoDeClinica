@@ -3,7 +3,7 @@
   <xs:complexType name="Especialidade">
     <xs:sequence>
       <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ID_Especialidade" type="xs:int" />
+      <xs:element name="ID_Especialidade" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Especialidade" nillable="true" type="tns:Especialidade" />
