@@ -30,7 +30,7 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void TelaCadastroMedico_Load(object sender, EventArgs e)
         {
-            //comboUF.Items.AddRange(ClinicaUtils.UF_LIST);
+           
             comboUF.DataSource = ClinicaUtils.UF_LIST;
 
             ClinicaService service = new ClinicaService();
@@ -77,6 +77,7 @@ namespace GerenciamentoDeClinica.telamedico
                 MessageBox.Show(@"Médico cadastrado com sucesso!");
 
                 LimparCampos();
+                txtNome.Focus();
             }
             catch (WebException)
             {

@@ -14,12 +14,12 @@ namespace GerenciamentoDeClinica.telaatendimento
 {
     public partial class TelaAtendimento : Form
     {
-        private const string IP = "192.168.1.3";
+        private const string IP = "192.168.25.117";
         private const int PORT = 6969;
 
-        private TcpClient tcpClient = null;
-        private NetworkStream stream = null;
-        private BinaryWriter writer = null;
+        private TcpClient tcpClient;
+        private NetworkStream stream;
+        private BinaryWriter writer;
 
         public TelaAtendimento()
         {

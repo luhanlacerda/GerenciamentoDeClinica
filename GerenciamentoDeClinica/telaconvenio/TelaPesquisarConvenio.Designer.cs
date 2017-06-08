@@ -76,7 +76,7 @@
             this.txtID.Location = new System.Drawing.Point(14, 44);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(66, 20);
-            this.txtID.TabIndex = 4;
+            this.txtID.TabIndex = 2;
             // 
             // btnAtualizar
             // 
@@ -84,7 +84,7 @@
             this.btnAtualizar.Location = new System.Drawing.Point(275, 38);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnAtualizar.TabIndex = 6;
+            this.btnAtualizar.TabIndex = 5;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
@@ -95,7 +95,7 @@
             this.btnRemover.Location = new System.Drawing.Point(275, 67);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 8;
+            this.btnRemover.TabIndex = 6;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
@@ -107,7 +107,7 @@
             this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(159, 20);
-            this.txtDescricao.TabIndex = 5;
+            this.txtDescricao.TabIndex = 3;
             // 
             // lblDescricao
             // 
@@ -136,7 +136,7 @@
             this.txtDescricaoFiltro.MaxLength = 20;
             this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
             this.txtDescricaoFiltro.Size = new System.Drawing.Size(233, 20);
-            this.txtDescricaoFiltro.TabIndex = 1;
+            this.txtDescricaoFiltro.TabIndex = 0;
             // 
             // label2
             // 
@@ -152,7 +152,7 @@
             this.btnPesquisar.Location = new System.Drawing.Point(266, 39);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 2;
+            this.btnPesquisar.TabIndex = 1;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);

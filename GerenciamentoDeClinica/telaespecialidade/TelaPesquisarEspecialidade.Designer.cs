@@ -49,10 +49,10 @@
             // btnRemover
             // 
             this.btnRemover.Enabled = false;
-            this.btnRemover.Location = new System.Drawing.Point(281, 100);
+            this.btnRemover.Location = new System.Drawing.Point(256, 85);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 7;
+            this.btnRemover.TabIndex = 5;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
@@ -60,10 +60,10 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Enabled = false;
-            this.btnAtualizar.Location = new System.Drawing.Point(281, 62);
+            this.btnAtualizar.Location = new System.Drawing.Point(256, 47);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnAtualizar.TabIndex = 5;
+            this.btnAtualizar.TabIndex = 4;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
@@ -108,7 +108,7 @@
             this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(150, 20);
-            this.txtDescricao.TabIndex = 4;
+            this.txtDescricao.TabIndex = 3;
             // 
             // txtID
             // 
@@ -116,7 +116,7 @@
             this.txtID.Location = new System.Drawing.Point(9, 49);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(150, 20);
-            this.txtID.TabIndex = 3;
+            this.txtID.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -137,7 +137,7 @@
             this.txtPesqDesc.MaxLength = 20;
             this.txtPesqDesc.Name = "txtPesqDesc";
             this.txtPesqDesc.Size = new System.Drawing.Size(200, 20);
-            this.txtPesqDesc.TabIndex = 10;
+            this.txtPesqDesc.TabIndex = 0;
             // 
             // label1
             // 
@@ -185,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 351);
+            this.ClientSize = new System.Drawing.Size(379, 340);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Name = "TelaPesquisarEspecialidade";

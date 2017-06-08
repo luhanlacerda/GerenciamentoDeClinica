@@ -115,7 +115,7 @@
             this.txtPais.MaxLength = 30;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(134, 20);
-            this.txtPais.TabIndex = 96;
+            this.txtPais.TabIndex = 14;
             // 
             // groupBox1
             // 
@@ -125,7 +125,7 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 162);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
-            this.groupBox1.TabIndex = 95;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Civil";
             // 
@@ -168,7 +168,7 @@
             this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 14;
+            this.txtCidade.TabIndex = 12;
             // 
             // comboUF
             // 
@@ -176,7 +176,7 @@
             this.comboUF.Location = new System.Drawing.Point(140, 326);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
-            this.comboUF.TabIndex = 15;
+            this.comboUF.TabIndex = 13;
             // 
             // txtNumero
             // 
@@ -184,7 +184,7 @@
             this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 11;
+            this.txtNumero.TabIndex = 9;
             // 
             // txtComplemento
             // 
@@ -192,7 +192,7 @@
             this.txtComplemento.MaxLength = 10;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 12;
+            this.txtComplemento.TabIndex = 10;
             // 
             // txtLogradouro
             // 
@@ -200,7 +200,7 @@
             this.txtLogradouro.MaxLength = 50;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
-            this.txtLogradouro.TabIndex = 10;
+            this.txtLogradouro.TabIndex = 8;
             // 
             // maskedCEP
             // 
@@ -208,7 +208,7 @@
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
-            this.maskedCEP.TabIndex = 9;
+            this.maskedCEP.TabIndex = 7;
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
@@ -289,7 +289,7 @@
             this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
-            this.txtBairro.TabIndex = 13;
+            this.txtBairro.TabIndex = 11;
             // 
             // dateTimeDtNasc
             // 
@@ -333,7 +333,7 @@
             this.btnCadastrar.Location = new System.Drawing.Point(383, 323);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 17;
+            this.btnCadastrar.TabIndex = 15;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);

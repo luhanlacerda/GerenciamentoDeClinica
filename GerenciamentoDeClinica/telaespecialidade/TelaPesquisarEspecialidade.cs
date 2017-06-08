@@ -80,7 +80,7 @@ namespace GerenciamentoDeClinica.telaespecialidade
 
         private void ClearTextBoxs()
         {
-            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            groupBox3.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -89,13 +89,14 @@ namespace GerenciamentoDeClinica.telaespecialidade
             {
                 try
                 {
-                    var result = MessageBox.Show("Deseja remover a especialidade?", "Confirmação", MessageBoxButtons.YesNo);
+                    var result = MessageBox.Show(@"Deseja remover a especialidade?", @"Confirmação", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         clinicaService.RemoverEspecialidade(_pesquisarEspecialidade.EspecialidadesSalvas[_pesquisarEspecialidade.LinhaSelecionada.Value]);
                         listViewEspecialidades.Items.RemoveAt(_pesquisarEspecialidade.LinhaSelecionada.Value);
-                        MessageBox.Show(this, "Especialidade excluida com sucesso!");
+                        MessageBox.Show(this, @"Especialidade excluida com sucesso!");
                         ClearTextBoxs();
+                        txtPesqDesc.Focus();
                     }
                     else
                     {
@@ -157,12 +158,13 @@ namespace GerenciamentoDeClinica.telaespecialidade
                     };
 
                     clinicaService.AtualizarEspecialidade(especialidade);
-                    MessageBox.Show(this, "Especialidade atualizada com sucesso!");
+                    MessageBox.Show(this, @"Especialidade atualizada com sucesso!");
 
                     _pesquisarEspecialidade.EspecialidadesSalvas[_pesquisarEspecialidade.LinhaSelecionada.Value] = especialidade;
                     listViewEspecialidades.Items[_pesquisarEspecialidade.LinhaSelecionada.Value].SubItems[1].Text = especialidade.Descricao;
 
                     ClearTextBoxs();
+                    txtPesqDesc.Focus();
 
                 }
                 catch (WebException)

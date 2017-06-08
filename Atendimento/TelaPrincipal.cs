@@ -16,7 +16,7 @@ namespace Atendimento
 {
     public partial class TelaPrincipal : Form
     {
-        private const string IP = "192.168.1.3";
+        private const string IP = "192.168.25.117";
         private const int PORT = 6969;
         private bool open;
 

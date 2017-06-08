@@ -58,7 +58,9 @@ namespace GerenciamentoDeClinica.telaconvenio
 
         private void ClearTextBoxs()
         {
-            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            groupBox3.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            txtDescricaoFiltro.Text = "";
+            txtDescricaoFiltro.Focus();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)

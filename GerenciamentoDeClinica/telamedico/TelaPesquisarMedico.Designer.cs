@@ -91,7 +91,7 @@
             this.btnRemover.Location = new System.Drawing.Point(383, 352);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 25;
+            this.btnRemover.TabIndex = 21;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
@@ -102,7 +102,7 @@
             this.btnAtualizar.Location = new System.Drawing.Point(383, 323);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnAtualizar.TabIndex = 23;
+            this.btnAtualizar.TabIndex = 20;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
@@ -201,7 +201,7 @@
             this.GroupBox.Controls.Add(this.lblContato);
             this.GroupBox.Controls.Add(this.txtEmail);
             this.GroupBox.Controls.Add(this.lblEmail);
-            this.GroupBox.Location = new System.Drawing.Point(2, 129);
+            this.GroupBox.Location = new System.Drawing.Point(2, 235);
             this.GroupBox.Name = "GroupBox";
             this.GroupBox.Size = new System.Drawing.Size(465, 384);
             this.GroupBox.TabIndex = 45;
@@ -214,7 +214,7 @@
             this.txtPais.Location = new System.Drawing.Point(198, 356);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(137, 20);
-            this.txtPais.TabIndex = 84;
+            this.txtPais.TabIndex = 19;
             // 
             // groupBox1
             // 
@@ -224,7 +224,7 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 207);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
-            this.groupBox1.TabIndex = 83;
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Civil";
             // 
@@ -270,7 +270,7 @@
             this.txtCidade.Location = new System.Drawing.Point(8, 355);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 20;
+            this.txtCidade.TabIndex = 17;
             // 
             // comboUF
             // 
@@ -279,7 +279,7 @@
             this.comboUF.Location = new System.Drawing.Point(139, 355);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
-            this.comboUF.TabIndex = 21;
+            this.comboUF.TabIndex = 18;
             // 
             // txtNumero
             // 
@@ -287,7 +287,7 @@
             this.txtNumero.Location = new System.Drawing.Point(8, 316);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 17;
+            this.txtNumero.TabIndex = 14;
             // 
             // txtComplemento
             // 
@@ -295,7 +295,7 @@
             this.txtComplemento.Location = new System.Drawing.Point(99, 316);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 18;
+            this.txtComplemento.TabIndex = 15;
             // 
             // txtLogradouro
             // 
@@ -303,7 +303,7 @@
             this.txtLogradouro.Location = new System.Drawing.Point(99, 274);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
-            this.txtLogradouro.TabIndex = 16;
+            this.txtLogradouro.TabIndex = 13;
             // 
             // maskedCEP
             // 
@@ -312,7 +312,7 @@
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
-            this.maskedCEP.TabIndex = 15;
+            this.maskedCEP.TabIndex = 12;
             // 
             // lblPais
             // 
@@ -392,7 +392,7 @@
             this.txtBairro.Location = new System.Drawing.Point(191, 316);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
-            this.txtBairro.TabIndex = 19;
+            this.txtBairro.TabIndex = 16;
             // 
             // comboEspecialidade
             // 
@@ -401,7 +401,7 @@
             this.comboEspecialidade.Location = new System.Drawing.Point(127, 136);
             this.comboEspecialidade.Name = "comboEspecialidade";
             this.comboEspecialidade.Size = new System.Drawing.Size(208, 21);
-            this.comboEspecialidade.TabIndex = 9;
+            this.comboEspecialidade.TabIndex = 8;
             // 
             // lblEspecialidade
             // 
@@ -418,7 +418,7 @@
             this.txtCRM.Location = new System.Drawing.Point(10, 136);
             this.txtCRM.Name = "txtCRM";
             this.txtCRM.Size = new System.Drawing.Size(100, 20);
-            this.txtCRM.TabIndex = 8;
+            this.txtCRM.TabIndex = 7;
             // 
             // lblCRM
             // 
@@ -436,7 +436,7 @@
             this.dateTimeDtNasc.Location = new System.Drawing.Point(8, 181);
             this.dateTimeDtNasc.Name = "dateTimeDtNasc";
             this.dateTimeDtNasc.Size = new System.Drawing.Size(98, 20);
-            this.dateTimeDtNasc.TabIndex = 10;
+            this.dateTimeDtNasc.TabIndex = 9;
             // 
             // pictureUser
             // 
@@ -472,7 +472,7 @@
             this.txtNome.Location = new System.Drawing.Point(10, 43);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(325, 20);
-            this.txtNome.TabIndex = 4;
+            this.txtNome.TabIndex = 3;
             // 
             // lblRG
             // 
@@ -499,7 +499,7 @@
             this.maskedCell.Mask = "(##)#####-####";
             this.maskedCell.Name = "maskedCell";
             this.maskedCell.Size = new System.Drawing.Size(89, 20);
-            this.maskedCell.TabIndex = 7;
+            this.maskedCell.TabIndex = 6;
             // 
             // txtRG
             // 
@@ -507,7 +507,7 @@
             this.txtRG.Location = new System.Drawing.Point(128, 83);
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(100, 20);
-            this.txtRG.TabIndex = 6;
+            this.txtRG.TabIndex = 5;
             // 
             // maskedCPF
             // 
@@ -516,7 +516,7 @@
             this.maskedCPF.Mask = "000.000.000-00";
             this.maskedCPF.Name = "maskedCPF";
             this.maskedCPF.Size = new System.Drawing.Size(100, 20);
-            this.maskedCPF.TabIndex = 5;
+            this.maskedCPF.TabIndex = 4;
             this.maskedCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblContato
@@ -534,7 +534,7 @@
             this.txtEmail.Location = new System.Drawing.Point(127, 181);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(141, 20);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 10;
             // 
             // lblEmail
             // 
@@ -553,9 +553,9 @@
             this.CRM});
             this.listMedicos.FullRowSelect = true;
             this.listMedicos.HideSelection = false;
-            this.listMedicos.Location = new System.Drawing.Point(472, 9);
+            this.listMedicos.Location = new System.Drawing.Point(2, 122);
             this.listMedicos.Name = "listMedicos";
-            this.listMedicos.Size = new System.Drawing.Size(214, 504);
+            this.listMedicos.Size = new System.Drawing.Size(465, 107);
             this.listMedicos.TabIndex = 46;
             this.listMedicos.UseCompatibleStateImageBehavior = false;
             this.listMedicos.View = System.Windows.Forms.View.Details;
@@ -579,7 +579,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 514);
+            this.ClientSize = new System.Drawing.Size(469, 621);
             this.Controls.Add(this.listMedicos);
             this.Controls.Add(this.GroupBox);
             this.Controls.Add(this.groupBox2);

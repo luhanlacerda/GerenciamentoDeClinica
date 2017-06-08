@@ -31,7 +31,6 @@ namespace GerenciamentoDeClinica.telamedico
         {
             // Create settings
             //string a = Properties.Settings.Default.local;
-
             comboUF.DataSource = ClinicaUtils.UF_LIST;
 
             ClinicaService service = new ClinicaService();
@@ -156,8 +155,10 @@ namespace GerenciamentoDeClinica.telamedico
                     MessageBox.Show(@"Médico atualizado com sucesso!");
 
                     _pesquisarMedico.MedicosSalvos[_pesquisarMedico.LinhaSelecionada.Value] = medico;
-
+                    
                     DisableEditar();
+                    txtPesqNome.Focus();
+                    listMedicos.Items.Clear();
                 }
                 catch (WebException)
                 {
@@ -177,7 +178,7 @@ namespace GerenciamentoDeClinica.telamedico
                 try
                 {
 
-                    var repost = MessageBox.Show(@"Deseja remover o paciente?", @"Confirmação", MessageBoxButtons.YesNo);
+                    var repost = MessageBox.Show(@"Deseja remover o médico?", @"Confirmação", MessageBoxButtons.YesNo);
 
                     if (repost == DialogResult.Yes)
                     {
@@ -187,6 +188,9 @@ namespace GerenciamentoDeClinica.telamedico
                         _pesquisarMedico.MedicosSalvos.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
                         listMedicos.Items.RemoveAt(_pesquisarMedico.LinhaSelecionada.Value);
                         DisableEditar();
+                        listMedicos.Items.Clear();
+                        txtPesqNome.Focus();
+
                     }
                     else
                     {
@@ -251,6 +255,7 @@ namespace GerenciamentoDeClinica.telamedico
 
         private void CarregarListView()
         {
+            listMedicos.Items.Clear();
             foreach (Medico medico in _pesquisarMedico.MedicosSalvos)
             {
                 ListViewItem linha = listMedicos.Items.Add(medico.ID_Medico.ToString());
@@ -422,8 +427,8 @@ namespace GerenciamentoDeClinica.telamedico
 
         void ClearTextBoxs()
         {
-            Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-            Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
+            GroupBox.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+            GroupBox.Controls.OfType<MaskedTextBox>().ToList().ForEach(t => t.Clear());
 
         }
 

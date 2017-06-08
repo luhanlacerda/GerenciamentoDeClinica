@@ -126,14 +126,14 @@ namespace GerenciamentoDeClinica.telamedico
             this.comboBox1.Location = new System.Drawing.Point(128, 135);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(140, 21);
-            this.comboBox1.TabIndex = 81;
+            this.comboBox1.TabIndex = 5;
             // 
             // txtPais
             // 
             this.txtPais.Location = new System.Drawing.Point(192, 368);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(143, 20);
-            this.txtPais.TabIndex = 18;
+            this.txtPais.TabIndex = 16;
             // 
             // groupBox1
             // 
@@ -143,7 +143,7 @@ namespace GerenciamentoDeClinica.telamedico
             this.groupBox1.Location = new System.Drawing.Point(8, 215);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
-            this.groupBox1.TabIndex = 80;
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Civil";
             // 
@@ -230,35 +230,35 @@ namespace GerenciamentoDeClinica.telamedico
             this.txtCidade.Location = new System.Drawing.Point(8, 367);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 16;
+            this.txtCidade.TabIndex = 14;
             // 
             // comboUF
             // 
             this.comboUF.Location = new System.Drawing.Point(139, 367);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
-            this.comboUF.TabIndex = 17;
+            this.comboUF.TabIndex = 15;
             // 
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(9, 324);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 13;
+            this.txtNumero.TabIndex = 11;
             // 
             // txtComplemento
             // 
             this.txtComplemento.Location = new System.Drawing.Point(99, 324);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 14;
+            this.txtComplemento.TabIndex = 12;
             // 
             // txtLogradouro
             // 
             this.txtLogradouro.Location = new System.Drawing.Point(99, 282);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
-            this.txtLogradouro.TabIndex = 12;
+            this.txtLogradouro.TabIndex = 10;
             // 
             // maskedCEP
             // 
@@ -266,7 +266,7 @@ namespace GerenciamentoDeClinica.telamedico
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
-            this.maskedCEP.TabIndex = 11;
+            this.maskedCEP.TabIndex = 9;
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblDataNascimento
@@ -355,7 +355,7 @@ namespace GerenciamentoDeClinica.telamedico
             this.txtBairro.Location = new System.Drawing.Point(192, 324);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
-            this.txtBairro.TabIndex = 15;
+            this.txtBairro.TabIndex = 13;
             // 
             // lblNome
             // 
@@ -371,7 +371,7 @@ namespace GerenciamentoDeClinica.telamedico
             this.btnCadastrar.Location = new System.Drawing.Point(383, 367);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 19;
+            this.btnCadastrar.TabIndex = 17;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);

@@ -130,7 +130,7 @@
             this.txtPais.MaxLength = 30;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(100, 20);
-            this.txtPais.TabIndex = 97;
+            this.txtPais.TabIndex = 18;
             // 
             // groupBox1
             // 
@@ -140,7 +140,7 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 166);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 48);
-            this.groupBox1.TabIndex = 96;
+            this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Civil";
             // 
@@ -187,7 +187,7 @@
             this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(117, 20);
-            this.txtCidade.TabIndex = 18;
+            this.txtCidade.TabIndex = 16;
             // 
             // comboUF
             // 
@@ -196,7 +196,7 @@
             this.comboUF.Location = new System.Drawing.Point(140, 325);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(47, 21);
-            this.comboUF.TabIndex = 19;
+            this.comboUF.TabIndex = 17;
             // 
             // txtNumero
             // 
@@ -205,7 +205,7 @@
             this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(69, 20);
-            this.txtNumero.TabIndex = 15;
+            this.txtNumero.TabIndex = 13;
             // 
             // txtComplemento
             // 
@@ -214,7 +214,7 @@
             this.txtComplemento.MaxLength = 10;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(71, 20);
-            this.txtComplemento.TabIndex = 16;
+            this.txtComplemento.TabIndex = 14;
             // 
             // txtLogradouro
             // 
@@ -223,7 +223,7 @@
             this.txtLogradouro.MaxLength = 50;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(236, 20);
-            this.txtLogradouro.TabIndex = 14;
+            this.txtLogradouro.TabIndex = 12;
             // 
             // maskedCEP
             // 
@@ -232,7 +232,7 @@
             this.maskedCEP.Mask = "#####-###";
             this.maskedCEP.Name = "maskedCEP";
             this.maskedCEP.Size = new System.Drawing.Size(74, 20);
-            this.maskedCEP.TabIndex = 13;
+            this.maskedCEP.TabIndex = 11;
             this.maskedCEP.Leave += new System.EventHandler(this.maskedCEP_Leave);
             // 
             // lblPais
@@ -314,7 +314,7 @@
             this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(143, 20);
-            this.txtBairro.TabIndex = 17;
+            this.txtBairro.TabIndex = 15;
             // 
             // txtNome
             // 
@@ -351,7 +351,7 @@
             this.btnRemover.Location = new System.Drawing.Point(378, 322);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
-            this.btnRemover.TabIndex = 23;
+            this.btnRemover.TabIndex = 20;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
@@ -362,7 +362,7 @@
             this.btnAtualizar.Location = new System.Drawing.Point(378, 293);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnAtualizar.TabIndex = 21;
+            this.btnAtualizar.TabIndex = 19;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
@@ -475,7 +475,7 @@
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(388, 28);
+            this.btnPesquisar.Location = new System.Drawing.Point(378, 32);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 2;
@@ -529,7 +529,7 @@
             this.listViewSecretarias.Location = new System.Drawing.Point(12, 113);
             this.listViewSecretarias.Name = "listViewSecretarias";
             this.listViewSecretarias.Size = new System.Drawing.Size(464, 97);
-            this.listViewSecretarias.TabIndex = 2;
+            this.listViewSecretarias.TabIndex = 3;
             this.listViewSecretarias.UseCompatibleStateImageBehavior = false;
             this.listViewSecretarias.View = System.Windows.Forms.View.Details;
             this.listViewSecretarias.SelectedIndexChanged += new System.EventHandler(this.listViewSecretarias_SelectedIndexChanged);
