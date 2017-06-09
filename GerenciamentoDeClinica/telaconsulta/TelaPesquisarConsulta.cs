@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -73,7 +75,7 @@ namespace GerenciamentoDeClinica.telaconsulta
         private void btnRemover_Click(object sender, EventArgs e)
         {
             if (_pesquisarConsulta.LinhaSelecionada.HasValue)
-            {
+            {/*
                 try
                 {
                     ClinicaService service = new ClinicaService();
@@ -90,7 +92,46 @@ namespace GerenciamentoDeClinica.telaconsulta
                 catch (Exception ex)
                 {
                     MessageBox.Show(this, ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }*/
+                Thread thread = new Thread(RemoveConsulta);
+                thread.Start();
+            }
+
+        }
+
+        private void RemoveConsulta()
+        {
+            try
+            {
+                ClinicaUtils.tcpClient = new TcpClient();
+                //conectando ao servidor
+                ClinicaUtils.tcpClient.Connect(ClinicaUtils.IP, ClinicaUtils.PORT);
+
+                ClinicaUtils.stream = ClinicaUtils.tcpClient.GetStream();
+                ClinicaUtils.writer = new BinaryWriter(ClinicaUtils.stream);
+                ClinicaUtils.Reader = new BinaryReader(ClinicaUtils.stream);
+                //service.RemoverConsulta(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]);
+                ClinicaUtils.writer.Write(ClinicaXmlUtils.ToXml(_pesquisarConsulta.ConsultasSalvas[_pesquisarConsulta.LinhaSelecionada.Value]));
+                MessageBox.Show(@"Solicitação enviada para análise.");
+                string message;
+                do
+                {
+                    message = ClinicaUtils.Reader.ReadString();
+                    if (message != "FIM")
+                        MessageBox.Show(message);
+                } while (message != "FIM");
+            }
+            catch (EndOfStreamException) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ClinicaUtils.Reader?.Close();
+                ClinicaUtils.writer?.Close();
+                ClinicaUtils.stream?.Close();
+                ClinicaUtils.tcpClient?.Close();
             }
         }
 

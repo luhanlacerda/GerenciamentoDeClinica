@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClinicaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.consulta" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.estado" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.medico" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.especialidade" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.paciente" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.convenio" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.secretaria" />
+      <xsd:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClinicaService_CadastrarConsulta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarConsulta" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarConsulta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarConsultaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarConsulta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarConsulta" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarConsulta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarConsultaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverConsulta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverConsulta" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverConsulta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverConsultaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarConsulta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsulta" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarConsulta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsultaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarConvenio_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarConvenio" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarConvenio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarConvenio_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarConvenio" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarConvenio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverConvenio_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverConvenio" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverConvenio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarConvenio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConvenio" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarConvenio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConvenioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEspecialidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEspecialidade" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEspecialidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEspecialidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEspecialidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEspecialidade" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEspecialidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEspecialidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEspecialidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEspecialidade" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEspecialidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEspecialidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEspecialidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEspecialidade" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEspecialidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEspecialidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverMedico" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarMedico_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMedico" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarMedico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarPaciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarPaciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarPaciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarPaciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverPaciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverPaciente" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverPaciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarPaciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarPaciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarSecretaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarSecretaria" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarSecretaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarSecretariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarSecretaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarSecretaria" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarSecretaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarSecretariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverSecretaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverSecretaria" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverSecretaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverSecretariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarSecretaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSecretaria" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarSecretaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSecretariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_CadastrarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastrarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_AtualizarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AtualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_RemoverUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IClinicaService_ListarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClinicaService">
+    <wsdl:operation name="CadastrarConsulta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConsulta" message="tns:IClinicaService_CadastrarConsulta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConsultaResponse" message="tns:IClinicaService_CadastrarConsulta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConsulta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarConsulta" message="tns:IClinicaService_AtualizarConsulta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarConsultaResponse" message="tns:IClinicaService_AtualizarConsulta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConsulta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverConsulta" message="tns:IClinicaService_RemoverConsulta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverConsultaResponse" message="tns:IClinicaService_RemoverConsulta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarConsulta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarConsulta" message="tns:IClinicaService_ListarConsulta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarConsultaResponse" message="tns:IClinicaService_ListarConsulta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarConvenio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConvenio" message="tns:IClinicaService_CadastrarConvenio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarConvenioResponse" message="tns:IClinicaService_CadastrarConvenio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConvenio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarConvenio" message="tns:IClinicaService_AtualizarConvenio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarConvenioResponse" message="tns:IClinicaService_AtualizarConvenio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConvenio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverConvenio" message="tns:IClinicaService_RemoverConvenio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverConvenioResponse" message="tns:IClinicaService_RemoverConvenio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarConvenio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarConvenio" message="tns:IClinicaService_ListarConvenio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarConvenioResponse" message="tns:IClinicaService_ListarConvenio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEspecialidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEspecialidade" message="tns:IClinicaService_CadastrarEspecialidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEspecialidadeResponse" message="tns:IClinicaService_CadastrarEspecialidade_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEspecialidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEspecialidade" message="tns:IClinicaService_AtualizarEspecialidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEspecialidadeResponse" message="tns:IClinicaService_AtualizarEspecialidade_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEspecialidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverEspecialidade" message="tns:IClinicaService_RemoverEspecialidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverEspecialidadeResponse" message="tns:IClinicaService_RemoverEspecialidade_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEspecialidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarEspecialidade" message="tns:IClinicaService_ListarEspecialidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarEspecialidadeResponse" message="tns:IClinicaService_ListarEspecialidade_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarMedico" message="tns:IClinicaService_CadastrarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarMedicoResponse" message="tns:IClinicaService_CadastrarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarMedico" message="tns:IClinicaService_AtualizarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarMedicoResponse" message="tns:IClinicaService_AtualizarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverMedico" message="tns:IClinicaService_RemoverMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverMedicoResponse" message="tns:IClinicaService_RemoverMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMedico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarMedico" message="tns:IClinicaService_ListarMedico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarMedicoResponse" message="tns:IClinicaService_ListarMedico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarPaciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarPaciente" message="tns:IClinicaService_CadastrarPaciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarPacienteResponse" message="tns:IClinicaService_CadastrarPaciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarPaciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarPaciente" message="tns:IClinicaService_AtualizarPaciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarPacienteResponse" message="tns:IClinicaService_AtualizarPaciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverPaciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverPaciente" message="tns:IClinicaService_RemoverPaciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverPacienteResponse" message="tns:IClinicaService_RemoverPaciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPaciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarPaciente" message="tns:IClinicaService_ListarPaciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarPacienteResponse" message="tns:IClinicaService_ListarPaciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarSecretaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarSecretaria" message="tns:IClinicaService_CadastrarSecretaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarSecretariaResponse" message="tns:IClinicaService_CadastrarSecretaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarSecretaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarSecretaria" message="tns:IClinicaService_AtualizarSecretaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarSecretariaResponse" message="tns:IClinicaService_AtualizarSecretaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverSecretaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverSecretaria" message="tns:IClinicaService_RemoverSecretaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverSecretariaResponse" message="tns:IClinicaService_RemoverSecretaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSecretaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarSecretaria" message="tns:IClinicaService_ListarSecretaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarSecretariaResponse" message="tns:IClinicaService_ListarSecretaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEstado" message="tns:IClinicaService_CadastrarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarEstadoResponse" message="tns:IClinicaService_CadastrarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEstado" message="tns:IClinicaService_AtualizarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarEstadoResponse" message="tns:IClinicaService_AtualizarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverEstado" message="tns:IClinicaService_RemoverEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverEstadoResponse" message="tns:IClinicaService_RemoverEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarEstado" message="tns:IClinicaService_ListarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarEstadoResponse" message="tns:IClinicaService_ListarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/CadastrarUsuario" message="tns:IClinicaService_CadastrarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/CadastrarUsuarioResponse" message="tns:IClinicaService_CadastrarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/AtualizarUsuario" message="tns:IClinicaService_AtualizarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/AtualizarUsuarioResponse" message="tns:IClinicaService_AtualizarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/RemoverUsuario" message="tns:IClinicaService_RemoverUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/RemoverUsuarioResponse" message="tns:IClinicaService_RemoverUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicaService/ListarUsuario" message="tns:IClinicaService_ListarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicaService/ListarUsuarioResponse" message="tns:IClinicaService_ListarUsuario_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClinicaService" type="tns:IClinicaService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CadastrarConsulta">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarConsulta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConsulta">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarConsulta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConsulta">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverConsulta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarConsulta">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarConsulta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarConvenio">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarConvenio">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConvenio">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarConvenio">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarConvenio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEspecialidade">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarEspecialidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEspecialidade">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarEspecialidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEspecialidade">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverEspecialidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEspecialidade">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarEspecialidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarMedico">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarMedico">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverMedico">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMedico">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarMedico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarPaciente">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarPaciente">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverPaciente">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPaciente">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarSecretaria">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarSecretaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarSecretaria">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarSecretaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverSecretaria">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverSecretaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSecretaria">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarSecretaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEstado">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/CadastrarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/AtualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/RemoverUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IClinicaService/ListarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClinicaService">
+    <wsdl:port name="BasicHttpBinding_IClinicaService" binding="tns:BasicHttpBinding_IClinicaService">
+      <soap:address location="http://localhost:55868/ClinicaService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

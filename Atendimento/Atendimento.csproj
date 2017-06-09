@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +56,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\ClinicaXMLUtils.cs" />
+    <Compile Include="Web References\localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,9 +83,93 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Web References\localhost\ClinicaService.wsdl" />
+    <None Include="Web References\localhost\ClinicaService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\ClinicaService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost\Consulta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Convenio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Especialidade.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Estado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Medico.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Paciente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Secretaria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\Usuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:55868/ClinicaService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:55868/ClinicaService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Atendimento_localhost_ClinicaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhost\ClinicaService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

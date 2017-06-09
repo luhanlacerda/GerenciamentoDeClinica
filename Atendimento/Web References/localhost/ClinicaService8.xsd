@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.usuario" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55868/ClinicaService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" />
+  <xs:complexType name="Usuario">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ClinicaServiceLibrary.classesbasicas" base="q1:Pessoa">
+        <xs:sequence>
+          <xs:element name="ID_Usuario" type="xs:int" />
+          <xs:element minOccurs="0" name="Senha" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="ArrayOfUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Usuario" nillable="true" type="tns:Usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUsuario" nillable="true" type="tns:ArrayOfUsuario" />
+</xs:schema>

@@ -134,6 +134,9 @@ namespace ClinicaServiceLibrary.utils
 
             ValidarVazio(pessoa.Estado_Civil.Trim(), ERRO_ESTADO_CIVIL);
             ValidarExceder(pessoa.Estado_Civil.Trim(), ESTADO_CIVIL_SIZE, ERRO_ESTADO_CIVIL);
+
+            if (pessoa.Dt_Nascimento > DateTime.Now)
+                throw new FaultException("Data de Nascimento inválida.");
         }
     }
 }

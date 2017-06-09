@@ -122,18 +122,21 @@ namespace ClinicaServiceLibrary.consulta
                 //Abrindo conexao
                 this.abrirConexao();
                 //Instrucao a ser executada
-                string sql = "DELETE FROM Consulta WHERE ID_Consulta = @ID_Consulta";
+                string sql = "UPDATE Consulta SET ID_ESTADO = 4 WHERE ID_Consulta = @ID_Consulta";
 
                 SqlCommand scm = new SqlCommand(sql, sqlConn);
+
+                #region  Parâmetros 
 
                 scm.Parameters.Add("@ID_Consulta", SqlDbType.Int);
                 scm.Parameters["@ID_Consulta"].Value = consulta.ID_Consulta;
 
+                #endregion
                 //Executando instruçao
                 scm.ExecuteNonQuery();
                 //Liberando memoria
                 scm.Dispose();
-                //Fechando conexao
+                //Fechando conexao 
                 this.fecharConexao();
             }
             catch (FaultException e)
